@@ -1,7 +1,7 @@
 @extends('auth.layouts.main')
 
 @section('css')
-    
+    <link href="assets/css/dashboard/main.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href={{ route('home.index') }} class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="Logo Polstat STIS">
         <span class="d-none d-lg-block">SIBAU</span>
       </a>
@@ -177,53 +177,58 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+                {{ $formattedName }}
+            </span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <span id="name-dropdown-menu-bau">{{ Auth::user()->name }}</span>
+              <span id="nip-dropdown-menu-bau">{{ Auth::user()->nip }}</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
+              <a class="dropdown-item d-flex align-items-center" href={{ route('profile.edit') }}>
+                <i id="icon-dropdown-menu-bau" class="fa-solid fa-user"></i>
+                <span>Profil Saya</span>
               </a>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
-            <li>
+            {{-- <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
+                <i id="icon-dropdown-menu-bau" class="fa-solid fa-gear"></i>
+                <span>Pengaturan</span>
               </a>
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
+                <i id="icon-dropdown-menu-bau" class="fa-solid fa-right-from-bracket"></i>
                 <span>Need Help?</span>
               </a>
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> --}}
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
+                <form method="POST" action="{{ route('logout') }}"  id="menu-logout-bau" class="dropdown-item d-flex align-items-center">
+                    @csrf
+                    <i id="icon-dropdown-menu-bau" class="fa-solid fa-right-from-bracket"></i>
+                    <button id="logout-bau" type="submit">
+                        Keluar
+                    </button>
+                </form>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->

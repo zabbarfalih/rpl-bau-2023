@@ -1,0 +1,24 @@
+#icon-dropdown-menu-bau {
+    margin-right: 5px;
+    min-width: 22.5px;
+}
+
+#menu-logout-bau {
+    color: red !important;
+    cursor: pointer !important;
+}
+#logout-bau {
+    all: unset;
+}
+
+#name-dropdown-menu-bau {
+    display: block;
+    font-weight: 700;
+    color: black;
+}
+
+#nip-dropdown-menu-bau {
+    display: block;
+    font-weight: 500;
+    color: black;
+}

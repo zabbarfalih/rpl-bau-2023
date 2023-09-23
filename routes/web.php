@@ -24,7 +24,7 @@ use App\Http\Controllers\Dashboard\DashboardProfileController;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard', [DashboardHomeController::class, 'index'])->name('home.index');
     Route::get('/dashboard/profile', [DashboardProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/dashboard/profile', [DashboardProfileController::class, 'update'])->name('profile.update');
