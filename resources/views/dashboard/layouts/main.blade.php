@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIBAU</title>
 
-    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+    <link href="/assets/img/favicon.png" rel="icon">
   
     <!-- CSS Start -->
         <!-- Bootstrap 5.3.2 CSS Start -->

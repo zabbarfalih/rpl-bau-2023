@@ -28,7 +28,7 @@
                         @csrf
                         <div id="form-input-login">
                             <div id="input-login-nip" class="form-floating">
-                                <input type="text" class="form-control" id="inputNip" name="nip" autocomplete="off" placeholder="NIP" required>
+                                <input type="text" class="form-control" id="inputNip" name="nip" autocomplete="off" placeholder="NIP" value="{{ old('nip') }}" required>
                                 <label id="label-input-login" for="inputNip">NIP</label>
                             </div>
                             <div id="nip-error" class="invalid-feedback">
@@ -37,7 +37,7 @@
                         <div id="form-input-login">
                             <div class="input-group"  id="input-login-password">             
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}" required>
                                     <label id="label-input-login" for="inputPassword">Password</label>
                                 </div>
                                 <span class="input-group-text togglePassword">

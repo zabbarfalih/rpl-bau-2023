@@ -13,7 +13,7 @@
         <img src="assets/img/logo.png" alt="Logo Polstat STIS">
         <span class="d-none d-lg-block">SIBAU</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+      <i class="fa-solid fa-bars toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -28,14 +28,14 @@
 
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
           </a>
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
+            <i class="fa-solid fa-bell"></i>
             <span class="badge bg-primary badge-number">4</span>
           </a><!-- End Notification Icon -->
 
@@ -110,7 +110,7 @@
         <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
+            <i class="fa-solid fa-comment-dots"></i>
             <span class="badge bg-success badge-number">3</span>
           </a><!-- End Messages Icon -->
 
@@ -201,7 +201,7 @@
               <hr class="dropdown-divider">
             </li>
 
-            {{-- <li>
+            <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i id="icon-dropdown-menu-bau" class="fa-solid fa-gear"></i>
                 <span>Pengaturan</span>
@@ -209,17 +209,7 @@
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li> --}}
-
-            {{-- <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i id="icon-dropdown-menu-bau" class="fa-solid fa-right-from-bracket"></i>
-                <span>Need Help?</span>
-              </a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li> --}}
 
             <li>
                 <form method="POST" action="{{ route('logout') }}"  id="menu-logout-bau" class="dropdown-item d-flex align-items-center">

@@ -10,19 +10,14 @@ use App\Http\Controllers\Dashboard\DashboardProfileController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard', [DashboardHomeController::class, 'index'])->name('home.index');
@@ -31,4 +26,6 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::delete('/dashboard/profile', [DashboardProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// Require the auth.php fortify routes file
 require __DIR__.'/auth.php';
