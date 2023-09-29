@@ -25,6 +25,8 @@
 
   
   <body>
+    @include('dashboard.partials.header')
+    @include('dashboard.partials.sidebar')
     @yield('content')
     
     <!-- JavaScript Start -->

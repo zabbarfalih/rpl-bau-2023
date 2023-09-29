@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
 use App\Models\Menu;
-
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardHomeController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class DashboardHomeController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
-        return view('dashboard.home.index', [
-            'menus' => $menus,
-            'user' => Auth::user()
-        ]);
+        //
     }
 
     /**
@@ -48,10 +41,10 @@ class DashboardHomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Menu $menu)
     {
         //
     }
@@ -59,10 +52,10 @@ class DashboardHomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Menu $menu)
     {
         //
     }
@@ -71,10 +64,10 @@ class DashboardHomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Menu $menu)
     {
         //
     }
@@ -82,10 +75,10 @@ class DashboardHomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
         //
     }
