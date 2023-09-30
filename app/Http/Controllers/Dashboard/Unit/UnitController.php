@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Dashboard;
+namespace App\Http\Controllers\Dashboard\Unit;
 
 use App\Models\Menu;
 
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.

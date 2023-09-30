@@ -9,7 +9,7 @@
                 @php $currentUrl = request()->url(); @endphp
                 @foreach($menus as $menu)
                     @if (request()->is("dashboard/{$menu->url}*"))
-                        <li class="breadcrumb-item {{ $menu->has_submenu === 1 ? 'menu-has-submenu' : '' }}">
+                        <li class="breadcrumb-item {{ $menu->has_submenu === 1 ? 'menu-has-submenu' : 'active' }}">
                             @if ($menu->has_submenu === 1)
                                 <a>
                                     {{ $menu->name }}
