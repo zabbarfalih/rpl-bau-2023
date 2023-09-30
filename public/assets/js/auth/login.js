@@ -33,17 +33,17 @@ $("form").submit(function (event) {
 // Toggle Password Start
 $(".togglePassword").click(function (e) {
     e.preventDefault();
-    var icon = $(this).find("svg");
+    var icon = $(this).find("i");
     var type = $(this).parent().parent().find("#inputPassword").attr("type");
     console.log(type);
 
     if (type == "password") {
-        icon.remove(); // Remove the existing SVG icon
-        $(this).append('<i class="fas fa-eye-slash"></i>'); // Add the new eye-slash icon
+        icon.removeClass("bi-eye-fill");
+        icon.addClass("bi-eye-slash-fill");
         $(this).parent().parent().find("#inputPassword").attr("type", "text");
     } else if (type == "text") {
-        icon.remove(); // Remove the existing SVG icon
-        $(this).append('<i class="fas fa-eye"></i>'); // Add the new eye icon
+        icon.removeClass("bi-eye-slash-fill");
+        icon.addClass("bi-eye-fill");
         $(this)
             .parent()
             .parent()

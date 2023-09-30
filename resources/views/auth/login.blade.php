@@ -19,10 +19,10 @@
               </div><!-- End Logo -->
               <div class="card mb-3">
                 <div class="card-body">
-                  <div class="pt-4 pb-2">
-                    <h5 id="title-login" class="card-title text-center pb-0 fs-4">Masuk</h5>
-                    <p class="text-center small">Masukkan NIP dan Password Anda</p>
-                  </div>
+                    <div class="pt-4 pb-2">
+                        <h5 id="title-login" class="card-title text-center pb-0 fs-4">Masuk</h5>
+                        <p class="text-center small">Masukkan NIP dan Password Anda</p>
+                    </div>
 
                     <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">
                         @csrf
@@ -41,7 +41,7 @@
                                     <label id="label-input-login" for="inputPassword">Password</label>
                                 </div>
                                 <span class="input-group-text togglePassword">
-                                    <i class="fa-solid fa-eye"></i>
+                                    <i class="bi bi-eye-fill"></i>
                                 </span>
                             </div>
                             <div id="password-error" class="invalid-feedback">

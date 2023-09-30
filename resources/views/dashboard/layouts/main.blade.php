@@ -13,8 +13,12 @@
         <!-- Bootstrap 5.3.2 CSS End -->
 
         <!-- Fontawesome 6.4.2 CSS Start -->
-        <link rel="stylesheet" type="text/css" href="/assets/css/all.min.css"></link>
+        {{-- <link rel="stylesheet" type="text/css" href="/assets/css/all.min.css"></link> --}}
         <!-- Fontawesome 6.4.2 CSS End -->
+
+        <!-- Bootstrap Icons v1.11.1 CSS Start -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-icons.min.css">
+        <!-- Bootstrap Icons v1.11.1 CSS End -->
 
         <!-- Vanilla CSS Start -->
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
@@ -30,7 +34,7 @@
     
     <!-- JavaScript Start -->
         <!-- Fontawesome 6.4.2 JS Start -->
-        <script type="module" src="/assets/js/all.min.js"></script>
+        {{-- <script type="module" src="/assets/js/all.min.js"></script> --}}
         <!-- Fontawesome 6.4.2 JS End -->
 
         <!-- JQuery 3.7.1 JS Start -->
