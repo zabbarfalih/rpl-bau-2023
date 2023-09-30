@@ -23,7 +23,6 @@
     <!-- CSS End -->
   </head>
 
-  
   <body>
     @include('dashboard.partials.header')
     @include('dashboard.partials.sidebar')

@@ -1,6 +1,5 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
-
     <div class="d-flex align-items-center justify-content-between">
       <a href={{ route('home.index') }} class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="Logo Polstat STIS">
@@ -216,8 +215,6 @@
 
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
-
       </ul>
     </nav><!-- End Icons Navigation -->
-
   </header><!-- End Header -->
