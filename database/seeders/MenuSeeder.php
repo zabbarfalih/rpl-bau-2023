@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Menu;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class MenuSeeder extends Seeder
@@ -19,14 +20,20 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Dashboard',
                 'has_submenu' => false,
-                'url' => 'dashboard',
-                'icon' => 'fa-solid fa-user',
+                'url' => Str::slug('Dashboard'),
+                'icon' => 'bi bi-grid',
             ],
             [
                 'name' => 'Administrator',
                 'has_submenu' => true,
-                'url' => 'administrator',
-                'icon' => 'fa-solid fa-user',
+                'url' => Str::slug('Administrator'),
+                'icon' => 'bi bi-person-fill-gear',
+            ],
+            [
+                'name' => 'Unit',
+                'has_submenu' => false,
+                'url' => Str::slug('Unit'),
+                'icon' => 'bi bi-person-fill-gear',
             ]
         ]);              
     }

@@ -21,14 +21,16 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'formatUserName'])->group(function () {
-    Route::get('/dashboard', [DashboardHomeController::class, 'index'])->name('home.index');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home.index');
     Route::get('/dashboard/profile', [DashboardProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/dashboard/profile', [DashboardProfileController::class, 'update'])->name('profile.update');
     Route::delete('/dashboard/profile', [DashboardProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/administrator/users', [DashboardAdministratorController::class, 'index_users'])->name('users.index');
+    Route::get('/dashboard/administrator/users', [UsersController::class, 'index'])->name('users.index');
 
-    Route::get('/administrator/menu-submenu', [DashboardAdministratorController::class, 'index_menu_submenu'])->name('menusubmenu.index');
+    Route::get('/dashboard/administrator/menu-submenu', [MenuSubmenuController::class, 'index'])->name('menusubmenu.index');
+
+    Route::get('/dashboard/unit', [DashboardUnitController::class, 'index'])->name('unit.index');
 });
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Dashboard;
 
 use App\Models\Menu;
 
@@ -8,25 +8,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardAdministratorController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_users()
+    public function index()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.administrator.users.index', [
-            'menus' => $menus,
-            'user' => Auth::user()
-        ]);
-    }
-    public function index_menu_submenu()
-    {
-        $menus = Menu::with('submenus')->get();
-        return view('dashboard.administrator.menu-submenu.index', [
+        return view('dashboard.home.index', [
             'menus' => $menus,
             'user' => Auth::user()
         ]);

@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard\Dashboard;
 
-use App\Models\Submenu;
+use App\Models\Menu;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class SubmenuController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,11 @@ class SubmenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menu::with('submenus')->get();
+        return view('dashboard.home.index', [
+            'menus' => $menus,
+            'user' => Auth::user()
+        ]);
     }
 
     /**
@@ -41,10 +48,10 @@ class SubmenuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Submenu  $submenu
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Submenu $submenu)
+    public function show($id)
     {
         //
     }
@@ -52,10 +59,10 @@ class SubmenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Submenu  $submenu
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Submenu $submenu)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +71,10 @@ class SubmenuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Submenu  $submenu
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Submenu $submenu)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +82,10 @@ class SubmenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Submenu  $submenu
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Submenu $submenu)
+    public function destroy($id)
     {
         //
     }

@@ -4,15 +4,15 @@
         @foreach($menus as $menu)
             <li class="nav-item">
                 @if($menu->has_submenu)
-                    <a class="nav-link collapsed" data-bs-target="#{{ $menu->name }}-nav" data-bs-toggle="collapse" href="#">
+                    <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->name }}-nav" data-bs-toggle="collapse" href="#">
                         <i class="{{ $menu->icon }}"></i>
                         <span>{{ $menu->name }}</span>
-                        <i class="fa-solid fa-chevron-down ms-auto"></i>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="{{ $menu->name }}-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <ul id="{{ $menu->name }}-nav" class="nav-content collapse {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                         @foreach($menu->submenus as $submenu)
                             <li>
-                                <a href="/{{ $menu->url }}/{{ $submenu->url }}">
+                                <a href="/dashboard/{{ $menu->url }}/{{ $submenu->url }}" class="{{ request()->url() === url("/dashboard/{$menu->url}/{$submenu->url}") ? 'active' : '' }}">
                                     <i class="{{ $submenu->icon }}"></i>
                                     <span>{{ $submenu->name }}</span>
                                 </a>
@@ -20,13 +20,20 @@
                         @endforeach
                     </ul>
                 @else
-                    <a class="nav-link" href="/{{ $menu->url }}">
-                        <i class="{{ $menu->icon }}"></i>
-                        <span>{{ $menu->name }}</span>
-                    </a>
+                    @if ($menu->url === 'dashboard')
+                        <a class="nav-link {{ request()->url() === url("/{$menu->url}") ? '' : 'collapsed' }}" href="/{{ $menu->url }}">
+                            <i class="{{ $menu->icon }}"></i>
+                            <span>{{ $menu->name }}</span>
+                        </a>
+                    @else
+                        <a class="nav-link {{ request()->url() === url("/dashboard/{$menu->url}") ? '' : 'collapsed' }}" href="/dashboard/{{ $menu->url }}">
+                            <i class="{{ $menu->icon }}"></i>
+                            <span>{{ $menu->name }}</span>
+                        </a>
+                    @endif
                 @endif
             </li>
         @endforeach
     </ul>
-</aside><!-- End Sidebar-->
-<!-- End Sidebar-->
+</aside>
+<!-- ======= End Sidebar ======= -->

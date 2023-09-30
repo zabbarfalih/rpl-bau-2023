@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Submenu;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class SubmenuSeeder extends Seeder
@@ -19,15 +20,16 @@ class SubmenuSeeder extends Seeder
             [
                 'menu_id' => 2,
                 'name' => 'Users',
-                'url' => 'users',
-                'icon' => 'fa-solid fa-user'
+                'url' => Str::slug('Users'),
+                'icon' => 'bi bi-people-fill'
             ],
             [
                 'menu_id' => 2,
                 'name' => 'Menu & Submenu',
-                'url' => 'menu-submenu',
-                'icon' => 'fa-solid fa-user'
+                'url' => Str::slug('Menu & Submenu'),
+                'icon' => 'bi bi-menu-button-wide-fill'
             ]
-        ]);        
+        ]);
+           
     }
 }
