@@ -1,9 +1,7 @@
-@extends('dashboard.layouts.main')
+<x-dashboard.layouts.layouts :menus="$menus">
+    <x-slot name="css">
+    </x-slot>
 
-@section('css')
-@endsection
-
-@section('content')
     <section class="section dashboard">
       <div class="row">
 
@@ -636,8 +634,7 @@
         </div><!-- End Right side columns -->
       </div>
     </section>
-@endsection
 
-@section('js')
-    
-@endsection
+    <x-slot name="js">
+    </x-slot>
+</x-dashboard.layouts.layouts>

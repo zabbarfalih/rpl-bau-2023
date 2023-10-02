@@ -18,9 +18,8 @@ class UnitController extends Controller
     public function index()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.home.index', [
+        return view('dashboard.unit.index', [
             'menus' => $menus,
-            'user' => Auth::user()
         ]);
     }
 

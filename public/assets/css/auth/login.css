@@ -92,7 +92,8 @@
 .modal-body {
     padding-bottom: 0;
 }
-#form-input-login {
+
+#form-input {
     min-height: 4.75rem;
 }
 
@@ -102,4 +103,8 @@
 
 #submit-login .btn {
     font-weight: 500;
+}
+
+#alert-bau {
+    min-height: 5rem;
 }

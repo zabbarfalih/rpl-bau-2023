@@ -20,7 +20,6 @@ class MenuSubmenuController extends Controller
         $menus = Menu::with('submenus')->get();
         return view('dashboard.administrator.menu-submenu.index', [
             'menus' => $menus,
-            'user' => Auth::user()
         ]);
     }
 

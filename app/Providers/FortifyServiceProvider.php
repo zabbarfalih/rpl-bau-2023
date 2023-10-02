@@ -61,6 +61,9 @@ class FortifyServiceProvider extends ServiceProvider
                 Hash::check($request->password, $user->password)) {
                 return $user;
             }
+            else {
+                session()->flash('loginError', 'NIP atau Password salah');
+            }
         });
 
         Fortify::registerView(function () {

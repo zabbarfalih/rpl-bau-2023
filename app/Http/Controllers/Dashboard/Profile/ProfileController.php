@@ -29,7 +29,7 @@ class ProfileController extends Controller
         $menus = Menu::with('submenus')->get();
         return view('dashboard.profile.index', [
             'menus' => $menus,
-            'user' => Auth::user(),
+            // 'user' => Auth::user(),
             'confirmsTwoFactorAuthentication' => Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm'),
             'sessions' => $this->sessions($request)->all(),
         ]);

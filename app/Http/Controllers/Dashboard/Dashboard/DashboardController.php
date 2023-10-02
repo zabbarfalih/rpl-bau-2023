@@ -20,7 +20,6 @@ class DashboardController extends Controller
         $menus = Menu::with('submenus')->get();
         return view('dashboard.home.index', [
             'menus' => $menus,
-            'user' => Auth::user()
         ]);
     }
 

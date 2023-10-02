@@ -10,23 +10,23 @@ $("form").submit(function (event) {
     // Cek validasi NIP
     if (nipValue.trim() === "") {
         $("#inputNip").addClass("is-invalid");
-        $("#input-login-nip").addClass("is-invalid");
+        $("#input-nip").addClass("is-invalid");
         $("#nip-error").text("NIP harus diisi.");
         event.preventDefault(); // Mencegah formulir untuk disubmit
     } else {
         $("#inputNip").removeClass("is-invalid");
-        $("#input-login-nip").removeClass("is-invalid");
+        $("#input-nip").removeClass("is-invalid");
     }
 
     // Cek validasi Password
     if (passwordValue.trim() === "") {
         $("#inputPassword").addClass("is-invalid");
-        $("#input-login-password").addClass("is-invalid");
+        $("#input-password").addClass("is-invalid");
         $("#password-error").text("Password harus diisi.");
         event.preventDefault();
     } else {
         $("#inputPassword").removeClass("is-invalid");
-        $("#input-login-password").removeClass("is-invalid");
+        $("#input-password").removeClass("is-invalid");
     }
 });
 

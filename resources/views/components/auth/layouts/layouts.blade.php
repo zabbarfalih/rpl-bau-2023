@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIBAU | Dashboard</title>
+    <title>SIBAU</title>
 
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <!-- CSS Start -->
@@ -12,7 +12,7 @@
         <!-- Bootstrap 5.3.2 CSS End -->
 
         <!-- Fontawesome 6.4.2 CSS Start -->
-        {{-- <link rel="stylesheet" type="text/css" href="/assets/css/all.min.css"></link> --}}
+        {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/all.min.css') }}"></link> --}}
         <!-- Fontawesome 6.4.2 CSS End -->
 
         <!-- Bootstrap Icons v1.11.1 CSS Start -->
@@ -21,20 +21,14 @@
 
         <!-- Vanilla CSS Start -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/dashboard.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/main.css') }}">
-        @yield('css')
+        {{ $css ?? '' }} <!-- Slot CSS -->
         <!-- Vanilla CSS End -->
     <!-- CSS End -->
   </head>
 
+  
   <body>
-    @include('dashboard.partials.header')
-    @include('dashboard.partials.sidebar')
-    <main id="main" class="main">
-        @include('dashboard.partials.breadcrumb')
-        @yield('content')
-    </main>
+    {{ $slot }} <!-- Slot -->
     
     <!-- JavaScript Start -->
         <!-- Fontawesome 6.4.2 JS Start -->
@@ -52,7 +46,7 @@
 
         <!-- Vanilla JS Start -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        @yield('js')
+        {{ $js ?? '' }} <!-- Slot JS -->
         <!-- Vanilla JS End -->
     <!-- JavaScript End -->
   </body>
