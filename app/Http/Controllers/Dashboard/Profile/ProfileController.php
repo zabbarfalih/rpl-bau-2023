@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard\Profile;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Models\Menu;
 use Jenssegers\Agent\Agent;
-use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
+use Illuminate\Http\Request;
 use Laravel\Fortify\Features;
+use Illuminate\Support\Carbon;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
 
 class ProfileController extends Controller
 {
@@ -25,7 +26,10 @@ class ProfileController extends Controller
     {
         $this->validateTwoFactorAuthenticationState($request);
 
-        return view('profile.show', [
+        $menus = Menu::with('submenus')->get();
+        return view('dashboard.profile.index', [
+            'menus' => $menus,
+            'user' => Auth::user(),
             'confirmsTwoFactorAuthentication' => Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm'),
             'sessions' => $this->sessions($request)->all(),
         ]);

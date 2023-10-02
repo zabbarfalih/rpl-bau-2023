@@ -1,5 +1,22 @@
 <div class="pagetitle">
-    <h1>Dashboard</h1>
+    @if (request()->url() === url("/dashboard"))
+        <h1>Dashboard</h1>
+    @else
+        @if (isset($menus))
+            @php $currentUrl = request()->url(); $menuMatch = false; @endphp
+            @foreach($menus as $menu)
+                @foreach ($menu->submenus as $submenu)
+                    @if (request()->is("dashboard/{$menu->url}/{$submenu->url}*"))
+                        <h1>{{ $submenu->name }}</h1>
+                        @php $menuMatch = true; @endphp
+                    @endif
+                @endforeach
+                @if (!$menuMatch && request()->is("dashboard/{$menu->url}*"))
+                    <h1>{{ $menu->name }}</h1>
+                @endif
+            @endforeach
+        @endif
+    @endif
     <nav>
         <ol id="breadcrumb-web-bau" class="breadcrumb">
             <li class="breadcrumb-item {{ request()->url() === url("/dashboard") ? 'active' : '' }}">

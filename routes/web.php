@@ -24,7 +24,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('home.index');
-    Route::get('/dashboard/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/dashboard/profile', [ProfileController::class, 'show'])
+    ->name('profile.show');
     Route::patch('/dashboard/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/dashboard/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 

@@ -184,7 +184,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href={{ route('profile.edit') }}>
+              <a class="dropdown-item d-flex align-items-center" href={{ route('profile.show') }}>
                 <i id="icon-dropdown-menu-bau" class="bi bi-person"></i>
                 <span>Profil Saya</span>
               </a>
