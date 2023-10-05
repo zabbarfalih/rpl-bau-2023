@@ -22,3 +22,8 @@
     font-weight: 500;
     color: black;
 }
+
+.dropdown-menu.profile .dropdown-item.active-menu-navbar {
+    color: var(--text-active-menu-bau);
+    font-weight: 700;
+}

@@ -1,7 +1,7 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-        @foreach($menus as $menu)
+        @foreach($menus->where('on_sidebar', true) as $menu)
             <li class="nav-item">
                 @if($menu->has_submenu)
                     <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->name }}-nav" data-bs-toggle="collapse" href="#">

@@ -184,8 +184,8 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href={{ route('profile.edit') }}>
-                <i id="icon-dropdown-menu-bau" class="bi bi-person"></i>
+              <a class="dropdown-item d-flex align-items-center {{ Str::contains(request()->url(), "/dashboard/profil") ? 'active-menu-navbar' : '' }}" href={{ route('profile.edit') }}>
+                <i id="icon-dropdown-menu-bau" class="bi bi-person fw-bold"></i>
                 <span>Profil Saya</span>
               </a>
             </li>
@@ -194,7 +194,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center {{ Str::contains(request()->url(), "/dashboard/pengaturan") ? 'active-menu-navbar' : '' }}" href={{ route('pengaturan.edit') }}>
                 <i id="icon-dropdown-menu-bau" class="bi bi-gear"></i>
                 <span>Pengaturan</span>
               </a>

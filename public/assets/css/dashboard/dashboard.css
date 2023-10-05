@@ -1,3 +1,8 @@
+:root {
+    --text-active-menu-bau: #4154f1;
+    --bg-active-menu-bau: #f6f9ff;
+}
+
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
@@ -75,7 +80,10 @@
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: #f6f9ff;
+    background-color: var(--bg-active-menu-bau);
+}
+.dropdown-menu .dropdown-item.active-menu-navbar {
+    background-color: var(--bg-active-menu-bau);
 }
 
 @media (min-width: 768px) {
@@ -136,7 +144,7 @@
 
 .accordion-button:not(.collapsed) {
     color: #012970;
-    background-color: #f6f9ff;
+    background-color: var(--bg-active-menu-bau);
 }
 
 .accordion-flush .accordion-button {
@@ -147,7 +155,7 @@
 
 .accordion-flush .accordion-button:not(.collapsed) {
     box-shadow: none;
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .accordion-flush .accordion-body {
@@ -201,13 +209,13 @@
 
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .nav-tabs-bordered .nav-link.active {
     background-color: #fff;
-    color: #4154f1;
-    border-bottom: 2px solid #4154f1;
+    color: var(--text-active-menu-bau);
+    border-bottom: 2px solid var(--text-active-menu-bau);
 }
 
 /*--------------------------------------------------------------
@@ -360,7 +368,7 @@
 }
 
 .header-nav .notifications .notification-item:hover {
-    background-color: #f6f9ff;
+    background-color: var(--bg-active-menu-bau);
 }
 
 .header-nav .messages {
@@ -395,7 +403,7 @@
 }
 
 .header-nav .messages .message-item:hover {
-    background-color: #f6f9ff;
+    background-color: var(--bg-active-menu-bau);
 }
 
 .header-nav .profile {
@@ -428,7 +436,7 @@
 }
 
 .header-nav .profile .dropdown-item:hover {
-    background-color: #f6f9ff;
+    background-color: var(--bg-active-menu-bau);
 }
 
 /*--------------------------------------------------------------
@@ -519,9 +527,9 @@
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
     transition: 0.3;
-    background: #f6f9ff;
+    background: var(--bg-active-menu-bau);
     padding: 10px 15px;
     border-radius: 4px;
 }
@@ -530,7 +538,7 @@
     /* font-size: 16px; */
     font-size: 18px;
     margin-right: 10px;
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -543,12 +551,12 @@
 }
 
 .sidebar-nav .nav-link:hover {
-    color: #4154f1;
-    background: #f6f9ff;
+    color: var(--text-active-menu-bau);
+    background: var(--bg-active-menu-bau);
 }
 
 .sidebar-nav .nav-link:hover i {
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -587,12 +595,12 @@
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 /* Submenu Icon Active Disable */
 /* .sidebar-nav .nav-content a.active i {
-    background-color: #4154f1;
+    background-color: var(--text-active-menu-bau);
 } */
 
 /*--------------------------------------------------------------
@@ -615,7 +623,7 @@
 
 .dashboard .filter .icon:hover,
 .dashboard .filter .icon:focus {
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .dashboard .filter .dropdown-header {
@@ -659,7 +667,7 @@
 }
 
 .dashboard .sales-card .card-icon {
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
     background: #f6f6fe;
 }
 
@@ -744,7 +752,7 @@
 }
 
 .dashboard .news h4 a:hover {
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .dashboard .news p {
@@ -893,7 +901,7 @@
 .faq .basic h6 {
     font-size: 18px;
     font-weight: 600;
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .faq .basic p {
@@ -910,7 +918,7 @@
 .contact .info-box i {
     font-size: 38px;
     line-height: 0;
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
 }
 
 .contact .info-box h3 {
@@ -977,7 +985,7 @@
 
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-    border-color: #4154f1;
+    border-color: var(--text-active-menu-bau);
 }
 
 .contact .php-email-form input {
@@ -989,7 +997,7 @@
 }
 
 .contact .php-email-form button[type="submit"] {
-    background: #4154f1;
+    background: var(--text-active-menu-bau);
     border: 0;
     padding: 10px 30px;
     color: #fff;
@@ -1021,7 +1029,7 @@
 .error-404 h1 {
     font-size: 180px;
     font-weight: 700;
-    color: #4154f1;
+    color: var(--text-active-menu-bau);
     margin-bottom: 0;
     line-height: 150px;
 }
