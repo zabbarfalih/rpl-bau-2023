@@ -2,6 +2,11 @@
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         @foreach($menus->where('on_sidebar', true) as $menu)
+            @if ($menu->name === 'Administrator')
+                <li class="nav-heading">Administrator</li>
+            @elseif ($menu->name === 'Unit')
+                <li class="nav-heading">Pengadaan</li>
+            @endif
             <li class="nav-item">
                 @if($menu->has_submenu)
                     <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->url }}-nav" data-bs-toggle="collapse" href="#">
@@ -34,6 +39,8 @@
                 @endif
             </li>
         @endforeach
+        {{-- <li class="nav-heading">Administrator</li>
+        <li class="nav-heading">Pengadaan</li> --}}
     </ul>
 </aside>
 <!-- ======= End Sidebar ======= -->

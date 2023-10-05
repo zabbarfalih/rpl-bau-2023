@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\Unit\UnitController;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
+use App\Http\Controllers\Dashboard\Unit\PengajuanController;
 use App\Http\Controllers\Dashboard\Administrator\UsersController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Unit\DraftPengajuanController;
+use App\Http\Controllers\Dashboard\PBJ\UpdatingStatusPBJController;
+use App\Http\Controllers\Dashboard\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Pengaturan\PengaturanController;
+use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
 use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
 
 /*
@@ -46,7 +50,19 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     Route::get('/dashboard/administrator/menu-submenu', [MenuSubmenuController::class, 'index'])->name('menusubmenu.index');
 
-    Route::get('/dashboard/unit', [UnitController::class, 'index'])->name('unit.index');
+    // Unit
+    Route::get('/dashboard/unit/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
+
+    Route::get('/dashboard/unit/draft-pengajuan', [DraftPengajuanController::class, 'index'])->name('draftpengajuan.index');
+
+    // PBJ
+    Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
+    
+    // PPK
+    Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
+    
+    // Kepala BAU
+    Route::get('/dashboard/kepala-bau/konfirmasi-pengajuan', [KonfirmasiPengajuanController::class, 'index'])->name('konfirmasipengajuan.index');
 });
 
 require __DIR__.'/auth.php';

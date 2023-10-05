@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Unit;
+namespace App\Http\Controllers\Dashboard\PBJ;
 
 use App\Models\Menu;
 
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class UnitController extends Controller
+class UpdatingStatusPBJController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class UnitController extends Controller
     public function index()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.unit.index', [
+        return view('dashboard.pbj.updating-status.index', [
             'menus' => $menus,
         ]);
     }
