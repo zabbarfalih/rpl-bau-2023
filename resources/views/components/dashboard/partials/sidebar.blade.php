@@ -4,12 +4,12 @@
         @foreach($menus->where('on_sidebar', true) as $menu)
             <li class="nav-item">
                 @if($menu->has_submenu)
-                    <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->name }}-nav" data-bs-toggle="collapse" href="#">
+                    <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->url }}-nav" data-bs-toggle="collapse" href="#">
                         <i class="{{ $menu->icon }}"></i>
                         <span>{{ $menu->name }}</span>
                         <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="{{ $menu->name }}-nav" class="nav-content collapse {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                    <ul id="{{ $menu->url }}-nav" class="nav-content collapse {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                         @foreach($menu->submenus as $submenu)
                             <li>
                                 <a href="/dashboard/{{ $menu->url }}/{{ $submenu->url }}" class="{{ request()->url() === url("/dashboard/{$menu->url}/{$submenu->url}") ? 'active' : '' }}">

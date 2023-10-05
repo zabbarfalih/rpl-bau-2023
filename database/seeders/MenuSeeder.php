@@ -52,11 +52,35 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Unit',
                 'on_sidebar' => true,
-                'has_submenu' => false,
+                'has_submenu' => true,
                 'has_role' => true,
                 'url' => Str::slug('Unit'),
                 'icon' => 'bi bi-person-fill-gear',
-            ]
+            ],
+            [
+                'name' => 'PBJ',
+                'on_sidebar' => true,
+                'has_submenu' => true,
+                'has_role' => true,
+                'url' => Str::slug('PBJ'),
+                'icon' => 'bi bi-person-fill-gear',
+            ],
+            [
+                'name' => 'PPK',
+                'on_sidebar' => true,
+                'has_submenu' => true,
+                'has_role' => true,
+                'url' => Str::slug('PPK'),
+                'icon' => 'bi bi-person-fill-gear',
+            ],
+            [
+                'name' => 'Kepala BAU',
+                'on_sidebar' => true,
+                'has_submenu' => true,
+                'has_role' => true,
+                'url' => Str::slug('Kepala BAU'),
+                'icon' => 'bi bi-person-fill-gear',
+            ],
         ]);              
     }
 }

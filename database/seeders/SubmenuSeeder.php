@@ -28,6 +28,40 @@ class SubmenuSeeder extends Seeder
                 'name' => 'Menu & Submenu',
                 'url' => Str::slug('Menu & Submenu'),
                 'icon' => 'bi bi-menu-button-wide-fill'
+            ],
+
+            [
+                'menu_id' => 5,
+                'name' => 'Pengajuan',
+                'url' => Str::slug('Pengajuan'),
+                'icon' => 'bi bi-menu-button-wide-fill'
+            ],
+            [
+                'menu_id' => 5,
+                'name' => 'Draft Pengajuan',
+                'url' => Str::slug('Draft Pengajuan'),
+                'icon' => 'bi bi-menu-button-wide-fill'
+            ],
+
+            [
+                'menu_id' => 6,
+                'name' => 'Updating Status',
+                'url' => Str::slug('Updating Status'),
+                'icon' => 'bi bi-menu-button-wide-fill'
+            ],
+
+            [
+                'menu_id' => 7,
+                'name' => 'Updating Status',
+                'url' => Str::slug('Updating Status'),
+                'icon' => 'bi bi-menu-button-wide-fill'
+            ],
+
+            [
+                'menu_id' => 8,
+                'name' => 'Konfirmasi Pengajuan',
+                'url' => Str::slug('Konfirmasi Pengajuan'),
+                'icon' => 'bi bi-menu-button-wide-fill'
             ]
         ]);
            
