@@ -51,8 +51,12 @@
         <script type="module" src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Bootstrap 5.3.2 JS End -->
 
-        <!-- Vanilla JS Start -->
+        <!-- Sweetalert JS Start -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <!-- Sweetalert JS End -->
+
+        <!-- Vanilla JS Start -->
+        <script type="module" src="{{ asset('assets/js/dashboard/dashboard.js') }}"></script>
         {{ $js ?? '' }} <!-- Slot JS -->
         <!-- Vanilla JS End -->
     <!-- JavaScript End -->
