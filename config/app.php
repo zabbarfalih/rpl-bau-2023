@@ -175,12 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // Fortify
-        App\Providers\FortifyServiceProvider::class,
-
-        // Jenssegers
-        Jenssegers\Agent\AgentServiceProvider::class,
-
     ],
 
     /*
@@ -235,9 +229,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        // Jenssegers
-        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 

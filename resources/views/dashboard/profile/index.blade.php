@@ -1,5 +1,4 @@
-<x-dashboard.layouts.layouts>
-
+<x-dashboard.layouts.layouts :menus="$menus">
     <x-slot name="css">
     </x-slot>
 
