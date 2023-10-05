@@ -19,19 +19,41 @@ class MenuSeeder extends Seeder
         Menu::insert([
             [
                 'name' => 'Dashboard',
+                'on_sidebar' => true,
                 'has_submenu' => false,
+                'has_role' => false,
                 'url' => Str::slug('Dashboard'),
                 'icon' => 'bi bi-grid',
             ],
             [
+                'name' => 'Profil',
+                'on_sidebar' => false,
+                'has_submenu' => false,
+                'has_role' => false,
+                'url' => Str::slug('Profil'),
+                'icon' => 'bi bi-grid',
+            ],
+            [
+                'name' => 'Pengaturan',
+                'on_sidebar' => false,
+                'has_submenu' => false,
+                'has_role' => false,
+                'url' => Str::slug('Pengaturan'),
+                'icon' => 'bi bi-grid',
+            ],
+            [
                 'name' => 'Administrator',
+                'on_sidebar' => true,
                 'has_submenu' => true,
+                'has_role' => true,
                 'url' => Str::slug('Administrator'),
                 'icon' => 'bi bi-person-fill-gear',
             ],
             [
                 'name' => 'Unit',
+                'on_sidebar' => true,
                 'has_submenu' => false,
+                'has_role' => true,
                 'url' => Str::slug('Unit'),
                 'icon' => 'bi bi-person-fill-gear',
             ]
