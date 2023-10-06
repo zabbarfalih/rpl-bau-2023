@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Dashboard\Administrator;
 
 use App\Models\Menu;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class PegawaiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +19,14 @@ class UsersController extends Controller
     public function index()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.administrator.users.index', [
+        
+        $users = User::all();
+    
+        return view('dashboard.administrator.pegawai.index', [
             'menus' => $menus,
+            'users' => $users,
         ]);
-    }
+    }    
 
     /**
      * Show the form for creating a new resource.

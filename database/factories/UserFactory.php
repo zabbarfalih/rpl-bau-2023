@@ -19,6 +19,8 @@ class UserFactory extends Factory
             'nip' => $this->faker->unique()->numberBetween(100000000, 999999999),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'phone_number' => $this->faker->unique()->phoneNumber,
+            'roles' => json_encode(['ppk', 'pbj']), // Ganti role1, role2 dengan roles yang sesuai.
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

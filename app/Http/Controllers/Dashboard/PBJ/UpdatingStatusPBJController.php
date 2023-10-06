@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\PBJ;
 
 use App\Models\Menu;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +19,10 @@ class UpdatingStatusPBJController extends Controller
     public function index()
     {
         $menus = Menu::with('submenus')->get();
+        $users = User::all();
         return view('dashboard.pbj.updating-status.index', [
             'menus' => $menus,
+            'users' => $users
         ]);
     }
 

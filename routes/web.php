@@ -3,14 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
 use App\Http\Controllers\Dashboard\Unit\PengajuanController;
-use App\Http\Controllers\Dashboard\Administrator\UsersController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Unit\DraftPengajuanController;
+use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\PBJ\UpdatingStatusPBJController;
-use App\Http\Controllers\Dashboard\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Pengaturan\PengaturanController;
-use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
+use App\Http\Controllers\Dashboard\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
+use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,12 +46,13 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/pengaturan', [PengaturanController::class, 'edit'])->name('pengaturan.edit');
 
     // Administrator
-    Route::get('/dashboard/administrator/users', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
 
     Route::get('/dashboard/administrator/menu-submenu', [MenuSubmenuController::class, 'index'])->name('menusubmenu.index');
 
     // Unit
     Route::get('/dashboard/unit/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
+    Route::get('/dashboard/unit/pengajuan/tambah-pengajuan', [PengajuanController::class, 'create'])->name('pengajuan.create');
 
     Route::get('/dashboard/unit/draft-pengajuan', [DraftPengajuanController::class, 'index'])->name('draftpengajuan.index');
 

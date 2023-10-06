@@ -20,7 +20,7 @@ class SubmenuSeeder extends Seeder
             [
                 'menu_id' => 4,
                 'name' => 'Pegawai',
-                'url' => Str::slug('Users'),
+                'url' => Str::slug('Pegawai'),
                 'icon' => 'bi bi-people-fill'
             ],
             [

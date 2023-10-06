@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Unit;
 
 use App\Models\Menu;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +19,11 @@ class PengajuanController extends Controller
     public function index()
     {
         $menus = Menu::with('submenus')->get();
+        $users = User::all();
+    
         return view('dashboard.unit.pengajuan.index', [
             'menus' => $menus,
+            'users' => $users,
         ]);
     }
 
@@ -30,7 +34,10 @@ class PengajuanController extends Controller
      */
     public function create()
     {
-        //
+        $menus = Menu::with('submenus')->get();
+        return view('dashboard.unit.pengajuan.add', [
+            'menus' => $menus,
+        ]);
     }
 
     /**

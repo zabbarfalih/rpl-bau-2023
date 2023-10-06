@@ -31,7 +31,7 @@ class MenuSeeder extends Seeder
                 'has_submenu' => false,
                 'has_role' => false,
                 'url' => Str::slug('Profil'),
-                'icon' => 'bi bi-grid',
+                'icon' => 'bi bi-person',
             ],
             [
                 'name' => 'Pengaturan',
@@ -39,7 +39,7 @@ class MenuSeeder extends Seeder
                 'has_submenu' => false,
                 'has_role' => false,
                 'url' => Str::slug('Pengaturan'),
-                'icon' => 'bi bi-grid',
+                'icon' => 'bi bi-gear',
             ],
             [
                 'name' => 'Administrator',
@@ -47,7 +47,7 @@ class MenuSeeder extends Seeder
                 'has_submenu' => true,
                 'has_role' => true,
                 'url' => Str::slug('Administrator'),
-                'icon' => 'bi bi-person-fill-gear',
+                'icon' => 'bi bi-person-gear',
             ],
             [
                 'name' => 'Unit',
@@ -55,15 +55,15 @@ class MenuSeeder extends Seeder
                 'has_submenu' => true,
                 'has_role' => true,
                 'url' => Str::slug('Unit'),
-                'icon' => 'bi bi-person-fill-gear',
+                'icon' => 'bi bi-person-add',
             ],
             [
-                'name' => 'PBJ',
+                'name' => 'Pejabat PBJ',
                 'on_sidebar' => true,
                 'has_submenu' => true,
                 'has_role' => true,
                 'url' => Str::slug('PBJ'),
-                'icon' => 'bi bi-person-fill-gear',
+                'icon' => 'bi bi-person-up',
             ],
             [
                 'name' => 'PPK',
@@ -71,7 +71,7 @@ class MenuSeeder extends Seeder
                 'has_submenu' => true,
                 'has_role' => true,
                 'url' => Str::slug('PPK'),
-                'icon' => 'bi bi-person-fill-gear',
+                'icon' => 'bi bi-person-up',
             ],
             [
                 'name' => 'Kepala BAU',
@@ -79,7 +79,7 @@ class MenuSeeder extends Seeder
                 'has_submenu' => true,
                 'has_role' => true,
                 'url' => Str::slug('Kepala BAU'),
-                'icon' => 'bi bi-person-fill-gear',
+                'icon' => 'bi bi-person-check',
             ],
         ]);              
     }

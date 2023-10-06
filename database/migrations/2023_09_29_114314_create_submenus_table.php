@@ -19,6 +19,7 @@ class CreateSubmenusTable extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('icon');
+            $table->timestamps();
         });
     }
 

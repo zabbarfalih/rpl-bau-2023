@@ -2,6 +2,9 @@
     <x-slot name="css">
     </x-slot>
 
+    <x-slot name="js_head">
+    </x-slot>
+    
     <section class="section dashboard">
       <div class="row">
 
@@ -635,6 +638,6 @@
       </div>
     </section>
 
-    <x-slot name="js">
+    <x-slot name="js_body">
     </x-slot>
 </x-dashboard.layouts.layouts>

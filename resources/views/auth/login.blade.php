@@ -1,6 +1,7 @@
 <x-auth.layouts.layouts>
     <x-slot name="css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/auth/login.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
     </x-slot>
     
     <main>
@@ -29,9 +30,9 @@
                         @enderror --}}
                         <div id="alert-bau">
                             @if(session('loginError'))
-                                <x-utils.alert type="danger" title="Error">
+                                <x-elements.alert type="danger" title="Error">
                                     {{ session('loginError') }}
-                                </x-utils.alert>
+                                </x-elements.alert>
                             @endif
                         </div>
                     
@@ -39,8 +40,8 @@
     
                         <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">
                             @csrf
-                            <x-utils.input id="inputNip" value="nip" name="NIP" />
-                            <x-utils.input-password id="inputPassword" value="password" name="Password" />
+                            <x-elements.input id="inputNip" value="nip" name="NIP" />
+                            <x-elements.input-password id="inputPassword" value="password" name="Password" />
     
                             <div class="col-12 d-flex justify-content-between">
                                 <div class="form-check">

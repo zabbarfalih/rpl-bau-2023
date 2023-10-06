@@ -17,10 +17,12 @@ class UserSeeder extends Seeder
             'nip' => '222112225',
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
+            'phone_number' => '081234567890',
+            'roles' => json_encode(['admin']),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ]);
 
-        User::factory(10)->create();
+        User::factory(100)->create();
     }
 }

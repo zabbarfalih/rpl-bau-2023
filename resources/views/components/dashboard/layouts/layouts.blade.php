@@ -26,6 +26,11 @@
         {{ $css ?? '' }} <!-- Slot CSS -->
         <!-- Vanilla CSS End -->
     <!-- CSS End -->
+
+    <!-- JS Start -->
+    {{ $js_head ?? '' }} <!-- Slot JS Head -->
+    <!-- JS End -->
+    
   </head>
 
   <body>
@@ -57,7 +62,7 @@
 
         <!-- Vanilla JS Start -->
         <script type="module" src="{{ asset('assets/js/dashboard/dashboard.js') }}"></script>
-        {{ $js ?? '' }} <!-- Slot JS -->
+        {{ $js_body ?? '' }} <!-- Slot JS Body -->
         <!-- Vanilla JS End -->
     <!-- JavaScript End -->
   </body>

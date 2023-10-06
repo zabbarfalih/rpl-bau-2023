@@ -24,6 +24,31 @@
 }
 
 .dropdown-menu.profile .dropdown-item.active-menu-navbar {
-    color: var(--text-active-menu-bau);
+    color: var(--blue-active-menu-bau);
     font-weight: 700;
+}
+
+#checkbox-table-bau {
+    float: none;
+    margin-left: 0;
+}
+
+#checkbox-table-bau:checked {
+    background-color: var(--blue-active-menu-bau);
+}
+
+#checkbox-table-bau:disabled {
+    opacity: 1;
+}
+
+#icon-table-bau {
+    font-size: 32px;
+}
+
+#text-action-table-bau {
+    font-size: 12px;
+}
+
+#form-input {
+    min-height: 4.75rem;
 }
