@@ -9,7 +9,7 @@
           <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
               <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-xl-5 col-lg-6 col-md-8 d-flex flex-column align-items-center justify-content-center">
                   <div class="d-flex justify-content-center py-4">
                     <span class="logo d-flex align-items-center w-auto">
                       <img src="assets/img/logo.png" alt="Logo Polstat STIS">
@@ -23,19 +23,13 @@
                             <p class="text-center small">Masukkan NIP dan Password Anda</p>
                         </div>
 
-                        {{-- @error('NIP')
-                        <x-utils.alert type="danger" title="Error">
-                            Username atau Password salah
-                        </x-utils.alert>
-                        @enderror --}}
                         <div id="alert-bau">
-                            @if(session('loginError'))
+                            @if($errors->has('loginError'))
                                 <x-elements.alert type="danger" title="Error">
-                                    {{ session('loginError') }}
+                                    {{ $errors->first('loginError') }}
                                 </x-elements.alert>
                             @endif
                         </div>
-                    
                         
     
                         <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">

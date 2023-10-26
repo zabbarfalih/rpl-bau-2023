@@ -15,13 +15,14 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->string('name');
             $table->string('url');
             $table->string('icon');
             $table->boolean('on_sidebar')->default(true);
-            $table->boolean('has_submenu')->default(false);
-            $table->boolean('has_role')->default(false);
             $table->timestamps();
+
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

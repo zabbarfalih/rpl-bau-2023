@@ -56,6 +56,9 @@
                     </div>
                     <div class="d-flex justify-content-center py-3">
                         <div class="col-4 d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary px-4 float-right">Simpan Draf</button>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center">
                             <button type="button" class="btn btn-primary px-4 float-right">Kirim</button>
                         </div>
                     </div>

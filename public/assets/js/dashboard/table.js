@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    $("#table-pegawai").DataTable({
+    var table = $("#table-bau").DataTable({
+        scrollX: true,
+        responsive: true,
         language: {
             lengthMenu: "Tampilkan _MENU_ entri",
             info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
@@ -9,10 +11,12 @@ $(document).ready(function () {
             paginate: {
                 first: "Pertama",
                 last: "Terakhir",
-                next: "Selanjutnya",
-                previous: "Sebelumnya",
+                next: ">",
+                previous: "<",
             },
             zeroRecords: "Tidak ada data yang tersedia dalam tabel",
         },
     });
+
+    new $.fn.dataTable.FixedHeader(table);
 });

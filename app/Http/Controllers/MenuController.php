@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Administrator;
+namespace App\Http\Controllers;
 
 use App\Models\Menu;
-
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class PegawaiController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +14,8 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
-        
-        $users = User::all();
-    
-        return view('dashboard.administrator.pegawai.index', [
-            'menus' => $menus,
-            'users' => $users,
-        ]);
-    }    
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -35,14 +24,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        $menus = Menu::with('submenus')->get();
-        
-        $users = User::all();
-    
-        return view('dashboard.administrator.pegawai.index', [
-            'menus' => $menus,
-            'users' => $users,
-        ]);
+        //
     }
 
     /**
@@ -59,10 +41,10 @@ class PegawaiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Menu $menu)
     {
         //
     }
@@ -70,10 +52,10 @@ class PegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Menu $menu)
     {
         //
     }
@@ -82,10 +64,10 @@ class PegawaiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Menu $menu)
     {
         //
     }
@@ -93,10 +75,10 @@ class PegawaiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
         //
     }

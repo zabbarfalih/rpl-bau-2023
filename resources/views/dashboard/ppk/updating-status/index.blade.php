@@ -1,11 +1,16 @@
 <x-dashboard.layouts.layouts :menus="$menus">
     <x-slot name="css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+        <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
     </x-slot>
 
     <x-slot name="js_head">
         <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+        <script defer src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
+        <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+        <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.js"></script>
         <script defer src="{{ asset('assets/js/dashboard/table.js') }}"></script>
     </x-slot>
     
@@ -15,7 +20,7 @@
               <div class="col-12">
                 <h1 class="py-5 text-center">Updating Status</h1>
       
-                <table id="table-pegawai" class="table table-striped" style="width:100%">
+                <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th class="text-center col-1">No</th>

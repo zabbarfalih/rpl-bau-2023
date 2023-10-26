@@ -20,13 +20,15 @@
                     </button>
                 </a>
       
-                <table id="table-pegawai" class="table table-striped" style="width:100%">
+                <table id="table-bau" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th class="text-center col-1">No</th>
-                            <th class="text-center col-5">Nama</th>
+                            <th class="text-center col-3">Nama</th>
                             <th class="text-center col-4">Nama Pengadaan</th>
                             <th class="text-center col-2">Status Pengajuan</th>
+                            <th class="text-center col-2">Dokumen</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +39,9 @@
                             <td class="text-center align-middle">Nama Pengadaan {{ $loop->iteration }}</td>
                             <td class="text-center align-middle">
                                 <button class="btn btn-sm btn-primary">Status</button>
+                            </td>
+                            <td class="text-center align-middle">
+                                <button class="btn btn-sm btn-success">Unduh</button>
                             </td>
                         </tr>
                         @endforeach

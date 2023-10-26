@@ -45,7 +45,8 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'nip' => trans('auth.failed'),
+                // 'nip' => trans('auth.failed'),
+                'loginError' => 'NIP atau password salah.',
             ]);
         }
 

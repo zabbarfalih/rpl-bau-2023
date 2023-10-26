@@ -15,7 +15,7 @@ class CreateSubmenusTable extends Migration
     {
         Schema::create('submenus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('menu_id');
+            $table->foreignId('menu_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('url');
             $table->string('icon');

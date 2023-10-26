@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Submenu;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Menu extends Model
 {
@@ -12,6 +13,11 @@ class Menu extends Model
     protected $guarded = ['id'];
 
     public $timestamps = false;
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 
     public function submenus()
     {

@@ -8,7 +8,7 @@
                 <li class="nav-heading">Pengadaan</li>
             @endif
             <li class="nav-item">
-                @if($menu->has_submenu)
+                @if($menu->submenus->isNotEmpty())
                     <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->url }}-nav" data-bs-toggle="collapse" href="#">
                         <i class="{{ $menu->icon }}"></i>
                         <span>{{ $menu->name }}</span>
