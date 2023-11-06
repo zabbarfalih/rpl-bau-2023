@@ -21,6 +21,8 @@ class SubmenuSeeder extends Seeder
         $pbjMenuId = Menu::where('name', 'PBJ')->first()->id;
         $ppkMenuId = Menu::where('name', 'PPK')->first()->id;
         $bauMenuId = Menu::where('name', 'Kepala BAU')->first()->id;
+        $spjMenuId = Menu::where('name', 'SPJ')->first()->id;
+        $skpMenuId = Menu::where('name', 'SKP')->first()->id;
         
         Submenu::insert([
             [
@@ -80,6 +82,38 @@ class SubmenuSeeder extends Seeder
                 'name' => 'Konfirmasi Pengajuan',
                 'url' => Str::slug('Konfirmasi Pengajuan'),
                 'icon' => 'bi bi-menu-button-wide-fill',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'menu_id' => $spjMenuId,
+                'name' => 'Pengajuan SPJ',
+                'url' => Str::slug('Pengajuan SPJ'),
+                'icon' => 'bi bi-file-earmark-text-fill',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'menu_id' => $spjMenuId,
+                'name' => 'Info Pengajuan SPJ',
+                'url' => Str::slug('Info Pengajuan SPJ'),
+                'icon' => 'bi bi-info-square-fill',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'menu_id' => $skpMenuId,
+                'name' => 'Pengajuan SKP',
+                'url' => Str::slug('Pengajuan SKP'),
+                'icon' => 'bi bi-file-earmark-text-fill',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'menu_id' => $skpMenuId,
+                'name' => 'Info Pengajuan SKP',
+                'url' => Str::slug('Info Pengajuan SKP'),
+                'icon' => 'bi bi-info-square-fill',
                 'created_at' => now(),
                 'updated_at' => now()
             ]

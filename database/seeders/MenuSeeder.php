@@ -81,6 +81,22 @@ class MenuSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'name' => 'SPJ',
+                'on_sidebar' => true,
+                'url' => Str::slug('SPJ'),
+                'icon' => 'bi bi-person-up',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'SKP',
+                'on_sidebar' => true,
+                'url' => Str::slug('SKP'),
+                'icon' => 'bi bi-person-up',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
         ]);              
     }
 }
