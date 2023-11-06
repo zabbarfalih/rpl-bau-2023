@@ -6,6 +6,8 @@
                 <li class="nav-heading">Administrator</li>
             @elseif ($menu->name === 'Unit')
                 <li class="nav-heading">Pengadaan</li>
+            @elseif ($menu->name === 'SPJ')
+                <li class="nav-heading">Keuangan</li>
             @endif
             <li class="nav-item">
                 @if($menu->submenus->isNotEmpty())
