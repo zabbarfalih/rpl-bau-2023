@@ -89,8 +89,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-3 col-md-4 label">Jabatan</div>
-                            <div class="col-lg-9 col-md-8">Penguasa Bumi</div>
+                            <div class="col-lg-3 col-md-4 label">Role</div>
+                            {{-- <div class="col-lg-9 col-md-8">{{ auth()->user()->role()->name }}</div> --}}
                         </div>
 
                         <div class="row">
@@ -100,7 +100,7 @@
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">No Telepon</div>
-                            <div class="col-lg-9 col-md-8">089123459</div>
+                            <div class="col-lg-9 col-md-8">{{ auth()->user()->phone_number }}</div>
                         </div>
 
                         <div class="row">
