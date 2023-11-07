@@ -20,7 +20,8 @@
                 <div class="col-12">
                     <h1 class="my-3 text-center">Daftar Pegawai</h1>
                     
-                    <a href={{ route('pegawai.add') }}
+                    {{-- <a href={{ route('pegawai.add') }} --}}
+                    <a
                     class="d-flex justify-content-center my-3">
                         <button class="btn btn-primary mb-3">
                             Tambah Pegawai

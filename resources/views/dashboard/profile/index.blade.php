@@ -89,25 +89,31 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Email</div>
+                            <div class="col-lg-9 col-md-8">
+                                {{ auth()->user()->email }}
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-lg-3 col-md-4 label">Role</div>
-                            {{-- <div class="col-lg-9 col-md-8">{{ auth()->user()->role()->name }}</div> --}}
+                            <div class="col-lg-9 col-md-8">
+                                @foreach(auth()->user()->roles as $role)
+                                    <button class="btn btn-sm btn-primary disabled">{{ $role->name }}</button>
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">Alamat</div>
-                            <div class="col-lg-9 col-md-8">Bonasel</div>
+                            <div class="col-lg-9 col-md-8">
+                                {{ auth()->user()->address }}
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">No Telepon</div>
                             <div class="col-lg-9 col-md-8">{{ auth()->user()->phone_number }}</div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 label">Email</div>
-                            <div class="col-lg-9 col-md-8">
-                                {{ auth()->user()->email }}
-                            </div>
                         </div>
                     </div>
 
@@ -117,14 +123,22 @@
                         >
                         <!-- Profile Edit Form -->
                         <form>
+                            @csrf
                             <div class="row mb-3">
                                 <label
                                     for="profileImage"
                                     class="col-md-4 col-lg-3 col-form-label"
-                                    >Profile Image</label
+                                    >Gambar Profil</label
                                 >
                                 <div class="col-md-8 col-lg-9">
-                                    <img src={{ asset('assets/img/profile-img.jpg') }} alt="Profile" />
+                                    <div class="d-flex justify-content-center align-items-center" style="width: 120px; height: 120px; border-radius: 50%;">
+                                        @if($user->picture && Storage::disk('public')->exists($user->picture))
+                                            <img src="{{ asset('storage/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                                        @else
+                                            <i class="bi bi-person-circle" style="font-size: 120px;"></i>
+                                        @endif
+                                    </div>
+
                                     <div class="pt-2">
                                     <a
                                         href="#"
@@ -146,7 +160,7 @@
                                 <label
                                     for="fullName"
                                     class="col-md-4 col-lg-3 col-form-label"
-                                    >Full Name</label
+                                    >Nama Lengkap</label
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <input
@@ -154,193 +168,89 @@
                                     type="text"
                                     class="form-control"
                                     id="fullName"
-                                    value="{{ old('name') ?? auth()->user()->name }}"
+                                    value="{{ auth()->user()->name }}"
+                                    disabled
                                     />
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label
-                                    for="about"
+                                    for="nip"
                                     class="col-md-4 col-lg-3 col-form-label"
-                                    >About</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <textarea
-                                    name="about"
-                                    class="form-control"
-                                    id="about"
-                                    style="height: 100px"
-                                    >Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label
-                                    for="company"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Company</label
+                                    >NIP</label
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <input
-                                    name="company"
+                                    name="nip"
                                     type="text"
                                     class="form-control"
-                                    id="company"
-                                    value="Lueilwitz, Wisoky and Leuschke"
+                                    id="nip"
+                                    value="{{ auth()->user()->nip }}"
+                                    disabled
                                     />
                                 </div>
                             </div>
-
+                            
                             <div class="row mb-3">
                                 <label
-                                    for="Job"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Job</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="job"
-                                    type="text"
-                                    class="form-control"
-                                    id="Job"
-                                    value="Web Designer"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label
-                                    for="Country"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Country</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="country"
-                                    type="text"
-                                    class="form-control"
-                                    id="Country"
-                                    value="USA"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label
-                                    for="Address"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Address</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="address"
-                                    type="text"
-                                    class="form-control"
-                                    id="Address"
-                                    value="A108 Adam Street, New York, NY 535022"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label
-                                    for="Phone"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Phone</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="phone"
-                                    type="text"
-                                    class="form-control"
-                                    id="Phone"
-                                    value="(436) 486-3538 x29071"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label
-                                    for="Email"
+                                    for="emai"
                                     class="col-md-4 col-lg-3 col-form-label"
                                     >Email</label
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <input
                                     name="email"
-                                    type="email"
+                                    type="text"
                                     class="form-control"
-                                    id="Email"
-                                    value="{{ old('email') ?? auth()->user()->email }}"
+                                    id="email"
+                                    value="{{ auth()->user()->email }}"
                                     />
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label
-                                    for="Twitter"
+                                    for="email"
                                     class="col-md-4 col-lg-3 col-form-label"
-                                    >Twitter Profile</label
+                                    >Role</label
                                 >
                                 <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="twitter"
-                                    type="text"
-                                    class="form-control"
-                                    id="Twitter"
-                                    value="https://twitter.com/#"
-                                    />
+                                    @foreach(auth()->user()->roles as $role)
+                                        <button class="btn btn-sm btn-primary disabled">{{ $role->name }}</button>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label
-                                    for="Facebook"
+                                    for="address"
                                     class="col-md-4 col-lg-3 col-form-label"
-                                    >Facebook Profile</label
+                                    >Alamat</label
                                 >
                                 <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="facebook"
-                                    type="text"
+                                    <textarea
+                                    name="address"
                                     class="form-control"
-                                    id="Facebook"
-                                    value="https://facebook.com/#"
-                                    />
+                                    id="address"
+                                    style="height: 100px"
+                                    >{{ auth()->user()->address }}</textarea>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label
-                                    for="Instagram"
+                                    for="phoneNumber"
                                     class="col-md-4 col-lg-3 col-form-label"
-                                    >Instagram Profile</label
+                                    >No Telepon</label
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <input
-                                    name="instagram"
+                                    name="phoneNumber"
                                     type="text"
                                     class="form-control"
-                                    id="Instagram"
-                                    value="https://instagram.com/#"
-                                    />
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label
-                                    for="Linkedin"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Linkedin Profile</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="linkedin"
-                                    type="text"
-                                    class="form-control"
-                                    id="Linkedin"
-                                    value="https://linkedin.com/#"
+                                    id="phoneNumber"
+                                    value="{{ auth()->user()->phone_number }}"
                                     />
                                 </div>
                             </div>
@@ -361,7 +271,7 @@
                             <label
                                 for="currentPassword"
                                 class="col-md-4 col-lg-3 col-form-label"
-                                >Password Anda saat ini</label
+                                >Password Lama</label
                             >
                             <div class="col-md-8 col-lg-9">
                                 <input
@@ -377,7 +287,7 @@
                             <label
                                 for="newPassword"
                                 class="col-md-4 col-lg-3 col-form-label"
-                                >Password baru</label
+                                >Password Baru</label
                             >
                             <div class="col-md-8 col-lg-9">
                                 <input
@@ -393,7 +303,7 @@
                             <label
                                 for="renewPassword"
                                 class="col-md-4 col-lg-3 col-form-label"
-                                >Password baru</label
+                                >Konfirmasi Password Baru</label
                             >
                             <div class="col-md-8 col-lg-9">
                                 <input
