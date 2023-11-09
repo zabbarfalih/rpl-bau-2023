@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\Pengaturan\PengaturanController;
 use App\Http\Controllers\Dashboard\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
 use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
+use App\Http\Controllers\Dashboard\SPJ\InfoPengajuanSPJController;
 use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSpjController;
 
 /*
@@ -66,6 +67,9 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     
     // Kepala BAU
     Route::get('/dashboard/kepala-bau/konfirmasi-pengajuan', [KonfirmasiPengajuanController::class, 'index'])->name('konfirmasipengajuan.index');
+
+    // SPJ
+    Route::get('/dashboard/spj/info-pengajuan-spj', [InfoPengajuanSPJController::class, 'index'])->name('infopengajuanspj.index');
 
     // Tim Keuangan
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasi-spj');
