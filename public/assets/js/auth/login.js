@@ -96,36 +96,4 @@ $(".togglePassword").click(function (e) {
             .attr("type", "password");
     }
 });
-
-// Toggle Password Start
-$(".togglePassword").click(function (e) {
-    e.preventDefault();
-    var icon = $(this).find("i");
-    var type = $(this).parent().parent().find("#inputPassword").attr("type");
-
-    if (type == "password") {
-        icon.removeClass("bi-eye-fill");
-        icon.addClass("bi-eye-slash-fill");
-        $(this).parent().parent().find("#inputPassword").attr("type", "text");
-    } else if (type == "text") {
-        icon.removeClass("bi-eye-slash-fill");
-        icon.addClass("bi-eye-fill");
-        $(this)
-            .parent()
-            .parent()
-            .find("#inputPassword")
-            .attr("type", "password");
-    }
-
-    var input = $(this).siblings(".form-control");
-
-    // Toggle tipe input dan class icon
-    if (input.attr("type") == "password") {
-        icon.removeClass("bi-eye-fill").addClass("bi-eye-slash-fill");
-        input.attr("type", "text");
-    } else {
-        icon.removeClass("bi-eye-slash-fill").addClass("bi-eye-fill");
-        input.attr("type", "password");
-    }
-});
 // Toggle Password End
