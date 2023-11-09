@@ -1,5 +1,6 @@
 <x-dashboard.layouts.layouts :menus="$menus">
     <x-slot name="css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
     </x-slot>
 
     <x-slot name="js_head">
@@ -266,54 +267,11 @@
 
                         <div class="tab-pane fade pt-3" id="profile-change-password">
                         <!-- Change Password Form -->
-                        <form>
-                            <div class="row mb-3">
-                            <label
-                                for="currentPassword"
-                                class="col-md-4 col-lg-3 col-form-label"
-                                >Password Lama</label
-                            >
-                            <div class="col-md-8 col-lg-9">
-                                <input
-                                name="password"
-                                type="password"
-                                class="form-control"
-                                id="currentPassword"
-                                />
-                            </div>
-                            </div>
-
-                            <div class="row mb-3">
-                            <label
-                                for="newPassword"
-                                class="col-md-4 col-lg-3 col-form-label"
-                                >Password Baru</label
-                            >
-                            <div class="col-md-8 col-lg-9">
-                                <input
-                                name="newpassword"
-                                type="password"
-                                class="form-control"
-                                id="newPassword"
-                                />
-                            </div>
-                            </div>
-
-                            <div class="row mb-3">
-                            <label
-                                for="renewPassword"
-                                class="col-md-4 col-lg-3 col-form-label"
-                                >Konfirmasi Password Baru</label
-                            >
-                            <div class="col-md-8 col-lg-9">
-                                <input
-                                name="renewpassword"
-                                type="password"
-                                class="form-control"
-                                id="renewPassword"
-                                />
-                            </div>
-                            </div>
+                        <form action="{{ route('password.update') }} method="POST" id="formChangePassword">
+                            @csrf
+                            <x-elements.input-password id="inputOldPassword" value="password" name="Password Lama" />
+                            <x-elements.input-password id="inputNewPassword" value="new_password" name="Password Baru" />
+                            <x-elements.input-password id="inputConfirmNewPassword" value="new_password_confirmation" name="Konfirmasi Password Baru" />
 
                             <div class="text-center">
                             <button type="submit" class="btn btn-primary">
@@ -332,5 +290,6 @@
     </section>
 
     <x-slot name="js_body">
+        <script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>
     </x-slot>
 </x-dashboard.layouts.layouts>
