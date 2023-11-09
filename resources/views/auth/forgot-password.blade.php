@@ -1,6 +1,5 @@
 <x-auth.layouts.layouts>
     <x-slot name="css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/auth/login.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
     </x-slot>
     
@@ -19,8 +18,8 @@
                   <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                            <h5 id="title-login" class="card-title text-center pb-0 fs-4">Masuk</h5>
-                            <p class="text-center small">Masukkan NIP dan Password Anda</p>
+                            <h5 id="title-login" class="card-title text-center pb-0 fs-4">Lupa Password</h5>
+                            <p class="text-center small">Masukkan Email Anda untuk Mereset Kata Sandi Anda</p>
                         </div>
 
                         <div id="alert-bau">
@@ -36,25 +35,15 @@
                                 </x-elements.alert>
                             @endif
                         </div>
-                        
-    
-                        <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">
+                           
+                        <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('password.email') }}">
                             @csrf
-                            <x-elements.input id="inputNip" name="nip" placeholder="NIP" :value="old('nip', $request->nip ?? '')" />
+                            <x-elements.input id="inputEmail" name="email" placeholder="Email" :value="old('email', $request->email ?? '')" />
 
-                            <x-elements.input-password id="inputPassword" name="password" placeholder="Password" />
-    
-                            <div class="col-12 d-flex justify-content-between">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                                    <label class="form-check-label" for="rememberMe">Ingat Saya</label>
-                                </div>
-                                <a href="{{ route('password.request') }}" class="text-decoration-none">Lupa Password?</a>
+                            <div class="col-12" id="submit-forgot-password">
+                                <button class="btn btn-primary w-50" type="submit">Kirim Email Reset Password</button>
                             </div>
-                            <div class="col-12" id="submit-login">
-                                <button class="btn btn-primary w-100" type="submit">Masuk</button>
-                            </div>
-                      </form> 
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -65,6 +54,6 @@
       </main><!-- End #main -->
     
     <x-slot name="js">
-        <script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/auth/forgot-password.js') }}"></script>
     </x-slot>
 </x-auth.layouts.layouts>

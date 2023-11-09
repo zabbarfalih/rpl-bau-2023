@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group row d-flex justify-content-center">
                         <div class="col-6">
-                            <x-elements.input-disabled id="inputTotalHarga" value="total-harga" name="Total Harga" />
+                            <x-elements.input id="inputTotalHarga" value="total-harga" name="total-harga" placeholder="Total Harga" disabled />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center py-3">

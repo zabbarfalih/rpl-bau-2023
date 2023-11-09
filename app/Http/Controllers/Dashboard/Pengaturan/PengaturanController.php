@@ -19,7 +19,7 @@ class PengaturanController extends Controller
     public function edit(Request $request): View
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.profile.index', [
+        return view('dashboard.profil.index', [
             'menus' => $menus,
             'user' => $request->user(),
         ]);
@@ -38,7 +38,7 @@ class PengaturanController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profil.edit')->with('status', 'profile-updated');
     }
 
     /**

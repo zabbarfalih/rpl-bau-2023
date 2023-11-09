@@ -123,8 +123,10 @@
                         id="profile-edit"
                         >
                         <!-- Profile Edit Form -->
-                        <form>
+                        <form method="POST" action="{{ route('profil.update') }}">
                             @csrf
+                            @method('PUT')
+                            
                             <div class="row mb-3">
                                 <label
                                     for="profileImage"
@@ -158,51 +160,25 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label
-                                    for="fullName"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Nama Lengkap</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="name"
-                                    type="text"
-                                    class="form-control"
-                                    id="fullName"
-                                    value="{{ auth()->user()->name }}"
-                                    disabled
-                                    />
-                                </div>
+                                <div class="col-lg-3 col-md-4 label">Nama Lengkap</div>
+                                <div class="col-lg-9 col-md-8">{{ auth()->user()->name }}</div>
                             </div>
-
+    
                             <div class="row mb-3">
-                                <label
-                                    for="nip"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >NIP</label
-                                >
-                                <div class="col-md-8 col-lg-9">
-                                    <input
-                                    name="nip"
-                                    type="text"
-                                    class="form-control"
-                                    id="nip"
-                                    value="{{ auth()->user()->nip }}"
-                                    disabled
-                                    />
-                                </div>
+                                <div class="col-lg-3 col-md-4 label">NIP</div>
+                                <div class="col-lg-9 col-md-8">{{ auth()->user()->nip }}</div>
                             </div>
                             
                             <div class="row mb-3">
                                 <label
-                                    for="emai"
+                                    for="email"
                                     class="col-md-4 col-lg-3 col-form-label"
                                     >Email</label
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <input
                                     name="email"
-                                    type="text"
+                                    type="email"
                                     class="form-control"
                                     id="email"
                                     value="{{ auth()->user()->email }}"
@@ -211,12 +187,8 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label
-                                    for="email"
-                                    class="col-md-4 col-lg-3 col-form-label"
-                                    >Role</label
-                                >
-                                <div class="col-md-8 col-lg-9">
+                                <div class="col-lg-3 col-md-4 label">Role</div>
+                                <div class="col-lg-9 col-md-8">
                                     @foreach(auth()->user()->roles as $role)
                                         <button class="btn btn-sm btn-primary disabled">{{ $role->name }}</button>
                                     @endforeach
@@ -241,16 +213,16 @@
 
                             <div class="row mb-3">
                                 <label
-                                    for="phoneNumber"
+                                    for="phone_number"
                                     class="col-md-4 col-lg-3 col-form-label"
                                     >No Telepon</label
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <input
-                                    name="phoneNumber"
+                                    name="phone_number"
                                     type="text"
                                     class="form-control"
-                                    id="phoneNumber"
+                                    id="phone_number"
                                     value="{{ auth()->user()->phone_number }}"
                                     />
                                 </div>
@@ -267,11 +239,15 @@
 
                         <div class="tab-pane fade pt-3" id="profile-change-password">
                         <!-- Change Password Form -->
-                        <form action="{{ route('password.update') }} method="POST" id="formChangePassword">
+                        <form action="{{ route('password.update') }}" method="POST" id="formChangePassword">
                             @csrf
-                            <x-elements.input-password id="inputOldPassword" value="password" name="Password Lama" />
-                            <x-elements.input-password id="inputNewPassword" value="new_password" name="Password Baru" />
-                            <x-elements.input-password id="inputConfirmNewPassword" value="new_password_confirmation" name="Konfirmasi Password Baru" />
+                            @method('PUT')
+
+                            <x-elements.input-password id="inputOldPassword" name="current_password" placeholder="Password Lama" toggle="-1" />
+
+                            <x-elements.input-password id="inputNewPassword" name="password" placeholder="Password Baru" toggle="-2" />
+
+                            <x-elements.input-password id="inputConfirmNewPassword" name="password_confirmation" placeholder="Konfirmasi Password Baru" toggle="-3" />
 
                             <div class="text-center">
                             <button type="submit" class="btn btn-primary">
@@ -290,6 +266,6 @@
     </section>
 
     <x-slot name="js_body">
-        <script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/dashboard/profile/change-password-profile.js') }}"></script>
     </x-slot>
 </x-dashboard.layouts.layouts>

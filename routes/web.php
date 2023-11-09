@@ -28,9 +28,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profil.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profil.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profil.destroy');
 // });
 
 Route::middleware(['auth', 'formatUserName'])->group(function () {
@@ -38,9 +38,9 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     // Profil
     Route::get('/dashboard/profil', [ProfilController::class, 'edit'])
-    ->name('profile.edit');
-    Route::patch('/dashboard/profil', [ProfilController::class, 'update'])->name('profile.update');
-    Route::delete('/dashboard/profil', [ProfilController::class, 'destroy'])->name('profile.destroy');
+    ->name('profil.edit');
+    Route::put('/dashboard/profil', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('/dashboard/profil', [ProfilController::class, 'destroy'])->name('profil.destroy');
 
     // Pengaturan
     Route::get('/dashboard/pengaturan', [PengaturanController::class, 'edit'])->name('pengaturan.edit');
