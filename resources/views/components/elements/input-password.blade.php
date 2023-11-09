@@ -1,13 +1,21 @@
 <div id="form-input">
-    <div class="input-group" id="input-{{ $value ?? '' }}">             
+    <div class="input-group" id="input-{{ $id ?? '' }}">             
         <div class="form-floating">
-            <input type="password" class="form-control" id="{{ $id ?? '' }}" name="{{ $value ?? '' }}" placeholder="{{ $name ?? '' }}" value="{{ old($value ?? '') }}" required>
-            <label id="label-input" for="{{ $id ?? '' }}">{{ $name ?? '' }}</label>
+            <input
+            type="password"
+            class="form-control"
+            id="{{ $id ?? '' }}"
+            name="{{ $name ?? '' }}"
+            placeholder="{{ $placeholder }}"
+            value="{{ $value ?? '' }}"
+            required
+            {{ $attributes }}>
+            <label id="label-input" for="{{ $id ?? '' }}">{{ $placeholder ?? '' }}</label>
         </div>
-        <span class="input-group-text togglePassword">
+        <span class="input-group-text togglePassword{{ $toggle ?? '' }}">
             <i class="bi bi-eye-fill"></i>
         </span>
     </div>
-    <div id="{{ $value ?? '' }}-error" class="invalid-feedback">
+    <div id="{{ $id ?? '' }}-error" class="invalid-feedback">
     </div>
 </div>

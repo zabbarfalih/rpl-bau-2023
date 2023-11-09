@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Dashboard\Profil;
 
 use App\Models\Menu;
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -16,11 +14,13 @@ class ProfilController extends Controller
 {
     /**
      * Display the user's profile form.
+     * 
+     * @return \Illuminate\View\View
      */
-    public function edit(Request $request): View
+    public function edit(Request $request)
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.profile.index', [
+        return view('dashboard.profil.index', [
             'menus' => $menus,
             'user' => $request->user(),
         ]);
@@ -28,8 +28,11 @@ class ProfilController extends Controller
 
     /**
      * Update the user's profile information.
+     * 
+     * @param \App\Http\Requests\ProfileUpdateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request)
     {
         $user = $request->user();
         $user->fill($request->validated());
@@ -49,13 +52,16 @@ class ProfilController extends Controller
 
         $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profil.edit')->with('status', 'profile-updated');
     }
 
     /**
      * Delete the user's account.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],

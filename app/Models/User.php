@@ -23,6 +23,8 @@ class User extends Authenticatable
         'nip',
         'email',
         'password',
+        'address',
+        'phone_number',
     ];
 
     /**

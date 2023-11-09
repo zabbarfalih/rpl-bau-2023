@@ -76,6 +76,14 @@
     font-weight: 500;
 }
 
+#submit-forgot-password {
+    text-align: right;
+}
+#submit-forgot-password .btn {
+    font-size: 12px;
+    font-weight: 500;
+}
+
 #alert-bau {
     min-height: 5rem;
 }

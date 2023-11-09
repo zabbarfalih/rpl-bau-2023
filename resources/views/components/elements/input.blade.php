@@ -1,8 +1,17 @@
 <div id="form-input">
-    <div id="input-{{ $value ?? '' }}" class="form-floating">
-        <input type="text" class="form-control" id="{{ $id ?? '' }}" name="{{ $value ?? '' }}" autocomplete="off" placeholder="{{ $name }}" value="{{ old($value ?? '') }}" required>
-        <label id="label-input" for="{{ $id ?? '' }}">{{ $name }}</label>
+    <div id="input-{{ $id ?? '' }}" class="form-floating">
+        <input
+        type="{{ $type ?? 'text' }}"
+        class="form-control"
+        id="{{ $id ?? '' }}"
+        name="{{ $name ?? '' }}"
+        value="{{ $value }}"
+        placeholder="{{ $placeholder }}"
+        autocomplete="off"
+        required
+        {{ $attributes }}>
+        <label id="label-input" for="{{ $id ?? '' }}">{{ $placeholder }}</label>
     </div>
-    <div id="{{ $value ?? '' }}-error" class="invalid-feedback">
+    <div id="{{ $id ?? '' }}-error" class="invalid-feedback">
     </div>
 </div>

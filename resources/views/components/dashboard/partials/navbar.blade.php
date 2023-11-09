@@ -184,7 +184,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center {{ Str::contains(request()->url(), "/dashboard/profil") ? 'active-menu-navbar' : '' }}" href={{ route('profile.edit') }}>
+              <a class="dropdown-item d-flex align-items-center {{ Str::contains(request()->url(), "/dashboard/profil") ? 'active-menu-navbar' : '' }}" href={{ route('profil.edit') }}>
                 <i id="icon-dropdown-menu-bau" class="bi bi-person fw-bold"></i>
                 <span>Profil Saya</span>
               </a>
