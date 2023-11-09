@@ -78,113 +78,35 @@
         </div>
       </div>
     </div>
-      <section class="section">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Surat Pertanggungjawaban</h5>
-                <p>Berikut disajikan data-data SPJ yang diajukan.</p>
-
-                <!-- Table with stripped rows -->
-                <table class="table datatable">
-                  <thead>
-                    <tr>
-                      <th scope="col">No.</th>
-                      <th scope="col">Nama Kegiatan</th>
-                      <th scope="col">Tanggal Pengajuan</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Aksi</th>
-                      <th scope="col">Pengaju</th>
-                      <!-- <th scope="col">Age</th>
-                      <th scope="col">Start Date</th> -->
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Dies Natalis Polteknik Statistika STIS 65</td>
-                      <td>26-10-2023</td>
-                      <td><span class="badge bg-warning">Dalam Proses</span></td>
-                      <td>
-                          <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
-                      </td>
-                      <td>BAAK</td>
-                      <!-- <td>28</td>
-                      <td>2016-05-25</td> -->
-                    </tr>
-
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>PKKMB-PKBN Polteknik Statistika STIS 65</td>
-                      <td>28-10-2023</td>
-                      <td><span class="badge bg-success">Selesai</span></td>
-                      <td>
-                        <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
-                      </td>
-                      <td>BAU</td>
-                      <!-- <td>28</td>
-                      <td>2016-05-25</td> -->
-                    </tr>
-
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Seminar Nasional Official Statistics 2022</td>
-                      <td>03-11-2023</td>
-                      <td><span class="badge bg-warning">Dalam Proses</span></td>
-                      <td>
-                        <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
-                      </td>
-                      <td>PPPM</td>
-                      <!-- <td>28</td>
-                      <td>2016-05-25</td> -->
-                    </tr>
-
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Dies Natalis Polteknik Statistika STIS 64</td>
-                      <td>07-11-2023</td>
-                      <td><span class="badge bg-success">Selesai</span></td>
-                      <td>
-                        <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
-                      </td>
-                      <td>BAAK</td>
-                      <!-- <td>28</td>
-                      <td>2016-05-25</td> -->
-                    </tr>
-                      <!-- <td>28</td>
-                      <td>2016-05-25</td> -->
-                    </tr>
-                  </tbody>
-                </table>
-                <!-- End Table with stripped rows -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
- 
     
-    {{-- <section class="section draft-pengajuan bg-white">
+    <section class="section konfirmasi-spj bg-white">
         <div class="container">
             <div class="row">
               <div class="col-12">
-                <h1 class="py-5 text-center">Konfirmasi Pengajuan</h1>
+                <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
+                <p>Berikut disajikan data-data SPJ yang diajukan.</p>
       
                 <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
                     <thead>
-                        <tr>
+                        {{-- <tr>
                             <th class="text-center col-1">No</th>
                             <th class="text-center col-3">Nama</th>
                             <th class="text-center col-2">Nama Pengadaan</th>
                             <th class="text-center col-2">Tanggal Pengajuan</th>
                             <th class="text-center col-2">Aksi</th>
                             <th class="text-center col-2">Status Pengajuan</th>
+                        </tr> --}}
+                        <tr>
+                          <th scope="col">No.</th>
+                          <th scope="col">Nama Kegiatan</th>
+                          <th scope="col">Tanggal Pengajuan</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Aksi</th>
+                          <th scope="col">Pengaju</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        {{-- @foreach ($users as $user)
                         <tr>
                             <td class="text-center align-middle">{{ $loop->iteration }}</td>
                             <td class="text-center align-middle">{{ $user->name }}</td>
@@ -204,13 +126,43 @@
                                 <span class="text-primary">Status</span>
                             </td>
                         </tr>
-                        @endforeach
+                        @endforeach --}}
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Dies Natalis Polteknik Statistika STIS 65</td>
+                          <td>26-10-2023</td>
+                          <td><span class="badge bg-warning">Dalam Proses</span></td>
+                          <td>
+                              <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
+                          </td>
+                          <td>BAAK</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>PKKMB-PKBN Polteknik Statistika STIS 65</td>
+                          <td>28-10-2023</td>
+                          <td><span class="badge bg-success">Selesai</span></td>
+                          <td>
+                            <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
+                          </td>
+                          <td>BAU</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Seminar Nasional Official Statistics 2022</td>
+                          <td>03-11-2023</td>
+                          <td><span class="badge bg-warning">Dalam Proses</span></td>
+                          <td>
+                            <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
+                          </td>
+                          <td>PPPM</td>
+                        </tr>
                     </tbody>
                 </table>
               </div>
             </div>
           </div>
-    </section> --}}
+    </section>
 
     <x-slot name="js_body">
     </x-slot>
