@@ -97,12 +97,12 @@
                             <th class="text-center col-2">Status Pengajuan</th>
                         </tr> --}}
                         <tr>
-                          <th scope="col">No.</th>
-                          <th scope="col">Nama Kegiatan</th>
-                          <th scope="col">Tanggal Pengajuan</th>
-                          <th scope="col">Status</th>
-                          <th scope="col">Aksi</th>
-                          <th scope="col">Pengaju</th>
+                          <th class="text-center col-1">No.</th>
+                          <th class="text-center col-3">Nama Kegiatan</th>
+                          <th class="text-center col-2">Tanggal Pengajuan</th>
+                          <th class="text-center col-2">Status</th>
+                          <th class="text-center col-2">Aksi</th>
+                          <th class="text-center col-2">Pengaju</th>
                         </tr>
                     </thead>
                     <tbody>
