@@ -18,26 +18,26 @@
       <div class="container">
           <div class="row">
             <div class="col-12">
-              <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
-              <p>Berikut disajikan data-data SPJ yang diajukan.</p>
+              <h2 class="py-5 text-center">Surat Keterangan Penghasilan</h2>
+                <p>Berikut disajikan data-data SKP yang diajukan.</p>
     
               <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
                   <thead>
                       {{-- <tr>
                           <th class="text-center col-1">No</th>
-                          <th class="text-center col-3">Nama Kegiatan</th>
+                          <th class="text-center col-3">Keperluan</th>
                           <th class="text-center col-2">Tanggal Pengajuan</th>
-                          <th class="text-center col-2">Status</th>
+                          <th class="text-center col-2">Statis</th>
                           <th class="text-center col-2">Aksi</th>
-                          <th class="text-center col-2">Pengaju</th>
+                          <th class="text-center col-2">Bulan Dasar</th>
                       </tr> --}}
                       <tr>
                         <th class="text-center col-1">No.</th>
-                        <th class="text-center col-3">Nama Kegiatan</th>
-                        <th class="text-center col-2">Tanggal Pengajuan</th>
+                        <th class="text-center col-4">Keperluan</th>
+                        <th class="text-center col-3">Tanggal Pengajuan</th>
                         <th class="text-center col-2">Status</th>
                         <th class="text-center col-2">Aksi</th>
-                        <th class="text-center col-2">Pengaju</th>
+                        <th class="text-center col-2">Bulan Dasar</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -63,34 +63,34 @@
                       </tr>
                       @endforeach --}}
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Dies Natalis Polteknik Statistika STIS 65</td>
+                        <td scope="row">1</td>
+                        <td>Daftar Sekolah Anak</td>
                         <td>26-10-2023</td>
-                        <td><span class="badge bg-warning">Dalam Proses</span></td>
+                        <td><span class="badge bg-warning">Diproses</span></td>
                         <td>
-                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                          <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
                         </td>
-                        <td>BAAK</td>
+                        <td>Januari 2023</td>
                       </tr>
                       <tr>
-                        <th scope="row">2</th>
-                        <td>PKKMB-PKBN Polteknik Statistika STIS 65</td>
-                        <td>28-10-2023</td>
+                        <td scope="row">2</td>
+                        <td>Nyobain aja</td>
+                        <td>26-10-2023</td>
                         <td><span class="badge bg-success">Selesai</span></td>
                         <td>
                           <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
                         </td>
-                        <td>BAAK</td>
+                        <td>Februari 2023</td>
                       </tr>
                       <tr>
-                        <th scope="row">3</th>
-                        <td>Seminar Nasional Official Statistics 2022</td>
-                        <td>03-11-2023</td>
+                        <td scope="row">3</td>
+                        <td>Test test test</td>
+                        <td>26-10-2023</td>
                         <td><span class="badge bg-danger">Ditolak</span></td>
                         <td>
                           <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
                         </td>
-                        <td>BAAK</td>
+                        <td>Maret 2023</td>
                       </tr>
                   </tbody>
               </table>

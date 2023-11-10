@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class KonfirmasiSpjController extends Controller
+class KonfirmasiSkpController extends Controller
 {
+    //
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +21,7 @@ class KonfirmasiSpjController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.tim-keuangan.konfirmasi-pengajuan-spj.index', [
+        return view('dashboard.tim-keuangan.konfirmasi-pengajuan-skp.index', [
             'menus' => $menus,
             'users' => $users
         ]);

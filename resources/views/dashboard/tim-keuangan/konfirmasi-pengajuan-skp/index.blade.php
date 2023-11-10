@@ -26,13 +26,13 @@
                   <i class="bi bi-clipboard-data text-white size-16" style="font-size: 2rem; padding-top:1rem;"></i>
                 </span>                  
               </div>
-              <h5 class="card-title mb-1 pt-2 mt-1">Total Pengajuan SPJ</h5>
+              <h5 class="card-title mb-1 pt-2 mt-1">Total Pengajuan SKP</h5>
               <p class="mb-2 mt-1 fw-bolder pd-2">10</p>
             </div>
           </div>
         </div>
 
-        <!-- Total Sales -->
+        <!-- Total Done -->
         <div class="col-xl-3 col-md-3 col-6 mb-4">
           <div class="card">
             <div class="card-body pd-2">
@@ -41,13 +41,13 @@
                   <i class="bi bi-clipboard-check text-white size-16" style="font-size: 2rem; padding-top:1rem;"></i>
                 </span>                  
               </div>
-              <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Selesai</h5>
+              <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SKP Selesai</h5>
               <p class="mb-2 mt-1 fw-bolder pd-2">4</p>
             </div>
           </div>
         </div>
 
-        <!-- Total Profit -->
+        <!-- Total Proccess -->
         <div class="col-xl-3 col-md-3 col-6 mb-4">
           <div class="card">
             <div class="card-body pd-2">
@@ -56,13 +56,13 @@
                   <i class="bi bi-clipboard text-white size-16" style="font-size: 2rem; padding-top:1rem;"></i>
                 </span>                  
               </div>
-              <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Diproses</h5>
+              <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SKP Diproses</h5>
               <p class="mb-2 mt-1 fw-bolder pd-2">3</p>
             </div>
           </div>
         </div>
 
-        <!-- Total Sales -->
+        <!-- Total Reject -->
         <div class="col-xl-3 col-md-3 col-6 mb-4">
           <div class="card">
             <div class="card-body pd-2">
@@ -71,7 +71,7 @@
                   <i class="bi bi-clipboard-x text-white size-16" style="font-size: 2rem; padding-top:1rem;"></i>
                 </span>                  
               </div>
-              <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Ditolak</h5>
+              <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SKP Ditolak</h5>
               <p class="mb-2 mt-1 fw-bolder pd-2">3</p>
             </div>
           </div>
@@ -83,26 +83,26 @@
         <div class="container">
             <div class="row">
               <div class="col-12">
-                <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
-                <p>Berikut disajikan data-data SPJ yang diajukan.</p>
+                <h2 class="py-5 text-center">Surat Keterangan Penghasilan</h2>
+                <p>Berikut disajikan data-data SKP yang diajukan.</p>
       
                 <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
                     <thead>
                         {{-- <tr>
                             <th class="text-center col-1">No</th>
-                            <th class="text-center col-3">Nama</th>
-                            <th class="text-center col-2">Nama Pengadaan</th>
+                            <th class="text-center col-4">Pengaju</th>
                             <th class="text-center col-2">Tanggal Pengajuan</th>
+                            <th class="text-center col-2">Status</th>
                             <th class="text-center col-2">Aksi</th>
-                            <th class="text-center col-2">Status Pengajuan</th>
+                            <th class="text-center col-2">Bulan Dasar</th>
                         </tr> --}}
                         <tr>
                           <th class="text-center col-1">No.</th>
-                          <th class="text-center col-3">Nama Kegiatan</th>
-                          <th class="text-center col-2">Tanggal Pengajuan</th>
+                          <th class="text-center col-4">Pengaju</th>
+                          <th class="text-center col-3">Tanggal Pengajuan</th>
                           <th class="text-center col-2">Status</th>
                           <th class="text-center col-2">Aksi</th>
-                          <th class="text-center col-2">Pengaju</th>
+                          <th class="text-center col-2">Bulan Dasar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -128,34 +128,34 @@
                         </tr>
                         @endforeach --}}
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Dies Natalis Polteknik Statistika STIS 65</td>
+                          <td scope="row">1</td>
+                          <td>Joko Widodo</td>
                           <td>26-10-2023</td>
-                          <td><span class="badge bg-warning">Dalam Proses</span></td>
+                          <td><span class="badge bg-warning">Diproses</span></td>
                           <td>
-                              <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
+                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
-                          <td>BAAK</td>
+                          <td>Januari 2023</td>
                         </tr>
                         <tr>
-                          <th scope="row">2</th>
-                          <td>PKKMB-PKBN Polteknik Statistika STIS 65</td>
-                          <td>28-10-2023</td>
+                          <td scope="row">2</td>
+                          <td>Kojo Dodowi</td>
+                          <td>26-10-2023</td>
                           <td><span class="badge bg-success">Selesai</span></td>
                           <td>
-                            <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
+                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
-                          <td>BAU</td>
+                          <td>Februari 2023</td>
                         </tr>
                         <tr>
-                          <th scope="row">3</th>
-                          <td>Seminar Nasional Official Statistics 2022</td>
-                          <td>03-11-2023</td>
-                          <td><span class="badge bg-warning">Dalam Proses</span></td>
+                          <td scope="row">3</td>
+                          <td>Wido Kokojo</td>
+                          <td>26-10-2023</td>
+                          <td><span class="badge bg-danger">Ditolak</span></td>
                           <td>
-                            <a href="detail-pengajuan-surat.html"><button type="button" class="btn btn-info">Lihat Detail</button></a>
+                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
-                          <td>PPPM</td>
+                          <td>Maret 2023</td>
                         </tr>
                     </tbody>
                 </table>
