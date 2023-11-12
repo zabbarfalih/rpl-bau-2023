@@ -16,27 +16,27 @@
                 <form class="row">
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input id="inputNama" value="nama" name="Nama" placeholder="Nama"/>
+                            <x-elements.input id="inputNama" value="" name="Nama" placeholder="Nama"/>
                             {{-- option --}}
                         </div>
                         <div class="col-sm-6">
-                            <x-elements.input id="inputNIP" value="nip" name="NIP" placeholder="NIP"/>
+                            <x-elements.input id="inputNIP" value="" name="NIP" placeholder="NIP"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input-date id="inputBulanDasarSKP" value="bulan-dasar-skp" name="Bulan Dasar" placeholder="Bulan Dasar"/>
+                            <x-elements.input-date id="inputBulanDasarSKP" value="" name="Bulan Dasar" placeholder="Bulan Dasar"/>
                         </div>
                         <div class="col-sm-6">
-                            <x-elements.input id="inputJenisPenghasilan" value="jenispenghasilan" name="jenispenghasilan" placeholder="JenisPenghasilan"/>
+                            <x-elements.input id="inputJenisPenghasilan" value="" name="jenispenghasilan" placeholder="Jenis Penghasilan"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input id="inputKeperluan" value="keperluan" name="Keperluan" placeholder="Keperluan Pengajuan"/>
+                            <x-elements.input id="inputKeperluan" value="" name="Keperluan" placeholder="Keperluan Pengajuan"/>
                         </div>
                         <div class="col-sm-6">
-                            <x-elements.input-file id="inputBukti" value="bukti" name="Bukti" placeholder="Bukti Keperluan"/>
+                            <x-elements.input-file id="inputBukti" value="" name="Bukti" placeholder="Bukti Keperluan"/>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center py-3">
