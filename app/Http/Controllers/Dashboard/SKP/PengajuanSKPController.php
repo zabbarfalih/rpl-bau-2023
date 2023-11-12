@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SKP;
+namespace App\Http\Controllers\Dashboard\SKP;
 
 use App\Models\Menu;
 
@@ -9,11 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class PengajuanSKPController extends Controller
+class PengajuanSkpController extends Controller
 {
-    //
-    //
-    /**
+/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -23,7 +21,7 @@ class PengajuanSKPController extends Controller
         $menus = Menu::with('submenus')->get();
         $users = User::all();
     
-        return view('dashboard.skp.pengajuan-skp.index', [
+        return view('dashboard.skp.info-pengajuan-skp.index', [
             'menus' => $menus,
             'users' => $users,
         ]);
@@ -37,7 +35,7 @@ class PengajuanSKPController extends Controller
     public function create()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.skp.pengajuan-skp.add', [
+        return view('dashboard.skp.info-pengajuan-skp.add', [
             'menus' => $menus,
         ]);
     }
