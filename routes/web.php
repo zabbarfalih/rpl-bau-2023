@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
 use App\Http\Controllers\Dashboard\SPJ\PengajuanSpjController;
 use App\Http\Controllers\Dashboard\SPJ\InfoPengajuanSPJController;
 use App\Http\Controllers\Dashboard\SPJ\DetailPengajuanSpjController;
+use App\Http\Controllers\Dashboard\SKP\DetailPengajuanSkpController;
 use App\Http\Controllers\Dashboard\SKP\InfoPengajuanSKPController;
 use App\Http\Controllers\Dashboard\TimKeuangan\DetailSpjController;
 use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSpjController;
@@ -80,6 +81,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('infopengajuanskp.index');
+    Route::get('/dashboard/skp/info-pengajuan-skp/detail',[DetailPengajuanSkpController::class,'index'])->name('detailpengajuanskp.detail');
 
     // Tim Keuangan
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
