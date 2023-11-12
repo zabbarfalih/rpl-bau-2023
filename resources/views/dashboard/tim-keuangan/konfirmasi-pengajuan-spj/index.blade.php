@@ -133,7 +133,7 @@
                           <td>26-10-2023</td>
                           <td><span class="badge bg-warning">Dalam Proses</span></td>
                           <td>
-                              <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                              <a href="{{ route('konfirmasipengajuanspj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
                           <td>BAAK</td>
                         </tr>
