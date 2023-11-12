@@ -143,7 +143,7 @@
                           <td>28-10-2023</td>
                           <td><span class="badge bg-success">Selesai</span></td>
                           <td>
-                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanspj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
                           <td>BAU</td>
                         </tr>
@@ -153,7 +153,7 @@
                           <td>03-11-2023</td>
                           <td><span class="badge bg-danger">Ditolak</span></td>
                           <td>
-                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanspj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
                           <td>PPPM</td>
                         </tr>

@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
 use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
 use App\Http\Controllers\Dashboard\SPJ\PengajuanSpjController;
 use App\Http\Controllers\Dashboard\SPJ\InfoPengajuanSPJController;
+use App\Http\Controllers\Dashboard\SPJ\DetailPengajuanSpjController;
 use App\Http\Controllers\Dashboard\SKP\InfoPengajuanSKPController;
 use App\Http\Controllers\Dashboard\TimKeuangan\DetailSpjController;
 use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSpjController;
@@ -75,6 +76,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     // SPJ
     Route::get('/dashboard/spj/info-pengajuan-spj', [InfoPengajuanSPJController::class, 'index'])->name('infopengajuanspj.index');
     Route::get('/dashboard/spj/pengajuan-spj', [PengajuanSpjController::class, 'create'])->name('infopengajuanspj.create');
+    Route::get('/dashboard/spj/info-pengajuan-spj/detail',[DetailPengajuanSpjController::class,'index'])->name('detailpengajuanspj.detail');
 
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('infopengajuanskp.index');
