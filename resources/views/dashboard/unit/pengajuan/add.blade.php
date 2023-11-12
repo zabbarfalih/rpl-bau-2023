@@ -19,34 +19,34 @@
                             <x-elements.input id="inputUnit" value="unit" name="Unit" Placeholder="unit"/>
                         </div>
                         <div class="col-sm-6">
-                            <x-elements.input id="inputMerk" value="merk" name="Merk" Placeholder="unit"/>
+                            <x-elements.input id="inputMerk" value="merk" name="Merk" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input-date id="inputTanggalButuhPengajuan" value="tanggal-butuh-pengajuan" name="Tanggal Butuh Pengajuan" Placeholder="unit"/>
+                            <x-elements.input-date id="inputTanggalButuhPengajuan" value="tanggal-butuh-pengajuan" name="Tanggal Butuh Pengajuan" />
                         </div>
                         <div class="col-sm-6">
-                            <x-elements.input id="inputModel" value="model" name="Model" Placeholder="unit"/>
+                            <x-elements.input id="inputModel" value="model" name="Model" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input id="inputNamaPengadaan" value="nama-pengadaan" name="Nama Pengadaan" Placeholder="unit"/>
+                            <x-elements.input id="inputNamaPengadaan" value="nama-pengadaan" name="Nama Pengadaan" />
                         </div>
                         <div class="col-sm-3">
-                            <x-elements.input id="inputJumlahPengadaan" value="jumlah-pengadaan" name="Jumlah Pengadaan" Placeholder="unit"/>
+                            <x-elements.input id="inputJumlahPengadaan" value="jumlah-pengadaan" name="Jumlah Pengadaan" />
                         </div>
                         <div class="col-sm-3">
-                            <x-elements.input id="inputHargaSatuan" value="harga-satuan" name="Harga Satuan" Placeholder="unit"/>
+                            <x-elements.input id="inputHargaSatuan" value="harga-satuan" name="Harga Satuan" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input-textarea id="inputAlasanPengadaan" value="alasan-pengadaan" name="Alasan Pengadaan" Placeholder="unit"/>
+                            <x-elements.input-textarea id="inputAlasanPengadaan" value="alasan-pengadaan" name="Alasan Pengadaan" />
                         </div>
                         <div class="col-sm-6">
-                            <x-elements.input-file id="inputMemo" value="memo" name="Memo" Placeholder="unit"/>
+                            <x-elements.input-file id="inputMemo" value="memo" name="Memo" />
                         </div>
                     </div>
                     <div class="form-group row d-flex justify-content-center">

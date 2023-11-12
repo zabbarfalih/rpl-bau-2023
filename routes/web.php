@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
 use App\Http\Controllers\Dashboard\SPJ\PengajuanSpjController;
 use App\Http\Controllers\Dashboard\SPJ\InfoPengajuanSPJController;
 use App\Http\Controllers\Dashboard\SKP\InfoPengajuanSKPController;
+use App\Http\Controllers\Dashboard\TimKeuangan\DetailSpjController;
 use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSpjController;
 use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSkpController;
 
@@ -81,6 +82,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     // Tim Keuangan
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spj/detail-spj',[DetailSpjController::class,'index'])->name('konfirmasipengajuanspj.detail');
 });
 
 require __DIR__.'/auth.php';
