@@ -133,7 +133,7 @@
                           <td>26-10-2023</td>
                           <td><span class="badge bg-warning">Diproses</span></td>
                           <td>
-                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
                           <td>Januari 2023</td>
                         </tr>
@@ -143,7 +143,7 @@
                           <td>26-10-2023</td>
                           <td><span class="badge bg-success">Selesai</span></td>
                           <td>
-                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
                           <td>Februari 2023</td>
                         </tr>
@@ -153,7 +153,7 @@
                           <td>26-10-2023</td>
                           <td><span class="badge bg-danger">Ditolak</span></td>
                           <td>
-                            <a href=""><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                           </td>
                           <td>Maret 2023</td>
                         </tr>
