@@ -16,7 +16,7 @@
                 <form class="row">
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <x-elements.input-select id="inputUnit" value="unit" name="Unit" />
+                            <x-elements.input id="inputUnit" value="unit" name="Unit" Placeholder="unit"/>
                         </div>
                         <div class="col-sm-6">
                             <x-elements.input id="inputMerk" value="merk" name="Merk" />

@@ -23,6 +23,7 @@ class SubmenuSeeder extends Seeder
         $bauMenuId = Menu::where('name', 'Kepala BAU')->first()->id;
         $spjMenuId = Menu::where('name', 'SPJ')->first()->id;
         $skpMenuId = Menu::where('name', 'SKP')->first()->id;
+        $tkuMenuId = Menu::where('name', 'Tim Keuangan')->first()->id;
         
         Submenu::insert([
             [
@@ -114,6 +115,22 @@ class SubmenuSeeder extends Seeder
                 'name' => 'Info Pengajuan SKP',
                 'url' => Str::slug('Info Pengajuan SKP'),
                 'icon' => 'bi bi-info-square-fill',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'menu_id' => $tkuMenuId,
+                'name' => 'Konfirmasi SPJ',
+                'url' => Str::slug('Konfirmasi SPJ'),
+                'icon' => 'bi bi-menu-button-wide-fill',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'menu_id' => $tkuMenuId,
+                'name' => 'Konfirmasi SKP',
+                'url' => Str::slug('Konfirmasi SKP'),
+                'icon' => 'bi bi-menu-button-wide-fill',
                 'created_at' => now(),
                 'updated_at' => now()
             ]

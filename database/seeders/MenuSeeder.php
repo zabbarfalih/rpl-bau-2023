@@ -96,6 +96,14 @@ class MenuSeeder extends Seeder
                 'icon' => 'bi bi-person-up',
                 'created_at' => now(),
                 'updated_at' => now()
+            ],
+            [
+                'name' => 'Tim Keuangan',
+                'on_sidebar' => true,
+                'url' => Str::slug('Tim Keuangan'),
+                'icon' => 'bi bi-person-check',
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);              
     }
