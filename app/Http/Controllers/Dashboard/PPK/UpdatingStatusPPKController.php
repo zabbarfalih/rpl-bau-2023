@@ -25,6 +25,15 @@ class UpdatingStatusPPKController extends Controller
             'users' => $users
         ]);
     }
+    public function uploadDokumen()
+    {
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
+        return view('dashboard.ppk.updating-status.dokumen-upload.kuitansi', [
+            'menus' => $menus,
+            'users' => $users
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.

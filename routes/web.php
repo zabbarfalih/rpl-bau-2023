@@ -38,7 +38,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     // Profil
     Route::get('/dashboard/profil', [ProfilController::class, 'edit'])
-    ->name('profil.edit');
+        ->name('profil.edit');
     Route::put('/dashboard/profil', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('/dashboard/profil', [ProfilController::class, 'destroy'])->name('profil.destroy');
 
@@ -59,12 +59,13 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     // PBJ
     Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
-    
+
     // PPK
     Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
-    
+    Route::get('/dashboard/ppk/updating-status/dokumen-upload/kuitansi', [UpdatingStatusPPKController::class, 'uploadDokumen'])->name('updatingstatusppk.dokumenupload.kuitansi');
+
     // Kepala BAU
     Route::get('/dashboard/kepala-bau/konfirmasi-pengajuan', [KonfirmasiPengajuanController::class, 'index'])->name('konfirmasipengajuan.index');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -8,9 +8,58 @@
         <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
         <script defer src="{{ asset('assets/js/dashboard/table.js') }}"></script>
     </x-slot>
-    
+
     <section class="section draft-pengajuan bg-white">
-        <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-center fw-bold fs-3">Daftar Pengajuan</h5>
+                  <div class="d-flex justify-content-end mb-3">
+                    <a href={{ route('pengajuan.create') }} class="btn btn-primary me-2">+ Tambah Pengajuan</a>
+                  </div>
+
+                  <!-- Table with stripped rows -->
+                  <table class="table-bau table table-hover datatable" id="pengajuan-table">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="text-center">No</th>
+                        <th scope="col" class="text-center">Nama</th>
+                        <th scope="col" class="text-center">Nama Pengadaan</th>
+                        <th scope="col" class="text-center">Tanggal Pengadaan</th>
+                        <th scope="col" class="text-center">Status Pengajuan</th>
+                        <th scope="col" class="text-center"></th>
+                        <!-- <th scope="col" class="text-center">Aksi</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                      <tr>
+                        <th scope="row" class="text-center">{{ $loop->iteration }}</th>
+                        <th scope="row" class="text-center">{{ $user->name }}</th>
+                        <td class="text-center">Nama Pengadaan {{ $loop->iteration }}</td>
+                        <td class="text-center">22 September 2024</td>
+                        <td class="text-center">
+                          <span class="badge rounded-pill bg-warning text-dark">Menunggu Persetujuan</span>
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-info btn-sm rounded-pill" onclick="window.location.href='detail_pengajuan.html'">Details</button>
+                          <button type="button" class="btn btn-success btn-sm rounded-pill">Unduh</button>
+                        </td>
+                        @endforeach
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        {{-- <div class="container">
             <div class="row">
               <div class="col-12">
                 <h1 class="py-5 text-center">Daftar Pengajuan</h1>
@@ -19,7 +68,7 @@
                         Tambah Pengajuan
                     </button>
                 </a>
-      
+
                 <table id="table-bau" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -49,7 +98,7 @@
                 </table>
               </div>
             </div>
-          </div>
+          </div> --}}
     </section>
 
     <x-slot name="js_body">
