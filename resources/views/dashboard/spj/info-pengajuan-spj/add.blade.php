@@ -64,7 +64,7 @@
                                     <div class="card-body">
                                     <h5 class="card-title">Upload Template</h5>
                                     <p class="card-text">Upload template SPJ yang sudah siap dicetak dalam format excel</p>
-                                    <p class="card-text"><a href="#" class="btn btn-primary rounded-pill">Upload</a></p>
+                                    <x-elements.input-file id="inputBukti" value="" name="Bukti" placeholder=""/>
                                     </div>
                                 </div>
                             </div>
