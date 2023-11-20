@@ -32,7 +32,7 @@
                             <!-- Table with stripped rows -->
                             <table
                                 class="table table-hover datatable"
-                                id="pengajuan-table"
+                                id="table-bau"
                             >
                                 <thead>
                                     <tr>

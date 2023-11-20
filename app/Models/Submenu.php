@@ -10,9 +10,9 @@ class Submenu extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'submenu';
 
-    public $timestamps = false;
+    protected $guarded = ['id'];
 
     public function menu()
     {

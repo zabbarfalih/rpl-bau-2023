@@ -21,7 +21,7 @@
                   <div class="card">
                     <div class="card-body text-center">
                       <h5 class="card-title">Draft Pengajuan</h5>
-                      <table class="table table-hover datatable" id="draft-table">
+                      <table class="table table-hover datatable" id="table-bau">
                         <thead>
                           <tr>
                             <th scope="col" class="text-center">No</th>
