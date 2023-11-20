@@ -11,6 +11,16 @@ use App\Http\Controllers\Dashboard\Pengaturan\PengaturanController;
 use App\Http\Controllers\Dashboard\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
 use App\Http\Controllers\Dashboard\KepalaBAU\KonfirmasiPengajuanController;
+use App\Http\Controllers\Dashboard\SPJ\PengajuanSpjController;
+use App\Http\Controllers\Dashboard\SPJ\InfoPengajuanSPJController;
+use App\Http\Controllers\Dashboard\SPJ\DetailPengajuanSpjController;
+use App\Http\Controllers\Dashboard\SKP\PengajuanSkpController;
+use App\Http\Controllers\Dashboard\SKP\DetailPengajuanSkpController;
+use App\Http\Controllers\Dashboard\SKP\InfoPengajuanSKPController;
+use App\Http\Controllers\Dashboard\TimKeuangan\DetailSpjController;
+use App\Http\Controllers\Dashboard\TimKeuangan\DetailSkpController;
+use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSpjController;
+use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSkpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +75,22 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     
     // Kepala BAU
     Route::get('/dashboard/kepala-bau/konfirmasi-pengajuan', [KonfirmasiPengajuanController::class, 'index'])->name('konfirmasipengajuan.index');
+
+    // SPJ
+    Route::get('/dashboard/spj/info-pengajuan-spj', [InfoPengajuanSPJController::class, 'index'])->name('infopengajuanspj.index');
+    Route::get('/dashboard/spj/pengajuan-spj', [PengajuanSpjController::class, 'create'])->name('infopengajuanspj.create');
+    Route::get('/dashboard/spj/info-pengajuan-spj/detail',[DetailPengajuanSpjController::class,'index'])->name('detailpengajuanspj.detail');
+
+    // SKP
+    Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('infopengajuanskp.index');
+    Route::get('/dashboard/skp/info-pengajuan-skp/detail',[DetailPengajuanSkpController::class,'index'])->name('detailpengajuanskp.detail');
+    Route::get('/dashboard/skp/pengajuan-skp', [PengajuanSkpController::class, 'create'])->name('infpengajuanskp.create');
+
+    // Tim Keuangan
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spj/detail-spj',[DetailSpjController::class,'index'])->name('konfirmasipengajuanspj.detail');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp',[DetailSkpController::class,'index'])->name('konfirmasipengajuanskp.detail');
 });
 
 require __DIR__.'/auth.php';
