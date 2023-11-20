@@ -20,7 +20,7 @@ class PengajuanController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-    
+
         return view('dashboard.unit.pengajuan.index', [
             'menus' => $menus,
             'users' => $users,

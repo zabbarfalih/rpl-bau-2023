@@ -13,8 +13,52 @@
         <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.js"></script>
         <script defer src="{{ asset('assets/js/dashboard/table.js') }}"></script>
     </x-slot>
-    
-    <section class="section draft-pengajuan bg-white">
+
+    <section class="section draft-pengajuan">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Draft Pengajuan</h5>
+                      <table class="table table-hover datatable" id="draft-table">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="text-center">No</th>
+                            <th scope="col" class="text-center">Nama Paket Pengadaan (Draft)</th>
+                            <th scope="col" class="text-center">Tanggal Pengadaan</th>
+                            <th scope="col" class="text-center"></th>
+                            <th scope="col" class="text-center"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                          <tr>
+                            <th scope="row" class="text-center">{{ $loop->iteration }}</th>
+                            <td class="text-center">Nama Draft Pengajuan {{ $loop->iteration }}</td>
+                            <td class="text-center">10 Maret 2024</td>
+                            <td>
+                              <button type="button" class="btn btn-primary btn-sm rounded-pill" onclick="window.location.href='form_pengajuan-unit.html'">Ubah Isian</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm rounded-pill">Hapus</button>
+                            </td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                      <!-- End Table with stripped rows -->
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+        </div>
+
+      </section>
+
+    {{-- <section class="section draft-pengajuan bg-white">
         <div class="container">
             <div class="row">
               <div class="col-12">
@@ -63,7 +107,7 @@
               </div>
             </div>
           </div>
-    </section>
+    </section> --}}
 
     <x-slot name="js_body">
     </x-slot>
