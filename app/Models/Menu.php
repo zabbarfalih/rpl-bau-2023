@@ -10,9 +10,9 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'menu';
 
-    public $timestamps = false;
+    protected $guarded = ['id'];
 
     public function role()
     {
