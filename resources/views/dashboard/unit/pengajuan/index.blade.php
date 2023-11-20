@@ -22,7 +22,7 @@
                       </div>
 
                       <!-- Table with stripped rows -->
-                      <table class="table table-hover datatable" id="table-bau">
+                      <table class="table table-hover display responsive nowrap" style="width:100%" id="table-bau">
                         <thead>
                           <tr>
                             <th scope="col" >No</th>
