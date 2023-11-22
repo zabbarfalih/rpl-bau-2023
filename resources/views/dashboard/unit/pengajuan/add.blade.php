@@ -67,7 +67,7 @@
                       </form>
                       <div class="row mb-3">
                         <div class="text-end">
-                          <button type="button" class="btn btn-danger" onclick="window.location.href='draft-unit.html'">Batal</button>
+                          <button type="button" class="btn btn-danger" onclick="window.location.href='{{route('pengajuan.index')}}'">Batal</button>
                           <button type="submit" class="btn btn-primary" onclick="window.location.href='pengajuan-unit.html'">Kirim</button>
                         </div>
                       </div>
