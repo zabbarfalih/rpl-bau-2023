@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Pengajuan</h5>
+                        <div class="card-body">
+                            <h5 class="card-title text-center fw-bold">Pengajuan</h5>
                             <div class="d-flex justify-content-end mb-3">
                                 <button
                                     class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light"
@@ -31,25 +31,16 @@
 
                             <!-- Table with stripped rows -->
                             <table
-                            class="table table-hover display responsive nowrap" style="width:100%" id="table-bau"
+                            class="table table-hover display responsive nowrap" style="width: 100%" id="table-bau"
                             >
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">
-                                            Nama
-                                        </th>
-                                        <th scope="col">
-                                            Nama Paket Pengadaan
-                                        </th>
-                                        <th scope="col">
-                                            Tanggal Pengadaan
-                                        </th>
-                                        <th scope="col">
-                                            Status Pengajuan
-                                        </th>
-                                        <th scope="col"></th>
-                                        <!-- <th scope="col" class="text-center">Aksi</th> -->
+                                        <th scope="col" class="text-center">No</th>
+                                        <th scope="col" class="text-center">Nama</th>
+                                        <th scope="col" class="text-center">Nama Paket Pengadaan</th>
+                                        <th scope="col" class="text-center">Tanggal Pengadaan</th>
+                                        <th scope="col" class="text-center">Status Pengajuan</th>
+                                        <th scope="col" class="text-center"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

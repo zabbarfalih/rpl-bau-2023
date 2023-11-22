@@ -3,6 +3,7 @@
         <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/DataTables/datatables.min.css') }}" rel="stylesheet">
     </x-slot>
 
     <x-slot name="js_head">
@@ -19,8 +20,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Pengajuan</h5>
+                        <div class="card-body">
+                            <h5 class="card-title text-center fw-bold">Pengajuan</h5>
                             <div class="d-flex justify-content-end mb-3">
                                 <button
                                     class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light"
@@ -35,35 +36,28 @@
                             >
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">
-                                            Nama Paket Pengadaan
-                                        </th>
-                                        <th scope="col">
-                                            Tanggal Pengadaan
-                                        </th>
-                                        <th scope="col">
-                                            Status Pengajuan
-                                        </th>
-                                        <th scope="col"></th>
-                                        <!-- <th scope="col" class="text-center">Aksi</th> -->
+                                        <th scope="col" class="text-center">No</th>
+                                        <th scope="col" class="text-center">Nama</th>
+                                        <th scope="col" class="text-center">Nama Paket Pengadaan</th>
+                                        <th scope="col" class="text-center">Tanggal Pengadaan</th>
+                                        <th scope="col" class="text-center">Status Pengajuan</th>
+                                        <th scope="col" class="text-center"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                                         <th scope="row">{{ $user->name }}</th>
-                                        <td>Nama Pengadaan {{ $loop->iteration }}</td>
-                                        <td>22 September 2024</td>
-                                        <td>
+                                        <td scope="row" class="text-center">Nama Pengadaan {{ $loop->iteration }}</td>
+                                        <td class="text-center">22 September 2024</td>
+                                        <td class="text-center">
                                             <span
                                                 class="badge rounded-pill bg-warning text-dark"
                                                 >Menunggu Persetujuan</span
                                             >
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <button
                                                 type="button"
                                                 class="btn btn-info btn-sm rounded-pill"
