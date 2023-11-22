@@ -37,10 +37,10 @@
                             <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                             <td class="text-center">Nama Draft Pengajuan {{ $loop->iteration }}</td>
                             <td class="text-center">10 Maret 2024</td>
-                            <td>
+                            <td class="text-center">
                               <button type="button" class="btn btn-primary btn-sm rounded-pill" onclick="window.location.href='form_pengajuan-unit.html'">Ubah Isian</button>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <button type="button" class="btn btn-danger btn-sm rounded-pill">Hapus</button>
                             </td>
                           </tr>

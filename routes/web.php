@@ -64,6 +64,8 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/unit/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
     Route::get('/dashboard/unit/pengajuan/tambah-pengajuan', [PengajuanController::class, 'create'])->name('pengajuan.add');
 
+
+
     Route::get('/dashboard/unit/draft-pengajuan', [DraftPengajuanController::class, 'index'])->name('draftpengajuan.index');
 
     // PBJ
