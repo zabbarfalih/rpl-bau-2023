@@ -192,11 +192,6 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
             <li>
                 <form method="POST" action="{{ route('logout') }}"  id="menu-logout-bau" class="dropdown-item d-flex align-items-center">
                     @csrf
