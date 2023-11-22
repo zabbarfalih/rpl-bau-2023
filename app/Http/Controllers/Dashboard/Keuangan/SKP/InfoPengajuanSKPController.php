@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\TimKeuangan;
+namespace App\Http\Controllers\Dashboard\Keuangan\SKP;
 
-use Illuminate\Http\Request;
 use App\Models\Menu;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class DetailSkpController extends Controller
+class InfoPengajuanSKPController extends Controller
 {
     //
     /**
@@ -20,7 +21,7 @@ class DetailSkpController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.tim-keuangan.konfirmasi-pengajuan-skp.detail', [
+        return view('dashboard.keuangan.skp.info-pengajuan-skp.index', [
             'menus' => $menus,
             'users' => $users
         ]);

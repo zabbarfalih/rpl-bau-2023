@@ -194,12 +194,6 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center {{ Str::contains(request()->url(), "/dashboard/pengaturan") ? 'active-menu-navbar' : '' }}" href={{ route('pengaturan.edit') }}>
-                <i id="icon-dropdown-menu-bau" class="bi bi-gear"></i>
-                <span>Pengaturan</span>
-              </a>
-            </li>
-            <li>
               <hr class="dropdown-divider">
             </li>
 

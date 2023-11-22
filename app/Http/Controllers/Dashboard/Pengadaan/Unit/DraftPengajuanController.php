@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Unit;
+namespace App\Http\Controllers\Dashboard\Pengadaan\Unit;
 
 use App\Models\Menu;
 
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class PengajuanController extends Controller
+class DraftPengajuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +20,7 @@ class PengajuanController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-
-        return view('dashboard.unit.pengajuan.index', [
+        return view('dashboard.pengadaan.unit.draft-pengajuan.index', [
             'menus' => $menus,
             'users' => $users,
         ]);
@@ -30,15 +29,11 @@ class PengajuanController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * \Illuminate\Http\Response
-       @return \Illuminate\Contracts\View\Factory|Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $menus = Menu::with('submenus')->get();
-        return view('dashboard.unit.pengajuan.add', [
-            'menus' => $menus,
-        ]);
+        //
     }
 
     /**
@@ -96,6 +91,4 @@ class PengajuanController extends Controller
     {
         //
     }
-
-
 }

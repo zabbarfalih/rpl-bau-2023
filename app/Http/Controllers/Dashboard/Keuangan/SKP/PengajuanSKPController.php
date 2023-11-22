@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\SPJ;;
+namespace App\Http\Controllers\Dashboard\Keuangan\SKP;
 
-use Illuminate\Http\Request;
 use App\Models\Menu;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-class DetailPengajuanSpjController extends Controller
+use Illuminate\Support\Facades\Auth;
+
+class PengajuanSkpController extends Controller
 {
-    //
-    //
-    /**
+/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -20,9 +20,10 @@ class DetailPengajuanSpjController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.spj.info-pengajuan-spj.detail', [
+    
+        return view('dashboard.keuangan.skp.info-pengajuan-skp.index', [
             'menus' => $menus,
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
@@ -33,7 +34,10 @@ class DetailPengajuanSpjController extends Controller
      */
     public function create()
     {
-        //
+        $menus = Menu::with('submenus')->get();
+        return view('dashboard.skp.info-pengajuan-skp.add', [
+            'menus' => $menus,
+        ]);
     }
 
     /**

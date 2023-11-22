@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\TimKeuangan;
+namespace App\Http\Controllers\Dashboard\Pengadaan\PBJ;
 
-use Illuminate\Http\Request;
 use App\Models\Menu;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-class DetailSpjController extends Controller
+use Illuminate\Support\Facades\Auth;
+
+class UpdatingStatusPBJController extends Controller
 {
-    //
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +20,7 @@ class DetailSpjController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.tim-keuangan.konfirmasi-pengajuan-spj.detail', [
+        return view('dashboard.pengadaan.pbj.updating-status.index', [
             'menus' => $menus,
             'users' => $users
         ]);

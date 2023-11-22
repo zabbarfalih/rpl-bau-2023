@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\TimKeuangan;
+namespace App\Http\Controllers\Dashboard\Pengadaan\Unit;
 
 use App\Models\Menu;
 
@@ -9,9 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class KonfirmasiSkpController extends Controller
+class PengajuanController extends Controller
 {
-    //
     /**
      * Display a listing of the resource.
      *
@@ -21,20 +20,25 @@ class KonfirmasiSkpController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.tim-keuangan.konfirmasi-pengajuan-skp.index', [
+
+        return view('dashboard.pengadaan.unit.pengajuan.index', [
             'menus' => $menus,
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * \Illuminate\Http\Response
+       @return \Illuminate\Contracts\View\Factory|Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        $menus = Menu::with('submenus')->get();
+        return view('dashboard.unit.pengajuan.add', [
+            'menus' => $menus,
+        ]);
     }
 
     /**
@@ -92,4 +96,6 @@ class KonfirmasiSkpController extends Controller
     {
         //
     }
+
+
 }

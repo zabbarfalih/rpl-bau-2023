@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\PPK;
+namespace App\Http\Controllers\Dashboard\Pengadaan\PPK;
 
 use App\Models\Menu;
 
@@ -20,7 +20,7 @@ class UpdatingStatusPPKController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.ppk.updating-status.index', [
+        return view('dashboard.pengadaan.ppk.updating-status.index', [
             'menus' => $menus,
             'users' => $users
         ]);

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\SPJ;
+namespace App\Http\Controllers\Dashboard\Keuangan\SPJ;;
 
+use Illuminate\Http\Request;
 use App\Models\Menu;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-
-class InfoPengajuanSPJController  extends Controller
+class DetailPengajuanSpjController extends Controller
 {
+    //
+    //
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +20,7 @@ class InfoPengajuanSPJController  extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.spj.info-pengajuan-spj.index', [
+        return view('dashboard.spj.info-pengajuan-spj.detail', [
             'menus' => $menus,
             'users' => $users
         ]);

@@ -2,24 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
-use App\Http\Controllers\Dashboard\Unit\PengajuanController;
-use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\Unit\DraftPengajuanController;
-use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
-use App\Http\Controllers\Dashboard\PBJ\UpdatingStatusPBJController;
-use App\Http\Controllers\Dashboard\Pengaturan\PengaturanController;
-use App\Http\Controllers\Dashboard\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
-use App\Http\Controllers\Dashboard\SPJ\PengajuanSpjController;
-use App\Http\Controllers\Dashboard\SPJ\InfoPengajuanSPJController;
-use App\Http\Controllers\Dashboard\SPJ\DetailPengajuanSpjController;
-use App\Http\Controllers\Dashboard\SKP\PengajuanSkpController;
-use App\Http\Controllers\Dashboard\SKP\DetailPengajuanSkpController;
-use App\Http\Controllers\Dashboard\SKP\InfoPengajuanSKPController;
-use App\Http\Controllers\Dashboard\TimKeuangan\DetailSpjController;
-use App\Http\Controllers\Dashboard\TimKeuangan\DetailSkpController;
-use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSpjController;
-use App\Http\Controllers\Dashboard\TimKeuangan\KonfirmasiSkpController;
+use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
+use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Pengadaan\Unit\PengajuanController;
+use App\Http\Controllers\Dashboard\Pengadaan\Unit\DraftPengajuanController;
+use App\Http\Controllers\Dashboard\Pengadaan\PBJ\UpdatingStatusPBJController;
+use App\Http\Controllers\Dashboard\Pengadaan\PPK\UpdatingStatusPPKController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\InfoPengajuanSPJController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\DetailPengajuanSpjController;
+use App\Http\Controllers\Dashboard\Keuangan\SKP\PengajuanSkpController;
+use App\Http\Controllers\Dashboard\Keuangan\SKP\DetailPengajuanSkpController;
+use App\Http\Controllers\Dashboard\Keuangan\SKP\InfoPengajuanSKPController;
+use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\DetailSpjController;
+use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\DetailSkpController;
+use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSpjController;
+use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSkpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +49,6 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
         ->name('profil.edit');
     Route::put('/dashboard/profil', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('/dashboard/profil', [ProfilController::class, 'destroy'])->name('profil.destroy');
-
-    // Pengaturan
-    Route::get('/dashboard/pengaturan', [PengaturanController::class, 'edit'])->name('pengaturan.edit');
 
     // Administrator
     Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
