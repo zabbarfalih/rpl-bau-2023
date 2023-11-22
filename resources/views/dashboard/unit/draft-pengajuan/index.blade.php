@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-lg-12">
                   <div class="card">
-                    <div class="card-body text-center">
-                      <h5 class="card-title">Draft Pengajuan</h5>
+                    <div class="card-body">
+                      <h5 class="card-title text-center fw-bold">Draft Pengajuan</h5>
                       <table class="table table-hover display responsive nowrap" style="width:100%" id="table-bau">
                         <thead>
                           <tr>
