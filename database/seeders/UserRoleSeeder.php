@@ -6,18 +6,16 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
-class RoleUserSeeder extends Seeder
+class UserRoleSeeder extends Seeder
 {
     public function run()
     {
         // Menetapkan peran 'Admin' untuk pengguna tertentu
         $user = User::where('email', 'admin1@example.com')->first();
         $adminRole = Role::where('name', 'Admin')->first();
-        $unitRole = Role::where('name', 'Unit')->first();
 
-        if ($user && $adminRole && $unitRole) {
+        if ($user && $adminRole) {
             $user->roles()->syncWithoutDetaching($adminRole);
-            $user->roles()->syncWithoutDetaching($unitRole);
         }
 
         // Mendapatkan ID peran untuk 'Unit'
