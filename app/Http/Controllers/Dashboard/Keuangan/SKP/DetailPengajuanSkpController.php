@@ -21,7 +21,7 @@ class DetailPengajuanSkpController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.keuangan.skp.info-pengajuan-skp.detail', [
+        return view('dashboard.keuangan.skp.detail', [
             'menus' => $menus,
             'users' => $users
         ]);

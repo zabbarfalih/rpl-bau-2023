@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Keuangan\Keuangan\TimKeuangan;
+namespace App\Http\Controllers\Dashboard\Keuangan\TimKeuangan;
 
 use App\Models\Menu;
 
@@ -21,7 +21,17 @@ class KonfirmasiSkpController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.tim-keuangan.konfirmasi-pengajuan-skp.index', [
+        return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-skp.index', [
+            'menus' => $menus,
+            'users' => $users
+        ]);
+    }
+
+    public function detail()
+    {
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
+        return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-skp.detail', [
             'menus' => $menus,
             'users' => $users
         ]);
