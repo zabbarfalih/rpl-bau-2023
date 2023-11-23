@@ -129,5 +129,7 @@
     </section>
     <!-- End Table  -->
 
-    <x-slot name="js_body"> </x-slot>
+    <x-slot name="js_body">
+        
+    </x-slot>
 </x-dashboard.layouts.layouts>

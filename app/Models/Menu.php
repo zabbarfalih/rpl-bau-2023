@@ -14,7 +14,7 @@ class Menu extends Model
 
     protected $guarded = ['id'];
 
-    public function role()
+    public function roles()
     {
         return $this->belongsTo(Role::class);
     }
