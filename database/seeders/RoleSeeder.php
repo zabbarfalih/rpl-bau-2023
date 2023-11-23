@@ -17,6 +17,9 @@ class RoleSeeder extends Seeder
     {
         Role::insert([
             [
+                'name' => 'Unit',
+            ],
+            [
                 'name' => 'Admin',
             ],
             [

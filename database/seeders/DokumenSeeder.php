@@ -9,6 +9,6 @@ class DokumenSeeder extends Seeder
 {
     public function run()
     {
-        Dokumen::factory()->count(10)->create();
+       Dokumen::factory(100)->create();
     }
 }
