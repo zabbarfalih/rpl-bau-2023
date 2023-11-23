@@ -29,7 +29,10 @@ class DokumenFactory extends Factory
             'pengadaan_langsung' => $this->faker->sentence,
             'ssuk_sskk' => $this->faker->sentence,
             'dok_penawaran_pakta_formulir' => $this->faker->sentence,
+            'bast' => $this->faker->sentence,
+            'permintaan' => $this->faker->sentence,
             'pelaksana' => $this->faker->boolean,
+            'detail_dok_kontrak' => $this->faker->sentence,
         ];
     }
 }
