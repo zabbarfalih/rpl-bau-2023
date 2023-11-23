@@ -16,7 +16,7 @@ class Menu extends Model
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'users_role');
     }
 
     public function submenus()
