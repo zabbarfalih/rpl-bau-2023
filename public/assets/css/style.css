@@ -174,7 +174,8 @@ h6 {
 
 /* Customize */
 .font-body-table td,
-.font-body-table button {
+.font-body-table button,
+.font-form {
     font-size: 1.1vw;
 }
 
