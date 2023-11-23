@@ -20,7 +20,22 @@ class UpdatingStatusPPKController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.pengadaan.ppk.updating-status.index', [
+        return view('dashboard.pengadaan.ppk.index', [
+            'menus' => $menus,
+            'users' => $users
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details()
+    {
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
+        return view('dashboard.pengadaan.ppk.details', [
             'menus' => $menus,
             'users' => $users
         ]);
