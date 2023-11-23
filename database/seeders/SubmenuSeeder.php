@@ -32,13 +32,6 @@ class SubmenuSeeder extends Seeder
                 'icon' => 'bi bi-people-fill',
             ],
             [
-                'menu_id' => $administratorMenuId,
-                'name' => 'Menu & Submenu',
-                'url' => Str::slug('Menu & Submenu'),
-                'icon' => 'bi bi-menu-button-wide-fill',
-            ],
-
-            [
                 'menu_id' => $unitMenuId,
                 'name' => 'Pengajuan',
                 'url' => Str::slug('Pengajuan'),

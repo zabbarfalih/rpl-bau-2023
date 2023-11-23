@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
-use App\Http\Controllers\Dashboard\Administrator\MenuSubmenuController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\PengajuanController;
@@ -53,8 +52,6 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     // Administrator
     Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
     Route::get('/dashboard/administrator/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
-
-    Route::get('/dashboard/administrator/menu-submenu', [MenuSubmenuController::class, 'index'])->name('menusubmenu.index');
 
     // Unit
     Route::get('/dashboard/unit/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
