@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'users_role')->orderBy('role_id');
     }
+
+    public function dokumens()
+    {
+        return $this->hasMany(Dokumen::class);
+    }
 }
