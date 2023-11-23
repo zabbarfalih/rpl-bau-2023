@@ -13,9 +13,15 @@ class UserRoleSeeder extends Seeder
         // Menetapkan peran 'Admin' untuk pengguna tertentu
         $user = User::where('email', 'admin1@example.com')->first();
         $adminRole = Role::where('name', 'Admin')->first();
+        $pbjRole = Role::where('name', 'PBJ')->first();
+        $ppkRole = Role::where('name', 'PPK')->first();
+        $unitRole = Role::where('name', 'Unit')->first();
 
-        if ($user && $adminRole) {
+        if ($user && $adminRole && $pbjRole && $ppkRole && $unitRole) {
             $user->roles()->syncWithoutDetaching($adminRole);
+            $user->roles()->syncWithoutDetaching($pbjRole);
+            $user->roles()->syncWithoutDetaching($ppkRole);
+            $user->roles()->syncWithoutDetaching($unitRole);
         }
 
         // Mendapatkan ID peran untuk 'Unit'
