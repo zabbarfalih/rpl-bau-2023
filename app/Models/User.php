@@ -18,6 +18,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'users';
+    public $timestamps = false;
+    
     protected $fillable = [
         'name',
         'nip',
@@ -48,7 +52,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class)->orderBy('role_id');
+        return $this->belongsToMany(Role::class, 'users_role')->orderBy('role_id');
     }
 
     public function dokumens()

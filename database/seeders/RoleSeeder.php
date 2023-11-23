@@ -17,9 +17,6 @@ class RoleSeeder extends Seeder
     {
         Role::insert([
             [
-                'name' => 'Unit',
-            ],
-            [
                 'name' => 'Admin',
             ],
             [
@@ -27,9 +24,6 @@ class RoleSeeder extends Seeder
             ],
             [
                 'name' => 'PPK',
-            ],
-            [
-                'name' => 'Kepala BAU',
             ],
         ]);              
     }

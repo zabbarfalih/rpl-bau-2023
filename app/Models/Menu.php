@@ -12,11 +12,13 @@ class Menu extends Model
 
     protected $table = 'menu';
 
+    public $timestamps = false;
+
     protected $guarded = ['id'];
 
     public function roles()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'users_role');
     }
 
     public function submenus()

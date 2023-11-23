@@ -49,23 +49,10 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::put('/dashboard/profil', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('/dashboard/profil', [ProfilController::class, 'destroy'])->name('profil.destroy');
 
-    // Administrator
-    Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
-    Route::get('/dashboard/administrator/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
-
     // Unit
     Route::get('/dashboard/unit/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
     Route::get('/dashboard/unit/pengajuan/tambah-pengajuan', [PengajuanController::class, 'create'])->name('pengajuan.add');
-
-
-
     Route::get('/dashboard/unit/draft-pengajuan', [DraftPengajuanController::class, 'index'])->name('draftpengajuan.index');
-
-    // PBJ
-    Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
-
-    // PPK
-    Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
 
     // SPJ
     Route::get('/dashboard/spj/info-pengajuan-spj', [InfoPengajuanSPJController::class, 'index'])->name('infopengajuanspj.index');
@@ -83,5 +70,22 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj/detail-spj', [DetailSpjController::class, 'index'])->name('konfirmasipengajuanspj.detail');
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp', [DetailSkpController::class, 'index'])->name('konfirmasipengajuanskp.detail');
 });
+
+Route::middleware(['admin', 'formatUserName'])->group(function () {
+    // Administrator
+    Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
+    Route::get('/dashboard/administrator/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
+});
+
+Route::middleware(['pbj', 'formatUserName'])->group(function () {
+    // PBJ
+    Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
+});
+
+Route::middleware(['ppk', 'formatUserName'])->group(function () {
+    // PPK
+    Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
+});
+    
 
 require __DIR__ . '/auth.php';
