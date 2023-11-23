@@ -21,22 +21,36 @@ class PengajuanController extends Controller
         $menus = Menu::with('submenus')->get();
         $users = User::all();
 
-        return view('dashboard.pengadaan.unit.pengajuan.index', [
+        return view('dashboard.pengadaan.unit.index', [
             'menus' => $menus,
             'users' => $users,
         ]);
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details()
+    {
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
+        return view('dashboard.pengadaan.unit.details', [
+            'menus' => $menus,
+            'users' => $users
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
-     * \Illuminate\Http\Response
-       @return \Illuminate\Contracts\View\Factory|Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.unit.pengajuan.add', [
+        return view('dashboard.pengadaan.unit.add', [
             'menus' => $menus,
         ]);
     }

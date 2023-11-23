@@ -37,12 +37,6 @@ class SubmenuSeeder extends Seeder
                 'url' => Str::slug('Pengajuan'),
                 'icon' => 'bi bi-menu-button-wide-fill',
             ],
-            [
-                'menu_id' => $unitMenuId,
-                'name' => 'Draft Pengajuan',
-                'url' => Str::slug('Draft Pengajuan'),
-                'icon' => 'bi bi-menu-button-wide-fill',
-            ],
 
             [
                 'menu_id' => $pbjMenuId,

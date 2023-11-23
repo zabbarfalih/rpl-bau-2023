@@ -18,17 +18,6 @@
                         <h3 class="card-title text-center fw-bold h3">
                             Daftar Pengajuan
                         </h3>
-
-                        {{-- masih harus diperbaiki untuk role yang akses
-                        --}}
-                        <div class="d-flex justify-content-end mb-3">
-                            <a
-                                href="{{route('pengajuan.add')}}"
-                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold"
-                                >+ Tambah Pengajuan</a
-                            >
-                        </div>
-
                         <table
                             class="table table-hover display responsive nowrap table-striped"
                             style="width: 100%"
@@ -88,17 +77,15 @@
                                             >Menunggu Persetujuan</span
                                         >
                                     </td>
-
-                                    {{-- masih harus diverifikasi role apa
-                                    yang akses --}}
                                     <td class="text-center">
-                                        <button
-                                            type="button"
-                                            class="btn btn-info btn-sm rounded-pill fw-bold text-white"
-                                            onclick="window.location.href='details-unit.html'"
-                                        >
-                                            Details
-                                        </button>
+                                        <a href={{ route('updatingstatusppk.details') }}>
+                                            <button
+                                                type="button"
+                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white"
+                                            >
+                                                Details
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
