@@ -171,3 +171,15 @@ h6 {
     /* font-family: "Nunito", sans-serif; */
     font-family: "Poppins", sans-serif;
 }
+
+/* Customize */
+.font-body-table td,
+.font-body-table button {
+    font-size: 1.1vw;
+}
+
+.header-table th {
+    background-color: #052c65;
+    color: white;
+    font-size: 1.1vw;
+}
