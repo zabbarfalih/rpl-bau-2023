@@ -23,7 +23,6 @@ class UserRoleSeeder extends Seeder
 
         // Mendapatkan semua ID peran selain 'Unit' dan 'Admin'
         $roleIds = Role::where('name', '!=', 'Unit')
-            ->where('name', '!=', 'Admin')
             ->pluck('id')
             ->toArray();
 
@@ -34,11 +33,14 @@ class UserRoleSeeder extends Seeder
             // Menetapkan peran 'Unit' ke setiap pengguna
             $user->roles()->syncWithoutDetaching($unitRoleId);
 
-            // Memilih satu peran lain secara acak
-            $randomRoleId = $roleIds[array_rand($roleIds)];
+            // Memilih satu peran lain secara acak hanya jika ID pengguna tidak dapat dibagi dengan 7
+            if ($user->id % 7 != 0) {
+                // Memilih satu peran lain secara acak
+                $randomRoleId = $roleIds[array_rand($roleIds)];
 
-            // Menetapkan peran acak tersebut ke pengguna
-            $user->roles()->syncWithoutDetaching($randomRoleId);
+                // Menetapkan peran acak tersebut ke pengguna
+                $user->roles()->syncWithoutDetaching($randomRoleId);
+            }
         }
     }
 }

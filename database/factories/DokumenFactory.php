@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Dokumen;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,7 @@ class DokumenFactory extends Factory
     {
         return [
             'user_id' => function () {
-                return \App\Models\User::factory()->create()->id;
+                return User::all()->random()->id;
             },
             'nama_pengadaan' => $this->faker->sentence,
             'tanggal_pengajuan' => $this->faker->date,
