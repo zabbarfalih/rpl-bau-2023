@@ -12,6 +12,8 @@ class Submenu extends Model
 
     protected $table = 'submenu';
 
+    public $timestamps = false;
+
     protected $guarded = ['id'];
 
     public function menu()
