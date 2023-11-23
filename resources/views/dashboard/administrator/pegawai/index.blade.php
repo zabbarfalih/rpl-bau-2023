@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-center fw-bold h3">
+                        <h3 class="card-title text-center fw-bold fs-3">
                             Daftar Pegawai
                         </h3>
 
@@ -23,12 +23,12 @@
                         </div>
 
                         <table
-                            class="table table-hover display responsive nowrap table-striped"
+                            class="table table-hover display responsive nowrap table-striped font-body-table"
                             style="width: 100%"
                             id="table-bau"
                         >
-                            <thead>
-                                <tr class="table-dark">
+                            <thead class="header-table">
+                                <tr>
                                     <th class="text-center col-2">Nama</th>
                                     <th class="text-center col-1">NIP</th>
                                     <th class="text-center col-1">Email</th>
