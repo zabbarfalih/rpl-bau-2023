@@ -39,7 +39,7 @@ class PegawaiController extends Controller
         
         $users = User::all();
     
-        return view('dashboard.administrator.pegawai.index', [
+        return view('dashboard.administrator.pegawai.add', [
             'menus' => $menus,
             'users' => $users,
         ]);

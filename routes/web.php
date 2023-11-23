@@ -74,7 +74,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 Route::middleware(['admin', 'formatUserName'])->group(function () {
     // Administrator
     Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
-    Route::get('/dashboard/administrator/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
+    Route::get('/dashboard/administrator/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.add');
 });
 
 Route::middleware(['pbj', 'formatUserName'])->group(function () {

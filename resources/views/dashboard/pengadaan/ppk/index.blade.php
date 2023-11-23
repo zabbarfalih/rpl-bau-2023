@@ -15,16 +15,16 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-center fw-bold h3">
+                        <h3 class="card-title text-center fw-bold fs-3">
                             Daftar Pengajuan
                         </h3>
                         <table
-                            class="table table-hover display responsive nowrap table-striped"
+                            class="table table-hover display responsive nowrap table-striped font-body-table"
                             style="width: 100%"
                             id="table-bau"
                         >
-                            <thead>
-                                <tr class="table-dark">
+                            <thead class="header-table">
+                                <tr>
                                     <th scope="col" class="text-center align-middle">
                                         No
                                     </th>
@@ -81,7 +81,7 @@
                                         <a href={{ route('updatingstatusppk.details') }}>
                                             <button
                                                 type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white"
+                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"
                                             >
                                                 Details
                                             </button>
