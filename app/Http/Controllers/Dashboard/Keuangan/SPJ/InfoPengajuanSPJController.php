@@ -20,7 +20,7 @@ class InfoPengajuanSPJController  extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.spj.info-pengajuan-spj.index', [
+        return view('dashboard.keuangan.spj.index', [
             'menus' => $menus,
             'users' => $users
         ]);

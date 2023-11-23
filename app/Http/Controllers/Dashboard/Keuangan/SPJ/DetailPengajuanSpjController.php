@@ -20,7 +20,7 @@ class DetailPengajuanSpjController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        return view('dashboard.spj.info-pengajuan-spj.detail', [
+        return view('dashboard.keuangan.spj.detail', [
             'menus' => $menus,
             'users' => $users
         ]);

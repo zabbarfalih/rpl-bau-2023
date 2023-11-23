@@ -21,7 +21,7 @@ class PengajuanSpjController extends Controller
         $menus = Menu::with('submenus')->get();
         $users = User::all();
     
-        return view('dashboard.spj.info-pengajuan-spj.index', [
+        return view('dashboard.keuangan.spj.index', [
             'menus' => $menus,
             'users' => $users,
         ]);
@@ -35,7 +35,7 @@ class PengajuanSpjController extends Controller
     public function create()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.spj.info-pengajuan-spj.add', [
+        return view('dashboard.keuangan.spj.add', [
             'menus' => $menus,
         ]);
     }

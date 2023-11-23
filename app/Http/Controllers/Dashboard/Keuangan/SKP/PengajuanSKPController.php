@@ -21,7 +21,7 @@ class PengajuanSkpController extends Controller
         $menus = Menu::with('submenus')->get();
         $users = User::all();
     
-        return view('dashboard.keuangan.skp.info-pengajuan-skp.index', [
+        return view('dashboard.keuangan.skp.index', [
             'menus' => $menus,
             'users' => $users,
         ]);
@@ -35,7 +35,7 @@ class PengajuanSkpController extends Controller
     public function create()
     {
         $menus = Menu::with('submenus')->get();
-        return view('dashboard.skp.info-pengajuan-skp.add', [
+        return view('dashboard.keuangan..skp.add', [
             'menus' => $menus,
         ]);
     }
