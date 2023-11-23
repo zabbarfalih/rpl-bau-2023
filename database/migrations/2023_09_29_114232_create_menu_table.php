@@ -20,7 +20,6 @@ class CreateMenuTable extends Migration
             $table->string('icon');
             $table->boolean('on_sidebar')->default(true);
             $table->boolean('has_submenu')->default(false);
-            $table->boolean('has_role')->default(false);
         });
     }
 

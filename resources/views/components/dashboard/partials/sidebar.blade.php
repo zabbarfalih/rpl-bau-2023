@@ -2,9 +2,12 @@
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         @foreach($menus->where('on_sidebar', true) as $menu)
-            @if ($menu->name === 'Administrator')
-                <li class="nav-heading">Administrator</li>
-            @elseif ($menu->name === 'Unit')
+            @can('admin')
+                @if ($menu->name === 'Administrator')
+                    <li class="nav-heading">Administrator</li>
+                @endif
+            @endcan
+            @if ($menu->name === 'Unit')
                 <li class="nav-heading">Pengadaan</li>
             @elseif ($menu->name === 'SPJ')
                 <li class="nav-heading">Keuangan</li>
