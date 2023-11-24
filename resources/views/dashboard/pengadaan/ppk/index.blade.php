@@ -5,11 +5,6 @@
     <x-slot name="js_head">
     </x-slot>
 
-    @php
-        $roleUser = "PPK";
-        $allowedRole = ["PPK", "PBJ"];
-    @endphp
-
     <section class="section pengajuan">
         <div class="row">
             <div class="col-lg-12">
@@ -29,11 +24,10 @@
                                         No
                                     </th>
 
-                                    @if(in_array($roleUser, $allowedRole))
                                     <th scope="col" class="text-center align-middle">
                                         Nama
                                     </th>
-                                    @endif
+
 
                                     <th scope="col" class="text-center align-middle">
                                         Nama Paket Pengadaan
@@ -52,33 +46,29 @@
                             </thead>
 
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($dokumens as $dokumen)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
-
-                                    @if(in_array($roleUser, $allowedRole))
                                     <td class="fw-bold align-middle">
-                                        {{ $user->name }}
+                                        {{ $dokumen->user->name }}
                                     </td>
-                                    @endif
 
-                                    <td class="text-center align-middle">
-                                        {{ 'Nama Pengadaan ' .
-                                        $loop->iteration }}
+                                    <td class="">
+                                        {{ $dokumen->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        22 September 2024
+                                        {{ $dokumen->tanggal_pengajuan }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <span
                                             class="badge rounded-pill bg-warning text-dark"
-                                            >Menunggu Persetujuan</span
+                                            >{{ $dokumen->status }}</span
                                         >
                                     </td>
                                     <td class="text-center">
-                                        <a href={{ route('updatingstatusppk.details') }}>
+                                        <a href={{ route('updatingstatusppk.details', ['id' => $dokumen->id]) }}>
                                             <button
                                                 type="button"
                                                 class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"

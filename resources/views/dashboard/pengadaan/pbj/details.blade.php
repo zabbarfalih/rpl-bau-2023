@@ -2,6 +2,17 @@
     <x-slot name="css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/main.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </symbol>
+          </svg>
     </x-slot>
 
     <x-slot name="js_head">
@@ -47,45 +58,10 @@
 
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="file-upload-wrapper">
-                                        <input type="file" id="input-file-now" class="file-upload"
-                                            onchange="handleFileChange()" />
-                                        <button class="btn btn-danger btn-sm ms-2" id="remove-file"
-                                            style="display:none;" onclick="removeFile()">Remove</button>
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
                                     </div>
                                 </div>
-
-                                <script>
-                                    function handleFileChange() {
-                                        // Ambil elemen input file
-                                        var inputFile = document.getElementById('input-file-now');
-
-                                        // Ambil elemen tombol remove
-                                        var removeButton = document.getElementById('remove-file');
-
-                                        // Tampilkan tombol remove dan sembunyikan tombol download template
-                                        removeButton.style.display = 'inline-block';
-                                        document.getElementById('download-template').style.display = 'none';
-
-                                        // Disable input file setelah file dipilih (opsional)
-                                        inputFile.disabled = true;
-                                    }
-
-                                    function removeFile() {
-                                        // Ambil elemen input file
-                                        var inputFile = document.getElementById('input-file-now');
-
-                                        // Ambil elemen tombol remove
-                                        var removeButton = document.getElementById('remove-file');
-
-                                        // Sembunyikan tombol remove dan tampilkan tombol download template
-                                        removeButton.style.display = 'none';
-                                        document.getElementById('download-template').style.display = 'inline-block';
-
-                                        // Reset nilai input file dan aktifkan kembali
-                                        inputFile.value = '';
-                                        inputFile.disabled = false;
-                                    }
-                                </script>
 
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
@@ -97,39 +73,10 @@
 
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="file-upload-wrapper">
-                                        <input type="file" id="input-file-now-2" class="file-upload"
-                                            onchange="handleFileChange2()" />
-                                        <button class="btn btn-danger btn-sm ms-2" id="remove-file-2"
-                                            style="display:none;" onclick="removeFile2()">Remove</button>
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
                                     </div>
                                 </div>
-
-                                <script>
-                                    function handleFileChange2() {
-                                        var inputFile = document.getElementById('input-file-now-2');
-                                        var removeButton = document.getElementById('remove-file-2');
-
-                                        // Tampilkan tombol remove dan sembunyikan tombol download template
-                                        removeButton.style.display = 'inline-block';
-                                        document.getElementById('download-template-2').style.display = 'none';
-
-                                        // Disable input file setelah file dipilih (opsional)
-                                        inputFile.disabled = true;
-                                    }
-
-                                    function removeFile2() {
-                                        var inputFile = document.getElementById('input-file-now-2');
-                                        var removeButton = document.getElementById('remove-file-2');
-
-                                        // Sembunyikan tombol remove dan tampilkan kembali tombol download template
-                                        removeButton.style.display = 'none';
-                                        document.getElementById('download-template-2').style.display = 'inline-block';
-
-                                        // Reset nilai input file dan aktifkan kembali
-                                        inputFile.value = '';
-                                        inputFile.disabled = false;
-                                    }
-                                </script>
 
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
@@ -141,39 +88,10 @@
 
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="file-upload-wrapper">
-                                        <input type="file" id="input-file-now-3" class="file-upload"
-                                            onchange="handleFileChange3()" />
-                                        <button class="btn btn-danger btn-sm ms-2" id="remove-file-3"
-                                            style="display:none;" onclick="removeFile3()">Remove</button>
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
                                     </div>
                                 </div>
-
-                                <script>
-                                    function handleFileChange3() {
-                                        var inputFile = document.getElementById('input-file-now-3');
-                                        var removeButton = document.getElementById('remove-file-3');
-
-                                        // Tampilkan tombol remove dan sembunyikan tombol download template
-                                        removeButton.style.display = 'inline-block';
-                                        document.getElementById('download-template-3').style.display = 'none';
-
-                                        // Disable input file setelah file dipilih (opsional)
-                                        inputFile.disabled = true;
-                                    }
-
-                                    function removeFile3() {
-                                        var inputFile = document.getElementById('input-file-now-3');
-                                        var removeButton = document.getElementById('remove-file-3');
-
-                                        // Sembunyikan tombol remove dan tampilkan kembali tombol download template
-                                        removeButton.style.display = 'none';
-                                        document.getElementById('download-template-3').style.display = 'inline-block';
-
-                                        // Reset nilai input file dan aktifkan kembali
-                                        inputFile.value = '';
-                                        inputFile.disabled = false;
-                                    }
-                                </script>
                                 <!-- End List group Advanced Content -->
                             </div>
                         </div>
@@ -314,5 +232,6 @@
     </section>
 
     <x-slot name="js_body">
+        <script src="{{ asset('assets/js/script.js') }}"></script>
     </x-slot>
 </x-dashboard.layouts.layouts>

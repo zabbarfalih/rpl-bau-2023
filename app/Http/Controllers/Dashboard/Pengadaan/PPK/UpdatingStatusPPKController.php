@@ -7,6 +7,8 @@ use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Dokumen;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 
 class UpdatingStatusPPKController extends Controller
@@ -20,9 +22,11 @@ class UpdatingStatusPPKController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
+        $dokumen = Dokumen::all();
         return view('dashboard.pengadaan.ppk.index', [
             'menus' => $menus,
-            'users' => $users
+            'users' => $users,
+            'dokumens' => $dokumen
         ]);
     }
 
@@ -31,13 +35,16 @@ class UpdatingStatusPPKController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+    public function details($id)
     {
         $menus = Menu::with('submenus')->get();
-        $users = User::all();
+        $roles = Role::all();
+
+        $dokumen = Dokumen::find($id);
         return view('dashboard.pengadaan.ppk.details', [
             'menus' => $menus,
-            'users' => $users
+            'roles' => $roles,
+            'dokumen' => $dokumen
         ]);
     }
 
