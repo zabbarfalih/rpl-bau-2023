@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="d-grid gap-2 mt-3">
-                                        <a href="{{ route('document.download', $document->id) }}" class="btn btn-primary" type="button">Download</a>
+                                        <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
                                     </div>
                                 </div>
 
@@ -66,9 +66,10 @@
                                 </div>
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="d-grid gap-2 mt-3">
-                                        <a href="{{ route('document.download', $document->id) }}" class="btn btn-primary" type="button">Download</a>
+                                        <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
                                     </div>
                                 </div>
+
 
                                 {{-- tampilan ppk --}}
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
