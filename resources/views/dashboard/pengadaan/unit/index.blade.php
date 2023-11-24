@@ -5,11 +5,6 @@
     <x-slot name="js_head">
     </x-slot>
 
-    @php
-        $roleUser = "Unit";
-        $allowedRole = ["PPK", "PBJ"];
-    @endphp
-
     <section class="section pengajuan">
         <div class="row">
             <div class="col-lg-12">
@@ -40,12 +35,6 @@
                                         No
                                     </th>
 
-                                    @if(in_array($roleUser, $allowedRole))
-                                    <th scope="col" class="text-center align-middle">
-                                        Nama
-                                    </th>
-                                    @endif
-
                                     <th scope="col" class="text-center align-middle">
                                         Nama Paket Pengadaan
                                     </th>
@@ -69,16 +58,11 @@
                                         {{ $loop->iteration }}
                                     </td>
 
-                                    @if(in_array($roleUser, $allowedRole))
-                                    <td class="fw-bold align-middle">
-                                        {{ $user->name }}
-                                    </td>
-                                    @endif
-
                                     <td class="text-center align-middle">
                                         {{ 'Nama Pengadaan ' .
                                         $loop->iteration }}
                                     </td>
+
                                     <td class="text-center align-middle">
                                         22 September 2024
                                     </td>
