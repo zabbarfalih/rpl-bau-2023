@@ -46,30 +46,29 @@
                             </thead>
 
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($dokumens as $dokumen)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="fw-bold align-middle">
-                                        {{ $user->name }}
+                                        {{ $dokumen->user->name }}
                                     </td>
 
-                                    <td class="text-center align-middle">
-                                        {{ 'Nama Pengadaan ' .
-                                        $loop->iteration }}
+                                    <td class="">
+                                        {{ $dokumen->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        22 September 2024
+                                        {{ $dokumen->tanggal_pengajuan }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <span
                                             class="badge rounded-pill bg-warning text-dark"
-                                            >Menunggu Persetujuan</span
+                                            >{{ $dokumen->status }}</span
                                         >
                                     </td>
                                     <td class="text-center">
-                                        <a href={{ route('updatingstatusppk.details') }}>
+                                        <a href={{ route('updatingstatusppk.details', ['id' => $dokumen->id]) }}>
                                             <button
                                                 type="button"
                                                 class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"

@@ -86,7 +86,7 @@ Route::middleware(['pbj', 'formatUserName'])->group(function () {
 Route::middleware(['ppk', 'formatUserName'])->group(function () {
     // PPK
     Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
-    Route::get('/dashboard/ppk/updating-status/details', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
+    Route::get('/dashboard/ppk/updating-status/details/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
 });
 
 

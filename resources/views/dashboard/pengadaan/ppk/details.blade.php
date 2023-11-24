@@ -41,6 +41,36 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                {{-- tampilan dokumen unit --}}
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh format laporan, silahkan tekan download</div>
+                                </div>
+
+                                <!-- List dokumen -->
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen KAK</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="{{ route('document.download', $document->id) }}" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen BAST</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="{{ route('document.download', $document->id) }}" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                {{-- tampilan ppk --}}
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
                                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16"
                                         height="16">
