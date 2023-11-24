@@ -137,7 +137,7 @@ class UpdatingStatusPPKController extends Controller
         }
 
         $headers = ['Content-Type: application/pdf'];
-        $fileName = $dokumen->kak . time() . '.pdf';
+        $fileName = $dokumen->kak . time() . '.pdf'; 
 
         return response()->download($filePath, $fileName, $headers);
     }
