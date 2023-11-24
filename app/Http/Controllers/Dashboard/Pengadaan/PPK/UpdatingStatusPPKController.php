@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 
 class UpdatingStatusPPKController extends Controller
@@ -35,9 +36,11 @@ class UpdatingStatusPPKController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
+        $roles = Role::all();
         return view('dashboard.pengadaan.ppk.details', [
             'menus' => $menus,
-            'users' => $users
+            'users' => $users,
+            'roles' => $roles,
         ]);
     }
 
