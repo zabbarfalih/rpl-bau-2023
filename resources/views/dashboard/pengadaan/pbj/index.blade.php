@@ -36,7 +36,7 @@
                                     @endif
 
                                     <th scope="col" class="text-center align-middle">
-                                        Nama Paket Pengadaan
+                                        Nama Pengadaan
                                     </th>
                                     <th scope="col" class="text-center align-middle">
                                         Tanggal Pengadaan
@@ -52,7 +52,7 @@
                             </thead>
 
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($dokumen as $dokumen)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
@@ -60,21 +60,20 @@
 
                                     @if(in_array($roleUser, $allowedRole))
                                     <td class="fw-bold align-middle">
-                                        {{ $user->name }}
+                                        {{ $dokumen->user->name }}
                                     </td>
                                     @endif
 
                                     <td class="text-center align-middle">
-                                        {{ 'Nama Pengadaan ' .
-                                        $loop->iteration }}
+                                        {{ $dokumen->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        22 September 2024
+                                        {{ \Carbon\Carbon::parse($dokumen->tanggal_pengajuan)->format('d M Y') }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <span
                                             class="badge rounded-pill bg-warning text-dark"
-                                            >Menunggu Persetujuan</span
+                                            >{{ $dokumen->status }}</span
                                         >
                                     </td>
                                     <td class="text-center">
