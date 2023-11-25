@@ -77,7 +77,7 @@
                                         >
                                     </td>
                                     <td class="text-center">
-                                        <a href={{ route('updatingstatuspbj.details') }}>
+                                        <a href={{ route('updatingstatuspbj.details', ['id' => $dokumen->id]) }}>
                                             <button
                                                 type="button"
                                                 class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"

@@ -16,7 +16,9 @@
     </x-slot>
 
     <x-slot name="js_head">
+
     </x-slot>
+
 
     <section class="section dashboard">
         <div class="container">
@@ -31,68 +33,209 @@
                                     <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
                                     <div class="col-sm-10">
                                         <select id="inputNamaUnit" class="form-select">
-                                            <option selected>Unit</option>
-                                            <option>PBJ</option>
-                                            <option>PPK</option>
+                                            @foreach($roles->where('id', '!=', 2) as $role)
+                                            <option selected>
+                                                {{ $role->name }}
+                                            </option>
+                                        @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16"
-                                        height="16">
-                                        <use xlink:href="#info-fill" />
-                                    </svg>
-                                    <div>
-                                        Untuk mengunduh format laporan,
-                                        silahkan tekan download template
+
+                                {{-- tampilan dokumen unit --}}
+                                <div class="d-none" id="dokumen-unit">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silahkan tekan download</div>
                                     </div>
-                                </div>
-                                <!-- List group with Advanced Contents -->
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen KAK
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template">Download
-                                        Template</a>
-                                </div>
 
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    <!-- List dokumen -->
+
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen KAK</h4>
                                     </div>
-                                </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
+                                    </div>
 
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen KAK 2
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen BAST</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen KAK 3
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
+                                {{-- tampilan dokumen pbj --}}
+                                <div class="d-none" id="dokumen-pbj">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silahkan tekan download</div>
+                                    </div>
 
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    <!-- List dokumen -->
+
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen PBJ 1</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen PBJ 2</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- End List group Advanced Content -->
+
+
+                                <div id="alert-bau">
+                                    @if (session('status'))
+                                        <x-elements.alert type="success" title="Success">
+                                            {{ session('status') }}
+                                        </x-elements.alert>
+                                    @endif
+
+                                    @if ($errors->any())
+                                        <x-elements.alert type="danger" title="Error">
+                                            {{ $errors->first() }}
+                                        </x-elements.alert>
+                                    @endif
+                                </div>
+                                {{-- tampilan ppk --}}
+                                <form action="updatingstatusppk.upload-files" method="post" enctype="multipart/form-data"></form>
+                                    @csrf
+                                    <div class="d-none" id="dokumen-ppk">
+                                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16"
+                                                height="16">
+                                                <use xlink:href="#info-fill" />
+                                            </svg>
+                                            <div>
+                                                Untuk mengunduh format laporan,
+                                                silahkan tekan download template
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-start">
+                                            <h4 class="alert-heading">
+                                                Dokumen KAK
+                                            </h4>
+                                            <a href="#" class="btn-link btn-sm ms-2" id="download-template">Download
+                                                Template</a>
+                                        </div>
+
+                                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                            <div class="file-upload-wrapper">
+                                                <input type="file" class="file-upload" name="uploadedFile[]" />
+                                                <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-start">
+                                            <h4 class="alert-heading">
+                                                Dokumen KAK 2
+                                            </h4>
+                                            <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
+                                                Template</a>
+                                        </div>
+
+                                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                            <div class="file-upload-wrapper">
+                                                <input type="file" class="file-upload" name="uploadedFile[]" />
+                                                <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-start">
+                                            <h4 class="alert-heading">
+                                                Dokumen KAK 3
+                                            </h4>
+                                            <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
+                                                Template</a>
+                                        </div>
+
+                                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                            <div class="file-upload-wrapper">
+                                                <input type="file" class="file-upload" name="uploadedFile[]" />
+                                                <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="#" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#tolakModal">Tolak</a>
+                                        <a href="#" type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#setujuModal">Setuju</a>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header text-center">
+                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Alasan Penolakan</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                                        <label for="floatingTextarea2">Alasan Penolakan</label>
+                                                    </div>
+
+                                                    <div class="col-12 mt-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="gridCheck" />
+                                                            <label class="form-check-label" for="gridCheck">
+                                                                Dengan revisi
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
+                                                    <a href="" type="button" class="btn btn-danger">Tolak</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header text-center">
+                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
+                                                    <a href="" type="submit" class="btn btn-success">Yakin</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -199,34 +342,7 @@
                 </div>
                 <!-- End Right side columns -->
 
-                <div class="text-center">
-                    <a href="#" type="submit" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#selesaiModal">Selesai</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="selesaiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title modal-center" id="exampleModalLabel">
-                            Konfirmasi
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Apakah anda yakin?
-                        <!-- End floating Labels Form -->
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
-                        <a href="" type="button" class="btn btn-success">Yakin</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
