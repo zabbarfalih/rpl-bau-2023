@@ -137,8 +137,24 @@ class UpdatingStatusPPKController extends Controller
         }
 
         $headers = ['Content-Type: application/pdf'];
-        $fileName = $dokumen->kak . time() . '.pdf'; 
+        $fileName = $dokumen->kak . time() . '.pdf';
 
         return response()->download($filePath, $fileName, $headers);
+    }
+
+    public function uploadFiles(Request $request)
+    {
+        $request->validate([
+            'uploadedFile.*' => 'required|mimes:pdf|max:2048', // Batas maksimum 2MB
+        ]);
+
+        foreach ($request->file('uploadedFile') as $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('public', $fileName);
+
+            // Simpan nama file ke database
+            Dokumen::create(['file_name' => $fileName]);
+        }
+
     }
 }
