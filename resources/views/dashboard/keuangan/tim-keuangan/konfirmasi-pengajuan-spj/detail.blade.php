@@ -224,6 +224,60 @@
           <!-- End Right side columns -->
         </div>
     </section>
+
+    <section>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <!-- Table with stripped rows -->
+              @if(!$tabelspj->isEmpty())
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">Nama Dosen</th>
+                    <th scope="col">Golongan</th>
+                    <th scope="col">Rate Honor</th>
+                    <th scope="col">SKS Wajib</th>
+                    <th scope="col">SKS Hadir</th>
+                    <th scope="col">SKS Dibayar</th>
+                    <th scope="col">Jumlah Bruto</th>
+                    <th scope="col">Pajak</th>
+                    <th scope="col">Jumlah Diterima</th>
+                    <th scope="col">Nomor Rekening</th>
+                    <th scope="col">Nama Rekening</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($tabelspj as $item)
+                    <tr>
+                      <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
+                      <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
+                      <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
+                      <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
+                      <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
+                      <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
+                      <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
+                      <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
+                      <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
+                      <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
+                      <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
+                    </tr>
+                  @endforeach
+                </tbody>                
+              </table>
+            @else
+            <div class="alert alert-danger" role="alert">
+              Anda Belum Mengunggah Excel, Silakan Unggah Excel.
+            </div>
+            @endif
+              <!-- End Table with stripped rows -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <x-slot name="js_body">
     </x-slot>
 </x-dashboard.layouts.layouts>
