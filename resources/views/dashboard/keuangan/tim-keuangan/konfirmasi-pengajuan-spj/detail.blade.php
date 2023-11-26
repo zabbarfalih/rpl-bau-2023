@@ -77,7 +77,6 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   {{ $spj->jenis_spj }}
-                                  <p class="card-text mt-2"><a href="{{ route('spjtemplatedownload') }}" class="btn btn-primary rounded-pill">Download</a>
                                 </div>
                               </div>
 
