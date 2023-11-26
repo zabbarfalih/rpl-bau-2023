@@ -31,7 +31,7 @@
                           <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
                             <use xlink:href="#info-fill" />
                           </svg>
-                          <div>Untuk mengunduh format laporan, silahkan tekan download</div>
+                          <div>Untuk mengunduh format laporan, silakan tekan download</div>
                         </div>
                         <!-- List group with Advanced Contents -->
 

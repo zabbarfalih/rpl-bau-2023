@@ -59,12 +59,12 @@
                                     </td>
 
                                     @if(in_array($roleUser, $allowedRole))
-                                    <td class="fw-bold align-middle">
+                                    <td class="fw-bold align-middle text-wrap">
                                         {{ $dokumen->user->name }}
                                     </td>
                                     @endif
 
-                                    <td class="text-center align-middle">
+                                    <td class="text-wrap">
                                         {{ $dokumen->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
@@ -76,11 +76,11 @@
                                             >{{ $dokumen->status }}</span
                                         >
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">
                                         <a href={{ route('updatingstatuspbj.details', ['id' => $dokumen->id]) }}>
                                             <button
                                                 type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"
+                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white custom-btn"
                                             >
                                                 Details
                                             </button>

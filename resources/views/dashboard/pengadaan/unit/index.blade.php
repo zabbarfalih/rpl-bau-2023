@@ -58,7 +58,7 @@
                                         {{ $loop->iteration }}
                                     </td>
 
-                                    <td class="text-center align-middle">
+                                    <td class="text-wrap">
                                         {{ 'Nama Pengadaan ' .
                                         $loop->iteration }}
                                     </td>
