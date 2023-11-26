@@ -62,6 +62,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
     Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', 'InfoPengajuanSpjController@show')->middleware('revalidate');
+    Route::get('/spjtemplatedownload', [InfoPengajuanSpjController::class, 'spjtemplatedownload'])->name('spjtemplatedownload');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
     Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
     // SKP
@@ -71,8 +72,9 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     // Tim Keuangan
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
-    Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj/detail-spj', [KonfirmasiSPjController::class, 'detail'])->name('konfirmasipengajuanspj.detail');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spj/{spj}', [KonfirmasiSPjController::class,'show'])->middleware('auth')->name('konfirmasi-spj.show');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
 });
 

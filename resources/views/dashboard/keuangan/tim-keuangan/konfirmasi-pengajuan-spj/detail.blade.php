@@ -19,8 +19,11 @@
                         <div
                           class="card-body profile-card pt-4 d-flex flex-column align-items-center"
                         >
-                        <img src="{{ asset('/assets/img/surat.png') }}" alt="Surat" class="ri-rounded-corner" />
-
+                          <img
+                            src="{{ asset('/assets/img/surat.png') }}"
+                            alt="Surat"
+                            class="ri-rounded-corner"
+                          />
                           <h6>Detail Pengajuan Surat</h6>
                         </div>
                       </div>
@@ -50,43 +53,52 @@
                               <h5 class="card-title">Informasi Surat Pertanggung Jawaban</h5>
 
                               <div class="row">
-                                <div class="col-lg-4 col-md-6 label">Nama Pengaju</div>
-                                <div class="col-lg-8 col-md-6">Fulan bin Fulanuddin</div>
+                                <div class="col-lg-3 col-md-4 label">Nama Pengaju</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->user->name }}</div>
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-4 col-md-6 label">Nama Kegiatan</div>
-                                <div class="col-lg-8 col-md-6">Seminar Internasional Data Sains 2023</div>
+                                <div class="col-lg-3 col-md-4 label">Nama Kegiatan</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->kegiatan }}</div>
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-4 col-md-8 label">
+                                <div class="col-lg-3 col-md-4 label">
                                   Tanggal Kegiatan
                                 </div>
-                                <div class="col-lg-8 col-md-6">
-                                  26-10-2023
+                                <div class="col-lg-9 col-md-8">
+                                  {{ $spj->tanggal_kegiatan }}
                                 </div>
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-4 col-md-8 label">
+                                <div class="col-lg-3 col-md-4 label">
                                   Jenis SPJ
                                 </div>
-                                <div class="col-lg-8 col-md-6">
-                                  SPJ Pegawai
+                                <div class="col-lg-9 col-md-8">
+                                  {{ $spj->jenis_spj }}
+                                  <p class="card-text mt-2"><a href="{{ route('spjtemplatedownload') }}" class="btn btn-primary rounded-pill">Download</a>
                                 </div>
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-4 col-md-8 label mb-2">
-                                  Dokumen SPJ 
+                                <div class="col-lg-3 col-md-4 label">
+                                  Periode
                                 </div>
-                                <div class="col-lg-8 col-md-6">
-                                  <div class="cetak">
-                                    <a href="#"><button type="button" class="btn btn-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#modalPreviewSPJ">Lihat</button></a>
-                                  </div>
+                                <div class="col-lg-9 col-md-8">
+                                  {{ $spj->periode }}
                                 </div>
                               </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Tanggal Pencairan Dana
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  {{ $spj->tanggal_transfer }}
+                                </div>
+                              </div>
+                              
                             </div>
 
 
@@ -143,7 +155,9 @@
                       <strong>Pencairan Dana</strong>
                       <p>Silakan lakukan konfirmasi pencairan dana </p>
                       <input type="date" class="form-control1" />
-                      <a href="#"><button type="button" class="btn btn-success rounded-pill mt-2 ml-4">Konfirmasi</button></a>
+                      <div class="row">
+                        <a href="#"><button type="button" class="btn btn-success rounded-pill mt-2 ml-4">Konfirmasi</button></a>
+                      </div>
                     </div>
                   </div>
                   <!-- End activity item-->
