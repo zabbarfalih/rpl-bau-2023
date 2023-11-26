@@ -133,16 +133,18 @@
                     <i
                       class="bi bi-circle-fill activity-badge text-success align-self-start"
                     ></i>
-                    <div class="activity-content">
-                      <strong>Verifikasi</strong>
-                      <div class="finish">
-                        <div class="download mt-2">
-                          <a href="#"><button type="button" class="btn btn-success rounded-pill">Setujui</button></a>
-                          <a href="#"><button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModaltolakspj">Tolak</button></a>
-                        </div>
+                    <form method="post" action="{{ url('/verifikasi-spj/' . $spj->id) }}">
+                      @csrf
+                      <div class="form-group">
+                          <label for="status">Status</label>
+                          <select name="status" id="status" class="form-control">
+                              <option value="Disetujui">Disetujui</option>
+                              <option value="Ditolak">Ditolak</option>
+                          </select>
                       </div>
-                    </div>
-                  </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div> 
                   <!-- End activity item-->
 
                   <div class="activity-item d-flex">
