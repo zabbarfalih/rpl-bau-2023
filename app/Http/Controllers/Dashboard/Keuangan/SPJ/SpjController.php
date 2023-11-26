@@ -7,9 +7,8 @@ use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
-class InfoPengajuanSpjController extends Controller
+class SpjController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +19,7 @@ class InfoPengajuanSpjController extends Controller
     {
         //
         $menus = Menu::with('submenus')->get();
-        $users = User::all();
+        $users = auth()->user();
         $spj = Spj::all();
         return view('dashboard.keuangan.spj.index', [
             'menus' => $menus,
@@ -37,6 +36,13 @@ class InfoPengajuanSpjController extends Controller
     public function create()
     {
         //
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
+        return view('dashboard.keuangan.spj.add', [
+            'menus' => $menus,
+            'user' => $users
+        ]);
+
     }
 
     /**
@@ -48,6 +54,13 @@ class InfoPengajuanSpjController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        $spj = Spj::create($data);
+
+        return redirect('dashboard/spj/info-pengajuan-spj');
+
     }
 
     /**
@@ -56,28 +69,18 @@ class InfoPengajuanSpjController extends Controller
      * @param  \App\Models\Spj  $spj
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Spj $spj)
     {
-        try {
-            $spj = Spj::findOrFail((int)$id);
-            $menus = Menu::with('submenus')->get();
-            return view('dashboard.keuangan.spj.detail', [
-                'menus' => $menus,
-                'spj' => $spj]);
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
-    }
-    public function spjtemplatedownload()
-    {
-        $path = public_path('download\template-spj honor dosen.xlsx');
-        $fileName = 'template-spj honor dosen.xlsx';
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
 
-        return response()->download($path, $fileName, ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
+        return view('dashboard.keuangan.spj.detail', [
+            'menus' => $menus,
+            'users' => $users,
+            'spj' => $spj, // Menyertakan data Spj
+        ]);
     }
     
-
-
     /**
      * Show the form for editing the specified resource.
      *

@@ -1,10 +1,8 @@
 <x-dashboard.layouts.layouts :menus="$menus">
     <x-slot name="css">
     </x-slot>
-
     <x-slot name="js_head">
     </x-slot>
-
     <section class="section dashboard">
         <div class="row">
           <!-- Left side columns -->
@@ -54,12 +52,12 @@
 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nama Pengaju</div>
-                                <div class="col-lg-9 col-md-8">Fulan bin Fulanuddin</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->user->name }}</div>
                               </div>
 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nama Kegiatan</div>
-                                <div class="col-lg-9 col-md-8">Seminar Internasional Data Sains 2023</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->kegiatan }}</div>
                               </div>
 
                               <div class="row">
@@ -67,7 +65,7 @@
                                   Tanggal Kegiatan
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  26-10-2023
+                                  {{ $spj->tanggal_kegiatan }}
                                 </div>
                               </div>
 
@@ -76,20 +74,29 @@
                                   Jenis SPJ
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  SPJ Pegawai
+                                  {{ $spj->jenis_spj }}
+                                  <p class="card-text mt-2"><a href="" class="btn btn-primary rounded-pill">Download</a>
                                 </div>
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-3 col-md-4 label mb-2">
-                                  Dokumen SPJ 
+                                <div class="col-lg-3 col-md-4 label">
+                                  Periode
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  <div class="cetak">
-                                    <a href="#"><button type="button" class="btn btn-secondary rounded-pill">Lihat</button></a>
-                                  </div>
+                                  {{ $spj->periode }}
                                 </div>
                               </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Tanggal Pencairan Dana
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  {{ $spj->tanggal_transfer }}
+                                </div>
+                              </div>
+                              
                             </div>
 
 
@@ -126,15 +133,59 @@
                       class="bi bi-circle-fill activity-badge text-success align-self-start"
                     ></i>
                     <div class="activity-content">
-                      <strong>Verifikasi</strong>
-                      <p>SKP telah disetujui oleh Tim Keuangan</p>
+                      <strong>Unggah file</strong>
                       <div class="finish">
                         <div class="download">
-                          <a href="#"><button type="button" class="btn btn-danger rounded-pill">Perbaiki</button></a>
+                          <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#basicModal">
+                            Basic Modal
+                          </button>
+                          <div class="modal fade" id="basicModal" tabindex="-1">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Unggah File Excel</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <form action="" method="POST" enctype="multipart/form-data">
+                                    <div class="row">
+                                      <div class="col-lg-3 col-md-4 label mb-2">
+                                        {{ csrf_field() }}
+                                          <div class="form-group">
+                                              <input class="custom-file-input" type="file" name="file" required>
+                                          </div>
+                                      </div>
+                                    </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Kirim</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  <div class="activity">
+                    <div class="activity-item d-flex">
+                      <div class="activite-label">Tahap 1</div>
+                      <i
+                        class="bi bi-circle-fill activity-badge text-success align-self-start"
+                      ></i>
+                      <div class="activity-content">
+                        <strong>Verifikasi</strong>
+                        <p>SKP telah disetujui oleh Tim Keuangan</p>
+                        <div class="finish">
+                          <div class="download">
+                            <a href="#"><button type="button" class="btn btn-danger rounded-pill">Perbaiki</button></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   <!-- End activity item-->
 
                   <div class="activity-item d-flex">

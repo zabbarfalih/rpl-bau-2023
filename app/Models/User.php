@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Dokumen::class);
     }
+
+    public function spj()
+    {
+        return $this->hasMany(Spj::class);
+    }
 }

@@ -32,28 +32,22 @@
                       </tr>
                   </thead>
                   <tbody>
-                      {{-- @foreach ($users as $user)
-                      <tr>
-                          <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                          <td class="text-center align-middle">{{ $user->name }}</td>
-                          <td class="text-center align-middle">Nama Pengadaan {{ $loop->iteration }}</td>
-                          <td class="text-center align-middle">21-09-2021</td>
-                          <td>
-                              <div class="d-flex align-items-center justify-content-center gap-2">
-                                <button class="btn btn-success" th:data-id="${mahasiswa.id}">
-                                  <a class="text-decoration-none text-light fw-semibold" href="
-                                    <i class="fa-solid fa-eye"></i>
-                                    <span>Lihat</span>
-                                  </a>
-                                </button>
-                              </div>
-                          </td>
-                          <td class="text-center align-middle">
-                              <span class="text-primary">Status</span>
-                          </td>
-                      </tr>
-                      @endforeach --}}
-                      <tr>
+                    @foreach ($spj as $item)
+                    <tr>
+                      <td scope="row">{{ $loop->iteration }}</td>
+                      <td>{{ $item->komponen }}</td>
+                      <td>{{ $item->created_at }}</td>
+                      <td><span class="badge bg-warning">{{ $item->status }}</span></td>
+                      <td>
+                        <a href="{{ route('info-pengajuan-spj.show', $item->id) }}">
+                           <button type="button" class="btn btn-success">Lihat</button>
+                         </a>                    
+                      </td>
+                      <td>{{ $item->user->name }}</td>
+                    </tr>
+                    @endforeach
+
+                      {{-- <tr>
                         <th scope="row">1</th>
                         <td>Dies Natalis Polteknik Statistika STIS 65</td>
                         <td>26-10-2023</td>
@@ -62,27 +56,8 @@
                             <a href="{{ route('spj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
                         </td>
                         <td>BAAK</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>PKKMB-PKBN Polteknik Statistika STIS 65</td>
-                        <td>28-10-2023</td>
-                        <td><span class="badge bg-success">Selesai</span></td>
-                        <td>
-                          <a href="{{ route('spj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
-                        </td>
-                        <td>BAAK</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Seminar Nasional Official Statistics 2022</td>
-                        <td>03-11-2023</td>
-                        <td><span class="badge bg-danger">Ditolak</span></td>
-                        <td>
-                          <a href="{{ route('spj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
-                        </td>
-                        <td>BAAK</td>
-                      </tr>
+                      </tr> --}}
+                      
                   </tbody>
               </table>
             </div>

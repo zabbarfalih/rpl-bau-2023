@@ -2,20 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\PengajuanController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\PengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\InfoPengajuanSKPController;
-use App\Http\Controllers\Dashboard\Keuangan\SPJ\InfoPengajuanSPJController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\InfoPengajuanSpjController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\DraftPengajuanController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\DetailPengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\DetailPengajuanSpjController;
 use App\Http\Controllers\Dashboard\Pengadaan\PBJ\UpdatingStatusPBJController;
 use App\Http\Controllers\Dashboard\Pengadaan\PPK\UpdatingStatusPPKController;
-use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSPjController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSkpController;
+use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSPjController;
 
 
 
@@ -55,8 +56,11 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/unit/pengajuan/tambah-pengajuan', [PengajuanController::class, 'create'])->name('pengajuan.add');
 
     // SPJ
-    Route::get('/dashboard/spj/info-pengajuan-spj', [InfoPengajuanSPJController::class, 'index'])->name('spj.index');
-    Route::get('/dashboard/spj/pengajuan-spj', [PengajuanSpjController::class, 'create'])->name('spj.create');
+    Route::resource('/dashboard/spj/pengajuan-spj', SpjController::class)->middleware('auth');
+    Route::get('/dashboard/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
+
+    Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
+    Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', 'InfoPengajuanSpjController@show')->middleware('revalidate');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
 
     // SKP

@@ -13,78 +13,173 @@
                 <div class="col-12">
                     <h1 class="py-5 text-center">Silakan isi formulir</h1>
 
-                    <form class="row">
+                    <form action="/dashboard/spj/pengajuan-spj" method="POST" enctype="multipart/form-data" class="row">
+                        @csrf
                         <div class="form-group row">
                             <div class="col-sm-6">
-                                <x-elements.input id="nama" value="" name="Nama" Placeholder="nama pengaju"/>
-                            </div>
-                            <div class="col-sm-6">
-                                <x-elements.input id="nama_kegiatan" value="" name="Nama Kegiatan" Placeholder="nama kegiatan"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <x-elements.input-date id="tanggal_mulai" value="" name="Tanggal Mulai" Placeholder="tanggal mulai"/>
-                            </div>
-                            <div class="col-sm-3">
-                                <x-elements.input-date id="tanggal_selesai" value="" name="Tanggal Selesai" Placeholder="tanggal selesai"/>
-                            </div>
-                            <div class="col-sm-6">
-                                <x-elements.input-date id="tanggal_pengajuan_spj" value="" name="Tanggal Pengajuan SPJ" Placeholder="tanggal pengajuan"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <x-elements.input id="kategori_spj" value="" name="Kategori SPJ" Placeholder="kategori spj"/>
-                            </div>
-                            {{-- <div class="col-sm-6">
-                                <x-elements.select id="jenis_spj"  name="Jenis SPJ" Placeholder="Jenis SPJ">
-                                    <option selected>Pilih jenis SPJ</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </x-elements.select>
-                            </div> --}}
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Download Template</h5>
-                                    <p class="card-text">Download template SPJ lalu isi sesuai dengan yang diminta</p>
-                                    <p class="card-text"><a href="#" class="btn btn-primary rounded-pill">Download</a></p>
-                                    </div>
+                                <label for="inputText" class="col-sm-2 col-form-label">Program</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    value="(054.01.WA)  PROGRAM DUKUNGAN MANAJEMEN"
+                                    readonly
+                                    name="program"
+                                    />
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Upload Template</h5>
-                                    <p class="card-text">Upload template SPJ yang sudah siap dicetak dalam format excel</p>
-                                    <x-elements.input-file id="inputBukti" value="" name="Bukti" placeholder=""/>
-                                    </div>
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">Kegiatan</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    value="(0880)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
+                                    readonly
+                                    name="kegiatan"
+                                    />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Prreview Template</h5>
-                                    <p class="card-text">Pastikan dokumen yang dikirim sudah benar</p>
-                                    <p class="card-text"><a href="#" class="btn btn-danger rounded-pill">Preview Dokumen</a></p>
-                                    </div>
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">KRO</label>
+                                <div class="col-sm-10">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      value="(EBC)    LAYANAN MANAJEMEN SDM INTERNAL"
+                                      readonly
+                                      name="kro"
+                                    />
+                                  </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <label for="inputText" class="col-sm-7 col-form-label">Rencana Output</label>
                                 </div>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    value="(U05)    PROGRAM III"
+                                    name="rencana_output"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">Komponen</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    value="(052)    PELAKSANAAN PENDIDIKAN"
+                                    readonly
+                                    name="komponen"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">Akun</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    value="(521213)    BELANJA HONOR OUTPUT KEGIATAN"
+                                    readonly
+                                    name="akun"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">Periode</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="masukkan periode"
+                                    name="periode"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <label for="inputText" class="col-sm-7 col-form-label">Tanggal Kegiatan</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div class="col-sm-10">
+                                        <input type="date" name="tanggal_kegiatan" class="form-control font-form" style="font-size: 16px;"/>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">Jenis SPJ</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    value="SPJ Honor Dosen"
+                                    readonly
+                                    name="jenis_spj"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <label for="inputText" class="col-sm-12 col-form-label">Bendahara Pengeluaran</label>
+                                </div>
+                                <div class="col-sm-10">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    value="Rina Hardiyanti, SST"
+                                    readonly
+                                    name="bendahara"
+                                />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <label for="inputText" class="col-sm-12 col-form-label">Pejabat Pembuat Komitmen</label>
+                                </div>
+                                <div class="col-sm-10">
+                                <select class="form-select" name="ppk">
+                                    <option selected>Pilih Penandatangan</option>
+                                    <option value="1">Luci Wulansari</option>
+                                    <option value="2">XXX</option>
+                                    <option value="3">ZZZ</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="col-sm-10">
+                                    <input
+                                      type="hidden"
+                                      class="form-control"
+                                      value="Menunggu Persetujuan"
+                                      readonly
+                                      name="status"
+                                    />
+                                  </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center py-3">
                             <div class="col-4 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary px-4 float-right">Submit</button>
+                                <button type="submit" class="btn btn-primary float-right">Tambahkan Dokumen Excel</button>
                             </div>
                         </div>
                     </form>
