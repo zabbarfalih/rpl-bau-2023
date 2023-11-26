@@ -24,4 +24,9 @@ class Spj extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function tabel()
+    {
+        return $this->hasMany(TabelSpj::class);
+    }
 }

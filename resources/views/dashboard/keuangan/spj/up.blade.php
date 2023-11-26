@@ -31,19 +31,9 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                <h5 class="card-title">Prreview Template</h5>
-                                <p class="card-text">Pastikan dokumen yang dikirim sudah benar</p>
-                                <p class="card-text"><a href="#" class="btn btn-danger rounded-pill">Preview Dokumen</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>

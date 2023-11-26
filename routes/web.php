@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
@@ -62,7 +63,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
     Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', 'InfoPengajuanSpjController@show')->middleware('revalidate');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
-
+    Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('skp.index');
     Route::get('/dashboard/skp/pengajuan-skp', [PengajuanSkpController::class, 'create'])->name('skp.create');

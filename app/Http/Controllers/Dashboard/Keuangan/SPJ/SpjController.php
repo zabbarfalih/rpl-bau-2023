@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Keuangan\SPJ;
 use App\Models\Spj;
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\TabelSpj;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -73,11 +74,13 @@ class SpjController extends Controller
     {
         $menus = Menu::with('submenus')->get();
         $users = User::all();
+        $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
 
         return view('dashboard.keuangan.spj.detail', [
             'menus' => $menus,
             'users' => $users,
-            'spj' => $spj, // Menyertakan data Spj
+            'spj' => $spj,
+            'tabelspj' => $tabelspj
         ]);
     }
     

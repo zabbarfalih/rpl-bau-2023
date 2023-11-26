@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TabelSpj;
 use Illuminate\Support\Facades\Auth;
 
 class InfoPengajuanSpjController extends Controller
@@ -18,10 +19,11 @@ class InfoPengajuanSpjController extends Controller
      */
     public function index()
     {
-        //
         $menus = Menu::with('submenus')->get();
         $users = User::all();
-        $spj = Spj::all();
+        
+        $spj = Spj::where('user_id', Auth::id())->get();
+
         return view('dashboard.keuangan.spj.index', [
             'menus' => $menus,
             'users' => $users,
@@ -61,9 +63,11 @@ class InfoPengajuanSpjController extends Controller
         try {
             $spj = Spj::findOrFail((int)$id);
             $menus = Menu::with('submenus')->get();
+            $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.spj.detail', [
                 'menus' => $menus,
-                'spj' => $spj]);
+                'spj' => $spj,
+                'tabelspj'=> $tabelspj]);
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
