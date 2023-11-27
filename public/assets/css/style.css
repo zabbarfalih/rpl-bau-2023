@@ -173,10 +173,10 @@ h6 {
 }
 
 /* Customize */
+.custom-btn,
 .font-body-table td,
-.font-body-table button,
 .font-form {
-    font-size: 1.1vw;
+    font-size: 1.1vw !important;
 }
 
 .header-table th {

@@ -89,7 +89,9 @@ Route::middleware(['admin', 'formatUserName'])->group(function () {
 Route::middleware(['pbj', 'formatUserName'])->group(function () {
     // PBJ
     Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
-    Route::get('/dashboard/pbj/updating-status/details', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
+    Route::get('/dashboard/pbj/updating-status/details/{id}', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
+    Route::get('/dashboard/pbj/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPBJController::class, 'download'])->name('updatingstatuspbj.download');
+    Route::get('/dashboard/pbj/updating-status/upload-files', [UpdatingStatusPBJController::class, 'uploadFiles'])->name('updatingstatuspbj.upload-files');
 });
 
 Route::middleware(['ppk', 'formatUserName'])->group(function () {

@@ -31,12 +31,41 @@
                                     <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
                                     <div class="col-sm-10">
                                         <select id="inputNamaUnit" class="form-select">
-                                            <option selected>Unit</option>
-                                            <option>PBJ</option>
-                                            <option>PPK</option>
+                                            @foreach($roles->where('id', '!=', 2) as $role)
+                                            <option>
+                                                {{ $role->name }}
+                                            </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+
+                                {{-- tampilan unit --}}                                
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen KAK</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen Memo</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                {{-- tampilan pbj --}}
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
                                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16"
                                         height="16">
@@ -44,13 +73,13 @@
                                     </svg>
                                     <div>
                                         Untuk mengunduh format laporan,
-                                        silahkan tekan download template
+                                        silakan tekan download template
                                     </div>
                                 </div>
                                 <!-- List group with Advanced Contents -->
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
-                                        Dokumen KAK
+                                        Dokumen Undangan
                                     </h4>
                                     <a href="#" class="btn-link btn-sm ms-2" id="download-template">Download
                                         Template</a>
@@ -65,7 +94,7 @@
 
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
-                                        Dokumen KAK 2
+                                        Dokumen SSUK SSKK
                                     </h4>
                                     <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
                                         Template</a>
@@ -80,7 +109,67 @@
 
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
-                                        Dokumen KAK 3
+                                        Dokumen IKP
+                                    </h4>
+                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
+                                        Template</a>
+                                </div>
+
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">
+                                        Dokumen LDP dan Spesifikasi
+                                    </h4>
+                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
+                                        Template</a>
+                                </div>
+
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">
+                                        Dokumen Penawaran
+                                    </h4>
+                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
+                                        Template</a>
+                                </div>
+
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">
+                                        Dokumen Surat Permintaan
+                                    </h4>
+                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
+                                        Template</a>
+                                </div>
+
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">
+                                        Dokumen Pengadaan Langsung
                                     </h4>
                                     <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
                                         Template</a>
@@ -93,6 +182,49 @@
                                     </div>
                                 </div>
                                 <!-- End List group Advanced Content -->
+
+                                {{-- tampilan ppk --}}                                
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen Identifikasi Kebutuhan</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen Perencanaan Pengadaan</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen Nota Dinas</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start">
+                                    <h4 class="alert-heading">Dokumen HPS</h4>
+                                </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <div class="d-grid gap-2 mt-3">
+                                        <a href="" class="btn btn-primary" type="button">Download</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -223,7 +355,7 @@
                         <!-- End floating Labels Form -->
                     </div>
                     <div class="modal-footer">
-                        <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
+                        <a href="#" type="button" class="btn btn-danger" data-dismiss="modal">Batal</a>
                         <a href="" type="button" class="btn btn-success">Yakin</a>
                     </div>
                 </div>

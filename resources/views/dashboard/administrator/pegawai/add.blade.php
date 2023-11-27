@@ -13,56 +13,72 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title fw-bold fs-3 text-center">Form Pengajuan Pengadaan</h5>
+                      <h5 class="card-title fw-bold fs-3 text-center">Form Pembuatan Akun Pegawai</h5>
                       <br>
 
                       <!-- General Form Elements -->
-                      <form class="font-form fw-bold">
+                      <form class="font-form fw-bold">                    
                         <div class="row mb-3">
-                          <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
-                          <div class="col-sm-10">
-                            <select id="inputNamaUnit" class="form-select font-form">
-                              <option selected>Choose...</option>
-                              <option>Unit A</option>
-                              <option>Unit B</option>
-                              <option>Unit C</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <div class="row mb-3">
-                          <label for="inputText" class="col-sm-2 col-form-label">Nama Paket Pengadaan</label>
+                          <label for="inputText" class="col-sm-2 col-form-label">Nama Pegawai</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" />
                           </div>
                         </div>
 
                         <div class="row mb-3">
-                          <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Pengadaan</label>
+                          <label for="inputText" class="col-sm-2 col-form-label">NIP</label>
                           <div class="col-sm-10">
-                            <input type="date" class="form-control font-form" />
+                            <input type="text" class="form-control" />
+                          </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                          <label for="inputText" class="col-sm-2 col-form-label">Email</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" />
                           </div>
                         </div>
 
-                        <div class="">
-                          <a href=""><small>Unduh Template Dokumen KAK Di Sini</small></a>
-                        </div>
-
                         <div class="row mb-3">
-                          <label for="inputNumber" class="col-sm-2 col-form-label">Upload Dokumen KAK </label>
+                          <label for="inputText" class="col-sm-2 col-form-label">Alamat</label>
                           <div class="col-sm-10">
-                            <input class="form-control font-form" type="file" id="formFile" />
+                            <input type="text" class="form-control" />
                           </div>
                         </div>
 
-                        <div class="">
-                          <a href=""><small>Unduh Template Memo Di Sini</small></a>
+                        <div class="row mb-3">
+                          <label for="inputText" class="col-sm-2 col-form-label">Password</label>
+                          <div class="col-sm-10">
+                            <input type="password" class="form-control" />
+                          </div>
                         </div>
 
                         <div class="row mb-3">
-                          <label for="inputNumber" class="col-sm-2 col-form-label">Upload Memo</label>
+                          <label for="inputText" class="col-sm-2 col-form-label">Konfirmasi Password</label>
                           <div class="col-sm-10">
-                            <input class="form-control font-form" type="file" id="formFile" />
+                            <input type="password" class="form-control" />
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label for="inputRolePegawai" class="col-sm-2 col-form-label">Role</label>
+                          <div class="col-sm-10 d-inline-flex fw-normal">
+                            <div class="me-5">
+                              <input type="checkbox" name="role1" id="role1" value="Unit">
+                              <label for="role1"> Unit</label>
+                            </div>
+                            <div class="me-5">
+                              <input type="checkbox" name="role2" id="role2" value="Admin">
+                              <label for="role2"> Admin</label>
+                            </div>
+                            <div class="me-5">
+                              <input type="checkbox" name="role3" id="role3" value="PBJ">
+                              <label for="role3"> PBJ</label>
+                            </div>
+                            <div class="me-5">
+                              <input type="checkbox" name="role4" id="role4" value="PPK">
+                              <label for="role4"> PPK</label>
+                            </div>                  
                           </div>
                         </div>
                       </form>
