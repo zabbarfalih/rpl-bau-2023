@@ -44,8 +44,8 @@
                           </div>
                         </div>
 
-                        <div class="">
-                          <a href=""><small>Unduh Template Dokumen KAK Di Sini</small></a>
+                        <div class="mb-1">
+                          <a href="" class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
                         </div>
 
                         <div class="row mb-3">
@@ -55,8 +55,8 @@
                           </div>
                         </div>
 
-                        <div class="">
-                          <a href=""><small>Unduh Template Memo Di Sini</small></a>
+                        <div class="mb-1">
+                          <a href="" class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
                         </div>
 
                         <div class="row mb-3">

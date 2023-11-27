@@ -9,6 +9,8 @@ use App\Models\Dokumen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Role;
+use Illuminate\Support\Facades\Storage;
 
 class UpdatingStatusPBJController extends Controller
 {
@@ -20,10 +22,12 @@ class UpdatingStatusPBJController extends Controller
     public function index()
     {
         $menus = Menu::with('submenus')->get();
+        $users = User::all();
         $dokumen = Dokumen::where('pelaksana', 1)->get();
         return view('dashboard.pengadaan.pbj.index', [
             'menus' => $menus,
-            'dokumen' => $dokumen
+            'dokumen' => $dokumen,
+            'users' => $users
         ]);
     }
 
@@ -32,13 +36,15 @@ class UpdatingStatusPBJController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+    public function details($id)
     {
         $menus = Menu::with('submenus')->get();
-        $users = User::all();
+        $roles = Role::all();
+        $dokumen = Dokumen::find($id);
         return view('dashboard.pengadaan.pbj.details', [
             'menus' => $menus,
-            'users' => $users
+            'dokumen' => $dokumen,
+            'roles' => $roles
         ]);
     }
 
@@ -106,5 +112,41 @@ class UpdatingStatusPBJController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function download($nama_dokumen, $id)
+    {
+        $dokumen = Dokumen::find($id);
+
+        if (!$dokumen) {
+            abort(404); // Dokumen tidak ditemukan
+        }
+
+        if ($nama_dokumen === 'kak') {
+            $filePath = public_path("storage/" . $dokumen->kak . ".pdf");
+        } elseif ($nama_dokumen === 'bast') {
+            $filePath = public_path("storage/" . $dokumen->bast . ".pdf");;
+        }
+
+        $headers = ['Content-Type: application/pdf'];
+        $fileName = $dokumen->kak . time() . '.pdf';
+
+        return response()->download($filePath, $fileName, $headers);
+    }
+
+    public function uploadFiles(Request $request)
+    {
+        $request->validate([
+            'uploadedFile.*' => 'required|mimes:pdf|max:2048', // Batas maksimum 2MB
+        ]);
+
+        foreach ($request->file('uploadedFile') as $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('public', $fileName);
+
+            // Simpan nama file ke database
+            Dokumen::create(['file_name' => $fileName]);
+        }
+
     }
 }
