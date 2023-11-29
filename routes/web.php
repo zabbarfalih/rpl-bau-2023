@@ -65,6 +65,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/spjtemplatedownload', [InfoPengajuanSpjController::class, 'spjtemplatedownload'])->name('spjtemplatedownload');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
     Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
+    Route::delete('/dashboard/spj/info-pengajuan-spj/hapus-spj/{spj}', [SpjController::class, 'hapusSpj']);
 
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('skp.index');
@@ -77,7 +78,9 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj/{spj}', [KonfirmasiSPjController::class,'show'])->middleware('auth')->name('konfirmasi-spj.show');
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
-    Route::post('/verifikasi-spj/{spj}', [DetailSpjController::class, 'changeStatus']);
+    Route::post('/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetuju']);
+    Route::post('/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolak']);
+    Route::post('/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpj']);
 });
 
 Route::middleware(['admin', 'formatUserName'])->group(function () {

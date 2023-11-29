@@ -1,44 +1,33 @@
-<x-dashboard.layouts.layouts :menus="$menus">
-    <x-slot name="css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/main.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
-    </x-slot>
+<button type="button" class="btn btn-success m-1" @if($spj->status !== 'Menunggu Persetujuan') disabled @endif data-bs-toggle="modal" data-bs-target="#setujuispj">
+    Setujui
+  </button>
 
-    <x-slot name="js_head">
-    </x-slot>
-
-    <section class="section draft-pengajuan bg-white">
-        <div class="container">
-            <div class="row">
-                <form action="" method="POST" enctype="multipart/form-data" class="row">
-                    @csrf
-                    <div class="form-group row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                <h5 class="card-title">Download Template</h5>
-                                <p class="card-text">Download template SPJ lalu isi sesuai dengan yang diminta</p>
-                                <p class="card-text"><a href="#" class="btn btn-primary rounded-pill">Download</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                <h5 class="card-title">Upload Template</h5>
-                                <p class="card-text">Upload template SPJ yang sudah siap dicetak dalam format excel</p>
-                                <x-elements.input-file id="inputBukti" value="" name="Bukti" placeholder=""/>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                </form>
-            </div>
+  <div class="modal fade" id="setujui" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Setujui Pengajuan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </section>
-      
-    <x-slot name="js_body">
-    </x-slot>
-</x-dashboard.layouts.layouts>
+        <div class="modal-body">
+          Apakah Anda yakin untuk menyetujui pengajuan ini?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+          <form method="post" action="{{ url('/setujui-spj/' . $spj->id) }}">
+            @csrf
+            <input
+            type="hidden"
+            class="form-control"
+            value="Menunggu Pencairan Dana"
+            readonly
+            name="status"
+          />
+          <button type="submit" class="btn btn-success m-1">
+            Setujui
+          </button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>

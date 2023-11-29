@@ -18,7 +18,7 @@
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Total Pengajuan SPJ</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">10</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2"> {{ $spj->count() }}</p>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Selesai</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">4</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2"> {{ $spj->where('status', 'Selesai')->count() }}</p>
             </div>
           </div>
         </div>
@@ -43,12 +43,12 @@
           <div class="card">
             <div class="card-body pd-2">
               <div class="icon mt-2">
-                <span class="badge bg-secondary p-2 rounded-circle">
+                <span class="badge bg-warning p-2 rounded-circle">
                   <i class="bi bi-clipboard text-white size-16" style="font-size: 2rem; padding-top:1rem;"></i>
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Diproses</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">3</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2"> {{ $spj->whereNotIn('status', ['Selesai', 'Ditolak'])->count() }}</p>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Ditolak</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">3</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2">{{ $spj->where('status', 'Ditolak')->count() }}</p>
             </div>
           </div>
         </div>
@@ -94,7 +94,15 @@
                       <td scope="row">{{ $loop->iteration }}</td>
                       <td>{{ $item->komponen }}</td>
                       <td>{{ $item->created_at->format('M j, Y') }}</td>
-                      <td><span class="badge bg-warning">{{ $item->status }}</span></td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
                       <td>
                         <a href="{{ route('konfirmasi-spj.show', ['spj' => $item->id]) }}">
                           <button type="button" class="btn btn-success">Lihat</button>

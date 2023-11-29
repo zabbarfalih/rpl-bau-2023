@@ -31,6 +31,7 @@ class CreateSpjsTable extends Migration
             $table->string('ppk');
             $table->string('status');
             $table->date('tanggal_transfer')->nullable(); 
+            $table->string('keterangan')->default('-');
             
         });
     }

@@ -22,23 +22,53 @@ class DetailSpjController extends Controller
         //
     }
 
-    public function changeStatus(Request $request, $id)
+    public function changeStatusSetuju(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:Disetujui,Ditolak',
+            'status' => 'required|in:Menunggu Pencairan Dana,Ditolak',
         ]);
     
         $spj = Spj::findOrFail($id);
-    
-        // if ($spj->user->role != 'tim keuangan') {
-        //     return redirect()->back()->with('error', 'Anda tidak bisa mengubah status form yang bukan dibuat oleh admin.');
-        // }
-    
+
         $spj->status = $request->status;
         $spj->save();
     
-        return redirect()->back()->with('success', 'Status berhasil diubah.');
+        return redirect()->back()->with('success', 'SPJ berhasil disetujui.');
     }
+
+    public function changeStatusTolak(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Ditolak',
+            'keterangan' => 'required'
+        ]);
+    
+        $spj = Spj::findOrFail($id);
+
+        $spj->status = $request->status;
+        $spj->keterangan = $request->keterangan;
+        $spj->save();
+    
+        return redirect()->back()->with('success', 'SPJ berhasil ditolak.');
+    }
+
+    public function konfirmasiTransferSpj(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Selesai',
+            'tanggal_transfer' => 'required'
+        ]);
+    
+        $spj = Spj::findOrFail($id);
+
+        $spj->status = $request->status;
+        $spj->tanggal_transfer = $request->tanggal_transfer;
+        $spj->save();
+    
+        return redirect()->back()->with('success', 'Berhasil mengonformasi tanggal Pencairan Dana.');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

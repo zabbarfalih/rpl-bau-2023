@@ -26,7 +26,7 @@ class TabelSpjImport implements ToModel, WithStartRow, WithCalculatedFormulas
             //
             'user_id' => auth()->id(),
             'spj_id' => $spj_idFromForm,
-            'nama_dosen' => $row[1] ?? null, // Adjust the index based on your Excel file
+            'nama_dosen' => $row[1] ?? null, 
             'golongan' => $row[2] ?? null,
             'rate_honor' => $row[3] ?? null,
             'sks_wajib' => $row[4] ?? null,

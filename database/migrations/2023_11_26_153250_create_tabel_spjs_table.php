@@ -19,7 +19,7 @@ class CreateTabelSpjsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('spj_id');
-            $table->foreign('spj_id')->references('id')->on('spjs');
+            $table->foreign('spj_id')->references('id')->on('spjs')->onDelete('cascade');
             $table->string('nama_dosen');
             $table->string('golongan');
             $table->bigInteger('rate_honor');

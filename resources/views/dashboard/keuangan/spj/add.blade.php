@@ -6,6 +6,11 @@
 
     <x-slot name="js_head">
     </x-slot>
+    <style>
+        .readonly-field {
+            background-color: #cacaca; 
+        }
+    </style>
 
     <section class="section draft-pengajuan bg-white">
         <div class="container">
@@ -21,7 +26,7 @@
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
-                                    class="form-control"
+                                    class="form-control readonly-field"
                                     value="(054.01.WA)  PROGRAM DUKUNGAN MANAJEMEN"
                                     readonly
                                     name="program"
@@ -33,7 +38,7 @@
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
-                                    class="form-control"
+                                    class="form-control readonly-field"
                                     value="(0880)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
                                     readonly
                                     name="kegiatan"
@@ -48,7 +53,7 @@
                                 <div class="col-sm-10">
                                     <input
                                       type="text"
-                                      class="form-control"
+                                      class="form-control readonly-field"
                                       value="(EBC)    LAYANAN MANAJEMEN SDM INTERNAL"
                                       readonly
                                       name="kro"
@@ -76,7 +81,7 @@
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
-                                    class="form-control"
+                                    class="form-control readonly-field"
                                     value="(052)    PELAKSANAAN PENDIDIKAN"
                                     readonly
                                     name="komponen"
@@ -88,7 +93,7 @@
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
-                                    class="form-control"
+                                    class="form-control readonly-field"
                                     value="(521213)    BELANJA HONOR OUTPUT KEGIATAN"
                                     readonly
                                     name="akun"
@@ -104,8 +109,10 @@
                                     <input
                                     type="text"
                                     class="form-control"
-                                    placeholder="masukkan periode"
+                                    placeholder="masukkan tahun"
                                     name="periode"
+                                    id="periode"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -115,7 +122,7 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="col-sm-10">
-                                        <input type="date" name="tanggal_kegiatan" class="form-control font-form" style="font-size: 16px;"/>
+                                        <input type="date" name="tanggal_kegiatan" class="form-control font-form" style="font-size: 16px;"required/>
                                       </div>
                                 </div>
                             </div>
@@ -127,10 +134,11 @@
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
-                                    class="form-control"
+                                    class="form-control readonly-field"
                                     value="SPJ Honor Dosen"
                                     readonly
                                     name="jenis_spj"
+                                    required
                                     />
                                 </div>
                             </div>
@@ -141,7 +149,7 @@
                                 <div class="col-sm-10">
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    class="form-control readonly-field"
                                     value="Rina Hardiyanti, SST"
                                     readonly
                                     name="bendahara"
@@ -156,7 +164,7 @@
                                     <label for="inputText" class="col-sm-12 col-form-label">Pejabat Pembuat Komitmen</label>
                                 </div>
                                 <div class="col-sm-10">
-                                <select class="form-select" name="ppk">
+                                <select class="form-select" name="ppk" required>
                                     <option selected>Pilih Penandatangan</option>
                                     <option value="1">Luci Wulansari</option>
                                     <option value="2">XXX</option>

@@ -60,7 +60,7 @@ class SpjController extends Controller
 
         $spj = Spj::create($data);
 
-        return redirect('dashboard/spj/info-pengajuan-spj');
+        return redirect('dashboard/spj/info-pengajuan-spj')->with('success','Pengajuan berhasil dibuat, silakan unggah dokumen');
 
     }
 
@@ -83,6 +83,20 @@ class SpjController extends Controller
             'tabelspj' => $tabelspj
         ]);
     }
+
+    public function hapusSpj($spj)
+    {
+        $spjModel = Spj::findOrFail($spj);
+
+        if (!$spjModel) {
+            return response()->json(['message' => 'SPJ tidak ditemukan'], 404);
+        }
+
+        $spjModel->delete();
+
+        return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'SPJ berhasil dihapus');
+    }
+
     
     /**
      * Show the form for editing the specified resource.

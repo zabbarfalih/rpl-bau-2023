@@ -51,6 +51,28 @@
                               <h5 class="card-title">Informasi Surat Pertanggung Jawaban</h5>
 
                               <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Status SPJ
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  <span class="badge 
+                                      @if($spj->status == 'Selesai') bg-success 
+                                      @elseif($spj->status == 'Ditolak') bg-danger 
+                                      @else bg-warning 
+                                      @endif">
+                                      {{ $spj->status }}
+                                  </span>
+
+                                  @if ($spj->status === 'Ditolak') 
+                                    <a href="/dashboard/spj/pengajuan-spj" class="ml-4"><button type="button" class="btn btn-outline-success ml-4" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                      Ajukan Ulang</button>
+                                    </a>
+                                  @endif
+
+                                </div>
+                              </div>
+                              
+                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nama Pengaju</div>
                                 <div class="col-lg-9 col-md-8">{{ $spj->user->name }}</div>
                               </div>
@@ -75,7 +97,7 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   {{ $spj->jenis_spj }}
-                                  <p class="card-text mt-2"><a href="{{ route('spjtemplatedownload') }}" class="btn btn-primary rounded-pill">Download</a>
+                                  <p class="card-text mt-2 td-underline"><u><a href="{{ route('spjtemplatedownload') }}" >Download Template Excel di sini</a></u></p>
                                 </div>
                               </div>
 
@@ -96,8 +118,46 @@
                                   {{ $spj->tanggal_transfer }}
                                 </div>
                               </div>
-                              
+
+                              @if ($spj->status === 'Ditolak') 
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Pesan Penolakan
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  {{ $spj->keterangan }}
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapusspj">
+                                Hapus Pengajuan
+                              </button>
+                              <div class="modal fade" id="hapusspj" tabindex="-1">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title">Hapus Pengajuan</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      Apakah Anda yakin untuk menghapus pengajuan ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                      <form method="post" action="{{ url('/dashboard/spj/info-pengajuan-spj/hapus-spj/' . $spj->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              @endif
+
                             </div>
+
+                            
 
 
                             <div
@@ -124,20 +184,20 @@
             <!-- Recent Activity -->
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Perkembangan Proses Pengajuan</h5>
+                <h5 class="card-title">Perkembangan Status Pengajuan</h5>
 
                 <div class="activity">
                   <div class="activity-item d-flex">
                     <div class="activite-label">Tahap 1</div>
                     <i
-                      class="bi bi-circle-fill activity-badge text-success align-self-start"
+                      class="bi bi-circle-fill activity-badge text-warning align-self-start"
                     ></i>
                     <div class="activity-content">
-                      <strong>Unggah file</strong>
+                      <strong>Unggah Dokumen</strong>
                       <div class="finish">
                         <div class="download">
-                          <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#basicModal">
-                            Basic Modal
+                          <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#basicModal" @if($spj->status !== 'Menunggu Persetujuan') disabled @endif>
+                            Unggah
                           </button>
                           <div class="modal fade" id="basicModal" tabindex="-1">
                             <div class="modal-dialog">
@@ -182,32 +242,15 @@
 
                   <div class="activity">
                     <div class="activity-item d-flex">
-                      <div class="activite-label">Tahap 1</div>
+                      <div class="activite-label">Tahap 2</div>
                       <i
-                        class="bi bi-circle-fill activity-badge text-success align-self-start"
+                        class="bi bi-circle-fill activity-badge text-warning align-self-start"
                       ></i>
                       <div class="activity-content">
-                        <strong>Verifikasi</strong>
-                        <p>SKP telah disetujui oleh Tim Keuangan</p>
-                        <div class="finish">
-                          <div class="download">
-                            <a href="#"><button type="button" class="btn btn-danger rounded-pill">Perbaiki</button></a>
-                          </div>
-                        </div>
+                        <strong>Menunggu Persetujuan</strong>
+                        <p>Pada tahap ini pengajuan akan disetujui/ditolak oleh Tim Keuangan</p>
                       </div>
                     </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">Tahap 2</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-danger align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      <strong>Pencairan Dana</strong>
-                      <p>Proses pencairan dana telah selesai</p>
-                    </div>
-                  </div>
                   <!-- End activity item-->
 
                   <div class="activity-item d-flex">
@@ -216,11 +259,23 @@
                       class="bi bi-circle-fill activity-badge text-warning align-self-start"
                     ></i>
                     <div class="activity-content">
-                      <strong>SPJ Telah Selesai</strong>
-                      <p>Proses pengajuan SPJ telah selsai</p>
+                      <strong>Menunggu Pencairan Dana</strong>
+                      <p>Pada tahap ini pengajuan sedang dalam proses pencairan dana</p>
+                    </div>
+                  </div>
+                  <!-- End activity item-->
+
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">Tahap 4</div>
+                    <i
+                      class="bi bi-circle-fill activity-badge text-success align-self-start"
+                    ></i>
+                    <div class="activity-content">
+                      <strong>Selesai</strong>
+                      <p>Pada tahap ini pengajuan SPJ telah selesai, anda dapat mengunduh SPJ</p>
                       <div class="finish">
                         <div class="download">
-                          <a href="#"><button type="button" class="btn btn-primary rounded-pill">Cetak</button></a>
+                          <button type="button" class="btn btn-primary" @if($spj->status !== 'Selesai') disabled @endif>Cetak</button>
                         </div>
                       </div>
                     </div>
@@ -279,8 +334,8 @@
                   </tbody>                
                 </table>
               @else
-              <div class="alert alert-danger" role="alert">
-                Anda Belum Mengunggah Excel, Silakan Unggah Excel.
+              <div class="alert alert-danger col-lg-12 m-2 mt-3" role="alert">
+                Anda Belum Mengunggah Dokumen Excel, Silakan Unggah Excel.
               </div>
               @endif
                 <!-- End Table with stripped rows -->

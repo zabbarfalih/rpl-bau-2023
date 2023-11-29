@@ -28,7 +28,7 @@ class TabelSpjController extends Controller
 
         Excel::import(new TabelSpjImport(),
          public_path('/DataSPJ/' . $namaFile));
-        return redirect('dashboard/spj/info-pengajuan-spj');
+        return redirect('dashboard/spj/info-pengajuan-spj')->with('successimport','Dokumen berhasil unggah, silakan tunggu konfirmasi');
     }
 
     /**

@@ -9,6 +9,17 @@
       <div class="container">
           <div class="row">
             <div class="col-12">
+              @if (session()->has('success'))
+              <div class="alert alert-success col-lg-12 mt-4" role="alert">
+                {{ session('success') }}
+              </div>
+              @endif
+
+              @if (session()->has('successimport'))
+              <div class="alert alert-success col-lg-12 mt-4" role="alert">
+                {{ session('successimport') }}
+              </div>
+              @endif
               <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
               <p>Berikut disajikan data-data SPJ yang diajukan.</p>
     
@@ -29,7 +40,15 @@
                       <td scope="row">{{ $loop->iteration }}</td>
                       <td>{{ $item->komponen }}</td>
                       <td>{{ $item->created_at->format('M j, Y') }}</td>
-                      <td><span class="badge bg-warning">{{ $item->status }}</span></td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
                       <td>
                         <a href="{{ route('info-pengajuan-spj.show', $item->id) }}">
                            <button type="button" class="btn btn-success">Lihat</button>

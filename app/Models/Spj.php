@@ -13,7 +13,7 @@ class Spj extends Model
     protected $fillable = [
         'program', 'kro', 'kegiatan',
         'rencana_output', 'komponen', 'akun', 'periode', 'tanggal_kegiatan',
-        'jenis_spj', 'bendahara', 'ppk', 'status' ,'user_id', 'tanggal_transfer'
+        'jenis_spj', 'bendahara', 'ppk', 'status' ,'user_id', 'tanggal_transfer', 'keterangan'
     ];
 
     protected $guarded = [
