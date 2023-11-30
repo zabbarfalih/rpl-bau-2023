@@ -97,6 +97,19 @@ class SpjController extends Controller
         return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'SPJ berhasil dihapus');
     }
 
+    public function hapusUnggahan($spj)
+    {
+        $spjModel = Spj::findOrFail($spj);
+
+        if (!$spjModel) {
+            return response()->json(['message' => 'SPJ tidak ditemukan'], 404);
+        }
+
+        $spjModel->tabel()->delete();
+
+        return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'Dokumen SPJ berhasil dihapus');
+    }
+
     
     /**
      * Show the form for editing the specified resource.

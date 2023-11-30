@@ -196,9 +196,14 @@
                       <strong>Unggah Dokumen</strong>
                       <div class="finish">
                         <div class="download">
-                          <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#basicModal" @if($spj->status !== 'Menunggu Persetujuan') disabled @endif>
+                          <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#basicModal" @if(!$tabelspj->isEmpty()) disabled @endif>
                             Unggah
                           </button>
+                          <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#basicModalHapusSpj" @if($tabelspj->isEmpty()) disabled @endif>
+                            Hapus Unggahan
+                          </button>
+
+                          {{-- Modal Unggah --}}
                           <div class="modal fade" id="basicModal" tabindex="-1">
                             <div class="modal-dialog">
                               <div class="modal-content">
@@ -209,10 +214,15 @@
                                 <div class="modal-body">
                                   <form action="{{ route('importspjnew') }}" method="POST" enctype="multipart/form-data">
                                     <div class="row">
-                                      <div class="col-lg-3 col-md-4 label mb-2">
+                                      <div class="col-lg-12 col-md-12 label mb-2">
                                         {{ csrf_field() }}
                                           <div class="form-group">
-                                              <input class="custom-file-input" type="file" name="file" required>
+                                              <input class="custom-file-input form-control @error('file') is-invalid @enderror" type="file" name="file" required>
+                                              @error('file')
+                                                  <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                  </div>
+                                              @enderror
                                           </div>
                                       </div>
                                       <div class="col-sm-10">
@@ -229,12 +239,35 @@
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                       <button type="submit" class="btn btn-primary">Kirim</button>
                                     </div>
-                                    </form>
+                                  </form>
                                 </div>
-                            
                               </div>
                             </div>
                           </div>
+
+                          {{-- Modal Haous Unggahan --}}
+                          <div class="modal fade" id="basicModalHapusSpj" tabindex="-1">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Hapus Dokumen</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  Apakah Anda yakin untuk menghapus Dokumen Pengajuan?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                  <form method="post" action="{{ url('/dashboard/spj/info-pengajuan-spj/hapus-unggahan/' . $spj->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>

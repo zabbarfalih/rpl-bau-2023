@@ -21,7 +21,13 @@ class TabelSpjController extends Controller
     }
     public function spjimportexcel(Request $request)
     {
-        $request->validate(['file' => 'required|mimes:xls,xlsx',]);
+        $request->validate([
+            'file' => 'required|mimetypes:application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        ], [
+            'file.required' => 'File harus diunggah.',
+            'file.mimetypes' => 'File harus berupa dokumen Excel.',
+        ]);
+                
         $file = $request->file('file');
         $namaFile = $file->getClientOriginalName();
         $file->move('DataSPJ', $namaFile);
