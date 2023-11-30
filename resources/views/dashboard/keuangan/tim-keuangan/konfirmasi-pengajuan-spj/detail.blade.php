@@ -116,6 +116,19 @@
                                 </div>
                               </div>
 
+                              {{-- Detail lengkap --}}
+
+                              @if (!$tabelspj->isEmpty())
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Total Dana
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  <p>Rp. {{ number_format($spj->total, 2, ',', '.') }}
+                                  </p>
+                                </div>
+                              </div>
+
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
                                   Tanggal Pencairan Dana
@@ -124,6 +137,7 @@
                                   {{ $spj->tanggal_transfer }}
                                 </div>
                               </div>
+                              @endif
 
                               @if ($spj->status === 'Ditolak') 
                               <div class="row">

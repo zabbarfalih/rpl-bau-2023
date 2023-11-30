@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\TabelSpj;
+use App\Models\Spj;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
@@ -22,11 +23,10 @@ class TabelSpjImport implements ToModel, WithStartRow, WithCalculatedFormulas
 
         $spj_idFromForm = request('spj_id');
 
-        return new TabelSpj([
-            //
+        $tabelSpj = new TabelSpj([
             'user_id' => auth()->id(),
             'spj_id' => $spj_idFromForm,
-            'nama_dosen' => $row[1] ?? null, 
+            'nama_dosen' => $row[1] ?? null,
             'golongan' => $row[2] ?? null,
             'rate_honor' => $row[3] ?? null,
             'sks_wajib' => $row[4] ?? null,
@@ -38,6 +38,17 @@ class TabelSpjImport implements ToModel, WithStartRow, WithCalculatedFormulas
             'nomor_rekening' => $row[10] ?? null,
             'nama_rekening' => $row[11] ?? null
         ]);
+
+        // Hitung total dan isi atribut total pada model Spj
+        $spj = Spj::find($spj_idFromForm);
+        $spj->total = $spj->hitungTotal();
+        $spj->total_bruto = $spj->hitungBruto();
+        $spj->total_pajak = $spj->hitungPajak();
+        $spj->save();
+        // dd($spj->total);
+
+        return $tabelSpj;
+
     }
 
     public function startRow(): int

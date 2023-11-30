@@ -105,6 +105,9 @@ class SpjController extends Controller
             return response()->json(['message' => 'SPJ tidak ditemukan'], 404);
         }
 
+        $spjModel->update(['total' => null]);
+        $spjModel->update(['total_bruto' => null]);
+        $spjModel->update(['total_pajak' => null]);
         $spjModel->tabel()->delete();
 
         return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'Dokumen SPJ berhasil dihapus');

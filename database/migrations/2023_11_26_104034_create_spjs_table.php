@@ -32,7 +32,9 @@ class CreateSpjsTable extends Migration
             $table->string('status');
             $table->date('tanggal_transfer')->nullable(); 
             $table->string('keterangan')->default('-');
-            
+            $table->bigInteger('total_pajak')->nullable();
+            $table->bigInteger('total_bruto')->nullable();
+            $table->bigInteger('total')->nullable();
         });
     }
 
