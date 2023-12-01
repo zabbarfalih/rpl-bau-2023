@@ -63,7 +63,7 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                            class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none"
+                                            class="btn-sibau-dashboard btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none"
                                             >{{ $dokumen->status }}</
                                         >
                                     </td>
@@ -71,7 +71,7 @@
                                         <a href={{ route('updatingstatusppk.details', ['id' => $dokumen->id]) }}>
                                             <button
                                                 type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white"
+                                                class="btn-sibau-dashboard btn btn-info btn-sm rounded-pill fw-bold text-white"
                                             >
                                                 Details
                                             </button>
@@ -135,7 +135,7 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                        class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none">
+                                        class="btn-sibau-dashboard btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none">
                                             {{ $dokumen->status }}
                                         </button>
                                     </td>
