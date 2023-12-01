@@ -19,7 +19,7 @@
                         <div class="d-flex justify-content-end mb-3">
                             <a
                                 href="{{route('pengajuan.add')}}"
-                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold"
+                                class="btn btn-primary me-2 btn-info rounded-pill bg-success text-light fw-bold"
                                 >+ Tambah Pengajuan</a
                             >
                         </div>
@@ -76,7 +76,7 @@
                                         <a href={{ route('pengajuan.details') }}>
                                             <button
                                             type="button"
-                                            class="btn-sibau-dashboard btn btn-info btn-sm rounded-pill fw-bold text-white"
+                                            class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
                                             >
                                                 Details
                                             </button>
