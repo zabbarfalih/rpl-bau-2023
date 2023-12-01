@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\TabelSpj;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\PDF;
 
 class SpjController extends Controller
 {
@@ -112,6 +113,8 @@ class SpjController extends Controller
 
         return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'Dokumen SPJ berhasil dihapus');
     }
+
+    
 
     
     /**

@@ -284,7 +284,7 @@
                       <p>Proses pengajuan SPJ telah selsai</p>
                       <div class="finish">
                         <div class="download">
-                          <a href="#"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
+                          <a href="{{ url('/download-spj-pdf/' . $spj->id) }}" target="_blank"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
                         </div>
                       </div>
                     </div>

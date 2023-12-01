@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard\Keuangan\TimKeuangan;
 
-use App\Models\Menu;
+use App\Models\Spj;
 
+use App\Models\Menu;
 use App\Models\User;
+use App\Models\TabelSpj;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Spj;
 
 class DetailSpjController extends Controller
 {
@@ -67,6 +69,21 @@ class DetailSpjController extends Controller
     
         return redirect()->back()->with('success', 'Berhasil mengonformasi tanggal Pencairan Dana.');
     }
+
+    public function donwloadPdfSpj($spj)
+{
+    $spjPdf = Spj::findOrFail($spj);
+    $tabelspj = TabelSpj::where('spj_id', $spjPdf->id)->get();
+
+    $pdf = app('dompdf.wrapper');
+    $pdf->loadView('dashboard/keuangan/tim-keuangan/konfirmasi-pengajuan-spj/spj-pdf', compact('spjPdf', 'tabelspj'));
+    $pdf->setPaper('A4', 'portrait');
+    
+    //dd($pdf->output());
+    return $pdf->stream('spj.pdf');
+}
+
+
 
 
     /**

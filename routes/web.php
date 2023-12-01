@@ -77,11 +77,14 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj/detail-spj', [KonfirmasiSPjController::class, 'detail'])->name('konfirmasipengajuanspj.detail');
     Route::get('/dashboard/tim-keuangan/konfirmasi-spj/{spj}', [KonfirmasiSPjController::class,'show'])->middleware('auth')->name('konfirmasi-spj.show');
-    Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
-    Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
     Route::post('/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetuju']);
     Route::post('/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolak']);
     Route::post('/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpj']);
+    Route::get('/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpj']);
+
+
+    Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
+    Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
 });
 
 Route::middleware(['admin', 'formatUserName'])->group(function () {
