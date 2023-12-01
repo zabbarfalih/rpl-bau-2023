@@ -62,9 +62,9 @@
                                         {{ $dokumen->tanggal_pengajuan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <span
-                                            class="badge rounded-pill bg-warning text-dark"
-                                            >{{ $dokumen->status }}</span
+                                        <button
+                                            class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none"
+                                            >{{ $dokumen->status }}</
                                         >
                                     </td>
                                     <td class="text-center align-middle">
@@ -134,10 +134,10 @@
                                         Alasan {{ $loop->iteration }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <span
-                                            class="badge rounded-pill bg-warning text-dark"
-                                            >{{ $dokumen->status }}</span
-                                        >
+                                        <button
+                                        class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none">
+                                            {{ $dokumen->status }}
+                                        </button>
                                     </td>
                                 </tr>
                                 @endforeach

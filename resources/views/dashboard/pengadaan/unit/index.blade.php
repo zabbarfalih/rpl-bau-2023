@@ -67,16 +67,16 @@
                                         22 September 2024
                                     </td>
                                     <td class="text-center align-middle">
-                                        <span
-                                            class="badge rounded-pill bg-warning text-dark"
+                                        <button
+                                        class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none"
                                             >Menunggu Persetujuan</span
                                         >
                                     </td>
                                     <td class="text-center">
                                         <a href={{ route('pengajuan.details') }}>
                                             <button
-                                                type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"
+                                            type="button"
+                                            class="btn btn-info btn-sm rounded-pill fw-bold text-white"
                                             >
                                                 Details
                                             </button>
