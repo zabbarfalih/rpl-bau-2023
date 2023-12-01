@@ -68,7 +68,7 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                        class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none"
+                                        class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold text-dark pe-none"
                                             >Menunggu Persetujuan</span
                                         >
                                     </td>
@@ -76,7 +76,7 @@
                                         <a href={{ route('pengajuan.details') }}>
                                             <button
                                             type="button"
-                                            class="btn btn-info btn-sm rounded-pill fw-bold text-white"
+                                            class="btn-sibau-dashboard btn btn-info btn-sm rounded-pill fw-bold text-white"
                                             >
                                                 Details
                                             </button>
