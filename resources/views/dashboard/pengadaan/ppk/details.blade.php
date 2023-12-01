@@ -44,33 +44,36 @@
 
                                 <!-- List dokumen -->
 
-                                {{-- tampilan unit --}}                                
-                                <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
-                                        <use xlink:href="#info-fill" />
-                                    </svg>
-                                    <div>Untuk mengunduh format laporan, silakan tekan download</div>
-                                </div>
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">Dokumen KAK</h4>
-                                </div>
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="d-grid gap-2 mt-3">
-                                        <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                {{-- tampilan unit --}}
+                                <div id="dokumen-unit">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                                    </div>
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen KAK</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen Memo</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">Dokumen Memo</h4>
-                                </div>
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="d-grid gap-2 mt-3">
-                                        <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
-                                    </div>
-                                </div>
-
-                                {{-- tampilan pbj --}} 
+                                {{-- tampilan pbj --}}
                                 <!-- Kalau diserahkan ke PBJ -->
+                                <div id="dokumen-ppk">
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
                                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
                                         <use xlink:href="#info-fill" />
@@ -139,15 +142,17 @@
                                         <a href="" class="btn btn-primary" type="button">Download</a>
                                     </div>
                                 </div>
+                            </div>
 
-                                {{-- tampilan ppk --}}    
-                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                {{-- tampilan ppk --}}
+                                <div id="dokumen-pbj">
+                                <div class="alert alert-primary d-flex align-items-center" role="alert" >
                                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
                                         <use xlink:href="#info-fill" />
                                     </svg>
                                     <div>Untuk mengunduh format laporan, silakan tekan download template</div>
-                                </div>       
-                                
+                                </div>
+
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
                                         Dokumen Identifikasi Kebutuhan
@@ -192,6 +197,7 @@
                                         <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
                                     </div>
                                 </div>
+                            </div>
 
                                 <!-- List group with Advanced Contents -->
                                 <!-- Ini kalau dikerjakan PPK langsung -->
