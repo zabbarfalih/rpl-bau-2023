@@ -60,7 +60,7 @@ class SubmenuSeeder extends Seeder
             [
                 'menu_id' => $spjMenuId,
                 'name' => 'Pengajuan SPJ Translok',
-                'url' => Str::slug('Pengajuan SPJ Tarnslok'),
+                'url' => Str::slug('Pengajuan SPJ Translok'),
                 'icon' => 'bi bi-file-earmark-text-fill',
             ],
             [

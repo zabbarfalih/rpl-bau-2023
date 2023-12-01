@@ -57,7 +57,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/unit/pengajuan/details', [PengajuanController::class, 'details'])->name('pengajuan.details');
     Route::get('/dashboard/unit/pengajuan/tambah-pengajuan', [PengajuanController::class, 'create'])->name('pengajuan.add');
 
-    // SPJ
+    // SPJ Honor Dosen
     Route::resource('/dashboard/spj/pengajuan-spj', SpjController::class)->middleware('auth');
     Route::get('/dashboard/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
     Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
