@@ -16,12 +16,7 @@ class Menu extends Model
 
     protected $guarded = ['id'];
 
-    public function roles()
-    {
-        return $this->belongsTo(Role::class, 'users_role');
-    }
-
-    public function submenus()
+    public function submenu()
     {
         return $this->hasMany(Submenu::class);
     }

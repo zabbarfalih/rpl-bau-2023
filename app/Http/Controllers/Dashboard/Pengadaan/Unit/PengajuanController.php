@@ -18,11 +18,11 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
 
         return view('dashboard.pengadaan.unit.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
         ]);
     }
@@ -34,10 +34,10 @@ class PengajuanController extends Controller
      */
     public function details()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.pengadaan.unit.details', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users
         ]);
     }
@@ -49,9 +49,9 @@ class PengajuanController extends Controller
      */
     public function create()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         return view('dashboard.pengadaan.unit.add', [
-            'menus' => $menus,
+            'menu' => $menu,
         ]);
     }
 
