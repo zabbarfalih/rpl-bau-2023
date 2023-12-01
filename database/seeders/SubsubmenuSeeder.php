@@ -8,7 +8,7 @@ use App\Models\Subsubmenu;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
-class Subsubmenueeder extends Seeder
+class SubsubmenuSeeder extends Seeder
 {
     /**
      * Run the database seeds.
