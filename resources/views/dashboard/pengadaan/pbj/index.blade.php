@@ -71,8 +71,8 @@
                                         {{ \Carbon\Carbon::parse($dokumen->tanggal_pengajuan)->format('d M Y') }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <span
-                                            class="badge rounded-pill bg-warning text-dark"
+                                        <button
+                                            class="btn btn-warning btn-sm rounded-pill fw-bold text-dark pe-none"
                                             >{{ $dokumen->status }}</span
                                         >
                                     </td>
@@ -80,7 +80,7 @@
                                         <a href={{ route('updatingstatuspbj.details', ['id' => $dokumen->id]) }}>
                                             <button
                                                 type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white custom-btn"
+                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white"
                                             >
                                                 Details
                                             </button>

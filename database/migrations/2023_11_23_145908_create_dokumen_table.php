@@ -10,7 +10,7 @@ class CreateDokumenTable extends Migration
     {
         Schema::create('dokumen', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama_pengadaan');
             $table->date('tanggal_pengajuan');
             $table->enum('status', ['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan']);
@@ -29,8 +29,6 @@ class CreateDokumenTable extends Migration
             $table->boolean('pelaksana');
             $table->string('detail_dok_kontrak')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
