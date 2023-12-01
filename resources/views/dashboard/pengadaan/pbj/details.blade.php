@@ -4,17 +4,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </symbol>
             <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
             </symbol>
             <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
             </symbol>
-          </svg>
+        </svg>
     </x-slot>
-
     <x-slot name="js_head">
     </x-slot>
 
@@ -56,12 +55,42 @@
                                     </div>
                                 </div>
 
+<<<<<<< Updated upstream
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">Dokumen Memo</h4>
                                 </div>
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="d-grid gap-2 mt-3">
                                         <a href="" class="btn btn-primary" type="button">Download</a>
+=======
+                                {{-- tampilan ppk --}}
+                                <div class="d-none" id="dokumen-ppk">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silahkan tekan download</div>
+                                    </div>
+
+                                    <!-- List dokumen -->
+
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen PBJ 1</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen PBJ 2</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                        </div>
+>>>>>>> Stashed changes
                                     </div>
                                 </div>
 
@@ -84,6 +113,25 @@
                                     <a href="#" class="btn-link btn-sm ms-2" id="download-template">Download
                                         Template</a>
                                 </div>
+<<<<<<< Updated upstream
+=======
+
+                                {{-- tampilan dokumen pbj --}}
+
+                                <form action="updatingstatusppk.upload-files" method="post" enctype="multipart/form-data"></form>
+                                    @csrf
+                                    <div class="d-none" id="dokumen-pbj">
+                                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16"
+                                                height="16">
+                                                <use xlink:href="#info-fill" />
+                                            </svg>
+                                            <div>
+                                                Untuk mengunduh format laporan,
+                                                silahkan tekan download template
+                                            </div>
+                                        </div>
+>>>>>>> Stashed changes
 
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                     <div class="file-upload-wrapper">
