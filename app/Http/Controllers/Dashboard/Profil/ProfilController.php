@@ -19,9 +19,9 @@ class ProfilController extends Controller
      */
     public function edit(Request $request)
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         return view('dashboard.profil.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'user' => $request->user(),
         ]);
     }

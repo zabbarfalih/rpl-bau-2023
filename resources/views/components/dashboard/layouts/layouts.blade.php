@@ -48,10 +48,10 @@
 
   <body>
     <x-dashboard.partials.navbar />
-    <x-dashboard.partials.sidebar :menus="$menus"/>
+    <x-dashboard.partials.sidebar :menu="$menu"/>
 
     <main id="main" class="main">
-        <x-dashboard.partials.breadcrumb :menus="$menus" />
+        <x-dashboard.partials.breadcrumb :menu="$menu" />
         {{ $slot }} <!-- Slot -->
     </main>
 

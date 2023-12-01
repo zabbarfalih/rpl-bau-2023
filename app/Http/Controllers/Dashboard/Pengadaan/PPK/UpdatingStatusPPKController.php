@@ -21,11 +21,11 @@ class UpdatingStatusPPKController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         $dokumen = Dokumen::all();
         return view('dashboard.pengadaan.ppk.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
             'dokumens' => $dokumen
         ]);
@@ -38,12 +38,12 @@ class UpdatingStatusPPKController extends Controller
      */
     public function details($id)
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $roles = Role::all();
 
         $dokumen = Dokumen::find($id);
         return view('dashboard.pengadaan.ppk.details', [
-            'menus' => $menus,
+            'menu' => $menu,
             'roles' => $roles,
             'dokumen' => $dokumen
         ]);

@@ -19,20 +19,20 @@ class KonfirmasiSkpController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-skp.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users
         ]);
     }
 
     public function detail()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-skp.detail', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users
         ]);
     }

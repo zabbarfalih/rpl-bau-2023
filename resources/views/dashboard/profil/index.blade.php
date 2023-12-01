@@ -1,4 +1,4 @@
-<x-dashboard.layouts.layouts :menus="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
     </x-slot>

@@ -21,11 +21,11 @@ class UpdatingStatusPBJController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         $dokumen = Dokumen::where('pelaksana', 1)->get();
         return view('dashboard.pengadaan.pbj.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'dokumen' => $dokumen,
             'users' => $users
         ]);
@@ -38,11 +38,11 @@ class UpdatingStatusPBJController extends Controller
      */
     public function details($id)
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $roles = Role::all();
         $dokumen = Dokumen::find($id);
         return view('dashboard.pengadaan.pbj.details', [
-            'menus' => $menus,
+            'menu' => $menu,
             'dokumen' => $dokumen,
             'roles' => $roles
         ]);
