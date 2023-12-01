@@ -60,7 +60,7 @@
                                             <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
                                         </div>
                                     </div>
-                                
+
                                     <div class="d-flex align-items-start">
                                         <h4 class="alert-heading">Dokumen Memo</h4>
                                     </div>
@@ -73,7 +73,7 @@
 
                                 {{-- tampilan pbj --}}
                                 <!-- Kalau diserahkan ke PBJ -->
-                                <div id="dokumen-ppk">
+                            <div id="dokumen-ppk">
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
                                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
                                         <use xlink:href="#info-fill" />
@@ -144,8 +144,8 @@
                                 </div>
                             </div>
 
-                                {{-- tampilan ppk --}}
-                                <div id="dokumen-pbj">
+                                {{-- tampilan pbj --}}
+                            <div id="dokumen-pbj">
                                 <div class="alert alert-primary d-flex align-items-center" role="alert" >
                                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
                                         <use xlink:href="#info-fill" />
@@ -201,6 +201,7 @@
 
                                 <!-- List group with Advanced Contents -->
                                 <!-- Ini kalau dikerjakan PPK langsung -->
+                            
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
                                         Dokumen Undangan

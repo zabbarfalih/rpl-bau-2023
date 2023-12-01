@@ -41,10 +41,15 @@ class UpdatingStatusPBJController extends Controller
         $menu = Menu::with('submenu')->get();
         $roles = Role::all();
         $dokumen = Dokumen::find($id);
+
+        // Set nilai pekerja berdasarkan kondisi pelaksana
+        $pekerja = ($dokumen->pelaksana == 0) ? 'd-none' : '';
+
         return view('dashboard.pengadaan.pbj.details', [
             'menu' => $menu,
             'dokumen' => $dokumen,
-            'roles' => $roles
+            'roles' => $roles,
+            'pekerja' => $pekerja,
         ]);
     }
 

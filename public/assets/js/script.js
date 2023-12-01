@@ -32,15 +32,15 @@ function removeFile(index) {
 }
 
 // Tampilan dropdown details
-var NamaUnit = document.getElementById("inputNamaUnit");
+let NamaUnit = document.getElementById("inputNamaUnit");
 
-var dokumenUnit = document.getElementById("dokumen-unit");
-var dokumenPPK = document.getElementById("dokumen-ppk");
-var dokumenPBJ = document.getElementById("dokumen-pbj");
+let dokumenUnit = document.getElementById("dokumen-unit");
+let dokumenPPK = document.getElementById("dokumen-ppk");
+let dokumenPBJ = document.getElementById("dokumen-pbj");
 
 dokumenPPK.classList.remove("d-none");
 NamaUnit.addEventListener("change", function () {
-    var selectedRole = NamaUnit.value;
+    let selectedRole = NamaUnit.value;
 
     if (selectedRole === "Unit") {
         dokumenUnit.classList.remove("d-none");
