@@ -10,6 +10,43 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+
+{{-- catatan tambahan status --}}
+<div>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-dark-light text-dark pe-none">
+        Diajukan
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-primary text-light pe-none">
+        Diterima
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-danger text-light pe-none">
+        Ditolak
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-warning text-dark pe-none">
+        Revisi
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-info text-dark pe-none">
+        Diproses
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-primary-light text-dark pe-none">
+        Dilaksanakan
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-success text-light pe-none">
+        Selesai
+    </button>
+    <button
+        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-secondary text-light pe-none">
+        Diserahkan
+    </button>
+</div>
+
                         <h3 class="card-title text-center fw-bold fs-3">
                             Daftar Pengajuan
                         </h3>
