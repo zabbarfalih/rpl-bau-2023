@@ -68,6 +68,13 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::delete('/dashboard/spj/info-pengajuan-spj/hapus-spj/{spj}', [SpjController::class, 'hapusSpj']);
     Route::delete('/dashboard/spj/info-pengajuan-spj/hapus-unggahan/{spj}', [SpjController::class, 'hapusUnggahan']);
 
+    // SPJ Translok
+    
+
+
+    // SPJ Perjalanan Dinas
+
+
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('skp.index');
     Route::get('/dashboard/skp/pengajuan-skp', [PengajuanSkpController::class, 'create'])->name('skp.create');
