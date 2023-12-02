@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjPdController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjTrController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
@@ -13,13 +14,13 @@ use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\InfoPengajuanSKPController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\InfoPengajuanSpjController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\DraftPengajuanController;
+use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\DetailSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\DetailPengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\DetailPengajuanSpjController;
 use App\Http\Controllers\Dashboard\Pengadaan\PBJ\UpdatingStatusPBJController;
 use App\Http\Controllers\Dashboard\Pengadaan\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSPjController;
-use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\DetailSpjController;
 
 
 
@@ -63,6 +64,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
     Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
     Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', 'InfoPengajuanSpjController@show')->middleware('revalidate');
+    Route::get('/dashboard/spj/info-pengajuan-spjtr/{spj}', [InfoPengajuanSpjController::class, 'showtr'])->name('info-pengajuan-spjtr.show');
     Route::get('/spjtemplatedownload', [InfoPengajuanSpjController::class, 'spjtemplatedownload'])->name('spjtemplatedownload');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
     Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
@@ -70,7 +72,10 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::delete('/dashboard/spj/info-pengajuan-spj/hapus-unggahan/{spj}', [SpjController::class, 'hapusUnggahan']);
 
     // SPJ Translok
-    
+    Route::resource('/dashboard/spj/pengajuan-translok', SpjTrController::class)->middleware('auth');
+    Route::get('/dashboard/spj/pengajuan-translok', [SpjTrController::class, 'create'])->name('spj-tr.create');
+    Route::post('/dashboard/spj/pengajuan-translok', [SpjTrController::class, 'store'])->name('spj-tr.store');
+
 
 
     // SPJ Perjalanan Dinas

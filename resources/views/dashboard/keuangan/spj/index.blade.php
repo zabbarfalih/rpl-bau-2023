@@ -35,9 +35,12 @@
                       </tr>
                   </thead>
                   <tbody>
+                    @php
+                        $startNumber = 1;
+                    @endphp
                     @foreach ($spj as $item)
                     <tr>
-                      <td scope="row">{{ $loop->iteration }}</td>
+                      <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->komponen }}</td>
                       <td>{{ $item->created_at->format('M j, Y') }}</td>
                       <td>
@@ -56,7 +59,53 @@
                       </td>
                       <td>{{ $item->user->name }}</td>
                     </tr>
-                    @endforeach                      
+                    @endforeach
+                    
+                    @foreach ($spjTr as $item)
+                    <tr>
+                      <td scope="row">{{ $startNumber++ }}</td>
+                      <td>{{ $item->komponen }}</td>
+                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
+                      <td>
+                        <a href="{{ route('info-pengajuan-spjtr.show', $item->id) }}">
+                           <button type="button" class="btn btn-success">Lihat</button>
+                         </a>                    
+                      </td>
+                      <td>{{ $item->user->name }}</td>
+                    </tr>
+                    @endforeach   
+
+                    @foreach ($spjPd as $item)
+                    <tr>
+                      <td scope="row">{{ $startNumber++ }}</td>
+                      <td>{{ $item->komponen }}</td>
+                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
+                      <td>
+                        <a href="{{ route('info-pengajuan-spj.show', $item->id) }}">
+                           <button type="button" class="btn btn-success">Lihat</button>
+                         </a>                    
+                      </td>
+                      <td>{{ $item->user->name }}</td>
+                    </tr>
+                    @endforeach   
                   </tbody>
               </table>
             </div>

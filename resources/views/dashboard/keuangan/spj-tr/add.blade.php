@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <h1 class="py-5 text-center">Silakan isi formulir</h1>
 
-                    <form action="/dashboard/spj/pengajuan-spj" method="POST" enctype="multipart/form-data" class="row">
+                    <form action="/dashboard/spj/pengajuan-translok" method="POST" enctype="multipart/form-data" class="row">
                         @csrf
                         <div class="form-group row">
                             <div class="col-sm-6">
@@ -68,7 +68,7 @@
                                     <input
                                     type="text"
                                     class="form-control"
-                                    value="(U05)    PROGRAM III"
+                                    value="(U05)    "
                                     name="rencana_output"
                                     />
                                 </div>
@@ -104,16 +104,25 @@
 
                         <div class="form-group row">
                             <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-2 col-form-label">Periode</label>
+                                <div class="row">
+                                    <label for="inputText" class="col-sm-12 col-form-label">Bulan</label>
+                                </div>
                                 <div class="col-sm-10">
-                                    <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="masukkan tahun"
-                                    name="periode"
-                                    id="periode"
-                                    required
-                                    />
+                                <select class="form-select" name="bulan" required>
+                                    <option selected>Pilih Bulan</option>
+                                    <option value="Januari">Januari</option>
+                                    <option value="Februari">Februari</option>
+                                    <option value="Maret">Maret</option>
+                                    <option value="April">April</option>
+                                    <option value="Mei">Mei</option>
+                                    <option value="Juni">Juni</option>
+                                    <option value="Juli">Juli</option>
+                                    <option value="Agustus">Agustus</option>
+                                    <option value="September">September</option>
+                                    <option value="Oktober">Oktober</option>
+                                    <option value="November">November</option>
+                                    <option value="Desember">Desember</option>
+                                </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">

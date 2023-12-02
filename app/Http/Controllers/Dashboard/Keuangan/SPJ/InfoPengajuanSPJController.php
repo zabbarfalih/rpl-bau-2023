@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Dashboard\Keuangan\SPJ;
 use App\Models\Spj;
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\SpjPd;
+use App\Models\SpjTr;
+use App\Models\TabelSpj;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\TabelSpj;
 use Illuminate\Support\Facades\Auth;
 
 class InfoPengajuanSpjController extends Controller
@@ -18,18 +20,26 @@ class InfoPengajuanSpjController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $menus = Menu::with('submenus')->get();
-        $users = User::all();
-        
-        $spj = Spj::where('user_id', Auth::id())->get();
+{
+    $menus = Menu::with('submenus')->get();
+    $users = User::all();
+    
+    $spj = Spj::where('user_id', Auth::id())->get();
+    $spjTr = SpjTr::where('user_id', Auth::id())->get();
+    $spjPd = SpjPd::where('user_id', Auth::id())->get();
 
-        return view('dashboard.keuangan.spj.index', [
-            'menus' => $menus,
-            'users' => $users,
-            'spj' => $spj
-        ]);
-    }
+    // Gabungkan ketiga koleksi menjadi satu koleksi
+    // $allSpj = $spj->merge($spjTr)->merge($spjPd);
+
+    return view('dashboard.keuangan.spj.index', [
+        'menus' => $menus,
+        'users' => $users,
+        'spj' => $spj, // Ganti 'spj' dengan 'allSpj' pada view
+        'spjTr' => $spjTr, // Ganti 'spj' dengan 'allSpj' pada view
+        'spjPd' => $spjPd // Ganti 'spj' dengan 'allSpj' pada view
+    ]);
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -61,13 +71,30 @@ class InfoPengajuanSpjController extends Controller
     public function show($id)
     {
         try {
-            $spj = Spj::findOrFail((int)$id);
+            $spj = Spj::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
             $menus = Menu::with('submenus')->get();
             $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.spj.detail', [
                 'menus' => $menus,
                 'spj' => $spj,
-                'tabelspj'=> $tabelspj]);
+                'tabelspj'=> $tabelspj
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    public function showtr($id)
+    {
+        try {
+            $spj = SpjTr::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
+            $menus = Menu::with('submenus')->get();
+            $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
+            return view('dashboard.keuangan.spj-tr.detail', [
+                'menus' => $menus,
+                'spj' => $spj,
+                'tabelspj'=> $tabelspj
+            ]);
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
