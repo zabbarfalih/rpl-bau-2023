@@ -12,6 +12,7 @@ use App\Models\TabelSpj;
 use App\Models\TabelSpjTr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TabelSpjPd;
 use Illuminate\Support\Facades\Auth;
 
 class KonfirmasiSpjController extends Controller
@@ -97,6 +98,21 @@ class KonfirmasiSpjController extends Controller
             $menus = Menu::with('submenus')->get();
             $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detailtr', [
+                'menus' => $menus,
+                'spj' => $spj,
+                'tabelspj'=> $tabelspj]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    public function showpd($id)
+    {
+        try {
+            $spj = SpjPd::findOrFail((int)$id);
+            $menus = Menu::with('submenus')->get();
+            $tabelspj = TabelSpjPd::where('spj_id', $spj->id)->get();
+            return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detailpd', [
                 'menus' => $menus,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj]);

@@ -6,12 +6,14 @@ use App\Models\Spj;
 
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\SpjPd;
+use App\Models\SpjTr;
 use App\Models\TabelSpj;
 use Barryvdh\DomPDF\PDF;
+use App\Models\TabelSpjPd;
+use App\Models\TabelSpjTr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\SpjTr;
-use App\Models\TabelSpjTr;
 use Illuminate\Support\Facades\Auth;
 
 class DetailSpjController extends Controller
@@ -54,6 +56,20 @@ class DetailSpjController extends Controller
         return redirect()->back()->with('success', 'SPJ berhasil disetujui.');
     }
 
+    public function changeStatusSetujuPd(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Menunggu Pencairan Dana,Ditolak',
+        ]);
+    
+        $spj = SpjPd::findOrFail($id);
+
+        $spj->status = $request->status;
+        $spj->save();
+    
+        return redirect()->back()->with('success', 'SPJ berhasil disetujui.');
+    }
+
     public function changeStatusTolak(Request $request, $id)
     {
         $request->validate([
@@ -78,6 +94,22 @@ class DetailSpjController extends Controller
         ]);
     
         $spj = SpjTr::findOrFail($id);
+
+        $spj->status = $request->status;
+        $spj->keterangan = $request->keterangan;
+        $spj->save();
+    
+        return redirect()->back()->with('success', 'SPJ berhasil ditolak.');
+    }
+
+    public function changeStatusTolakPd(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Ditolak',
+            'keterangan' => 'required'
+        ]);
+    
+        $spj = SpjPd::findOrFail($id);
 
         $spj->status = $request->status;
         $spj->keterangan = $request->keterangan;
@@ -118,6 +150,22 @@ class DetailSpjController extends Controller
         return redirect()->back()->with('success', 'Berhasil mengonformasi tanggal Pencairan Dana.');
     }
 
+    public function konfirmasiTransferSpjPd(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:Selesai',
+            'tanggal_transfer' => 'required'
+        ]);
+    
+        $spj = SpjPd::findOrFail($id);
+
+        $spj->status = $request->status;
+        $spj->tanggal_transfer = $request->tanggal_transfer;
+        $spj->save();
+    
+        return redirect()->back()->with('success', 'Berhasil mengonformasi tanggal Pencairan Dana.');
+    }
+
     public function donwloadPdfSpj($spj)
 {
     $spjPdf = Spj::findOrFail($spj);
@@ -139,6 +187,19 @@ public function donwloadPdfSpjTr($spj)
     $pdf = app('dompdf.wrapper');
     $pdf->loadView('dashboard/keuangan/tim-keuangan/konfirmasi-pengajuan-spj/spjtr-pdf', compact('spjPdf', 'tabelspj'));
     $pdf->setPaper('A4', 'portrait');
+    
+    //dd($pdf->output());
+    return $pdf->stream('spj.pdf');
+}
+
+public function donwloadPdfSpjPd($spj)
+{
+    $spjPdf = SpjPd::findOrFail($spj);
+    $tabelspj = TabelSpjPd::where('spj_id', $spjPdf->id)->get();
+
+    $pdf = app('dompdf.wrapper');
+    $pdf->loadView('dashboard/keuangan/tim-keuangan/konfirmasi-pengajuan-spj/spjpd-pdf', compact('spjPdf', 'tabelspj'));
+    $pdf->setPaper('A4', 'landscape');
     
     //dd($pdf->output());
     return $pdf->stream('spj.pdf');

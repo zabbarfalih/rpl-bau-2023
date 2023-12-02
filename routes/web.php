@@ -89,6 +89,8 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/spj/info-pengajuan-spjpd/{spj}', [InfoPengajuanSpjController::class, 'showpd'])->name('info-pengajuan-spjpd.show');
     Route::post('/importspjpdnew', [TabelSpjPdController::class,'spjimportexcel'])->name('importspjpdnew')->middleware('auth');
     Route::get('/spjpdtemplatedownload', [InfoPengajuanSpjController::class, 'spjpdtemplatedownload'])->name('spjpdtemplatedownload');
+    Route::delete('/dashboard/spj/info-pengajuan-spjpd/hapus-unggahan/{spj}', [SpjController::class, 'hapusUnggahanPd']);
+    Route::delete('/dashboard/spj/info-pengajuan-spjpd/hapus-spj/{spj}', [SpjController::class, 'hapusSpjPd']);
 
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('skp.index');
@@ -109,6 +111,12 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::post('/dashboard/tim-keuangan/konfirmasi-spjtr/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakTr']);
     Route::post('/dashboard/tim-keuangan/konfirmasi-spjtr/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjTr']);
     Route::get('/dashboard/tim-keuangan/konfirmasi-spjtr/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjTr']);
+
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spjpd/{spj}', [KonfirmasiSPjController::class,'showpd'])->middleware('auth')->name('konfirmasi-spjpd.show');
+    Route::post('/dashboard/tim-keuangan/konfirmasi-spjpd/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuPd']);
+    Route::post('/dashboard/tim-keuangan/konfirmasi-spjpd/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakPd']);
+    Route::post('/dashboard/tim-keuangan/konfirmasi-spjpd/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjPd']);
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjPd']);
 
 
 

@@ -153,7 +153,7 @@
                         </span>
                       </td>
                       <td>
-                        <a href="{{ route('konfirmasi-spj.show', ['spj' => $item->id]) }}">
+                        <a href="{{ route('konfirmasi-spjpd.show', ['spj' => $item->id]) }}">
                           <button type="button" class="btn btn-success">Lihat</button>
                         </a>                  
                       </td>
