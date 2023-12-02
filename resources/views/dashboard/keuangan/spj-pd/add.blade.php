@@ -20,21 +20,19 @@
 
                     <form action="/dashboard/spj/pengajuan-perjalanan-dinas" method="POST" enctype="multipart/form-data" class="row">
                         @csrf
-                        <div class="form-group">
-                            <div class="col-sm-11">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
-                                <div class="col-sm-11">
+                                <div class="col-sm-10">
                                     <input
                                     type="text"
                                     class="form-control"
                                     name="judul"
                                     placeholder="BIAYA PERJALANAN DINAS DALAM RANGKA ......"
+                                    required
                                     />
                                 </div>
                             </div>
-                        <div>
-
-                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Program</label>
                                 <div class="col-sm-10">
@@ -47,6 +45,9 @@
                                     />
                                 </div>
                             </div>
+                        <div>
+
+                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Kegiatan</label>
                                 <div class="col-sm-10">
@@ -59,9 +60,6 @@
                                     />
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">KRO/RO</label>
                                 <div class="col-sm-10">
@@ -74,6 +72,9 @@
                                     />
                                   </div>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <div class="row">
                                     <label for="inputText" class="col-sm-7 col-form-label">Komponen</label>
@@ -88,9 +89,6 @@
                                     />
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Akun</label>
                                 <div class="col-sm-10">
@@ -103,6 +101,9 @@
                                     />
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <div class="row">
                                     <label for="inputText" class="col-sm-12 col-form-label">Bendahara Pengeluaran</label>
@@ -115,6 +116,19 @@
                                     readonly
                                     name="bendahara"
                                 />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-2 col-form-label">Jenis SPJ</label>
+                                <div class="col-sm-10">
+                                    <input
+                                    type="text"
+                                    class="form-control readonly-field"
+                                    value="SPJ Perjalanan Dinas"
+                                    readonly
+                                    name="jenis_spj"
+                                    required
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -142,6 +156,14 @@
                                       name="status"
                                     />
                                   </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputText" class="col-sm-7 col-form-label">Tanggal Tugas</label>
+                                <div class="col-sm-10">
+                                    <div class="col-sm-10">
+                                        <input type="date" name="tanggal_tugas" class="form-control font-form" style="font-size: 16px;"required/>
+                                      </div>
+                                </div>
                             </div>
                         </div>
 

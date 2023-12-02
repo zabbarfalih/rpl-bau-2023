@@ -99,7 +99,7 @@
                         </span>
                       </td>
                       <td>
-                        <a href="{{ route('info-pengajuan-spj.show', $item->id) }}">
+                        <a href="{{ route('info-pengajuan-spjpd.show', $item->id) }}">
                            <button type="button" class="btn btn-success">Lihat</button>
                          </a>                    
                       </td>

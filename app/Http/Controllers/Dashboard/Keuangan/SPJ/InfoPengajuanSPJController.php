@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\SpjPd;
 use App\Models\SpjTr;
 use App\Models\TabelSpj;
+use App\Models\TabelSpjPd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TabelSpjTr;
@@ -101,6 +102,23 @@ class InfoPengajuanSpjController extends Controller
         }
     }
 
+    public function showpd($id)
+    {
+        try {
+            $spj = SpjPd::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
+            $menus = Menu::with('submenus')->get();
+            $tabelspj = TabelSpjPd::where('spj_id', $spj->id)->get();
+            return view('dashboard.keuangan.spj-pd.detail', [
+                'menus' => $menus,
+                'spj' => $spj,
+                'tabelspj'=> $tabelspj
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+
+
     public function spjtemplatedownload()
     {
         $path = public_path('download\template-spj honor dosen.xlsx');
@@ -113,6 +131,14 @@ class InfoPengajuanSpjController extends Controller
     {
         $path = public_path('download\template-spj translok.xlsx');
         $fileName = 'template-spj translok.xlsx';
+
+        return response()->download($path, $fileName, ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
+    }
+    
+    public function spjpdtemplatedownload()
+    {
+        $path = public_path('download\template-spj perjalanan dinas.xlsx');
+        $fileName = 'template-spj perjalanan dinas.xlsx';
 
         return response()->download($path, $fileName, ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
     }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjTrController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjPdController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\PengajuanController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\PengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
@@ -79,12 +80,13 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::post('/importspjtrnew', [TabelSpjTrController::class,'spjimportexcel'])->name('importspjtrnew')->middleware('auth');
     Route::get('/spjtrtemplatedownload', [InfoPengajuanSpjController::class, 'spjtrtemplatedownload'])->name('spjtrtemplatedownload');
 
-
-
     // SPJ Perjalanan Dinas
     Route::resource('/dashboard/spj/pengajuan-perjalanan-dinas', SpjPdController::class)->middleware('auth');
     Route::get('/dashboard/spj/pengajuan-perjalanan-dinas', [SpjPdController::class, 'create'])->name('spj-pd.create');   
     Route::post('/dashboard/spj/pengajuan-perjalanan-dinas', [SpjPdController::class, 'store'])->name('spj-pd.store');   
+    Route::get('/dashboard/spj/info-pengajuan-spjpd/{spj}', [InfoPengajuanSpjController::class, 'showpd'])->name('info-pengajuan-spjpd.show');
+    Route::post('/importspjpdnew', [TabelSpjPdController::class,'spjimportexcel'])->name('importspjpdnew')->middleware('auth');
+    Route::get('/spjpdtemplatedownload', [InfoPengajuanSpjController::class, 'spjpdtemplatedownload'])->name('spjpdtemplatedownload');
 
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('skp.index');

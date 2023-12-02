@@ -24,16 +24,23 @@ class CreateSpjPdsTable extends Migration
             $table->string('kro');
             $table->string('komponen');
             $table->string('akun');
-            $table->bigInteger('total')->nullable();
-            $table->bigInteger('total_biaya_uang_harian')->nullable();
-            $table->bigInteger('total_biaya_transport')->nullable();
-            $table->bigInteger('total_taksi_bendahara')->nullable();
+            $table->string('jenis_spj');
+            $table->string('bendahara');
+            $table->string('ppk');
+            $table->date('tanggal_tugas');
+            $table->bigInteger('total_uang_harian')->nullable();
+            $table->bigInteger('total_transport')->nullable();
+            $table->bigInteger('total_bandara')->nullable();
             $table->bigInteger('total_biaya_hotel')->nullable();
             $table->bigInteger('total_jumlah_biaya')->nullable();
             $table->bigInteger('total_uang_muka')->nullable();
             $table->bigInteger('total_kekurangan')->nullable();
             $table->string('status');
+            $table->string('keterangan')->nullable();
+            $table->date('tanggal_transfer')->nullable();
         });
+
+        DB::statement('ALTER TABLE spj_pds AUTO_INCREMENT = 300000;');
     }
 
     /**

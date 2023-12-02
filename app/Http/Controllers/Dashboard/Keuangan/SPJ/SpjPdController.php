@@ -7,7 +7,7 @@ use App\Http\Requests\StoreSpjPdRequest;
 use App\Http\Requests\UpdateSpjPdRequest;
 use App\Models\Menu;
 use App\Models\User;
-use App\Models\TabelSpj;
+use App\Models\TabelSpjPd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\PDF;
@@ -66,9 +66,19 @@ class SpjPdController extends Controller
      * @param  \App\Models\SpjPd  $spjPd
      * @return \Illuminate\Http\Response
      */
-    public function show(SpjPd $spjPd)
+    public function show(SpjPd $spj)
     {
         //
+        $menus = Menu::with('submenus')->get();
+        $users = User::all();
+        $tabelspj = TabelSpjPd::where('spj_id', $spj->id)->get();
+
+        return view('dashboard.keuangan.spj.detail', [
+            'menus' => $menus,
+            'users' => $users,
+            'spj' => $spj,
+            'tabelspj' => $tabelspj
+        ]);
     }
 
     /**
