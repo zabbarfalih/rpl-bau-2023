@@ -9,6 +9,7 @@
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
+            font-size: 10px;
         }
 
         .container {
@@ -35,7 +36,7 @@
             width: 70%;
             margin: auto;
             text-align: center;
-            padding-top: 15px;
+            margin-top: -30px;
             line-height: 1.5;
         }
 
@@ -73,44 +74,46 @@
             text-align: justify;
         }
 
-        .container .main .ttd {
+        .ttd {
             display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
+            justify-content: flex-end;
         }
 
-        .container .main .ttd .kiri {
-            width: 100%;
-        }
-
-        .container .main .ttd .main {
-            width: 50%;
+        .ttd1,
+        .ttd2,
+        .ttd3 {
+            width: 30%; /* Ubah lebar sesuai kebutuhan Anda */
             text-align: center;
             font-size: 10px;
             line-height: 1.5;
+            margin-left: 10px; /* Berikan margin antar elemen jika diinginkan */
         }
 
-        .container .main .ttd .main .sign {
+        .ttd .atas,
+        .ttd .bawah {
+            margin: 0; /* Hapus margin default pada elemen .atas dan .bawah */
+        }
+
+        .ttd .sign {
             width: 100%;
             height: 50px;
             box-sizing: border-box;
         }
 
-        .container .main .ttd .main .sign img {
+        .ttd .sign img {
             width: 150px;
             height: 150px;
             z-index: 3;
             margin-top: -50px;
         }
 
-        .container .main .ttd .main .bawah b {
+        .ttd .bawah b {
             text-decoration: underline;
-            margin-bottom: 0; /* Remove any default bottom margin */
+            margin-bottom: 0;
         }
 
-        .container .main .ttd .main p {
-            margin: 0; /* Remove any default margin */
-            font-size: 10px;
+        .ttd p {
+            margin: 0;
         }
 
         .container .footer {
@@ -143,25 +146,26 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            /* font-size: 14px; */
         }
 
-        th {
-            border: .5px solid black; /* Menggunakan border 2px dan warna abu-abu (#ddd) */
+        th, td {
+            border: .5px solid black; 
             padding: 2px;
             text-align: center; /* Menengahkan tulisan */
         }
 
-        td {
+        td{
             border: .5px solid black; /* Menggunakan border 2px dan warna abu-abu (#ddd) */
             padding: 2px;
-            text-align: left; /* Menengahkan tulisan */
-            font-size: 5px;
+            text-align: center; /* Menengahkan tulisan */
+            font-size: 10px;
         }
 
         .isi {
             margin-top: 20px;
             font-size: 15px;
-            line-height: 1;
+            line-height: -0.5;
         }
 
         .program,
@@ -171,19 +175,19 @@
         .akun,
         .tgl {
             margin-bottom: 15px;
-            display: inline;
+            display: flex;
             align-items: baseline;
             font-size: 10px;
         }
 
         .label {
             display: inline-block;
-            width: 100%; /* Sesuaikan lebar label sesuai kebutuhan */
+            width: 200px; /* Sesuaikan lebar label sesuai kebutuhan */
         }
 
         .separator {
             display: inline-block;
-            width: 20px; /* Sesuaikan lebar separator sesuai kebutuhan */
+            width: 400px; 
         }
 
         .isi-content {
@@ -200,9 +204,53 @@
             margin-bottom: .5rem;
         }
 
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 10px;
+        td[colspan="2"] {
+            background-color: #cccccc; /* Gunakan kode warna abu-abu yang diinginkan */
+        }
+
+        .tabel-ttd table {
+            border-collapse: collapse;
+            border: 1px solid white; /* Warna border sesuaikan dengan latar belakang tabel */
+        }
+
+        .tabel-ttd td {
+            padding: 10px;
+            text-align: center;
+            border-right: 1px solid white; /* Garis vertikal */
+        }
+
+        .tabel-ttd td:last-child {
+            border-right: none; /* Hilangkan border vertikal pada elemen terakhir */
+        }
+
+        .tabel-ttd .atas,
+        .tabel-ttd .bawah {
+            margin: 0;
+        }
+
+        .tabel-ttd .sign {
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .tabel-ttd .sign p {
+            margin: 0;
+        }
+
+        .tabel-ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
+
+        .tabel-ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
+
+        .tabel-ttd p {
+            margin: 0;
         }
 
         /* #tgl-bulan-tahun::before {
@@ -221,30 +269,35 @@
         <div class="main">
             <div class="isi">
                 <div class="program">
-                    <span class="label">PROGRAM &ensp;: {{ $spjPdf->program }}</span>
+                    <span class="label">PROGRAM</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->program }}</span>
                 </div>
                 <div class="aktivitas">
-                    <span class="label">AKTIVITAS &ensp;: {{ $spjPdf->kegiatan }}</span>
+                    <span class="label">AKTIVITAS</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->kegiatan }}</span>
                 </div>
                 <div class="klasifikasi">
-                    <span class="label">KLASIFIKASI RENCANA OUTPUT &ensp;: {{ $spjPdf->kro }}</span>
+                    <span class="label">KLASIFIKASI RENCANA OUTPUT</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->kro }}</span>
                 </div>
                 <div class="rencana">
-                    <span class="label">RENCANA OUTPUT &ensp;: {{ $spjPdf->rencana_output }}</span>
+                    <span class="label">RENCANA OUTPUT</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->rencana_output }}</span>
                 </div>
                 <div class="akun">
-                    <span class="label">AKUN &ensp;: {{ $spjPdf->akun }}</span>
+                    <span class="label">AKUN</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->akun }}</span>
                 </div>
                 <div class="tgl">
-                  @php
-                    use Carbon\Carbon;
-                    App::setLocale('id');
+                    @php
+                        use Carbon\Carbon;
+                        App::setLocale('id');
 
-                    $tanggal_kegiatan = $spjPdf->tanggal_kegiatan;
-                    $tanggal_format = Carbon::parse($tanggal_kegiatan)->translatedFormat('j F Y');
-                  @endphp
-                <span class="label">TANGGAL &ensp;: {{ $tanggal_format }}</span>
-              
+                        $tanggal_kegiatan = $spjPdf->tanggal_kegiatan;
+                        $tanggal_format = Carbon::parse($tanggal_kegiatan)->translatedFormat('j F Y');
+                    @endphp
+                    <span class="label">TANGGAL</span>
+                    <span class="separator">&ensp;:   {{ $tanggal_format }}</span>
                 </div>
             </div>
             
@@ -284,74 +337,82 @@
                         </tr>
 
                         <tbody>
-                            @foreach ($tabelspj as $item)
-                              <tr>
-                                <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
-                                <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
-                                <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
-                                <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
-                                <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
-                                <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
-                                <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
-                                <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
-                                <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
-                                <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
-                                <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
-                              </tr>
+                            @foreach ($tabelspj as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}.</td>
+                                    <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
+                                    <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
+                                    <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
+                                    <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
+                                    <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
+                                    <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
+                                    <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
+                                    <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
+                                    <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
+                                    <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
+                                    <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
+                                </tr>
                             @endforeach
                         </tbody>
-                        
+
                     <tfoot>
                         <tr>
-                            <th colspan="7">Jumlah</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <td colspan="7">Jumlah</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="2"></td>
                         </tr>
                     </tfoot>
                 </table>
-            </div>                    
-            <ZA class="ttd">
-                <div class="main">
-                    <div class="atas">
-                        <p>Lunas pada tanggal:  </p>
-                        <p>Bendahara Pengeluaran STIS</p>
-                    </div>
-                    <div class="sign">
-                        <p></p>
-                    </div>
-                    <div class="bawah">
-                        <p>Rina Hardiyanti SST</p>
-                        <p>NIP. 198809142010122004</p>
-                    </div>
-                </div>
-                <div class="main">
-                    <div class="atas">
-                        <p>Setuju dibayar:  </p>
-                        <p>Pejabat Pembuat Komitmen</p>
-                    </div>
-                    <div class="sign">
-                        <p></p>
-                    </div>
-                    <div class="bawah">
-                        <p>Luci Wulansari, S.Si., M.S.E.</p>
-                        <p>NIP. 198504302009022006</p>
-                    </div>
-                </div>
-                <div class="main">
-                    <div class="atas">
-                        <p>Jakarta, 01 Desember 2023<span id="tgl-bulan-tahun"></span></p>
-                        <p>Pembuat Daftar,</p>
-                    </div>                    
-                    <div class="sign">
-                        <p></p>
-                    </div>
-                    <div class="bawah">
-                        <p>Sofyan Ayatulloh, SST</p>
-                        <p>NIP. 197208221994121001</p>
-                    </div>
-                </div>
-            </div>
+            </div>   
+            <div class="tabel-ttd">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="atas">
+                                    <p>Lunas pada tanggal:  </p>
+                                    <p>Bendahara Pengeluaran STIS</p>
+                                </div>
+                                <div class="sign">
+                                    <p></p>
+                                </div>
+                                <div class="bawah">
+                                    <p>Rina Hardiyanti SST</p>
+                                    <p>NIP. 198809142010122004</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="atas">
+                                    <p>Setuju dibayar:  </p>
+                                    <p>Pejabat Pembuat Komitmen</p>
+                                </div>
+                                <div class="sign">
+                                    <p></p>
+                                </div>
+                                <div class="bawah">
+                                    <p>Luci Wulansari, S.Si., M.S.E.</p>
+                                    <p>NIP. 198504302009022006</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="atas">
+                                    <p>Jakarta, 01 Desember 2023<span id="tgl-bulan-tahun"></span></p>
+                                    <p>Pembuat Daftar,</p>
+                                </div>                    
+                                <div class="sign">
+                                    <p></p>
+                                </div>
+                                <div class="bawah">
+                                    <p>Sofyan Ayatulloh, SST</p>
+                                    <p>NIP. 197208221994121001</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>                        
         </div>
 </body>
 
