@@ -33,7 +33,7 @@ class CreateSpjTrsTable extends Migration
             $table->string('status');
             $table->date('tanggal_transfer')->nullable(); 
             $table->string('keterangan')->default('-');
-            $table->bigInteger('total_pajak')->nullable();
+            $table->bigInteger('total_transpor_per_hari')->nullable();
             $table->bigInteger('total_jumlah_kegiatan')->nullable();
             $table->bigInteger('total_jumlah_yang_dibayarkan')->nullable();
         });

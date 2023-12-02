@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\TabelSpj;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TabelSpjTr;
 use Barryvdh\DomPDF\PDF;
 
 class SpjTrController extends Controller
@@ -65,13 +66,28 @@ class SpjTrController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SpjTr  $spjTr
+     * @param  \App\Models\SpjTr  $spj
      * @return \Illuminate\Http\Response
      */
-    public function show(SpjTr $spjTr)
-    {
-        //
-    }
+    public function show(SpjTr $spj)
+{
+    $menus = Menu::with('submenus')->get();
+    $users = User::all();
+    $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
+
+    // Dump untuk memeriksa data sebelum melewatkan ke view
+    dd($tabelspj);
+
+    // return view('dashboard.keuangan.spj-tr.detail', [
+    //     'menus' => $menus,
+    //     'users' => $users,
+    //     'spj' => $spj,
+    //     'tabelspj' => $tabelspj
+    // ]);
+}
+
+
+
 
     /**
      * Show the form for editing the specified resource.

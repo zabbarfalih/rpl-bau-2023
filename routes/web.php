@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjTrController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjTrController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\PengajuanController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\PengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
@@ -64,7 +65,6 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
     Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
     Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', 'InfoPengajuanSpjController@show')->middleware('revalidate');
-    Route::get('/dashboard/spj/info-pengajuan-spjtr/{spj}', [InfoPengajuanSpjController::class, 'showtr'])->name('info-pengajuan-spjtr.show');
     Route::get('/spjtemplatedownload', [InfoPengajuanSpjController::class, 'spjtemplatedownload'])->name('spjtemplatedownload');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
     Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
@@ -75,6 +75,9 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::resource('/dashboard/spj/pengajuan-translok', SpjTrController::class)->middleware('auth');
     Route::get('/dashboard/spj/pengajuan-translok', [SpjTrController::class, 'create'])->name('spj-tr.create');
     Route::post('/dashboard/spj/pengajuan-translok', [SpjTrController::class, 'store'])->name('spj-tr.store');
+    Route::get('/dashboard/spj/info-pengajuan-spjtr/{spj}', [InfoPengajuanSpjController::class, 'showtr'])->name('info-pengajuan-spjtr.show');
+    Route::post('/importspjtrnew', [TabelSpjTrController::class,'spjimportexcel'])->name('importspjtrnew')->middleware('auth');
+    Route::get('/spjtrtemplatedownload', [InfoPengajuanSpjController::class, 'spjtrtemplatedownload'])->name('spjtrtemplatedownload');
 
 
 

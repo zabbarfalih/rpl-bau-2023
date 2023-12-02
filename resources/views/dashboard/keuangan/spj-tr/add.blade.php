@@ -144,7 +144,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="SPJ Honor Dosen"
+                                    value="SPJ Translok"
                                     readonly
                                     name="jenis_spj"
                                     required

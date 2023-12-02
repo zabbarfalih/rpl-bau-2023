@@ -97,16 +97,19 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   {{ $spj->jenis_spj }}
-                                  <p class="card-text mt-2 td-underline"><u><a href="{{ route('spjtemplatedownload') }}" >Download Template Excel di sini</a></u></p>
+                                  <p class="card-text mt-2 td-underline">
+                                    <u><a href="{{ route('spjtrtemplatedownload') }}" >Download Template Excel di sini</a></u>
+                                </p>
+                                
                                 </div>
                               </div>
 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
-                                  Periode
+                                  Bulan
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->periode }}
+                                  {{ $spj->bulan }}
                                 </div>
                               </div>
 
@@ -158,7 +161,7 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                      <form method="post" action="{{ url('/dashboard/spj/info-pengajuan-spj/hapus-spj/' . $spj->id) }}">
+                                      <form method="post" action="">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -227,7 +230,7 @@
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                  <form action="{{ route('importspjnew') }}" method="POST" enctype="multipart/form-data">
+                                  <form action="{{ route('importspjtrnew') }}" method="POST" enctype="multipart/form-data">
                                     <div class="row">
                                       <div class="col-lg-12 col-md-12 label mb-2">
                                         {{ csrf_field() }}
@@ -273,7 +276,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                  <form method="post" action="{{ url('/dashboard/spj/info-pengajuan-spj/hapus-unggahan/' . $spj->id) }}">
+                                  <form method="post" action="">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Hapus</button>
@@ -350,33 +353,23 @@
                 <table class="table datatable">
                   <thead>
                     <tr>
-                      <th scope="col">Nama Dosen</th>
-                      <th scope="col">Golongan</th>
-                      <th scope="col">Rate Honor</th>
-                      <th scope="col">SKS Wajib</th>
-                      <th scope="col">SKS Hadir</th>
-                      <th scope="col">SKS Dibayar</th>
-                      <th scope="col">Jumlah Bruto</th>
-                      <th scope="col">Pajak</th>
-                      <th scope="col">Jumlah Diterima</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Transport Per Hari</th>
+                      <th scope="col">Jumlah Kegiatan</th>
+                      <th scope="col">Jumlah yang Dibayarkan Wajib</th>
+                      <th scope="col">Bank</th>
                       <th scope="col">Nomor Rekening</th>
-                      <th scope="col">Nama Rekening</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach ($tabelspj as $item)
                       <tr>
-                        <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
-                        <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
-                        <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
-                        <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
-                        <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
-                        <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
-                        <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
-                        <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
-                        <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
+                        <td>{{ isset($item->nama) ? $item->nama : '' }}</td>
+                        <td>{{ isset($item->transpor_per_hari) ? $item->transpor_per_hari : '' }}</td>
+                        <td>{{ isset($item->jumlah_kegiatan) ? $item->jumlah_kegiatan : '' }}</td>
+                        <td>{{ isset($item->jumlah_yang_dibayarkan) ? $item->jumlah_yang_dibayarkan : '' }}</td>
+                        <td>{{ isset($item->bank) ? $item->bank : '' }}</td>
                         <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
-                        <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
                       </tr>
                     @endforeach
                   </tbody>                

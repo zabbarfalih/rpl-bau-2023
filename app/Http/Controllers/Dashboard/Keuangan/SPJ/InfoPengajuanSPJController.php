@@ -10,6 +10,7 @@ use App\Models\SpjTr;
 use App\Models\TabelSpj;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TabelSpjTr;
 use Illuminate\Support\Facades\Auth;
 
 class InfoPengajuanSpjController extends Controller
@@ -89,7 +90,7 @@ class InfoPengajuanSpjController extends Controller
         try {
             $spj = SpjTr::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
             $menus = Menu::with('submenus')->get();
-            $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
+            $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.spj-tr.detail', [
                 'menus' => $menus,
                 'spj' => $spj,
@@ -99,6 +100,7 @@ class InfoPengajuanSpjController extends Controller
             dd($e->getMessage());
         }
     }
+
     public function spjtemplatedownload()
     {
         $path = public_path('download\template-spj honor dosen.xlsx');
@@ -106,7 +108,14 @@ class InfoPengajuanSpjController extends Controller
 
         return response()->download($path, $fileName, ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
     }
-    
+
+    public function spjtrtemplatedownload()
+    {
+        $path = public_path('download\template-spj translok.xlsx');
+        $fileName = 'template-spj translok.xlsx';
+
+        return response()->download($path, $fileName, ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
+    }
 
 
     /**
