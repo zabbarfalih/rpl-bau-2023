@@ -7,310 +7,298 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPJ Translok</title>
     <style>
-    /* div {
-        border: 2px solid salmon;
-    } */
-    .container {
-        width: 1080px;
-        margin-right: 5%;
-    }
+    body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 10px;
+        }
 
-    .container .header {
-        display: flex;
-        border-bottom: 5px solid black;
-    }
+        .container {
+            width: 100%;
+        }
 
-    .container .header .gambar {
-        width: 10%;
-        height: 110px;
-        padding: 50px;
-        box-sizing: content-box;
-    }
+        .container .header {
+            display: flex;
+        }
 
-    .container .header .gambar img {
-        width: 100%;
-        margin: auto;
-    }
+        .container .header .gambar {
+            width: 10%;
+            height: 110px;
+            padding: 50px;
+            box-sizing: content-box;
+        }
 
-    .container .header .text {
-        width: 70%;
-        margin: auto;
-        text-align: center;
-        padding-top: 15px;
-        line-height: 5px;
-    }
+        .container .header .gambar img {
+            width: 100%;
+            margin: auto;
+        }
 
-    .container .header div {
-        width: 20%;
-    }
+        .container .header .text {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+            margin-top: -30px;
+            line-height: 1.5;
+        }
 
-    .container .main .judul {
-        display: flex;
-    }
+        .container .header div {
+            width: 20%;
+        }
 
-    .container .main .judul .kiri {
-        width: 25%;
-    }
+        .container .main .judul {
+            display: flex;
+            margin-bottom: 20px;
+        }
 
-    .container .main .judul .kanan {
-        width: 25%;
-    }
+        .container .main .judul .kiri,
+        .container .main .judul .kanan {
+            width: 25%;
+        }
 
-    .container .main .judul .text {
-        margin: 25px auto;
-        line-height: 1px;
-    }
+        .container .main .judul .text {
+            margin: auto;
+            text-align: center;
+            line-height: 1.5;
+        }
 
-    .container .main .judul .text .atas {
-        margin: 25px auto 0.1px;
-        font-size: 18px;
-        border-bottom: 2px solid black;
-        line-height: 1px;
-    }
+        .container .main .judul .text .atas {
+            font-size: 10px;
+        }
 
-    .container .main .judul .text .bawah {
-        margin: auto;
-        text-align: center;
-        line-height: 0.2px;
-    }
+        .container .main .judul .text .bawah {
+            margin: auto;
+            text-align: center;
+        }
 
-    .container .main .isi {
-        margin-left: 5%;
-        text-align: justify;
-    }
+        .container .main .isi {
+            margin-left: 5%;
+            text-align: justify;
+        }
 
-    .container .main .isi .text {
-        font-size: 20px;
-    }
+        .ttd {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-    .container .main .isi .text .nama,
-    .alamat,
-    .org,
-    .indpen,
-    .ktps {
-        display: flex;
-    }
+        .ttd1,
+        .ttd2,
+        .ttd3 {
+            width: 30%; /* Ubah lebar sesuai kebutuhan Anda */
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.5;
+            margin-left: 10px; /* Berikan margin antar elemen jika diinginkan */
+        }
 
-    .container .main .isi .text .nama dt {
-        width: 39%;
-    }
+        .ttd .atas,
+        .ttd .bawah {
+            margin: 0; /* Hapus margin default pada elemen .atas dan .bawah */
+        }
 
-    .container .main .isi .text .nama .isi {
-        display: flex;
-        width: 82%;
-    }
+        .ttd .sign {
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+        }
 
-    .container .main .isi .text .alamat dt {
-        width: 39%;
-    }
+        .ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
 
-    .container .main .isi .text .alamat .isi {
-        display: flex;
-        width: 82%;
-    }
+        .ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
 
-    .container .main .isi .text .org dt {
-        width: 39%;
-    }
+        .ttd p {
+            margin: 0;
+        }
 
-    .container .main .isi .text .org .isi {
-        display: flex;
-        width: 82%;
-    }
+        .container .footer {
+            margin-left: 5%;
+            font-size: 10px;
+        }
 
-    .container .main .isi .text .indpen dt {
-        width: 39%;
-    }
+        ol {
+            list-style: none;
+            padding: 0;
+        }
 
-    .container .main .isi .text .indpen .isi {
-        display: flex;
-        width: 82%;
-    }
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
 
-    .container .main .isi .text .ktps dt {
-        width: 39%;
-    }
+        li:before {
+            position: absolute;
+            right: 0;
+            margin-left: 5px;
+        }
 
-    .container .main .isi .text .ktps .isi {
-        display: flex;
-        width: 82%;
-    }
+        .tabel {
+            width: 100%;
+            margin: 20px 0;
+            overflow-x: auto; /* Untuk menangani tabel yang melebihi lebar layar */
+        }
 
-    .container .main .isi .text .hari,
-    .tanggal,
-    .waktu,
-    .tempat,
-    .keperluan {
-        display: flex;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            /* font-size: 14px; */
+        }
 
-    .container .main .isi .text .hari dt {
-        width: 39%;
-    }
+        th, td {
+            border: .5px solid black; 
+            padding: 2px;
+            text-align: center; /* Menengahkan tulisan */
+        }
 
-    .container .main .isi .text .hari .isi {
-        display: flex;
-        width: 82%;
-    }
+        td{
+            border: .5px solid black; /* Menggunakan border 2px dan warna abu-abu (#ddd) */
+            padding: 2px;
+            text-align: center; /* Menengahkan tulisan */
+            font-size: 10px;
+        }
 
-    .container .main .isi .text .tanggal dt {
-        width: 39%;
-    }
+        .isi {
+            margin-top: 20px;
+            font-size: 15px;
+            line-height: -0.5;
+        }
 
-    .container .main .isi .text .tanggal .isi {
-        display: flex;
-        width: 82%;
-    }
+        .program,
+        .aktivitas,
+        .klasifikasi,
+        .rencana,
+        .akun,
+        .komponen,
+        {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+            font-size: 10px;
+        }
 
-    .container .main .isi .text .waktu dt {
-        width: 39%;
-    }
+        .label {
+            display: inline-block;
+            width: 200px; /* Sesuaikan lebar label sesuai kebutuhan */
+        }
 
-    .container .main .isi .text .waktu .isi {
-        display: flex;
-        width: 82%;
-    }
+        .separator {
+            display: inline-block;
+            width: 400px; 
+        }
 
-    .container .main .isi .text .tempat dt {
-        width: 39%;
-    }
+        .isi-content {
+            flex: 1;
+            padding-bottom: 5px;
+            font-size: 10px;
+        }
 
-    .container .main .isi .text .tempat .isi {
-        display: flex;
-        width: 82%;
-    }
+        .label,
+        .separator {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 10px;
+            margin-bottom: .5rem;
+        }
 
-    .container .main .isi .text .keperluan li {
-        width: 39%;
-    }
+        td[colspan="2"] {
+            background-color: #cccccc; /* Gunakan kode warna abu-abu yang diinginkan */
+        }
 
-    .container .main .isi .text .keperluan .isi {
-        display: flex;
-        width: 82%;
-    }
+        .tabel-ttd table {
+            border-collapse: collapse;
+            border: 1px solid white; /* Warna border sesuaikan dengan latar belakang tabel */
+        }
 
-    .container .main .ttd {
-        display: flex;
-        margin-right: 5%;
-    }
+        .tabel-ttd td {
+            padding: 10px;
+            text-align: center;
+            border-right: 1px solid white; /* Garis vertikal */
+        }
 
-    .container .main .ttd .kanan {
-        width: 2000%;
-    }
+        .tabel-ttd td:last-child {
+            border-right: none; /* Hilangkan border vertikal pada elemen terakhir */
+        }
 
-    .container .main .ttd .tengah {
-        width: 1000%;
-    }
+        .tabel-ttd .atas,
+        .tabel-ttd .bawah {
+            margin: 0;
+        }
 
-    .container .main .ttd .kiri {
-        width: 500%;
-    }
+        .tabel-ttd .sign {
+            height: 50px;
+            box-sizing: border-box;
+        }
 
-    .container .main .ttd .main {
-        width: 2700%;
-        text-align: left;
-        font-size: 20px;
-        line-height: 1px;
-    }
+        .tabel-ttd .sign p {
+            margin: 0;
+        }
 
-    .container .main .ttd .main .sign {
-        width: 100%;
-        height: 50px;
-        box-sizing: border-box;
-    }
+        .tabel-ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
 
-    .container .main .ttd .main .sign img {
-        width: 150px;
-        height: 150px;
-        z-index: 3;
-        margin-top: -50px;
-    }
+        .tabel-ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
 
-    .container .main .ttd .main .bawah b {
-        text-decoration: underline;
-    }
+        .tabel-ttd p {
+            margin: 0;
+        }
 
-    .container .footer {
-        margin-left: 5%;
-        font-size: 20px;
-    }
-
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-    }
-
-    .jumlah-row {
-        font-weight: bold;
-    }
+        /* #tgl-bulan-tahun::before {
+            content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0'; 
+        } */
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="main">
-            <div class="judul">
-                <div class="kiri"></div>
-                <div class="text">
-                    <div class="atas">
-                        <h2>DAFTAR TRANSPOR LOKAL</h2>
-                    </div>
-                </div>
-                <div class="kanan"></div>
+        <div class="header">         
+            <div class="text">
+                <h3>DAFTAR TRANSLOK</h4>
             </div>
+        </div>
+        <div class="main">
             <div class="isi">
-                <div class="text">
-                    <dl>
-                        <div class="nama">
-                            <dt>PROGRAM</dt>
-                            <div class="isi">:&ensp;
-                                <div>{{ $spjPdf->program }}</div>
-                            </div>
-                        </div>
-                        <div class="alamat">
-                            <dt>AKTIVITAS</dt>
-                            <div class="isi">:&ensp; 
-                                <div>{{ $spjPdf->kegiatan }}</div>
-                            </div>
-                        </div>
-                        <div class="org">
-                            <dt>KLARIFIKASI RENCANA OUTPUT</dt>
-                            <div class="isi">:&ensp;
-                                <div>{{ $spjPdf->kro }}</div>
-                            </div>
-                        </div>
-                        <div class="indpen">
-                            <dt>RENCANA OUTPUT</dt>
-                            <div class="isi">:&ensp;
-                                <div>{{ $spjPdf->rencana_output }}</div>
-                            </div>
-                        </div>
-                        <div class="ktps">
-                            <dt>KOMPONEN</dt>
-                            <div class="isi">:&ensp;
-                                <div>{{ $spjPdf->komponen }}</div>
-                            </div>
-                        </div>
-                        <div class="ktps">
-                            <dt>AKUN</dt>
-                            <div class="isi">:&ensp;
-                                <div>{{ $spjPdf->akun }}</div>
-                            </div>
-                        </div>
-                        <div class="ktps">
-                            <dt>BULAN</dt>
-                            <div class="isi">:&ensp;
-                                <div>{{ $spjPdf->bulan }}</div>
-                            </div>
-                        </div>
-                    </dl>
+                <div class="program">
+                    <span class="label">PROGRAM</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->program }}</span>
                 </div>
+                <div class="aktivitas">
+                    <span class="label">AKTIVITAS</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->kegiatan }}</span>
+                </div>
+                <div class="klasifikasi">
+                    <span class="label">KLASIFIKASI RENCANA OUTPUT</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->kro }}</span>
+                </div>
+                <div class="rencana">
+                    <span class="label">RENCANA OUTPUT</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->rencana_output }}</span>
+                </div>
+                <div class="komponen">
+                    <span class="label">KOMPONEN</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->komponen }}</span>
+                </div>
+                <div class="akun">
+                    <span class="label">AKUN</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->akun }}</span>
+                </div>
+                <div class="akun">
+                    <span class="label">BULAN</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->bulan }}</span>
+                </div>
+            </div>
+            <div class="tabel">
                 <table>
                     <thead>
                         <tr>
@@ -333,6 +321,7 @@
                             <th>(6)</th>
                             <th>(7)</th>
                         </tr>
+                    <tbody>
                         <tr>
                             @foreach ($tabelspj as $item)
                               <tr>
@@ -350,60 +339,60 @@
                     <tfoot>
                         <tr class="jumlah-row">
                             <td colspan="3">Jumlah</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td></td>
+                            <td></td>
                             <td class="abu", colspan="2"></td>
                         </tr>
                     </tfoot>
                 </table>
-
-
-                <div class="ttd">
-                    <div class="kiri"></div>
-                    <div class="main">
-                        <div class="atas">
-                            <p>Lunas pada tanggal </p>
-                            <p>Bendahara Pengeluaran,</p>
-                        </div>
-                        <div class="sign">
-                            <p></p>
-                        </div>
-                        <div class="bawah">
-                            <p><b>nama</b></p>
-                            <p>NIP.</p>
-                        </div>
-                    </div>
-                    <div class="tengah"></div>
-                    <div class="main">
-                        <div>
-                            <p>Setuju dibayar, </p>
-                            <p>Pejabat Pembuat Komitmen</p>
-                        </div>
-                        <div class="sign">
-                            <p></p>
-                        </div>
-                        <div class="bawah">
-                            <p><b>nama</b></p>
-                            <p>NIP.</p>
-                        </div>
-                    </div>
-                    <div class="kanan"></div>
-                    <div class="main">
-                        <div class="atas">
-                            <p>Jakarta, </p>
-                            <p>Pembuat Daftar,</p>
-                        </div>
-                        <div class="sign">
-                            <p></p>
-                        </div>
-                        <div class="bawah">
-                            <p><b>nama</b></p>
-                            <p>NIP.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="tabel-ttd">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="atas">
+                                    <p>Lunas pada tanggal </p>
+                                    <p>Bendahara Pengeluaran,</p>
+                                </div>
+                                <div class="sign">
+                                    <p></p>
+                                </div>
+                                <div class="bawah">
+                                    <p><b>nama</b></p>
+                                    <p>NIP.</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="atas">
+                                    <p>Setuju dibayar, </p>
+                                    <p>Pejabat Pembuat Komitmen</p>
+                                </div>
+                                <div class="sign">
+                                    <p></p>
+                                </div>
+                                <div class="bawah">
+                                    <p><b>nama</b></p>
+                                    <p>NIP.</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="atas">
+                                    <p>Jakarta, </p>
+                                    <p>Pembuat Daftar,</p>
+                                </div>
+                                <div class="sign">
+                                    <p></p>
+                                </div>
+                                <div class="bawah">
+                                    <p><b>nama</b></p>
+                                    <p>NIP.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>                        
         </div>
-    </div>
 </body>
 </html>

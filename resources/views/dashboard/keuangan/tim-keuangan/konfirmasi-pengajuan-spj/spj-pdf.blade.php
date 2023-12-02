@@ -299,8 +299,8 @@
                                 <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
                               </tr>
                             @endforeach
-                          </tbody>       
-
+                        </tbody>
+                        
                     <tfoot>
                         <tr>
                             <th colspan="7">Jumlah</th>
