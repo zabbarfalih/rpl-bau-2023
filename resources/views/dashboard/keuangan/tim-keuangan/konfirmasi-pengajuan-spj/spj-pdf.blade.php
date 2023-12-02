@@ -283,51 +283,24 @@
                             <th>(12)</th>
                         </tr>
 
-                        <tr>
-                            <td>1.</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <tbody>
+                            @foreach ($tabelspj as $item)
+                              <tr>
+                                <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
+                                <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
+                                <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
+                                <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
+                                <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
+                                <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
+                                <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
+                                <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
+                                <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
+                                <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
+                                <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
+                              </tr>
+                            @endforeach
+                          </tbody>       
 
-                        <tr>
-                            <td>2.</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>3.</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
                     <tfoot>
                         <tr>
                             <th colspan="7">Jumlah</th>
@@ -384,20 +357,3 @@
 
 </html>
 
-    {{-- <tbody>
-      @foreach ($tabelspj as $item)
-        <tr>
-          <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
-          <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
-          <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
-          <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
-          <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
-          <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
-          <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
-          <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
-          <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
-          <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
-          <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
-        </tr>
-      @endforeach
-    </tbody>        --}}
