@@ -18,8 +18,22 @@
                 <div class="col-12">
                     <h1 class="py-5 text-center">Silakan isi formulir</h1>
 
-                    <form action="/dashboard/spj/pengajuan-spj" method="POST" enctype="multipart/form-data" class="row">
+                    <form action="/dashboard/spj/pengajuan-perjalanan-dinas" method="POST" enctype="multipart/form-data" class="row">
                         @csrf
+                        <div class="form-group">
+                            <div class="col-sm-11">
+                                <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                                <div class="col-sm-11">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    name="judul"
+                                    placeholder="BIAYA PERJALANAN DINAS DALAM RANGKA ......"
+                                    />
+                                </div>
+                            </div>
+                        <div>
+
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Program</label>
@@ -27,7 +41,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="(054.01.WA)  PROGRAM DUKUNGAN MANAJEMEN"
+                                    value="Program Dukungan Manajemen (054.01.01)"
                                     readonly
                                     name="program"
                                     />
@@ -39,7 +53,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="(0880)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
+                                    value="Penyelenggaraan Sekolah Tinggi Ilmu Statistik (2888)"
                                     readonly
                                     name="kegiatan"
                                     />
@@ -49,12 +63,12 @@
 
                         <div class="form-group row">
                             <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-2 col-form-label">KRO</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">KRO/RO</label>
                                 <div class="col-sm-10">
                                     <input
                                       type="text"
                                       class="form-control readonly-field"
-                                      value="(EBC)    LAYANAN MANAJEMEN SDM INTERNAL"
+                                      value="Layanan Pendidikan Kedinasan (2888.968)"
                                       readonly
                                       name="kro"
                                     />
@@ -62,83 +76,30 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="row">
-                                    <label for="inputText" class="col-sm-7 col-form-label">Rencana Output</label>
+                                    <label for="inputText" class="col-sm-7 col-form-label">Komponen</label>
                                 </div>
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
-                                    class="form-control"
-                                    value="(U05)    PROGRAM III"
-                                    name="rencana_output"
+                                    class="form-control readonly-field"
+                                    value="Tanpa Komponen (051)"
+                                    readonly
+                                    name="komponen"
                                     />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-2 col-form-label">Komponen</label>
-                                <div class="col-sm-10">
-                                    <input
-                                    type="text"
-                                    class="form-control readonly-field"
-                                    value="(052)    PELAKSANAAN PENDIDIKAN"
-                                    readonly
-                                    name="komponen"
-                                    />
-                                </div>
-                            </div>
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Akun</label>
                                 <div class="col-sm-10">
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="(521213)    BELANJA HONOR OUTPUT KEGIATAN"
+                                    value="Belanja Perjalanan Dinas Biasa (524111)"
                                     readonly
                                     name="akun"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-2 col-form-label">Periode</label>
-                                <div class="col-sm-10">
-                                    <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="masukkan tahun"
-                                    name="periode"
-                                    id="periode"
-                                    required
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="row">
-                                    <label for="inputText" class="col-sm-7 col-form-label">Tanggal Kegiatan</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="col-sm-10">
-                                        <input type="date" name="tanggal_kegiatan" class="form-control font-form" style="font-size: 16px;"required/>
-                                      </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-2 col-form-label">Jenis SPJ</label>
-                                <div class="col-sm-10">
-                                    <input
-                                    type="text"
-                                    class="form-control readonly-field"
-                                    value="SPJ Honor Dosen"
-                                    readonly
-                                    name="jenis_spj"
-                                    required
                                     />
                                 </div>
                             </div>
@@ -166,9 +127,8 @@
                                 <div class="col-sm-10">
                                 <select class="form-select" name="ppk" required>
                                     <option selected>Pilih Penandatangan</option>
-                                    <option value="Luci Wulansari">Luci Wulansari</option>
-                                    <option value="XXX">XXX</option>
-                                    <option value="ZZZ">ZZZ</option>
+                                    <option value="Luci Wulansari, S.Si, MSE.">Luci Wulansari, S.Si, MSE.</option>
+                                    <option value="Nurseto Wisnumurti, S.Si., M.Stat.">Nurseto Wisnumurti, S.Si., M.Stat.</option>
                                 </select>
                                 </div>
                             </div>

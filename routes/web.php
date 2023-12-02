@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjPdController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
@@ -73,7 +74,9 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
 
     // SPJ Perjalanan Dinas
-
+    Route::resource('/dashboard/spj/pengajuan-perjalanan-dinas', SpjPdController::class)->middleware('auth');
+    Route::get('/dashboard/spj/pengajuan-perjalanan-dinas', [SpjPdController::class, 'create'])->name('spj-pd.create');   
+    Route::post('/dashboard/spj/pengajuan-perjalanan-dinas', [SpjPdController::class, 'store'])->name('spj-pd.store');   
 
     // SKP
     Route::get('/dashboard/skp/info-pengajuan-skp', [InfoPengajuanSKPController::class, 'index'])->name('skp.index');
