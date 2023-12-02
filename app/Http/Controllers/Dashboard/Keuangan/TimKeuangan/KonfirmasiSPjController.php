@@ -6,7 +6,10 @@ use App\Models\Spj;
 
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\SpjPd;
+use App\Models\SpjTr;
 use App\Models\TabelSpj;
+use App\Models\TabelSpjTr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,11 +26,15 @@ class KonfirmasiSpjController extends Controller
         $menus = Menu::with('submenus')->get();
         $users = User::all();
         $spj = Spj::all();
+        $spjTr = SpjTr::all();
+        $spjPd = SpjPd::all();
 
         return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.index', [
             'menus' => $menus,
             'users' => $users,
-            'spj' => $spj
+            'spj' => $spj,
+            'spjTr' => $spjTr,
+            'spjPd' => $spjPd
         ]);
     }
 
@@ -75,6 +82,21 @@ class KonfirmasiSpjController extends Controller
             $menus = Menu::with('submenus')->get();
             $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detail', [
+                'menus' => $menus,
+                'spj' => $spj,
+                'tabelspj'=> $tabelspj]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    public function showtr($id)
+    {
+        try {
+            $spj = SpjTr::findOrFail((int)$id);
+            $menus = Menu::with('submenus')->get();
+            $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
+            return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detailtr', [
                 'menus' => $menus,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj]);

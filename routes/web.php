@@ -79,6 +79,8 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::get('/dashboard/spj/info-pengajuan-spjtr/{spj}', [InfoPengajuanSpjController::class, 'showtr'])->name('info-pengajuan-spjtr.show');
     Route::post('/importspjtrnew', [TabelSpjTrController::class,'spjimportexcel'])->name('importspjtrnew')->middleware('auth');
     Route::get('/spjtrtemplatedownload', [InfoPengajuanSpjController::class, 'spjtrtemplatedownload'])->name('spjtrtemplatedownload');
+    Route::delete('/dashboard/spj/info-pengajuan-spjtr/hapus-spj/{spj}', [SpjController::class, 'hapusSpjTr']);
+    Route::delete('/dashboard/spj/info-pengajuan-spjtr/hapus-unggahan/{spj}', [SpjController::class, 'hapusUnggahanTr']);
 
     // SPJ Perjalanan Dinas
     Route::resource('/dashboard/spj/pengajuan-perjalanan-dinas', SpjPdController::class)->middleware('auth');
@@ -101,6 +103,13 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::post('/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolak']);
     Route::post('/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpj']);
     Route::get('/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpj']);
+
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spjtr/{spj}', [KonfirmasiSPjController::class,'showtr'])->middleware('auth')->name('konfirmasi-spjtr.show');
+    Route::post('/dashboard/tim-keuangan/konfirmasi-spjtr/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuTr']);
+    Route::post('/dashboard/tim-keuangan/konfirmasi-spjtr/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakTr']);
+    Route::post('/dashboard/tim-keuangan/konfirmasi-spjtr/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjTr']);
+    Route::get('/dashboard/tim-keuangan/konfirmasi-spjtr/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjTr']);
+
 
 
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');

@@ -36,9 +36,9 @@ class InfoPengajuanSpjController extends Controller
     return view('dashboard.keuangan.spj.index', [
         'menus' => $menus,
         'users' => $users,
-        'spj' => $spj, // Ganti 'spj' dengan 'allSpj' pada view
-        'spjTr' => $spjTr, // Ganti 'spj' dengan 'allSpj' pada view
-        'spjPd' => $spjPd // Ganti 'spj' dengan 'allSpj' pada view
+        'spj' => $spj,
+        'spjTr' => $spjTr,
+        'spjPd' => $spjPd
     ]);
 }
 

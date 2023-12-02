@@ -1,10 +1,24 @@
 <x-dashboard.layouts.layouts :menus="$menus">
     <x-slot name="css">
     </x-slot>
+
     <x-slot name="js_head">
     </x-slot>
+
+    {{-- <style>
+      #tahap2,
+      #tahap3 {
+        display: none;
+      }
+    </style> --}}
+
     <section class="section dashboard">
         <div class="row">
+          @if (session()->has('success'))
+          <div class="alert alert-success col-lg-8 mt-4" role="alert">
+            {{ session('success') }}
+          </div>
+          @endif
           <!-- Left side columns -->
           <div class="col-lg-8">
             <div class="row">
@@ -62,16 +76,9 @@
                                       @endif">
                                       {{ $spj->status }}
                                   </span>
-
-                                  @if ($spj->status === 'Ditolak') 
-                                    <a href="/dashboard/spj/pengajuan-spj" class="ml-4"><button type="button" class="btn btn-outline-success ml-4" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                      Ajukan Ulang</button>
-                                    </a>
-                                  @endif
-
                                 </div>
                               </div>
-                              
+
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nama Pengaju</div>
                                 <div class="col-lg-9 col-md-8">{{ $spj->user->name }}</div>
@@ -97,19 +104,15 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   {{ $spj->jenis_spj }}
-                                  <p class="card-text mt-2 td-underline">
-                                    <u><a href="{{ route('spjtrtemplatedownload') }}" >Download Template Excel di sini</a></u>
-                                </p>
-                                
                                 </div>
                               </div>
 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
-                                  Bulan
+                                  Periode
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->bulan }}
+                                  {{ $spj->periode }}
                                 </div>
                               </div>
 
@@ -135,7 +138,6 @@
                                 </div>
                               </div>
                               @endif
-                
 
                               @if ($spj->status === 'Ditolak') 
                               <div class="row">
@@ -146,36 +148,9 @@
                                   {{ $spj->keterangan }}
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapusspj">
-                                Hapus Pengajuan
-                              </button>
-                              <div class="modal fade" id="hapusspj" tabindex="-1">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title">Hapus Pengajuan</h5>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      Apakah Anda yakin untuk menghapus pengajuan ini?
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                      <form method="post" action="{{ url('/dashboard/spj/info-pengajuan-spjtr/hapus-spj/' . $spj->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
                               @endif
 
                             </div>
-
-                            
 
 
                             <div
@@ -202,7 +177,7 @@
             <!-- Recent Activity -->
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Perkembangan Status Pengajuan</h5>
+                <h5 class="card-title">Perkembangan Proses Pengajuan</h5>
 
                 <div class="activity">
                   <div class="activity-item d-flex">
@@ -211,145 +186,157 @@
                       class="bi bi-circle-fill activity-badge text-warning align-self-start"
                     ></i>
                     <div class="activity-content">
-                      <strong>Unggah Dokumen</strong>
-                      <div class="finish">
-                        <div class="download">
-                          <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#basicModal" @if(!$tabelspj->isEmpty() || $spj->status == 'Ditolak') disabled @endif>
-                            Unggah
-                          </button>
-                          <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#basicModalHapusSpj" @if($tabelspj->isEmpty() || $spj->status !== 'Menunggu Persetujuan') disabled @endif>
-                            Hapus Unggahan
-                          </button>
+                      <strong>Persetujuan</strong>
+                      @if($spj->status === 'Menunggu Persetujuan')
+                          <p>Silakan lakukan tindakan persetujuan</p>
+                      @else
+                          <p>Anda telah melakukan tindakan persetujuan</p>
+                      @endif
 
-                          {{-- Modal Unggah --}}
-                          <div class="modal fade" id="basicModal" tabindex="-1">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Unggah File Excel</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  <form action="{{ route('importspjtrnew') }}" method="POST" enctype="multipart/form-data">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-md-12 label mb-2">
-                                        {{ csrf_field() }}
-                                          <div class="form-group">
-                                              <input class="custom-file-input form-control @error('file') is-invalid @enderror" type="file" name="file" required>
-                                              @error('file')
-                                                  <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                  </div>
-                                              @enderror
-                                          </div>
-                                      </div>
-                                      <div class="col-sm-10">
-                                        <input
-                                          type="hidden"
-                                          class="form-control"
-                                          value="{{ $spj->id }}"
-                                          readonly
-                                          name="spj_id"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-primary">Kirim</button>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
+                      <button type="button" class="btn btn-success m-1" @if($spj->status !== 'Menunggu Persetujuan') disabled @endif data-bs-toggle="modal" data-bs-target="#setujuispj">
+                        Setujui
+                      </button>
+
+                      {{-- Modal Setujui --}}
+                      <div class="modal fade" id="setujuispj" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Setujui Pengajuan</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Apakah Anda yakin untuk menyetujui pengajuan ini?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                              <form method="post" action="{{ url('/dashboard/tim-keuangan/konfirmasi-spjtr/setujui-spj/' . $spj->id) }}">
+                                @csrf
+                                <input
+                                type="hidden"
+                                class="form-control"
+                                value="Menunggu Pencairan Dana"
+                                readonly
+                                name="status"
+                              />
+                              <button type="submit" class="btn btn-success m-1">
+                                Setujui Pengajuan
+                              </button>
+                            </form>
                             </div>
                           </div>
-
-                          {{-- Modal Haous Unggahan --}}
-                          <div class="modal fade" id="basicModalHapusSpj" tabindex="-1">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Hapus Dokumen</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  Apakah Anda yakin untuk menghapus Dokumen Pengajuan?
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                  <form method="post" action="{{ url('/dashboard/spj/info-pengajuan-spjtr/hapus-unggahan/' . $spj->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
                         </div>
+                      </div>
+
+                    <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#basicModaltolakspj"  @if($spj->status !== 'Menunggu Persetujuan') disabled @endif>Tolak</button>
+                      <div class="row">
                       </div>
                     </div>
                   </div>
-
-                  <div class="activity">
-                    <div class="activity-item d-flex">
-                      <div class="activite-label">Tahap 2</div>
-                      <i
-                        class="bi bi-circle-fill activity-badge text-warning align-self-start"
-                      ></i>
-                      <div class="activity-content">
-                        <strong>Menunggu Persetujuan</strong>
-                        <p>Pada tahap ini pengajuan akan disetujui/ditolak oleh Tim Keuangan</p>
-                      </div>
-                    </div>
                   <!-- End activity item-->
 
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">Tahap 3</div>
+                  <div class="activity-item d-flex" id="tahap2">
+                    <div class="activite-label">Tahap 2</div>
                     <i
                       class="bi bi-circle-fill activity-badge text-warning align-self-start"
                     ></i>
                     <div class="activity-content">
-                      <strong>Menunggu Pencairan Dana</strong>
-                      <p>Pada tahap ini pengajuan sedang dalam proses pencairan dana</p>
+                      <strong>Pencairan Dana</strong>
+                      @if($spj->status === 'Menunggu Pencairan Dana' || $spj->status === 'Menunggu Persetujuan')
+                          <p>Silakan lakukan konfirmasi pencairan dana</p>
+                      @elseif($spj->status === 'Ditolak')
+                        <p>Anda telah melakukan penolakan</p>
+                      @else
+                          <p>Anda telah melakukan konfirmasi pencairan dana</p>
+                      @endif
+                      <form method="post" action="{{ url('/dashboard/tim-keuangan/konfirmasi-spjtr/transfer-spj/' . $spj->id) }}">
+                        @csrf
+                        <input
+                            type="hidden"
+                            class="form-control"
+                            value="Selesai"
+                            readonly
+                            name="status"
+                        />
+                        <input
+                            type="date"
+                            class="form-control"
+                            name="tanggal_transfer"
+                            required
+                            @if($spj->status === 'Selesai') value="{{ $spj->tanggal_transfer }}" @endif
+                        />
+                        <button type="submit" class="btn btn-success m-1 mt-2" @if($spj->status !== 'Menunggu Pencairan Dana') disabled @endif>
+                            Konfirmasi
+                        </button>
+                    </form>
+                    
                     </div>
                   </div>
                   <!-- End activity item-->
 
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">Tahap 4</div>
+                  <div class="activity-item d-flex" id="tahap3">
+                    <div class="activite-label">Tahap 3</div>
                     <i
                       class="bi bi-circle-fill activity-badge text-success align-self-start"
                     ></i>
                     <div class="activity-content">
-                      <strong>Selesai</strong>
-                      <p>Pada tahap ini pengajuan SPJ telah selesai, anda dapat mengunduh SPJ</p>
+                      <strong>SPJ Telah Selesai</strong>
+                      <p>Proses pengajuan SPJ telah selsai</p>
                       <div class="finish">
                         <div class="download">
-                          <button type="button" class="btn btn-primary" @if($spj->status !== 'Selesai') disabled @endif>Cetak</button>
+                          <a href="{{ url('/dashboard/tim-keuangan/konfirmasi-spjtr/download-spj-pdf/' . $spj->id) }}" target="_blank"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- End activity item-->
-                  <!-- End activity item-->
-                  <!-- End activity item-->
+
                 </div>
-              </div>
+
+                {{-- Modal Tolak SPJ --}}
+                <div class="modal fade" id="basicModaltolakspj" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Tolak dan Kirim Pesan Penolakan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method="post" action="{{ url('/dashboard/tim-keuangan/konfirmasi-spjtr/tolak-spj/' . $spj->id) }}">
+                          @csrf
+                          <div class="col-sm-100">
+                            <textarea name="keterangan" class="form-control" style="height: 100px" placeholder="Tulis pesan penolakan ..."></textarea>
+                          </div>
+                          <input
+                          type="hidden"
+                          class="form-control"
+                          value="Ditolak"
+                          readonly
+                          name="status"
+                        /> 
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-danger m-1">Tolak dan Kirim Pesan</button>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+
             </div>
             <!-- End Recent Activity -->
           </div>
           <!-- End Right side columns -->
         </div>
-      </section>
+    </section>
 
-      <section>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <!-- Table with stripped rows -->
-                @if(!$tabelspj->isEmpty())
+    <section>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <!-- Table with stripped rows -->
+              @if(!$tabelspj->isEmpty())
                 <table class="table datatable">
                   <thead>
                     <tr>
@@ -379,13 +366,13 @@
                 Anda Belum Mengunggah Dokumen Excel, Silakan Unggah Excel.
               </div>
               @endif
-                <!-- End Table with stripped rows -->
-              </div>
+              <!-- End Table with stripped rows -->
             </div>
           </div>
         </div>
-      </section>
-      
-      <x-slot name="js_body">
-    </x-slot>
+      </div>
+    </section>
+
+    <x-slot name="js_body">
+    </x-slot>    
 </x-dashboard.layouts.layouts>

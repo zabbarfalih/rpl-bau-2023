@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\TabelSpj;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\SpjTr;
 use Barryvdh\DomPDF\PDF;
 
 class SpjController extends Controller
@@ -98,6 +99,19 @@ class SpjController extends Controller
         return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'SPJ berhasil dihapus');
     }
 
+    public function hapusSpjTr($spj)
+    {
+        $spjModel = SpjTr::findOrFail($spj);
+
+        if (!$spjModel) {
+            return response()->json(['message' => 'SPJ tidak ditemukan'], 404);
+        }
+
+        $spjModel->delete();
+
+        return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'SPJ berhasil dihapus');
+    }
+
     public function hapusUnggahan($spj)
     {
         $spjModel = Spj::findOrFail($spj);
@@ -109,6 +123,22 @@ class SpjController extends Controller
         $spjModel->update(['total' => null]);
         $spjModel->update(['total_bruto' => null]);
         $spjModel->update(['total_pajak' => null]);
+        $spjModel->tabel()->delete();
+
+        return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'Dokumen SPJ berhasil dihapus');
+    }
+
+    public function hapusUnggahanTr($spj)
+    {
+        $spjModel = SpjTr::findOrFail($spj);
+
+        if (!$spjModel) {
+            return response()->json(['message' => 'SPJ tidak ditemukan'], 404);
+        }
+
+        $spjModel->update(['total_transpor_per_hari' => null]);
+        $spjModel->update(['total_jumlah_kegiatan' => null]);
+        $spjModel->update(['total_jumlah_yang_dibayarkan' => null]);
         $spjModel->tabel()->delete();
 
         return redirect('/dashboard/spj/info-pengajuan-spj')->with('success', 'Dokumen SPJ berhasil dihapus');
