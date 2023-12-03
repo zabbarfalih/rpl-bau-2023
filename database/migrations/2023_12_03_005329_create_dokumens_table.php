@@ -17,7 +17,6 @@ class CreateDokumensTable extends Migration
 
         Schema::create('dokumens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('pengadaan_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

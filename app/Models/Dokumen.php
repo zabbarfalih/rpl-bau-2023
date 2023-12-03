@@ -10,22 +10,16 @@ class Dokumen extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'pengadaan_id',
         // Tambahkan kolom lain sesuai kebutuhan
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function pengadaan()
     {
-        return $this->belongsTo(Pengadaan::class);
+        return $this->belongsTo(Pengadaan::class,'pengadaan_id');
     }
 
-    public function dokumenPengajuans()
+    public function dokumenPengadaans()
     {
         return $this->hasMany(DokumenPengadaan::class);
     }

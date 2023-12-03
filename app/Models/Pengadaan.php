@@ -25,4 +25,9 @@ class Pengadaan extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function statusChanges()
+    {
+        return $this->hasMany(StatusPengadaan::class);
+    }
 }

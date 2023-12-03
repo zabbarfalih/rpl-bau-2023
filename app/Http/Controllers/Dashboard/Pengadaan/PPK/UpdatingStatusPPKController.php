@@ -11,6 +11,9 @@ use App\Models\Dokumen;
 use App\Models\Pengadaan;
 use App\Models\Penolakan;
 use Illuminate\Http\Request;
+use App\Models\StatusPengadaan;
+use App\Models\DokumenPengadaan;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -104,16 +107,27 @@ class UpdatingStatusPPKController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details($id)
+    public function details($pengadaanId)
     {
         $menu = Menu::with('submenu')->get();
         $roles = Role::all();
 
-        $dokumen = Dokumen::find($id);
+        $pengadaan = Pengadaan::findOrFail($pengadaanId);
+        Log::info('Pengadaan data : ' . $pengadaan->user_id);
+        // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
+
+        $dokumen = Dokumen::where('pengadaan_id', $pengadaan->id)->get('id');
+        Log::info('Pengadaan data : ' . $dokumen);
+
+        foreach ($dokumen as $dok) {
+            $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dok->id)->get();
+            Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);
+        }
+
         return view('dashboard.pengadaan.ppk.details', [
             'menu' => $menu,
             'roles' => $roles,
-            'dokumen' => $dokumen
+            'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
 
