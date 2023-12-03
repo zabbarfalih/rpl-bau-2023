@@ -23,12 +23,9 @@
                                     <th scope="col" class="text-center align-middle">
                                         No
                                     </th>
-
                                     <th scope="col" class="text-center align-middle">
                                         Nama
                                     </th>
-
-
                                     <th scope="col" class="text-center align-middle">
                                         Nama Paket Pengadaan
                                     </th>
@@ -44,7 +41,6 @@
                                     ></th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @foreach($listPengajuan as $pengajuan)
                                 <tr>
@@ -54,7 +50,6 @@
                                     <td class="fw-bold align-middle text-wrap">
                                         {{ $pengajuan->user->name }}
                                     </td>
-
                                     <td class="text-wrap">
                                         {{ $pengajuan->nama_pengadaan }}
                                     </td>
