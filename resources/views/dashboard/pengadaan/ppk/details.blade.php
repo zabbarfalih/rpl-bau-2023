@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                         <div class="d-grid gap-2 mt-3">
-                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'kak', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                            <a href="" class="btn btn-primary" type="button">Download</a>
                                         </div>
                                     </div>
 
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="alert alert-secondary alert-dismissible fade show" role="alert">
                                         <div class="d-grid gap-2 mt-3">
-                                            <a href="{{ route('updatingstatusppk.download', ['nama_dokumen' => 'bast', 'id' => $dokumen->id]) }}" class="btn btn-primary" type="button">Download</a>
+                                            <a href="" class="btn btn-primary" type="button">Download</a>
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@
 
                                 <!-- List group with Advanced Contents -->
                                 <!-- Ini kalau dikerjakan PPK langsung -->
-                            
+
                                 <div class="d-flex align-items-start">
                                     <h4 class="alert-heading">
                                         Dokumen Undangan

@@ -18,7 +18,7 @@ class Pengadaan extends Model
 
     public function role()
     {
-        return $this->belongsTo(Role::class,'penyelenggara');
+        return $this->belongsTo(Role::class, 'penyelenggara');
     }
 
     public function user()

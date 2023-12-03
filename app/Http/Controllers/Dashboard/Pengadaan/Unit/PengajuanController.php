@@ -58,8 +58,8 @@ class PengajuanController extends Controller
         Carbon::setLocale('id');
         $menu = Menu::with('submenu')->get();
         $userId = Auth::id();
-        $listPengajuan = Pengadaan::where('user_id', $userId)->get();
-        //$listPengajuan = Pengadaan::all();
+        //$listPengajuan = Pengadaan::where('user_id', $userId)->get();
+        $listPengajuan = Pengadaan::all();
 
         foreach ($listPengajuan as $pengajuan) {
             // Pastikan kolom tanggal pengadaan ada dan bukan null
@@ -91,28 +91,13 @@ class PengajuanController extends Controller
     public function details($pengadaanId)
     {
         $menu = Menu::with('submenu')->get();
+        $pengadaan = Pengadaan::findOrFail($pengadaanId);
+        // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
+        $dokumenPengadaans = $pengadaan->dokumenPengadaans;
 
-        $userId = Auth::id();
-        $dokumenPengadaans = Dokumen::where('pengadaan_id', $pengadaanId)
-            ->whereHas('dokumenPengajuans', function ($query) use ($userId) {
-                $query->where('user_id', $userId);
-            })
-            ->with('dokumenPengajuans')
-            ->get();
-        Log::info($dokumenPengadaans);
-
-        $dokumenTipeArray = [];
-        foreach ($dokumenPengadaans as $dokumen) {
-            foreach ($dokumen->dokumenPengajuans as $dokumenPengadaan) {
-                $dokumenTipeArray[$dokumen->id][] = $dokumenPengadaan->tipe_dokumen;
-            }
-        }
-
-        Log::info($dokumenTipeArray);
-
-
-        return view('dashboard.pengadaan.unit.details', [
+        return view('dokumen.details', [
             'menu' => $menu,
+            'pengadaan' => $pengadaan,
             'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
