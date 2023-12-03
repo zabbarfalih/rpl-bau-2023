@@ -44,6 +44,92 @@
 
                                 <!-- List dokumen -->
 
+                                {{-- tabel --}}
+                                <table
+                                    class="table table-hover display responsive nowrap table-striped font-body-table"
+                                    style="width: 100%"
+                                    {{-- id="table-bau" --}}
+                                >
+                                    <thead class="header-table">
+                                        <tr>
+                                            <th scope="col" class="text-center align-middle">
+                                                No
+                                            </th>
+
+                                            <th scope="col" class="text-center align-middle text-wrap">
+                                                Nama Dokumen
+                                            </th>
+
+                                            <th scope="col" class="text-center align-middle text-wrap">
+                                                Template
+                                            </th>
+                                            <th scope="col" class="text-center align-middle">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                1
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen KAK
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button
+                                                    type="button"
+                                                    class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#uploadFileModal"
+                                                >
+                                                    Upload
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
+                                                >
+                                                    Download
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
+                                                >
+                                                    Edit
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="modal fade" id="uploadFileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
+                                            <div class="modal-header">
+                                                <h4 class="alert-heading">Dokumen [Nama Dokumen]</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                                    <div class="file-upload-wrapper">
+                                                        <input type="file" class="file-upload" name="uploadedFile[]" />
+                                                        <button class="btn btn-danger btn-sm ms-2" style="display:none;">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                                <a href="#" type="button" class="btn btn-primary">Upload</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {{-- tampilan unit --}}
                                 <div id="dokumen-unit">
                                     <div class="alert alert-primary d-flex align-items-center" role="alert">
