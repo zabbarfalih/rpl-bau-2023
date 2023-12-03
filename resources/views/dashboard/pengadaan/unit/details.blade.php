@@ -31,29 +31,35 @@
                           <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16" height="16">
                             <use xlink:href="#info-fill" />
                           </svg>
-                          <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                          <div>Untuk mengunduh laporan, silakan tekan download</div>
                         </div>
-                        <!-- List group with Advanced Contents -->
-
-                        <div class="d-flex align-items-start">
-                          <h4 class="alert-heading">Dokumen KAK</h4>
-                        </div>
-
-                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                          <div class="d-grid gap-2 mt-3">
-                            <button class="btn btn-primary" type="button">Download</button>
-                          </div>
-                        </div>
-
-                        <div class="d-flex align-items-start">
-                          <h4 class="alert-heading">Dokumen BAST</h4>
-                        </div>
-
-                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                          <div class="d-grid gap-2 mt-3">
-                            <button class="btn btn-primary" type="button">Download</button>
-                          </div>
-                        </div>
+                        @foreach($dokumenPengadaans as $dokumen)
+                            @foreach($dokumen->dokumenPengajuans as $dokumenPengadaan)
+                                {{-- Cek untuk Dokumen KAK --}}
+                                @if($dokumenPengadaan->tipe_dokumen === 'kak')
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen KAK</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ Storage::url($dokumenPengadaan->path_file) }}" class="btn btn-primary">Download</a>
+                                        </div>
+                                    </div>
+                                @endif
+                                
+                                {{-- Cek untuk Dokumen BAST --}}
+                                @if($dokumenPengadaan->tipe_dokumen === 'bast')
+                                    <div class="d-flex align-items-start">
+                                        <h4 class="alert-heading">Dokumen BAST</h4>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                        <div class="d-grid gap-2 mt-3">
+                                            <a href="{{ Storage::url($dokumenPengadaan->path_file) }}" class="btn btn-primary">Download</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endforeach
                       </div>
                     </div>
                   </div>
@@ -63,6 +69,7 @@
                 <!-- Right side columns -->
                 <div class="col-lg-4">
                   <div class="card">
+
                     <div class="filter">
                       <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -142,41 +149,11 @@
                 <!-- End Right side columns -->
               </div>
         </div>
+    </section>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header text-center">
-                  <h5 class="modal-title modal-center" id="exampleModalLabel">Alasan penolakan</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form class="row g-3">
-                    <div class="col-md-12">
-                      <div class="form-floating">
-                        <textarea type="text" class="form-control" id="floatingName" style="height: 100px" placeholder="Your Name"></textarea>
-                        <label for="floatingName">Alasan penolakan</label>
-                        <ul class="list-group">
-                          <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                            Dengan Revisi
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- End floating Labels Form -->
-                </div>
-                <div class="modal-footer">
-                  <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
-                  <a href="" type="button" class="btn btn-danger">Tolak</a>
-                </div>
-              </div>
-            </div>
-          </div>
-      </section>
 
-    <x-slot name="js_body">
+
+      <x-slot name="js_body">
+        <script src="{{ asset('assets/js/script.js') }}"></script>
     </x-slot>
 </x-dashboard.layouts.layouts>

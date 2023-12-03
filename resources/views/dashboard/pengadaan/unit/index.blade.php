@@ -52,7 +52,7 @@
                             </thead>
 
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($listPengajuan as $list)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
@@ -60,20 +60,20 @@
 
                                     <td class="text-wrap">
                                         {{ 'Nama Pengadaan ' .
-                                        $loop->iteration }}
+                                        $list->nama_pengadaan }}
                                     </td>
 
                                     <td class="text-center align-middle">
-                                        22 September 2024
+                                        {{$list->tanggal_pengadaan_formatted}}
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                        class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold text-dark pe-none"
-                                            >Menunggu Persetujuan</span
+                                        class="btn-sibau-dashboard btn rounded-pill fw-bold {{$list->status_color}}"
+                                            >{{$list->status}}</span
                                         >
                                     </td>
                                     <td class="text-center">
-                                        <a href={{ route('pengajuan.details') }}>
+                                        <a href={{ route('pengajuan.details', ['id' => $list->id]) }}>
                                             <button
                                             type="button"
                                             class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"

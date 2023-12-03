@@ -16,63 +16,75 @@
                       <h5 class="card-title fw-bold fs-3 text-center">Form Pengajuan Pengadaan</h5>
                       <br>
 
+
                       <!-- General Form Elements -->
-                      <form class="font-form fw-bold">
+                      <form method="POST" action="{{ route('pengajuan.kirim-form') }}" class="font-form fw-bold" enctype="multipart/form-data">
+                        @csrf
+                        <!-- Nama Unit -->
                         <div class="row mb-3">
-                          <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
-                          <div class="col-sm-10">
-                            <select id="inputNamaUnit" class="form-select font-form">
-                              <option selected>Choose...</option>
-                              <option>Unit A</option>
-                              <option>Unit B</option>
-                              <option>Unit C</option>
-                            </select>
-                          </div>
+                            <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
+                            <div class="col-sm-10">
+                                <select name="role_id" id="inputNamaUnit" class="form-select font-form">
+                                    <option selected>Choose...</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
+                        <!-- Nama Paket Pengadaan -->
                         <div class="row mb-3">
-                          <label for="inputText" class="col-sm-2 col-form-label">Nama Paket Pengadaan</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" />
-                          </div>
+                            <label for="inputText" class="col-sm-2 col-form-label">Nama Paket Pengadaan</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="nama_pengadaan" class="form-control" />
+                            </div>
                         </div>
 
+                        <!-- Tanggal Pengadaan -->
                         <div class="row mb-3">
-                          <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Pengadaan</label>
-                          <div class="col-sm-10">
-                            <input type="date" class="form-control font-form" />
-                          </div>
+                            <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Pengadaan</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="tanggal_pengadaan" class="form-control font-form" />
+                            </div>
                         </div>
 
+                        <!-- Unduh Template Dokumen KAK -->
                         <div class="mb-1">
-                          <a href="" class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
+                            <a href="{{ route('template.download', ['filename' => 'KAK']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
                         </div>
 
+                        <!-- Upload Dokumen KAK -->
                         <div class="row mb-3">
-                          <label for="inputNumber" class="col-sm-2 col-form-label">Upload Dokumen KAK </label>
-                          <div class="col-sm-10">
-                            <input class="form-control font-form" type="file" id="formFile" />
-                          </div>
+                            <label for="inputNumber" class="col-sm-2 col-form-label">Upload Dokumen KAK</label>
+                            <div class="col-sm-10">
+                                <input name="dokumen_kak" class="form-control font-form" type="file" id="formFile" />
+                            </div>
                         </div>
 
+                        <!-- Unduh Template Memo -->
                         <div class="mb-1">
-                          <a href="" class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
+                            <a href="{{ route('template.download', ['filename' => 'Memo']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
                         </div>
 
+                        <!-- Upload Memo -->
                         <div class="row mb-3">
-                          <label for="inputNumber" class="col-sm-2 col-form-label">Upload Memo</label>
-                          <div class="col-sm-10">
-                            <input class="form-control font-form" type="file" id="formFile" />
-                          </div>
+                            <label for="inputNumber" class="col-sm-2 col-form-label">Upload Memo</label>
+                            <div class="col-sm-10">
+                                <input name="dokumen_memo" class="form-control font-form" type="file" id="formFile" />
+                            </div>
                         </div>
-                      </form>
-                      <div class="row mb-3">
-                        <div class="text-end">
-                          <button type="button" class="btn btn-danger" onclick="window.location.href='{{route('pengajuan.index')}}'">Batal</button>
-                          <button type="submit" class="btn btn-primary" onclick="window.location.href='pengajuan-unit.html'">Kirim</button>
+
+                        <!-- Tombol Aksi -->
+                        <div class="row mb-3">
+                            <div class="text-end">
+                                <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('pengajuan.index') }}'">Batal</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
+                            </div>
                         </div>
-                      </div>
-                      <!-- End General Form Elements -->
+                    </form>
+
+
                     </div>
                   </div>
                 </div>
