@@ -5,11 +5,6 @@
     <x-slot name="js_head">
     </x-slot>
 
-    @php
-        $roleUser = "PPK";
-        $allowedRole = ["PPK", "PBJ"];
-    @endphp
-
     <section class="section pengajuan">
         <div class="row">
             <div class="col-lg-12">
@@ -29,14 +24,13 @@
                                         No
                                     </th>
 
-                                    @if(in_array($roleUser, $allowedRole))
                                     <th scope="col" class="text-center align-middle">
                                         Nama
                                     </th>
-                                    @endif
+
 
                                     <th scope="col" class="text-center align-middle">
-                                        Nama Pengadaan
+                                        Nama Paket Pengadaan
                                     </th>
                                     <th scope="col" class="text-center align-middle">
                                         Tanggal Pengadaan
@@ -52,32 +46,29 @@
                             </thead>
 
                             <tbody>
-                                @foreach($dokumen as $dokumen)
+                                @foreach($listPengajuan as $pengajuan)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
-
-                                    @if(in_array($roleUser, $allowedRole))
                                     <td class="fw-bold align-middle text-wrap">
-                                        {{ $dokumen->user->name }}
+                                        {{ $pengajuan->user->name }}
                                     </td>
-                                    @endif
 
                                     <td class="text-wrap">
-                                        {{ $dokumen->nama_pengadaan }}
+                                        {{ $pengajuan->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        {{ \Carbon\Carbon::parse($dokumen->tanggal_pengajuan)->format('d M Y') }}
+                                        {{ $pengajuan->tanggal_pengadaan_formatted }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                            class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold text-dark pe-none"
-                                            >{{ $dokumen->status }}</span
+                                            class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{$pengajuan->status_color}}"
+                                            >{{ $pengajuan->status }}</
                                         >
                                     </td>
                                     <td class="text-center align-middle">
-                                        <a href={{ route('updatingstatuspbj.details', ['id' => $dokumen->id]) }}>
+                                        <a href={{ route('updatingstatusppk.details', ['id' => $pengajuan->id]) }}>
                                             <button
                                                 type="button"
                                                 class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
@@ -92,8 +83,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
     <!-- End Table  -->
 
