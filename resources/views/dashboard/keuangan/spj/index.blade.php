@@ -27,7 +27,7 @@
                   <thead>
                       <tr>
                         <th class="text-center col-1">No.</th>
-                        <th class="text-center col-3">Nama Kegiatan</th>
+                        <th class="text-center col-3">Jenis Spj</th>
                         <th class="text-center col-2">Tanggal Pengajuan</th>
                         <th class="text-center col-2">Status</th>
                         <th class="text-center col-2">Aksi</th>
@@ -41,7 +41,7 @@
                     @foreach ($spj as $item)
                     <tr>
                       <td scope="row">{{ $startNumber++ }}</td>
-                      <td>{{ $item->komponen }}</td>
+                      <td>{{ $item->jenis_spj }}</td>
                       <td>{{ $item->created_at->format('M j, Y') }}</td>
                       <td>
                         <span class="badge 
@@ -64,7 +64,7 @@
                     @foreach ($spjTr as $item)
                     <tr>
                       <td scope="row">{{ $startNumber++ }}</td>
-                      <td>{{ $item->komponen }}</td>
+                      <td>{{ $item->jenis_spj }}</td>
                       <td>{{ $item->created_at->format('M j, Y') }}</td>
                       <td>
                         <span class="badge 
@@ -87,7 +87,7 @@
                     @foreach ($spjPd as $item)
                     <tr>
                       <td scope="row">{{ $startNumber++ }}</td>
-                      <td>{{ $item->komponen }}</td>
+                      <td>{{ $item->jenis_spj }}</td>
                       <td>{{ $item->created_at->format('M j, Y') }}</td>
                       <td>
                         <span class="badge 

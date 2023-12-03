@@ -9,7 +9,7 @@
     
     <style>
         .container {
-            width: 1080px;
+            width: 100%;
         }
 
         .container .header {
@@ -54,13 +54,13 @@
         }
 
         .container .main .judul .text {
-            margin: 25px auto;
+            /* margin: 25px auto; */
             line-height: 1px;
         }
 
         .container .main .judul .text .atas {
             text-align: center;
-            font-size: 18px;
+            font-size: 15px;
             line-height: 1px;
             
         }
@@ -72,7 +72,7 @@
         }
 
         .container .main .isi {
-            margin-left: 1%;
+            /* margin-left: 1%; */
             text-align: justify;
         }
 
@@ -80,83 +80,39 @@
             font-size: 13px;
         }
 
-        .container .main .isi .text .nama,
-        .alamat,
-        .org,
-        .indpen,
-        .ktps {
-            display: flex;
-        }
-
-        .container .main .isi .text .nama dt {
-            width: 8.5%;
-        }
-
-        .container .main .isi .text .nama .isi {
-            display: flex;
-            width: 82%;
-        }
-
-        .container .main .isi .text .alamat dt {
-            width: 8.2%;
-        }
-
-        .container .main .isi .text .alamat .isi {
-            display: flex;
-            width: 82%;
-        }
-
-        .container .main .ttd {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
-
-        .container .main .ttd .kiri {
+        .tabel {
             width: 100%;
-        }
-
-        .container .main .ttd .main {
-            width: 50%;
-            text-align: center;
-            font-size: 20px;
-            line-height: 1.5;
-        }
-
-        .container .main .ttd .main .sign {
-            width: 100%;
-            height: 50px;
-            box-sizing: border-box;
-        }
-
-        .container .main .ttd .main .sign img {
-            width: 150px;
-            height: 150px;
-            z-index: 3;
-            margin-top: -50px;
-        }
-
-        .container .main .ttd .main .bawah b {
-            text-decoration: underline;
-            margin-bottom: 0; /* Remove any default bottom margin */
-        }
-
-        .container .main .ttd .main p {
-            margin: 0; /* Remove any default margin */
-            font-size: 13px;
+            margin: 20px 0;
+            overflow-x: auto; /* Untuk menangani tabel yang melebihi lebar layar */
         }
 
         table {
-            border-collapse: collapse;
             width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
         }
 
         th, td {
-            border: 1px solid black;
-            padding: 8px;
+            border: 0.5px solid black;
+            padding: 2px;
             text-align: center;
+            white-space: normal; /* Allow text to wrap */
         }
 
+        /* Add the following style for the table header */
+        thead th {
+            white-space: normal;
+        }
+
+        td{
+            border: .5px solid black; /* Menggunakan border 2px dan warna abu-abu (#ddd) */
+            padding: 2px;
+            text-align: center; /* Menengahkan tulisan */
+            font-size: 11px;
+        }
+        td[colspan="2"] {
+            background-color: #cccccc; /* Gunakan kode warna abu-abu yang diinginkan */
+        }
 
         .jumlah-row td {
             font-weight: bold;
@@ -171,8 +127,167 @@
         }
 
         .jumlah-row td:nth-child(n+8) {
-            border: 1px solid black;
+            border: 0.5px solid black;
             border-radius: 0;
+        }
+
+        /* .container .main .isi {
+            /* margin-left: 5%; */
+            /* text-align: justify; */
+        /* } */ 
+
+        .ttd {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .ttd1,
+        .ttd2,
+        .ttd3 {
+            width: 30%; /* Ubah lebar sesuai kebutuhan Anda */
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.5;
+            margin-left: 10px; /* Berikan margin antar elemen jika diinginkan */
+        }
+
+        .ttd .atas,
+        .ttd .bawah {
+            margin: 0; /* Hapus margin default pada elemen .atas dan .bawah */
+        }
+
+        .ttd .sign {
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
+
+        .ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
+
+        .ttd p {
+            margin: 0;
+        }
+
+        .container .footer {
+            margin-left: 5%;
+            font-size: 10px;
+        }
+
+        ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        li:before {
+            position: absolute;
+            right: 0;
+            margin-left: 5px;
+        }
+        
+        .isi {
+            margin-top: 20px;
+            font-size: 15px;
+            line-height: -0.5;
+        }
+
+        .program,
+        .aktivitas,
+        .klasifikasi,
+        .rencana,
+        .akun,
+        .tgl {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+            font-size: 10px;
+        }
+
+        .label {
+            display: inline-block;
+            width: 200px; /* Sesuaikan lebar label sesuai kebutuhan */
+        }
+
+        .separator {
+            display: inline-block;
+            width: 400px; 
+        }
+
+        .isi-content {
+            flex: 1;
+            padding-bottom: 5px;
+            font-size: 10px;
+        }
+
+        .label,
+        .separator {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 10px;
+            margin-bottom: .5rem;
+        }
+
+        .tabel-ttd td[colspan="2"] {
+            background-color: #cccccc; /* Gunakan kode warna abu-abu yang diinginkan */
+        }
+
+        .tabel-ttd table {
+            border-collapse: collapse;
+            border: 1px solid white; /* Warna border sesuaikan dengan latar belakang tabel */
+        }
+
+        .tabel-ttd td {
+            padding: 10px;
+            text-align: center;
+            border-right: 1px solid white; /* Garis vertikal */
+        }
+
+        .tabel-ttd td:last-child {
+            border-right: none; /* Hilangkan border vertikal pada elemen terakhir */
+        }
+
+        .tabel-ttd .atas,
+        .tabel-ttd .bawah {
+            margin: 0;
+        }
+
+        .tabel-ttd .sign {
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .tabel-ttd .sign p {
+            margin: 0;
+        }
+
+        .tabel-ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
+
+        .tabel-ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
+
+        .tabel-ttd p {
+            margin: 0;
         }
     </style>
 </head>
@@ -184,46 +299,34 @@
                 <div class="kiri"></div>
                 <div class="text">
                     <div class="atas">
-                        <h3>{{ $spjPdf->judul}}</h3>
+                        <h3>BIAYA PERJALANAN DINAS DALAM RANGKA {{ $spjPdf->judul}}</h3>
                     </div>
                 </div>
                 <div class="kanan"></div>
             </div>
-            <div class="isi">
-                <div class="text">
-                    <dl>
-                        <div class="nama">
-                            <dt><b>PROGRAM </b></dt>
-                            <div class="isi">:  {{ $spjPdf->program}}&ensp;
-                                
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="alamat">
-                            <dt><b>KEGIATAN</b></dt>
-                            <div class="isi">&nbsp;: {{ $spjPdf->kegiatan}}&ensp; 
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="nama">
-                            <dt><b>KRO/RO</b></dt>
-                            <div class="isi">: {{ $spjPdf->kro}}&ensp;
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="nama">
-                            <dt><b>KOMPONEN</b></dt>
-                            <div class="isi">: {{ $spjPdf->komponen}}&ensp;
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="nama">
-                            <dt><b>AKUN</b></dt>
-                            <div class="isi">: {{ $spjPdf->akun}} &ensp;
-                                <div></div>
-                            </div>
-                        </div>
-                    </dl>  
+                <div class="isi">
+                    <div class="program">
+                        <span class="label">PROGRAM</span>
+                        <span class="separator">&ensp;:   {{ $spjPdf->program}}</span>
+                    </div>
+                    <div class="aktivitas">
+                        <span class="label">KEGIATAN</span>
+                        <span class="separator">&ensp;:   {{ $spjPdf->kegiatan}}</span> 
+                    </div>
+                    <div class="klasifikasi">
+                        <span class="label">KRO/RO</span>
+                        <span class="separator">&ensp;:   {{ $spjPdf->kro}}</span>
+                    </div>
+                    <div class="rencana">
+                        <span class="label">KOMPONEN</span>
+                        <span class="separator">&ensp;:   {{ $spjPdf->komponen}}</span>
+                    </div>
+                    <div class="akun">
+                        <span class="label">AKUN</span>
+                        <span class="separator">&ensp;:   {{ $spjPdf->akun}}</span>
+                    </div>
+                </div>
+                    <div class="tabel">
                     <table>
                         <thead>
                             <tr>
@@ -235,12 +338,12 @@
                                 <th>Daerah Tujuan Perjalanan Dinas</th>
                                 <th>Lama Perjalanan (O-H)</th>
                                 <th>Biaya Uang Harian (Rp)</th>
-                                <th>Biaya Transpor (PP) (RP)</th>
-                                <th>Taksi Bandara (PP) (RP)</th>
+                                <th>Biaya Transpor (PP) (Rp)</th>
+                                <th>Taksi Bandara (PP) (Rp)</th>
                                 <th>Biaya Hotel</th>
-                                <th>Jumlah Biaya (RP)</th>
-                                <th>Uang Muka (RP)</th>
-                                <th>Kekurangan (RP)</th>
+                                <th>Jumlah Biaya (Rp)</th>
+                                <th>Uang Muka (Rp)</th>
+                                <th>Kekurangan (Rp)</th>
                                 <th>Nama Bank</th>
                                 <th>Nomor Rekening</th>
                             </tr>
@@ -265,13 +368,12 @@
                                 <th>(16)</th>
                             </tr>
 
-                            @foreach ($tabelspj as $item)
+                            @foreach ($tabelspj as $key => $item)
                             <tr>
-                                <td>1.</td>
+                                <td>{{ $key + 1 }}.</td>
                                 <td>{{ isset($item->nama_pelaksanaan_perjalanan_dinas) ? $item->nama_pelaksanaan_perjalanan_dinas : '' }}</td>
                                 <td>{{ isset($item->gol) ? $item->gol : '' }}</td>
-                                <td>{{ isset($spjPdf->tanggal_tugas) ? $spjPdf->tanggal_tugas : '' }}</td>
-                                {{-- <td>harusnya tanggal</td> --}}
+                                <td>{{ isset($spjPdf->tanggal_tugas) ? \Carbon\Carbon::parse($spjPdf->tanggal_tugas)->format('d-m-Y') : '' }}</td>
                                 <td>{{ isset($item->asal_penugasan) ? $item->asal_penugasan : '' }}</td>
                                 <td>{{ isset($item->daerah_tujuan_perjalanan_dinas) ? $item->daerah_tujuan_perjalanan_dinas : '' }}</td>
                                 <td>{{ isset($item->lama_perjalanan) ? $item->lama_perjalanan : '' }}</td>
@@ -290,62 +392,101 @@
                         <tfoot>
                             <tr class="jumlah-row">
                                 <td colspan="7">Jumlah</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $spjPdf->total_uang_harian }}</td>
+                                <td>{{ $spjPdf->total_transport }}</td>
+                                <td>{{ $spjPdf->total_bandara }}</td>
+                                <td>{{ $spjPdf->total_biaya_hotel }}</td>
+                                <td>{{ $spjPdf->total_jumlah_biaya }}</td>
+                                <td>{{ $spjPdf->total_uang_muka }}</td>
+                                <td>{{ $spjPdf->total_kekurangan }}</td>
+                                <td class="abu", colspan="2"></td>
                             </tr>
                         </tfoot>
-                    </table>                  
-                </div>
-            </div>
-            <ZA class="ttd">
-                <div class="main">
-                    <div class="atas">
-                        <p>Lunas pada tanggal:  </p>
-                        <p>Bendahara Pengeluaran STIS</p>
-                    </div>
-                    <div class="sign">
-                        <p></p>
-                    </div>
-                    <div class="bawah">
-                        <p>Rina Hardiyanti SST</p>
-                        <p>NIP. 198809142010122004</p>
-                    </div>
-                </div>
-                <div class="main">
-                    <div class="atas">
-                        <p>Setuju dibayar:  </p>
-                        <p>Pejabat Pembuat Komitmen</p>
-                    </div>
-                    <div class="sign">
-                        <p></p>
-                    </div>
-                    <div class="bawah">
-                        <p>Luci Wulansari, S.Si., M.S.E.</p>
-                        <p>NIP. 198504302009022006</p>
-                    </div>
-                </div>
-                <div class="main">
-                    <div class="atas">
-                        <p>Jakarta, 01 Desember 2023<span id="tgl-bulan-tahun"></span></p>
-                        <p>Pembuat Daftar,</p>
-                    </div>                    
-                    <div class="sign">
-                        <p></p>
-                    </div>
-                    <div class="bawah">
-                        <p>Sofyan Ayatulloh, SST</p>
-                        <p>NIP. 197208221994121001</p>
-                    </div>
-                </div>
-            </div>
+                    </table> 
+                    </div>                            
+                <div class="tabel-ttd">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="atas">
+                                        @php
+                                            use Carbon\Carbon;
+                                            App::setLocale('id');
+                                            $tanggal_transfer = $spjPdf->tanggal_transfer;
+                                            $tanggal_transfer_format = Carbon::parse($tanggal_transfer)->translatedFormat('j F Y');
+                                            $tanggal_transfer_format = str_replace(ucfirst(trans(Carbon::parse($tanggal_transfer)->format('F'))), mb_convert_case(trans(Carbon::parse($tanggal_transfer)->format('F')), MB_CASE_TITLE), $tanggal_transfer_format);
+                                        @endphp
+                                        <p>Lunas pada tanggal:  
+                                            {{ $tanggal_transfer_format }}</p>
+                                        <p>Bendahara Pengeluaran STIS</p>
+                                    </div>
+                                    <div class="sign">
+                                        <p></p>
+                                    </div>
+                                    <div class="bawah">
+                                        <p>Rina Hardiyanti SST</p>
+                                        <p>NIP. 198809142010122004</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="atas">
+                                        <p>Setuju dibayar:  </p>
+                                        <p>Pejabat Pembuat Komitmen</p>
+                                    </div>
+                                    <div class="sign">
+                                        <p></p>
+                                    </div>
+                                    <div class="bawah">
+                                        <p>{{ $spjPdf->ppk }}</p>
+                                        @php
+                                            $ppk = $spjPdf->ppk;
+                                            $nip = '';
+                                            switch ($ppk) {
+                                                case 'Luci Wulansari, S.Si, MSE.':
+                                                    $nip = '198504302009022006';
+                                                    break;
+                                                case 'Nurseto Wisnumurti, S.Si., M.Stat.':
+                                                    $nip = '197009261992111001';
+                                                    break;
+                                                default:
+                                                    $nip = '';
+                                                    break;
+                                            }
+                                        @endphp
+    
+                                        <div class="bawah">
+                                            <p>NIP. {{ $nip }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="atas">
+                                        @php
+                                            App::setLocale('id');
+                                            $created_at = $spjPdf->created_at;
+                                            $created_at_format = Carbon::parse($created_at)->translatedFormat('j F Y');
+    
+                                            $created_at_format = str_replace(ucfirst(trans(Carbon::parse($created_at)->format('F'))), mb_convert_case(trans(Carbon::parse($created_at)->format('F')), MB_CASE_TITLE), $created_at_format);
+                                        @endphp
+                                        <p>Jakarta, {{ $created_at_format }}<span id="tgl-bulan-tahun"></span></p>
+                                        <p>Pembuat Daftar,</p>
+                                    </div>                       
+                                    <div class="sign">
+                                        <p></p>
+                                    </div>
+                                    <div class="bawah">
+                                        <p>{{ $spjPdf->user->name }}</p>
+                                        <p>NIP. {{ $spjPdf->user->nip }}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
+            </div>     
         </div>
+    </div>
 </body>
 
 </html>

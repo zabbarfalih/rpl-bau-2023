@@ -12,9 +12,9 @@ class SpjTr extends Model
     protected $table ="spj_trs";
 
     protected $fillable = [
-        'program', 'kro', 'kegiatan',
+        'program', 'kro', 'kegiatan','judul',
         'rencana_output', 'komponen', 'akun', 'bulan', 'tanggal_kegiatan',
-        'jenis_spj', 'bendahara', 'ppk', 'status' ,'user_id', 'tanggal_transfer', 'keterangan', 'total', 'total_jumlah_kegiatan', 'total_jumlah_yang_dibayarkan'
+        'jenis_spj', 'bendahara', 'ppk', 'status' ,'user_id', 'tanggal_transfer', 'keterangan', 'total_transpor_per_hari', 'total_jumlah_kegiatan', 'total_jumlah_yang_dibayarkan'
     ];
 
     protected $guarded = [

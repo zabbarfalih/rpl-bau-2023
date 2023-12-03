@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="py-5 text-center">Silakan isi formulir</h1>
+                    <h1 class="py-5 text-center">Silakan Lengkapi Formulir</h1>
 
                     <form action="/dashboard/spj/pengajuan-spj" method="POST" enctype="multipart/form-data" class="row">
                         @csrf
@@ -39,7 +39,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="(0880)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
+                                    value="(2888)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
                                     readonly
                                     name="kegiatan"
                                     />
@@ -166,9 +166,9 @@
                                 <div class="col-sm-10">
                                 <select class="form-select" name="ppk" required>
                                     <option selected>Pilih Penandatangan</option>
-                                    <option value="Luci Wulansari">Luci Wulansari</option>
-                                    <option value="XXX">XXX</option>
-                                    <option value="ZZZ">ZZZ</option>
+                                    <option value="Luci Wulansari, S.Si, MSE.">Luci Wulansari, S.Si, MSE.</option>
+                                    <option value="Ary Wahyuni, SST">Ary Wahyuni, SST</option>
+                                    <option value="Tria Merina, SST">Tria Merina, SST</option>
                                 </select>
                                 </div>
                             </div>

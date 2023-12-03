@@ -16,10 +16,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="py-5 text-center">Silakan isi formulir</h1>
+                    <h1 class="py-5 text-center">Silakan Lengkapi Formulir</h1>
 
                     <form action="/dashboard/spj/pengajuan-translok" method="POST" enctype="multipart/form-data" class="row">
                         @csrf
+                        <div class="col-sm-12">
+                            <label for="inputText" class="col-sm-12 col-form-label">Biaya Perjalanan Dinas Dalam Rangka</label>
+                            <div class="col-sm-11">
+                                <input
+                                type="text"
+                                class="form-control"
+                                value=""
+                                placeholder="CONTOH: PKL (ISI DENGAN KAPITAL)" 
+                                name="judul"
+                                required
+                                />
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputText" class="col-sm-2 col-form-label">Program</label>
@@ -39,7 +53,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="(0880)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
+                                    value="(2888)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK (STIS)"
                                     readonly
                                     name="kegiatan"
                                     />
@@ -68,7 +82,7 @@
                                     <input
                                     type="text"
                                     class="form-control"
-                                    value="(U05)    "
+                                    value="(U06)    PERJALANAN DINAS"
                                     name="rencana_output"
                                     />
                                 </div>
@@ -94,7 +108,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="(521213)    BELANJA HONOR OUTPUT KEGIATAN"
+                                    value="(524113)    BELANJA PERJALANAN DINAS DALAM KOTA"
                                     readonly
                                     name="akun"
                                     />
@@ -110,18 +124,18 @@
                                 <div class="col-sm-10">
                                 <select class="form-select" name="bulan" required>
                                     <option selected>Pilih Bulan</option>
-                                    <option value="Januari">Januari</option>
-                                    <option value="Februari">Februari</option>
-                                    <option value="Maret">Maret</option>
-                                    <option value="April">April</option>
-                                    <option value="Mei">Mei</option>
-                                    <option value="Juni">Juni</option>
-                                    <option value="Juli">Juli</option>
-                                    <option value="Agustus">Agustus</option>
-                                    <option value="September">September</option>
-                                    <option value="Oktober">Oktober</option>
-                                    <option value="November">November</option>
-                                    <option value="Desember">Desember</option>
+                                    <option value="JANUARI">JANUARI</option>
+                                    <option value="FEBRUARI">FEBRUARI</option>
+                                    <option value="MARET">MARET</option>
+                                    <option value="APRIL">APRIL</option>
+                                    <option value="MEI">MEI</option>
+                                    <option value="JUNI">JUNI</option>
+                                    <option value="JULI">JULI</option>
+                                    <option value="AGUSTUS">AGUSTUS</option>
+                                    <option value="SEPTEMBER">SEPTEMBER</option>
+                                    <option value="OKTOBER">OKTOBER</option>
+                                    <option value="NOVEMBER">NOVEMBER</option>
+                                    <option value="DESEMBER">DESEMBER</option>
                                 </select>
                                 </div>
                             </div>
@@ -175,9 +189,9 @@
                                 <div class="col-sm-10">
                                 <select class="form-select" name="ppk" required>
                                     <option selected>Pilih Penandatangan</option>
-                                    <option value="Luci Wulansari">Luci Wulansari</option>
-                                    <option value="XXX">XXX</option>
-                                    <option value="ZZZ">ZZZ</option>
+                                    <option value="Luci Wulansari, S.Si, MSE.">Luci Wulansari, S.Si, MSE.</option>
+                                    <option value="Ary Wahyuni, SST">Ary Wahyuni, SST</option>
+                                    <option value="Tria Merina, SST">Tria Merina, SST</option>
                                 </select>
                                 </div>
                             </div>

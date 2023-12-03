@@ -20,6 +20,7 @@ class CreateSpjTrsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('bulan');
+            $table->string('judul');
             $table->string('kegiatan');
             $table->string('program');
             $table->string('kro');

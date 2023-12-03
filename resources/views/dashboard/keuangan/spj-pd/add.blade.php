@@ -16,21 +16,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="py-5 text-center">Silakan isi formulir</h1>
+                    <h1 class="py-5 text-center">Silakan Lengkapi Formulir</h1>
 
                     <form action="/dashboard/spj/pengajuan-perjalanan-dinas" method="POST" enctype="multipart/form-data" class="row">
                         @csrf
+                        <div class="col-sm-13">
+                            <label for="inputText" class="col-sm-12 col-form-label">Biaya Perjalanan Dinas Dalam Rangka</label>
+                            <div class="col-sm-10">
+                                <input
+                                type="text"
+                                class="form-control"
+                                name="judul"
+                                placeholder="CONTOH: PKL (ISI DENGAN KAPITAL)"
+                                required
+                                />
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                                <label for="inputText" class="col-sm-10 col-form-label">Tanggal Tugas</label>
                                 <div class="col-sm-10">
-                                    <input
-                                    type="text"
-                                    class="form-control"
-                                    name="judul"
-                                    placeholder="BIAYA PERJALANAN DINAS DALAM RANGKA ......"
-                                    required
-                                    />
+                                    <div class="col-sm-10">
+                                        <input type="date" name="tanggal_tugas" class="form-control font-form" style="font-size: 16px;"required/>
+                                      </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -39,13 +47,13 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Program Dukungan Manajemen (054.01.01)"
+                                    value="(054.01.01)  PROGRAM DUKUNGAN MANAJEMEN"
                                     readonly
                                     name="program"
                                     />
                                 </div>
                             </div>
-                        <div>
+                        </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6">
@@ -54,7 +62,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Penyelenggaraan Sekolah Tinggi Ilmu Statistik (2888)"
+                                    value="(2888)   PENYELENGGARAAN SEKOLAH TINGGI ILMU STATISTIK"
                                     readonly
                                     name="kegiatan"
                                     />
@@ -66,7 +74,7 @@
                                     <input
                                       type="text"
                                       class="form-control readonly-field"
-                                      value="Layanan Pendidikan Kedinasan (2888.968)"
+                                      value="(2888.968) LAYANAN PENDIDIKAN KEDINASAN"
                                       readonly
                                       name="kro"
                                     />
@@ -83,7 +91,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Tanpa Komponen (051)"
+                                    value="(051)    TANPA KOMPONEN"
                                     readonly
                                     name="komponen"
                                     />
@@ -95,7 +103,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Belanja Perjalanan Dinas Biasa (524111)"
+                                    value="(524111) BELANJA PERJALANAN DINAS BIASA"
                                     readonly
                                     name="akun"
                                     />
@@ -156,14 +164,6 @@
                                       name="status"
                                     />
                                   </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="inputText" class="col-sm-7 col-form-label">Tanggal Tugas</label>
-                                <div class="col-sm-10">
-                                    <div class="col-sm-10">
-                                        <input type="date" name="tanggal_tugas" class="form-control font-form" style="font-size: 16px;"required/>
-                                      </div>
-                                </div>
                             </div>
                         </div>
 

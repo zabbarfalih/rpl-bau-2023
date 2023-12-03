@@ -90,6 +90,26 @@
                               </div>
 
                               <div class="row">
+                                <div class="col-lg-3 col-md-4 label">KRO</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->kro }}</div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Rencana Output</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->rencana_output }}</div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Komponen</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->komponen }}</div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Akun</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->akun }}</div>
+                              </div>
+
+                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
                                   Tanggal Tugas
                                 </div>
@@ -121,10 +141,30 @@
                               @if (!$tabelspj->isEmpty())
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
-                                  Total Dana
+                                  Total Jumlah Biaya
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  <p>Rp. {{ number_format($spj->total, 2, ',', '.') }}
+                                  <p>Rp. {{ number_format($spj->total_jumlah_biaya, 2, ',', '.') }}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Total Uang Muka
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  <p>Rp. {{ number_format($spj->total_uang_muka, 2, ',', '.') }}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Total Kekurangan
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  <p>Rp. {{ number_format($spj->total_kekurangan, 2, ',', '.') }}
                                   </p>
                                 </div>
                               </div>
@@ -141,10 +181,10 @@
 
                               @if ($spj->status === 'Ditolak') 
                               <div class="row">
-                                <div class="col-lg-3 col-md-4 label">
+                                <div class="col-lg-3 col-md-4 label" style="color: rgb(184, 48, 48);">
                                   Pesan Penolakan
                                 </div>
-                                <div class="col-lg-9 col-md-8">
+                                <div class="col-lg-9 col-md-8" style="color: rgb(184, 48, 48); font-weight: bold;">
                                   {{ $spj->keterangan }}
                                 </div>
                               </div>

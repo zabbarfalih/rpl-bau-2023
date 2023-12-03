@@ -273,7 +273,7 @@
                     <span class="separator">&ensp;:   {{ $spjPdf->program }}</span>
                 </div>
                 <div class="aktivitas">
-                    <span class="label">AKTIVITAS</span>
+                    <span class="label">KEGIATAN</span>
                     <span class="separator">&ensp;:   {{ $spjPdf->kegiatan }}</span>
                 </div>
                 <div class="klasifikasi">
@@ -284,20 +284,17 @@
                     <span class="label">RENCANA OUTPUT</span>
                     <span class="separator">&ensp;:   {{ $spjPdf->rencana_output }}</span>
                 </div>
+                <div class="rencana">
+                    <span class="label">KOMPONEN</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->komponen }}</span>
+                </div>
                 <div class="akun">
                     <span class="label">AKUN</span>
                     <span class="separator">&ensp;:   {{ $spjPdf->akun }}</span>
                 </div>
-                <div class="tgl">
-                    @php
-                        use Carbon\Carbon;
-                        App::setLocale('id');
-
-                        $tanggal_kegiatan = $spjPdf->tanggal_kegiatan;
-                        $tanggal_format = Carbon::parse($tanggal_kegiatan)->translatedFormat('j F Y');
-                    @endphp
-                    <span class="label">TANGGAL</span>
-                    <span class="separator">&ensp;:   {{ $tanggal_format }}</span>
+                <div class="akun">
+                    <span class="label">PERIODE</span>
+                    <span class="separator">&ensp;:   {{ $spjPdf->periode }}</span>
                 </div>
             </div>
             
@@ -358,9 +355,9 @@
                     <tfoot>
                         <tr>
                             <td colspan="7">Jumlah</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $spjPdf->total_bruto }}</td>
+                            <td>{{ $spjPdf->total_pajak }}</td>
+                            <td>{{ $spjPdf->total }}</td>
                             <td colspan="2"></td>
                         </tr>
                     </tfoot>
@@ -372,7 +369,15 @@
                         <tr>
                             <td>
                                 <div class="atas">
-                                    <p>Lunas pada tanggal:  </p>
+                                    @php
+                                        use Carbon\Carbon;
+                                        App::setLocale('id');
+                                        $tanggal_transfer = $spjPdf->tanggal_transfer;
+                                        $tanggal_transfer_format = Carbon::parse($tanggal_transfer)->translatedFormat('j F Y');
+                                        $tanggal_transfer_format = str_replace(ucfirst(trans(Carbon::parse($tanggal_transfer)->format('F'))), mb_convert_case(trans(Carbon::parse($tanggal_transfer)->format('F')), MB_CASE_TITLE), $tanggal_transfer_format);
+                                    @endphp
+                                    <p>Lunas pada tanggal:  
+                                        {{ $tanggal_transfer_format }}</p>
                                     <p>Bendahara Pengeluaran STIS</p>
                                 </div>
                                 <div class="sign">
@@ -385,28 +390,56 @@
                             </td>
                             <td>
                                 <div class="atas">
-                                    <p>Setuju dibayar:  </p>
+                                    <p>Disetujui,</p>
                                     <p>Pejabat Pembuat Komitmen</p>
                                 </div>
                                 <div class="sign">
                                     <p></p>
                                 </div>
                                 <div class="bawah">
-                                    <p>Luci Wulansari, S.Si., M.S.E.</p>
-                                    <p>NIP. 198504302009022006</p>
+                                    <p>{{ $spjPdf->ppk }}</p>
+                                    @php
+                                        $ppk = $spjPdf->ppk;
+                                        $nip = '';
+                                        switch ($ppk) {
+                                            case 'Luci Wulansari, S.Si, MSE.':
+                                                $nip = '198504302009022006';
+                                                break;
+                                            case 'Ary Wahyuni, SST':
+                                                $nip = '198809142010122004';
+                                                break;
+                                            case 'Tria Merina, SST':
+                                                $nip = '198405022008012010';
+                                                break;
+                                            default:
+                                                $nip = '';
+                                                break;
+                                        }
+                                    @endphp
+
+                                    <div class="bawah">
+                                        <p>NIP. {{ $nip }}</p>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="atas">
-                                    <p>Jakarta, 01 Desember 2023<span id="tgl-bulan-tahun"></span></p>
+                                    @php
+                                        App::setLocale('id');
+                                        $created_at = $spjPdf->created_at;
+                                        $created_at_format = Carbon::parse($created_at)->translatedFormat('j F Y');
+
+                                        $created_at_format = str_replace(ucfirst(trans(Carbon::parse($created_at)->format('F'))), mb_convert_case(trans(Carbon::parse($created_at)->format('F')), MB_CASE_TITLE), $created_at_format);
+                                    @endphp
+                                    <p>Jakarta, {{ $created_at_format }}<span id="tgl-bulan-tahun"></span></p>
                                     <p>Pembuat Daftar,</p>
                                 </div>                    
                                 <div class="sign">
                                     <p></p>
                                 </div>
                                 <div class="bawah">
-                                    <p>Sofyan Ayatulloh, SST</p>
-                                    <p>NIP. 197208221994121001</p>
+                                    <p>{{ $spjPdf->user->name }}</p>
+                                    <p>NIP. {{ $spjPdf->user->nip }}</p>
                                 </div>
                             </td>
                         </tr>

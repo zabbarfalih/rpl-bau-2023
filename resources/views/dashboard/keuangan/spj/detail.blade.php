@@ -83,6 +83,26 @@
                               </div>
 
                               <div class="row">
+                                <div class="col-lg-3 col-md-4 label">KRO</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->kro }}</div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Rencana Output</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->rencana_output }}</div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Komponen</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->komponen }}</div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Akun</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->akun }}</div>
+                              </div>
+
+                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
                                   Tanggal Kegiatan
                                 </div>
@@ -115,10 +135,30 @@
                               @if (!$tabelspj->isEmpty())
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
-                                  Total Dana
+                                  Total Jumlah Diterima
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   <p>Rp. {{ number_format($spj->total, 2, ',', '.') }}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Total Jumlah Bruto
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  <p>Rp. {{ number_format($spj->total_bruto, 2, ',', '.') }}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">
+                                  Total Pajak
+                                </div>
+                                <div class="col-lg-9 col-md-8">
+                                  <p>Rp. {{ number_format($spj->total_pajak, 2, ',', '.') }}
                                   </p>
                                 </div>
                               </div>
@@ -136,10 +176,10 @@
 
                               @if ($spj->status === 'Ditolak') 
                               <div class="row">
-                                <div class="col-lg-3 col-md-4 label">
+                                <div class="col-lg-3 col-md-4 label" style="color: rgb(184, 48, 48);">
                                   Pesan Penolakan
                                 </div>
-                                <div class="col-lg-9 col-md-8">
+                                <div class="col-lg-9 col-md-8" style="color: rgb(184, 48, 48); font-weight: bold;">
                                   {{ $spj->keterangan }}
                                 </div>
                               </div>
@@ -320,12 +360,7 @@
                     ></i>
                     <div class="activity-content">
                       <strong>Selesai</strong>
-                      <p>Pada tahap ini pengajuan SPJ telah selesai, anda dapat mengunduh SPJ</p>
-                      <div class="finish">
-                        <div class="download">
-                          <button type="button" class="btn btn-primary" @if($spj->status !== 'Selesai') disabled @endif>Cetak</button>
-                        </div>
-                      </div>
+                      <p>Pada tahap ini pengajuan SPJ telah selesai, anda dapat mengambil SPJ di BAU</p>
                     </div>
                   </div>
                   <!-- End activity item-->
