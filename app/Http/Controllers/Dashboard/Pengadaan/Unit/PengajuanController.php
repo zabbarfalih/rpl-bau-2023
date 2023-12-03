@@ -93,12 +93,12 @@ class PengajuanController extends Controller
         $menu = Menu::with('submenu')->get();
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
-        $dokumenPengadaans = $pengadaan->dokumenPengadaans;
+        //$dokumenPengadaans = $pengadaan->dokumenPengadaans;
 
-        return view('dokumen.details', [
+        return view('dashboard.pengadaan.unit.details', [
             'menu' => $menu,
             'pengadaan' => $pengadaan,
-            'dokumenPengadaans' => $dokumenPengadaans,
+            //'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
 
