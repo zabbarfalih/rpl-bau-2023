@@ -85,7 +85,6 @@
         }
 
         .tabel {
-        .tabel {
             width: 100%;
             margin: 20px 0;
             overflow-x: auto; /* Untuk menangani tabel yang melebihi lebar layar */
