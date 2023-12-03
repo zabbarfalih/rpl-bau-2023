@@ -10,6 +10,7 @@
     <style>
         .container {
             width: 100%;
+            width: 100%;
         }
 
         .container .header {
@@ -55,11 +56,13 @@
 
         .container .main .judul .text {
             /* margin: 25px auto; */
+            /* margin: 25px auto; */
             line-height: 1px;
         }
 
         .container .main .judul .text .atas {
             text-align: center;
+            font-size: 15px;
             font-size: 15px;
             line-height: 1px;
             
@@ -73,6 +76,7 @@
 
         .container .main .isi {
             /* margin-left: 1%; */
+            /* margin-left: 1%; */
             text-align: justify;
         }
 
@@ -81,14 +85,19 @@
         }
 
         .tabel {
+        .tabel {
             width: 100%;
+            margin: 20px 0;
+            overflow-x: auto; /* Untuk menangani tabel yang melebihi lebar layar */
             margin: 20px 0;
             overflow-x: auto; /* Untuk menangani tabel yang melebihi lebar layar */
         }
 
         table {
             width: 100%;
+            width: 100%;
             border-collapse: collapse;
+            font-size: 11px;
             font-size: 11px;
         }
 
@@ -128,7 +137,167 @@
 
         .jumlah-row td:nth-child(n+8) {
             border: 0.5px solid black;
+            border: 0.5px solid black;
             border-radius: 0;
+        }
+
+        /* .container .main .isi {
+            /* margin-left: 5%; */
+            /* text-align: justify; */
+        /* } */ 
+
+        .ttd {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .ttd1,
+        .ttd2,
+        .ttd3 {
+            width: 30%; /* Ubah lebar sesuai kebutuhan Anda */
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.5;
+            margin-left: 10px; /* Berikan margin antar elemen jika diinginkan */
+        }
+
+        .ttd .atas,
+        .ttd .bawah {
+            margin: 0; /* Hapus margin default pada elemen .atas dan .bawah */
+        }
+
+        .ttd .sign {
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
+
+        .ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
+
+        .ttd p {
+            margin: 0;
+        }
+
+        .container .footer {
+            margin-left: 5%;
+            font-size: 10px;
+        }
+
+        ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        li:before {
+            position: absolute;
+            right: 0;
+            margin-left: 5px;
+        }
+        
+        .isi {
+            margin-top: 20px;
+            font-size: 15px;
+            line-height: -0.5;
+        }
+
+        .program,
+        .aktivitas,
+        .klasifikasi,
+        .rencana,
+        .akun,
+        .tgl {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+            font-size: 10px;
+        }
+
+        .label {
+            display: inline-block;
+            width: 200px; /* Sesuaikan lebar label sesuai kebutuhan */
+        }
+
+        .separator {
+            display: inline-block;
+            width: 400px; 
+        }
+
+        .isi-content {
+            flex: 1;
+            padding-bottom: 5px;
+            font-size: 10px;
+        }
+
+        .label,
+        .separator {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 10px;
+            margin-bottom: .5rem;
+        }
+
+        .tabel-ttd td[colspan="2"] {
+            background-color: #cccccc; /* Gunakan kode warna abu-abu yang diinginkan */
+        }
+
+        .tabel-ttd table {
+            border-collapse: collapse;
+            border: 1px solid white; /* Warna border sesuaikan dengan latar belakang tabel */
+        }
+
+        .tabel-ttd td {
+            padding: 10px;
+            text-align: center;
+            border-right: 1px solid white; /* Garis vertikal */
+        }
+
+        .tabel-ttd td:last-child {
+            border-right: none; /* Hilangkan border vertikal pada elemen terakhir */
+        }
+
+        .tabel-ttd .atas,
+        .tabel-ttd .bawah {
+            margin: 0;
+        }
+
+        .tabel-ttd .sign {
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .tabel-ttd .sign p {
+            margin: 0;
+        }
+
+        .tabel-ttd .sign img {
+            width: 150px;
+            height: 150px;
+            z-index: 3;
+            margin-top: -50px;
+        }
+
+        .tabel-ttd .bawah b {
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
+
+        .tabel-ttd p {
+            margin: 0;
         }
 
         /* .container .main .isi {
@@ -304,6 +473,7 @@
                 </div>
                 <div class="kanan"></div>
             </div>
+                    <div class="tabel">
                 <div class="isi">
                     <div class="program">
                         <span class="label">PROGRAM</span>
