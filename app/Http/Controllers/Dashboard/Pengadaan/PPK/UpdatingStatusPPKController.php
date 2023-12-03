@@ -127,7 +127,7 @@ class UpdatingStatusPPKController extends Controller
         return view('dashboard.pengadaan.ppk.details', [
             'menu' => $menu,
             'roles' => $roles,
-            'dokumenPengadaans' => $dokumenPengadaans,
+            // 'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
 
