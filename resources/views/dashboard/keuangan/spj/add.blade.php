@@ -166,9 +166,8 @@
                                 <div class="col-sm-10">
                                 <select class="form-select" name="ppk" required>
                                     <option selected>Pilih Penandatangan</option>
-                                    <option value="Luci Wulansari">Luci Wulansari</option>
-                                    <option value="XXX">XXX</option>
-                                    <option value="ZZZ">ZZZ</option>
+                                    <option value="Luci Wulansari, S.Si, MSE.">Luci Wulansari, S.Si, MSE.</option>
+                                    <option value="Nurseto Wisnumurti, S.Si., M.Stat.">Nurseto Wisnumurti, S.Si., M.Stat.</option>
                                 </select>
                                 </div>
                             </div>

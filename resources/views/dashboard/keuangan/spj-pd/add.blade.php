@@ -39,7 +39,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Program Dukungan Manajemen (054.01.01)"
+                                    value="(054.01.01) Program Dukungan Manajemen"
                                     readonly
                                     name="program"
                                     />
@@ -54,7 +54,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Penyelenggaraan Sekolah Tinggi Ilmu Statistik (2888)"
+                                    value="(2888) Penyelenggaraan Sekolah Tinggi Ilmu Statistik"
                                     readonly
                                     name="kegiatan"
                                     />
@@ -66,7 +66,7 @@
                                     <input
                                       type="text"
                                       class="form-control readonly-field"
-                                      value="Layanan Pendidikan Kedinasan (2888.968)"
+                                      value="(2888.968) Layanan Pendidikan Kedinasan"
                                       readonly
                                       name="kro"
                                     />
@@ -83,7 +83,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Tanpa Komponen (051)"
+                                    value="(051) Tanpa Komponen"
                                     readonly
                                     name="komponen"
                                     />
@@ -95,7 +95,7 @@
                                     <input
                                     type="text"
                                     class="form-control readonly-field"
-                                    value="Belanja Perjalanan Dinas Biasa (524111)"
+                                    value="(524111) Belanja Perjalanan Dinas Biasa"
                                     readonly
                                     name="akun"
                                     />
