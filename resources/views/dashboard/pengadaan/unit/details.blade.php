@@ -25,14 +25,226 @@
         <div class="container">
             <div class="row">
                 <!-- Left side columns -->
+                <p>Setelah UNIT mengajukan (saat ini status diajukan)</p>
+                <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                    style="width: 100%" {{-- id="table-bau" --}}>
+                    <thead class="header-table">
+                        <tr>
+                            <th scope="col" class="text-center align-middle">
+                                No
+                            </th>
+
+                            <th scope="col" class="text-center align-middle text-wrap">
+                                Nama Dokumen
+                            </th>
+
+                            <th scope="col" class="text-center align-middle text-wrap">
+                                Template
+                            </th>
+                            <th scope="col" class="text-center align-middle">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                1
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen KAK
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                2
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen Memo
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <p>Saat status Disetujui, Diproses, Dikerjakan, Selesai</p>
+                <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                    style="width: 100%" {{-- id="table-bau" --}}>
+                    <thead class="header-table">
+                        <tr>
+                            <th scope="col" class="text-center align-middle">
+                                No
+                            </th>
+
+                            <th scope="col" class="text-center align-middle text-wrap">
+                                Nama Dokumen
+                            </th>
+
+                            <th scope="col" class="text-center align-middle text-wrap">
+                                Template
+                            </th>
+                            <th scope="col" class="text-center align-middle">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                1
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen KAK
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                2
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen Memo
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <p>Saat status diserahkan</p>
+                <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                    style="width: 100%" {{-- id="table-bau" --}}>
+                    <thead class="header-table">
+                        <tr>
+                            <th scope="col" class="text-center align-middle">
+                                No
+                            </th>
+
+                            <th scope="col" class="text-center align-middle text-wrap">
+                                Nama Dokumen
+                            </th>
+
+                            <th scope="col" class="text-center align-middle text-wrap">
+                                Template
+                            </th>
+                            <th scope="col" class="text-center align-middle">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                1
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen KAK
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                2
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen Memo
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center fw-bold align-middle">
+                                3
+                            </td>
+                            <td class="fw-bold align-middle text-wrap">
+                                Dokumen BAST
+                            </td>
+
+                            <td class="text-wrap">
+                                Template
+                            </td>
+                            <td class="text-center align-middle">
+                                </button>
+                                <button type="button"
+                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Dokumen Laporan Pengadaan</h5>
                                 <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:" width="16"
-                                        height="16">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                        width="16" height="16">
                                         <use xlink:href="#info-fill" />
                                     </svg>
                                     <div>Untuk mengunduh laporan, silakan tekan download</div>

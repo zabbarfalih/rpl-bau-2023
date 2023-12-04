@@ -84,17 +84,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -111,17 +102,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -165,17 +147,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -192,17 +165,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -301,17 +265,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -328,17 +283,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -355,17 +301,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -382,17 +319,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -491,17 +419,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -518,17 +437,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -545,17 +455,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -572,17 +473,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -599,17 +491,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -626,396 +509,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                7
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Undangan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                8
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen SSUK SSKK
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                9
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen IKP
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                10
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen LDP dan Spesifikasi
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                11
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Penawaran
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                12
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Surat Permintaan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                13
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Pengadaan Langsung
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <br>
-                                <br>
-                                <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
-                                <table
-                                    class="table table-hover display responsive nowrap table-striped font-body-table"
-                                    style="width: 100%" {{-- id="table-bau" --}}>
-                                    <thead class="header-table">
-                                        <tr>
-                                            <th scope="col" class="text-center align-middle">
-                                                No
-                                            </th>
-
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
-
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                3
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Identifikasi Kebutuhan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                4
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Perencanaan Pengadaan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                5
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen HPS
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                6
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Nota Dinas
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1249,17 +744,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1276,17 +762,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1303,17 +780,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1330,17 +798,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1357,17 +816,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1384,17 +834,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1411,17 +852,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1438,17 +870,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1465,17 +888,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1492,17 +906,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1519,17 +924,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1546,17 +942,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1573,17 +960,8 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
                                                 </button>
                                             </td>
                                         </tr>
@@ -1611,6 +989,287 @@
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <br>
+                                <p>Setelah Diserahkan (saat ini status diserahkan)</p>
+                                <table
+                                    class="table table-hover display responsive nowrap table-striped font-body-table"
+                                    style="width: 100%" {{-- id="table-bau" --}}>
+                                    <thead class="header-table">
+                                        <tr>
+                                            <th scope="col" class="text-center align-middle">
+                                                No
+                                            </th>
+
+                                            <th scope="col" class="text-center align-middle text-wrap">
+                                                Nama Dokumen
+                                            </th>
+
+                                            <th scope="col" class="text-center align-middle text-wrap">
+                                                Template
+                                            </th>
+                                            <th scope="col" class="text-center align-middle">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                1
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen KAK
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                2
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Memo
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                3
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Identifikasi Kebutuhan
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                4
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Perencanaan Pengadaan
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                5
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen HPS
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                6
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Nota Dinas
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                7
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Undangan
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                8
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen SSUK SSKK
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                9
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen IKP
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                10
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen LDP dan Spesifikasi
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                11
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Penawaran
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                12
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Surat Permintaan
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                13
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Pengadaan Langsung
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                14
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen BAST
+                                            </td>
+
+                                            <td class="text-wrap">
+                                                Template
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                </button>
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    Download
                                                 </button>
                                             </td>
                                         </tr>
@@ -2079,8 +1738,8 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -2111,8 +1770,8 @@
             </div>
         </div>
 
-        <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
