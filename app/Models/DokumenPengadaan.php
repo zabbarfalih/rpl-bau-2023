@@ -11,17 +11,21 @@ class DokumenPengadaan extends Model
 
     protected $fillable = [
         'dokumen_id',
-        'memo',
-        'kak',
-        'undangan',
-        'perencanaan_pengadaan',
-        'identifikasi_kebutuhan',
-        'ldp_dan_spesifikasi',
-        'ikp',
-        'pengadaan_langsung',
-        'ssuk_sskk',
-        'dok_penawaran_pakta_formulir',
+        'dokumen_memo',
+        'dokumen_kak',
+        'dokumen_identifikasi_kebutuhan',
+        'dokumen_perencanaan_pengadaan',
+        'dokumen_hps',
+        'dokumen_nota_dinas',
+        'dokumen_undangan',
+        'dokumen_ssuk_sskk',
+        'dokumen_ikp',
+        'dokumen_ldp_dan_spesifikasi',
+        'dokumen_penawaran_pakta_formulir',
+        'dokumen_surat_permintaan',
+        'dokumen_pengadaan_langsung',
         'pelaksana',
+        'harga_anggaran'
     ];
 
     public function dokumen()

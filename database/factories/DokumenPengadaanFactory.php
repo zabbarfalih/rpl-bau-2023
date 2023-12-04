@@ -19,17 +19,21 @@ class DokumenPengadaanFactory extends Factory
     {
         return [
             'dokumen_id' => Dokumen::inRandomOrder()->first()->id,
-            'memo' => $this->faker->randomElement,
-            'kak'=> $this->faker->randomElement,
-            'undangan'=> $this->faker->randomElement,
-            'perencanaan_pengadaan' => $this->faker->randomElement,
-            'identifikasi_kebutuhan' => $this->faker->randomElement,
-            'ldp_dan_spesifikasi' => $this->faker->randomElement,
-            'ikp' => $this->faker->randomElement,
-            'pengadaan_langsung' => $this->faker->randomElement,
-            'ssuk_sskk' => $this->faker->randomElement,
-            'dok_penawaran_pakta_formulir' => $this->faker->randomElement,
+            'dokumen_memo' => $this->faker->randomElement,
+            'dokumen_kak'=> $this->faker->randomElement,
+            'dokumen_identifikasi_kebutuhan'=> $this->faker->randomElement,
+            'dokumen_perencanaan_pengadaan' => $this->faker->randomElement,
+            'dokumen_hps' => $this->faker->randomElement,
+            'dokumen_nota_dinas' => $this->faker->randomElement,
+            'dokumen_undangan' => $this->faker->randomElement,
+            'dokumen_ssuk_sskk' => $this->faker->randomElement,
+            'dokumen_ikp' => $this->faker->randomElement,
+            'dokumen_ldp_dan_spesifikasi' => $this->faker->randomElement,
+            'dokumen_penawaran_pakta_formulir' => $this->faker->randomElement,
+            'dokumen_surat_permintaan' => $this->faker->randomElement,
+            'dokumen_pengadaan_langsung' => $this->faker->randomElement,
             'pelaksana' => $this->faker->randomElement,
+            'harga_anggaran' => $this->faker->randomFloat(2, 100000, 2000000000),
         ];
     }
 }
