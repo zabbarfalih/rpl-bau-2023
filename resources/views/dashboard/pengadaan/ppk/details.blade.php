@@ -109,6 +109,31 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#setujuModal">Selesai</a>
+                                </div>
+                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
+                                                    Konfirmasi</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</a>
+                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <br>
                                 <p>Setelah PPK menyetujui (saat ini status disetujui)</p>
@@ -226,6 +251,58 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#setujuModalKhusus">Selesai</a>
+                                </div>
+                                <div class="modal fade" id="setujuModalKhusus" aria-hidden="true"
+                                    data-bs-keyboard="false" data-bs-backdrop="static"
+                                    aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Pelaksana
+                                                    Pengadaan</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body mb-3">
+                                                Siapa yang akan melaksanakan Pengadaan ini?
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button class="btn btn-primary me-2" data-bs-dismiss="modal"
+                                                    data-bs-target="#setujuModalKhusus2"
+                                                    data-bs-toggle="modal">PPK</button>
+                                                <button class="btn btn-primary" data-bs-dismiss="modal"
+                                                    data-bs-target="#setujuModalKhusus2"
+                                                    data-bs-toggle="modal">PPBJ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="setujuModalKhusus2" aria-hidden="true"
+                                    data-bs-keyboard="false" data-bs-backdrop="static"
+                                    aria-labelledby="setujuModalKhususLabel2" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Konfirmasi
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body mb-3">
+                                                Apakah anda yakin?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" type="button" class="btn btn-secondary"
+                                                    data-bs-target="#setujuModalKhusus"
+                                                    data-bs-toggle="modal">Kembali</a>
+                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <br>
                                 <p>Setelah diproses (saat ini status diproses)</p>
@@ -380,6 +457,31 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#setujuModal">Selesai</a>
+                                </div>
+                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
+                                                    Konfirmasi</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</a>
+                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <br>
                                 <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
@@ -705,6 +807,31 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#setujuModal">Selesai</a>
+                                </div>
+                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
+                                                    Konfirmasi</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</a>
+                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <br>
                                 <p>Setelah Selesai (saat ini status selesai)</p>
@@ -994,6 +1121,31 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#setujuModal">Selesai</a>
+                                </div>
+                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
+                                                    Konfirmasi</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</a>
+                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <br>
                                 <p>Setelah Diserahkan (saat ini status diserahkan)</p>
@@ -1275,6 +1427,31 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#setujuModal">Selesai</a>
+                                </div>
+                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
+                                                    Konfirmasi</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</a>
+                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- Modal untuk Upload File --}}
                                 <div class="modal fade" id="uploadFileModal" tabindex="-1"
                                     data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
@@ -1738,8 +1915,8 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -1770,8 +1947,8 @@
             </div>
         </div>
 
-        <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
