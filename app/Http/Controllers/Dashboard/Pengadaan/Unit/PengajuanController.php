@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Dashboard\Pengadaan\Unit;
 
-use App\Models\DokumenPengadaan;
 use Carbon\Carbon;
-
 use App\Models\Menu;
+
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Dokumen;
 use App\Models\Pengadaan;
 use Illuminate\Http\Request;
+use App\Models\DokumenPengadaan;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Dokumen;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PengajuanController extends Controller
 {
@@ -119,58 +120,73 @@ class PengajuanController extends Controller
     }
 
     public function kirimForm(Request $request)
-    {
-        try {
-            $userId = Auth::id();
-            $validatedData = $request->validate([
-                'role_id' => 'required|numeric',
-                'nama_pengadaan' => 'required|string',
-                'tanggal_pengadaan' => 'required|date',
-                'dokumen_kak' => 'required|mimes:pdf', // Atur validasi untuk tipe file Dokumen KAK yang diunggah
-                'dokumen_memo' => 'required|mimes:pdf', // Atur validasi untuk tipe file Memo yang diunggah
-            ]);
-            Log::info($validatedData['tanggal_pengadaan']);
-            $pengajuan = new Pengadaan;
-            $pengajuan->user_id = $userId;
-            $pengajuan->nama_pengadaan = $validatedData['nama_pengadaan'];
-            $pengajuan->tanggal_pengadaan = $validatedData['tanggal_pengadaan'];
-            $pengajuan->status = "Diajukan";
-            $pengajuan->penyelenggara = 3;
-            $pengajuan->save();
+{
+    $validatedData = Validator::make($request->all(), [
+        'role_id' => 'required|numeric',
+        'nama_pengadaan' => 'required|string',
+        'tanggal_pengadaan' => 'required|date',
+        'dokumen_kak' => 'required|mimes:docx',
+        'dokumen_memo' => 'mimes:docx',
+    ], [
+        'role_id.required' => 'Unit tidak boleh kosong (pilih unit)',
+        'role_id.numeric' => 'Pilih nama unit',
+        'nama_pengadaan.required' => 'Nama pengadaan tidak boleh kosong',
+        'tanggal_pengadaan.required' => 'Tanggal pengadaan tidak boleh kosong',
+        'dokumen_kak.required' => 'Dokumen KAK tidak boleh kosong',
+        'dokumen_kak.mimes' => 'Dokumen harus dalam format DOCX',
+        'dokumen_memo.mimes' => 'Dokumen harus dalam format DOCX',
+    ]);
+
+    if ($validatedData->fails()) {
+        return redirect()->back()->withErrors($validatedData)->withInput();
+    }
+
+    try {
+        $userId = Auth::id();
+        $validatedData = $validatedData->validated();
+
+        $pengajuan = new Pengadaan;
+        $pengajuan->user_id = $userId;
+        $pengajuan->nama_pengadaan = $validatedData['nama_pengadaan'];
+        $pengajuan->tanggal_pengadaan = $validatedData['tanggal_pengadaan'];
+        $pengajuan->status = "Diajukan";
+        $pengajuan->penyelenggara = 3;
+
+        if ($pengajuan->save()) {
             Log::info('Pengadaan dengan ID: ' . $pengajuan->id . ' berhasil dibuat.');
 
-            if ($pengajuan->save()) {
-                $dokumen = new Dokumen;
-                $dokumen->user_id = $userId;
-                $dokumen->pengadaan_id = $pengajuan->id;
-                $dokumen->save();
+            $dokumen = new Dokumen;
+            $dokumen->user_id = $userId;
+            $dokumen->pengadaan_id = $pengajuan->id;
+            if ($dokumen->save()) {
                 Log::info('Dokumen dengan ID: ' . $dokumen->id . ' berhasil dibuat.');
-                if ($dokumen->save()) {
 
-                    $pathKak = $request->file('dokumen_kak')->store('public/dokumen');
-                    $dokumenPengadaanKak = new DokumenPengadaan;
-                    $dokumenPengadaanKak->dokumen_id = $dokumen->id;
-                    $dokumenPengadaanKak->tipe_dokumen = 'kak';
-                    $dokumenPengadaanKak->path_file = $pathKak;
-                    $dokumenPengadaanKak->save();
-                    Log::info('Dokumen Pengadaan KAK dengan ID: ' . $dokumenPengadaanKak->id . ' berhasil disimpan.');
-                    // Menangani unggahan dokumen_memo
-                    $pathMemo = $request->file('dokumen_memo')->store('public/dokumen');
-                    $dokumenPengadaanMemo = new DokumenPengadaan;
-                    $dokumenPengadaanMemo->dokumen_id = $dokumen->id;
-                    $dokumenPengadaanMemo->tipe_dokumen = 'memo';
-                    $dokumenPengadaanMemo->path_file = $pathMemo;
-                    $dokumenPengadaanMemo->save();
-                    Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
-                }
+                $pathKak = $request->file('dokumen_kak')->store('public/dokumen');
+                $dokumenPengadaanKak = new DokumenPengadaan;
+                $dokumenPengadaanKak->dokumen_id = $dokumen->id;
+                $dokumenPengadaanKak->tipe_dokumen = 'kak';
+                $dokumenPengadaanKak->path_file = $pathKak;
+                $dokumenPengadaanKak->save();
+                Log::info('Dokumen Pengadaan KAK dengan ID: ' . $dokumenPengadaanKak->id . ' berhasil disimpan.');
+
+                // Menangani unggahan dokumen_memo
+                $pathMemo = $request->file('dokumen_memo')->store('public/dokumen');
+                $dokumenPengadaanMemo = new DokumenPengadaan;
+                $dokumenPengadaanMemo->dokumen_id = $dokumen->id;
+                $dokumenPengadaanMemo->tipe_dokumen = 'memo';
+                $dokumenPengadaanMemo->path_file = $pathMemo;
+                $dokumenPengadaanMemo->save();
+                Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
+
+                return redirect()->route('pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
             }
-        } catch (\Exception $e) {
-            Log::error('Kesalahan saat menyimpan data: ' . $e->getMessage());
-            return back()->with('error', 'Terjadi kesalahan saat mengirim form: ' . $e->getMessage());
         }
-
-        return redirect()->route('pengajuan.index');
+    } catch (\Exception $e) {
+        Log::error('Kesalahan saat menyimpan data: ' . $e->getMessage());
+        return back()->with('status.error', 'Terjadi kesalahan saat mengirim form: ' . $e->getMessage());
     }
+}
+
 
     /**
      * Store a newly created resource in storage.

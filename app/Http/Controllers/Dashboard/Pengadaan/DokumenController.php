@@ -20,4 +20,5 @@ class DokumenController extends Controller
         Log::error('Download File: ' . $filename . '.docx' . ' gagal');
         abort(404, 'File not found');
     }
+
 }
