@@ -67,10 +67,9 @@
                                         {{$list->tanggal_pengadaan_formatted}}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <button
-                                        class="btn-sibau-dashboard btn rounded-pill fw-bold {{$list->status_color}}"
-                                            >{{$list->status}}</span
-                                        >
+                                        <button class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }} w-75" style="border: none">
+                                            {{ $pengajuan->status }}
+                                        </button>
                                     </td>
                                     <td class="text-center">
                                         <a href={{ route('pengajuan.details', ['id' => $list->id]) }}>
