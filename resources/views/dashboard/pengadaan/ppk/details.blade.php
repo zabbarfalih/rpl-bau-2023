@@ -45,57 +45,95 @@
                                     </div>
                                 </div>
 
-                                <!-- List dokumen -->
+                                {{-- Modal untuk Upload File --}}
+                                <div class="modal fade" id="uploadFileModal" tabindex="-1"
+                                    data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
+                                            <div class="modal-header">
+                                                <h4 class="alert-heading">Dokumen [documents name]</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="alert alert-secondary alert-dismissible fade show"
+                                                    role="alert">
+                                                    <div class="file-upload-wrapper">
+                                                        <input type="file" class="file-upload"
+                                                            name="uploadedFile[]" />
+                                                        <button class="btn btn-danger btn-sm ms-2"
+                                                            style="display:none;">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <a href="#" type="button" class="btn btn-primary">Upload</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                {{-- tabel --}}
-                                <p>Setelah UNIT mengajukan (saat ini status diajukan)</p>
-                                <table class="table table-hover display responsive nowrap table-striped font-body-table"
-                                    style="width: 100%" {{-- id="table-bau" --}}>
-                                    <thead class="header-table">
-                                        <tr>
-                                            <th scope="col" class="text-center align-middle">
-                                                No
-                                            </th>
+                                {{-- End Modal Upload File --}}
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
+                                {{-- tampilan unit --}}
+                                <div id="dokumen-unit">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                            width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                                    </div>
+                                    <p>Setelah UNIT mengajukan (saat ini status diajukan)</p>
+                                    <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                                        style="width: 100%" {{-- id="table-bau" --}}>
+                                        <thead class="header-table">
+                                            <tr>
+                                                <th scope="col" class="text-center align-middle">
+                                                    No
+                                                </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    1
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen KAK
+                                                </td>
+
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    2
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Memo
+                                                </td>
 
                                             <td class="text-wrap">
                                                 Template
@@ -136,99 +174,75 @@
                                 </div>
                                 <br>
                                 <br>
-                                <p>Setelah PPK menyetujui (saat ini status disetujui)</p>
-                                <table class="table table-hover display responsive nowrap table-striped font-body-table"
-                                    style="width: 100%" {{-- id="table-bau" --}}>
-                                    <thead class="header-table">
-                                        <tr>
-                                            <th scope="col" class="text-center align-middle">
-                                                No
-                                            </th>
+                                </div>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
+                                {{-- tampilan ppk --}}
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                <div id="dokumen-ppk">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                            width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                                    </div>
+                                    <p>Setelah PPK menyetujui (saat ini status disetujui)</p>
+                                    <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                                        style="width: 100%" {{-- id="table-bau" --}}>
+                                        <thead class="header-table">
+                                            <tr>
+                                                <th scope="col" class="text-center align-middle">
+                                                    No
+                                                </th>
 
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                3
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Identifikasi Kebutuhan
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    3
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Identifikasi Kebutuhan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                4
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Perencanaan Pengadaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    4
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Perencanaan Pengadaan
+                                                </td>
 
                                             <td class="text-wrap">
                                                 Template
@@ -315,126 +329,126 @@
                                                 No
                                             </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    1
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen KAK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    2
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Memo
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                3
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Identifikasi Kebutuhan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    3
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Identifikasi Kebutuhan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                4
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Perencanaan Pengadaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    4
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Perencanaan Pengadaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                5
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen HPS
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    5
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen HPS
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                6
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Nota Dinas
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    6
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Nota Dinas
+                                                </td>
 
                                             <td class="text-wrap">
                                                 Template
@@ -494,297 +508,297 @@
                                                 No
                                             </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    1
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen KAK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    2
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Memo
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                3
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Identifikasi Kebutuhan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    3
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Identifikasi Kebutuhan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                4
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Perencanaan Pengadaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    4
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Perencanaan Pengadaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                5
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen HPS
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    5
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen HPS
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                6
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Nota Dinas
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    6
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Nota Dinas
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                7
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Undangan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    7
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Undangan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                8
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen SSUK SSKK
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    8
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen SSUK SSKK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                9
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen IKP
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    9
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen IKP
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                10
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen LDP dan Spesifikasi
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    10
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen LDP dan Spesifikasi
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                11
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Penawaran
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    11
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Penawaran
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                12
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Surat Permintaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    12
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Surat Permintaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                13
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Pengadaan Langsung
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    13
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Pengadaan Langsung
+                                                </td>
 
                                             <td class="text-wrap">
                                                 Template
@@ -844,261 +858,261 @@
                                                 No
                                             </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    1
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen KAK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    2
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Memo
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                3
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Identifikasi Kebutuhan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    3
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Identifikasi Kebutuhan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                4
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Perencanaan Pengadaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    4
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Perencanaan Pengadaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                5
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen HPS
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    5
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen HPS
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                6
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Nota Dinas
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    6
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Nota Dinas
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                7
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Undangan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    7
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Undangan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                8
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen SSUK SSKK
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    8
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen SSUK SSKK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                9
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen IKP
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    9
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen IKP
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                10
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen LDP dan Spesifikasi
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    10
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen LDP dan Spesifikasi
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                11
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Penawaran
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    11
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Penawaran
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                12
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Surat Permintaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    12
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Surat Permintaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                13
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Pengadaan Langsung
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    13
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Pengadaan Langsung
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                14
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen BAST
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    14
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen BAST
+                                                </td>
 
                                             <td class="text-wrap">
                                                 Template
@@ -1158,261 +1172,261 @@
                                                 No
                                             </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Nama Dokumen
-                                            </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
-                                            </th>
-                                            <th scope="col" class="text-center align-middle">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                1
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen KAK
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    1
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen KAK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                2
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Memo
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    2
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Memo
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                3
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Identifikasi Kebutuhan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    3
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Identifikasi Kebutuhan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                4
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Perencanaan Pengadaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    4
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Perencanaan Pengadaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                5
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen HPS
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    5
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen HPS
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                6
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Nota Dinas
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    6
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Nota Dinas
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                7
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Undangan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    7
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Undangan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                8
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen SSUK SSKK
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    8
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen SSUK SSKK
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                9
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen IKP
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    9
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen IKP
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                10
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen LDP dan Spesifikasi
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    10
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen LDP dan Spesifikasi
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                11
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Penawaran
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    11
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Penawaran
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                12
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Surat Permintaan
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    12
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Surat Permintaan
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                13
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Pengadaan Langsung
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    13
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Pengadaan Langsung
+                                                </td>
 
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                    Download
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                14
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen BAST
-                                            </td>
+                                                <td class="text-wrap">
+                                                    Template
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <button type="button"
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    14
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen BAST
+                                                </td>
 
                                             <td class="text-wrap">
                                                 Template
@@ -1595,209 +1609,7 @@
                                         </svg>
                                         <div>Untuk mengunduh format laporan, silakan tekan download template</div>
                                     </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">
-                                            Dokumen Identifikasi Kebutuhan
-                                        </h4>
-                                        <a href="#" class="btn-link btn-sm ms-2"
-                                            id="download-template">Download
-                                            Template</a>
-                                    </div>
-
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" class="file-upload" name="uploadedFile[]" />
-                                            <button class="btn btn-danger btn-sm ms-2"
-                                                style="display:none;">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">
-                                            Dokumen Perencanaan Pengadaan
-                                        </h4>
-                                        <a href="#" class="btn-link btn-sm ms-2"
-                                            id="download-template">Download
-                                            Template</a>
-                                    </div>
-
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" class="file-upload" name="uploadedFile[]" />
-                                            <button class="btn btn-danger btn-sm ms-2"
-                                                style="display:none;">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">
-                                            Dokumen HPS
-                                        </h4>
-                                        <a href="#" class="btn-link btn-sm ms-2"
-                                            id="download-template">Download
-                                            Template</a>
-                                    </div>
-
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" class="file-upload" name="uploadedFile[]" />
-                                            <button class="btn btn-danger btn-sm ms-2"
-                                                style="display:none;">Remove</button>
-                                        </div>
-                                    </div>
                                 </div>
-
-                                <!-- List group with Advanced Contents -->
-                                <!-- Ini kalau dikerjakan PPK langsung -->
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Undangan
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen SSUK SSKK
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen IKP
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen LDP dan Spesifikasi
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Penawaran
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Surat Permintaan
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Pengadaan Langsung
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-                                <!-- End List group Advanced Content -->
-
-                                <!-- Kalau diberikan ke PBJ -->
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Nota Dinas
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <!-- Untuk yang diberikan ke PBJ, muncul kalau PBJ sudah klik Selesai -->
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen BAST
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
