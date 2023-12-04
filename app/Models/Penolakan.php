@@ -8,15 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Penolakan extends Model
 {
     use HasFactory;
-    protected $table = "penolakan";
+
     protected $fillable = [
-        'dokumen_id',
+        'pengadaan_id',
+        'user_id',
         'alasan_penolakan',
-        'revisi',
+        'tanggal_penolakan',
     ];
 
-    public function dokumen()
+    public function pengadaan()
     {
-        return $this->belongsTo(Dokumen::class);
+        return $this->belongsTo(Pengadaan::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

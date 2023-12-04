@@ -32,27 +32,32 @@ function removeFile(index) {
 }
 
 // Tampilan dropdown details
-let NamaUnit = document.getElementById("inputNamaUnit");
+$(document).ready(function () {
+    let NamaUnit = $("#inputNamaUnit");
+    let dokumenUnit = $("#dokumen-unit");
+    let dokumenPPK = $("#dokumen-ppk");
+    let dokumenPBJ = $("#dokumen-pbj");
 
-let dokumenUnit = document.getElementById("dokumen-unit");
-let dokumenPPK = document.getElementById("dokumen-ppk");
-let dokumenPBJ = document.getElementById("dokumen-pbj");
+    dokumenPPK.removeClass("d-none");
 
-dokumenPPK.classList.remove("d-none");
-NamaUnit.addEventListener("change", function () {
-    let selectedRole = NamaUnit.value;
+    NamaUnit.on("change", function () {
+        let selectedRole = NamaUnit.val();
 
-    if (selectedRole === "Unit") {
-        dokumenUnit.classList.remove("d-none");
-        dokumenPPK.classList.add("d-none");
-        dokumenPBJ.classList.add("d-none");
-    } else if (selectedRole === "PPK") {
-        dokumenPPK.classList.remove("d-none");
-        dokumenPBJ.classList.add("d-none");
-        dokumenUnit.classList.add("d-none");
-    } else if (selectedRole === "PBJ") {
-        dokumenPBJ.classList.remove("d-none");
-        dokumenUnit.classList.add("d-none");
-        dokumenPPK.classList.add("d-none");
-    }
+        if (selectedRole === "Unit") {
+            dokumenUnit.removeClass("d-none");
+            dokumenPPK.addClass("d-none");
+            dokumenPBJ.addClass("d-none");
+        } else if (selectedRole === "PPK") {
+            dokumenPPK.removeClass("d-none");
+            dokumenPBJ.addClass("d-none");
+            dokumenUnit.addClass("d-none");
+        } else if (selectedRole === "PBJ") {
+            dokumenPBJ.removeClass("d-none");
+            dokumenUnit.addClass("d-none");
+            dokumenPPK.addClass("d-none");
+        }
+    });
+
+    // Trigger change on load
+    NamaUnit.trigger("change");
 });

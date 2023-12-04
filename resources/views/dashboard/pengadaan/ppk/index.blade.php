@@ -10,43 +10,6 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-
-{{-- catatan tambahan status --}}
-<div>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-dark-light text-dark pe-none">
-        Diajukan
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-primary text-light pe-none">
-        Diterima
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-danger text-light pe-none">
-        Ditolak
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-warning text-dark pe-none">
-        Revisi
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-info text-dark pe-none">
-        Diproses
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-primary-light text-dark pe-none">
-        Dilaksanakan
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-success text-light pe-none">
-        Selesai
-    </button>
-    <button
-        class="btn-sibau-dashboard btn rounded-pill fw-bold bg-secondary text-light pe-none">
-        Diserahkan
-    </button>
-</div>
-
                         <h3 class="card-title text-center fw-bold fs-3">
                             Daftar Pengajuan
                         </h3>
@@ -83,29 +46,28 @@
                             </thead>
 
                             <tbody>
-                                @foreach($dokumens as $dokumen)
+                                @foreach($listPengajuan as $pengajuan)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="fw-bold align-middle text-wrap">
-                                        {{ $dokumen->user->name }}
+                                        {{ $pengajuan->user->name }}
                                     </td>
 
                                     <td class="text-wrap">
-                                        {{ $dokumen->nama_pengadaan }}
+                                        {{ $pengajuan->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        {{ $dokumen->tanggal_pengajuan }}
+                                        {{ $pengajuan->tanggal_pengadaan_formatted }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <button
-                                            class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold text-dark pe-none"
-                                            >{{ $dokumen->status }}</
-                                        >
+                                        <button class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }} w-75" style="border: none">
+                                            {{ $pengajuan->status }}
+                                        </button>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <a href={{ route('updatingstatusppk.details', ['id' => $dokumen->id]) }}>
+                                        <a href={{ route('updatingstatusppk.details', ['id' => $pengajuan->id]) }}>
                                             <button
                                                 type="button"
                                                 class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
@@ -136,12 +98,9 @@
                                     <th scope="col" class="text-center align-middle">
                                         No
                                     </th>
-
                                     <th scope="col" class="text-center align-middle">
                                         Nama
                                     </th>
-
-
                                     <th scope="col" class="text-center align-middle">
                                         Nama Paket Pengadaan
                                     </th>
@@ -155,25 +114,25 @@
                             </thead>
 
                             <tbody>
-                                @foreach($dokumens as $dokumen)
+                                @foreach($listPenolakan as $penolakan)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="fw-bold align-middle text-wrap">
-                                        {{ $dokumen->user->name }}
+                                        {{ $penolakan->pengadaan->user->name }}
                                     </td>
 
                                     <td class="text-wrap">
-                                        {{ $dokumen->nama_pengadaan }}
+                                        {{ $penolakan->pengadaan->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        Alasan {{ $loop->iteration }}
+                                        {{ $penolakan->alasan_penolakan }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                        class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold text-dark pe-none">
-                                            {{ $dokumen->status }}
+                                        class="btn-sibau-dashboard btn btn-warning rounded-pill {{$penolakan->pengadaan->status_color}}">
+                                            {{ $penolakan->pengadaan->status }}
                                         </button>
                                     </td>
                                 </tr>

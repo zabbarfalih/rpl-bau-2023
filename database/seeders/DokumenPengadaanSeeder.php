@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Dokumen;
 use Illuminate\Database\Seeder;
+use App\Models\DokumenPengadaan;
 
-class DokumenSeeder extends Seeder
+class DokumenPengadaanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class DokumenSeeder extends Seeder
      */
     public function run()
     {
-        Dokumen::factory(10)->create();
+        DokumenPengadaan::factory(10)->create();
     }
 }

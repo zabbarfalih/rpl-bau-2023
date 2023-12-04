@@ -2,32 +2,72 @@
 
 namespace App\Http\Controllers\Dashboard\Pengadaan\PBJ;
 
-use App\Models\Menu;
+use Carbon\Carbon;
 
+use App\Models\Menu;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Dokumen;
+use App\Models\Pengadaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Role;
 use Illuminate\Support\Facades\Storage;
 
 class UpdatingStatusPBJController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function getColorStatus($status)
+    {
+        switch ($status) {
+            case "Diajukan":
+                return "bg-dark-light text-dark pe-none";
+                break;
+            case "Diterima":
+                return "bg-primary text-light pe-none";
+                break;
+            case "Ditolak":
+                return "bg-danger text-light pe-none";
+                break;
+            case "Revisi":
+                return "bg-warning text-dark pe-none";
+                break;
+            case "Diproses":
+                return "bg-info text-dark pe-none";
+                break;
+            case "Dilaksanakan":
+                return "bg-primary-light text-dark pe-none";
+                break;
+            case "Selesai":
+                return "bg-success text-light pe-none";
+                break;
+            case "Diserahkan":
+                return "bg-secondary text-light pe-none";
+                break;
+            default:
+                return "";
+        }
+    }
+
     public function index()
     {
+        Carbon::setLocale('id');
         $menu = Menu::with('submenu')->get();
-        $users = User::all();
-        $dokumen = Dokumen::where('pelaksana', 1)->get();
+        $listPengajuan = Pengadaan::all();
+
+        foreach ($listPengajuan as $pengajuan) {
+            if (!empty($pengajuan->tanggal_pengadaan)) {
+                $pengajuan->tanggal_pengadaan_formatted = Carbon::createFromFormat('Y-m-d', $pengajuan->tanggal_pengadaan)
+                    ->translatedFormat('j F Y');
+            } else {
+                $pengajuan->tanggal_pengadaan_formatted = 'Tanggal tidak valid';
+            }
+
+            $pengajuan->status_color = $this->getColorStatus($pengajuan->status);
+        }
+
         return view('dashboard.pengadaan.pbj.index', [
             'menu' => $menu,
-            'dokumen' => $dokumen,
-            'users' => $users
+            'listPengajuan' => $listPengajuan,
         ]);
     }
 
@@ -42,17 +82,48 @@ class UpdatingStatusPBJController extends Controller
         $roles = Role::all();
         $dokumen = Dokumen::find($id);
 
-        // Set nilai pekerja berdasarkan kondisi pelaksana
-        $pekerja = ($dokumen->pelaksana == 0) ? 'd-none' : '';
-
         return view('dashboard.pengadaan.pbj.details', [
             'menu' => $menu,
             'dokumen' => $dokumen,
             'roles' => $roles,
-            'pekerja' => $pekerja,
         ]);
     }
 
+
+    public function download($nama_dokumen, $id)
+    {
+        $dokumen = Dokumen::find($id);
+
+        if (!$dokumen) {
+            abort(404); // Dokumen tidak ditemukan
+        }
+
+        if ($nama_dokumen === 'kak') {
+            $filePath = public_path("storage/" . $dokumen->kak . ".pdf");
+        } elseif ($nama_dokumen === 'bast') {
+            $filePath = public_path("storage/" . $dokumen->bast . ".pdf");;
+        }
+
+        $headers = ['Content-Type: application/pdf'];
+        $fileName = $dokumen->kak . time() . '.pdf';
+
+        return response()->download($filePath, $fileName, $headers);
+    }
+
+    public function uploadFiles(Request $request)
+    {
+        $request->validate([
+            'uploadedFile.*' => 'required|mimes:pdf|max:2048', // Batas maksimum 2MB
+        ]);
+
+        foreach ($request->file('uploadedFile') as $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('public', $fileName);
+
+            // Simpan nama file ke database
+            Dokumen::create(['file_name' => $fileName]);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -119,39 +190,4 @@ class UpdatingStatusPBJController extends Controller
         //
     }
 
-    public function download($nama_dokumen, $id)
-    {
-        $dokumen = Dokumen::find($id);
-
-        if (!$dokumen) {
-            abort(404); // Dokumen tidak ditemukan
-        }
-
-        if ($nama_dokumen === 'kak') {
-            $filePath = public_path("storage/" . $dokumen->kak . ".pdf");
-        } elseif ($nama_dokumen === 'bast') {
-            $filePath = public_path("storage/" . $dokumen->bast . ".pdf");;
-        }
-
-        $headers = ['Content-Type: application/pdf'];
-        $fileName = $dokumen->kak . time() . '.pdf';
-
-        return response()->download($filePath, $fileName, $headers);
-    }
-
-    public function uploadFiles(Request $request)
-    {
-        $request->validate([
-            'uploadedFile.*' => 'required|mimes:pdf|max:2048', // Batas maksimum 2MB
-        ]);
-
-        foreach ($request->file('uploadedFile') as $file) {
-            $fileName = $file->getClientOriginalName();
-            $file->storeAs('public', $fileName);
-
-            // Simpan nama file ke database
-            Dokumen::create(['file_name' => $fileName]);
-        }
-
-    }
 }

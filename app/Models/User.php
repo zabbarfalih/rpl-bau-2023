@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     protected $table = 'users';
     public $timestamps = false;
-    
+
     protected $fillable = [
         'name',
         'nip',
@@ -58,5 +58,10 @@ class User extends Authenticatable
     public function dokumens()
     {
         return $this->hasMany(Dokumen::class);
+    }
+
+    public function pengadaans()
+    {
+        return $this->hasMany(Pengadaan::class);
     }
 }

@@ -16,8 +16,8 @@ use App\Http\Controllers\Dashboard\Pengadaan\PBJ\UpdatingStatusPBJController;
 use App\Http\Controllers\Dashboard\Pengadaan\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSPjController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSkpController;
-
-
+use App\Http\Controllers\Dashboard\Pengadaan\DokumenController;
+use App\Http\Controllers\Dashboard\Pengadaan\TemplateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +51,12 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
 
     // Unit
     Route::get('/dashboard/unit/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
-    Route::get('/dashboard/unit/pengajuan/details', [PengajuanController::class, 'details'])->name('pengajuan.details');
+    Route::get('/dashboard/unit/pengajuan/{id}/details', [PengajuanController::class, 'details'])->name('pengajuan.details');
     Route::get('/dashboard/unit/pengajuan/tambah-pengajuan', [PengajuanController::class, 'create'])->name('pengajuan.add');
+    Route::post('/dashboard/unit/pengajuan/kirim-form', [PengajuanController::class, 'kirimForm'])->name('pengajuan.kirim-form');
+
+    //Unit -> download template
+    Route::get('/download-template/{filename}', [DokumenController::class, 'downloadTemplate'])->name('template.download');
 
     // SPJ
     Route::get('/dashboard/spj/info-pengajuan-spj', [InfoPengajuanSPJController::class, 'index'])->name('spj.index');
@@ -91,7 +95,6 @@ Route::middleware(['ppk', 'formatUserName'])->group(function () {
     Route::get('/dashboard/ppk/updating-status/details/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
     Route::get('/dashboard/ppk/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPPKController::class, 'download'])->name('updatingstatusppk.download');
     Route::get('/dashboard/ppk/updating-status/upload-files', [UpdatingStatusPPKController::class, 'uploadFiles'])->name('updatingstatusppk.upload-files');
-
 });
 
 

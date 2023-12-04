@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePenolakanTable extends Migration
+class CreateDokumensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreatePenolakanTable extends Migration
      */
     public function up()
     {
-        Schema::create('penolakan', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('dokumen_id');
-            $table->text('alasan_penolakan');
-            $table->boolean('revisi')->default(false);
-            $table->timestamps();
+        // database/migrations/xxxx_xx_xx_create_dokumens_table.php
 
-            $table->foreign('dokumen_id')->references('id')->on('dokumen')->onDelete('cascade');
+        Schema::create('dokumens', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('pengadaan_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +29,6 @@ class CreatePenolakanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penolakan');
+        Schema::dropIfExists('dokumens');
     }
 }
