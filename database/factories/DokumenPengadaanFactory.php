@@ -18,7 +18,7 @@ class DokumenPengadaanFactory extends Factory
     public function definition()
     {
         return [
-            'dokumen_id' => Dokumen::inRandomOrder()->first()->id,
+            'dokumen_id' => Dokumen::factory(),
             'dokumen_memo' => $this->faker->randomElement,
             'dokumen_kak'=> $this->faker->randomElement,
             'dokumen_identifikasi_kebutuhan'=> $this->faker->randomElement,

@@ -19,7 +19,7 @@ class PenolakanFactory extends Factory
     {
         return [
             'pengadaan_id' => Pengadaan::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id,
+            'user_id' => User::factory(),
             'alasan_penolakan' => $this->faker->sentence,
             'tanggal_penolakan' => $this->faker->date(),
         ];

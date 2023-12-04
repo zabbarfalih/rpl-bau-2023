@@ -113,12 +113,11 @@ class UpdatingStatusPPKController extends Controller
         $roles = Role::all();
 
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
-        Log::info('Pengadaan data : ' . $pengadaan->user_id);
+        Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
 
         $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
-        Log::info('Pengadaan data : ' . $dokumenId);
-
+        Log::info('Dokumen data id : ' . $dokumenId);
 
         $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
         Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Pengadaan;
+use App\Models\DokumenPengadaan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StatusPengadaanFactory extends Factory
@@ -15,7 +16,9 @@ class StatusPengadaanFactory extends Factory
     public function definition()
     {
         return [
-            'pengadaan_id' => $this->faker->unique()->numberBetween(1, Pengadaan::count()),
+            'pengadaan_id' => Pengadaan::inRandomOrder()->first()->id,
+            'status' => $this->faker->randomElement(['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan']),
+            'changed_at' => $this->faker->dateTimeThisMonth()
         ];
     }
 }
