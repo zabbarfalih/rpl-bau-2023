@@ -25,6 +25,7 @@
         <div class="container">
             <div class="row">
                 <!-- Left side columns -->
+                <div class="col-lg-8">
                 <p>Setelah UNIT mengajukan (saat ini status diajukan)</p>
                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -237,7 +238,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="col-lg-8">
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
@@ -271,7 +271,6 @@
                     </div>
                 </div>
                 <!-- End Left side columns -->
-
                 <!-- Right side columns -->
                 <div class="col-lg-4">
                     <div class="card">
@@ -356,6 +355,7 @@
                 </div>
                 <!-- End Right side columns -->
             </div>
+
         </div>
     </section>
 

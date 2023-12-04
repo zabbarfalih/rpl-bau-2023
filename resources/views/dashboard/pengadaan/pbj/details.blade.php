@@ -992,6 +992,37 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                {{-- Modal untuk Upload File --}}
+                                <div class="modal fade" id="uploadFileModal" tabindex="-1"
+                                    data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
+                                            <div class="modal-header">
+                                                <h4 class="alert-heading">Dokumen [documents name]</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="alert alert-secondary alert-dismissible fade show"
+                                                    role="alert">
+                                                    <div class="file-upload-wrapper">
+                                                        <input type="file" class="file-upload"
+                                                            name="uploadedFile[]" />
+                                                        <button class="btn btn-danger btn-sm ms-2"
+                                                            style="display:none;">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <a href="#" type="button" class="btn btn-primary">Upload</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- End Modal Upload File --}}
+
                                 {{-- tampilan unit --}}
                                 <div id="dokumen-unit">
                                     <div class="alert alert-primary d-flex align-items-center" role="alert">
