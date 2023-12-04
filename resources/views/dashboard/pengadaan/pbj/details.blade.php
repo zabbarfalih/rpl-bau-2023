@@ -1005,7 +1005,7 @@
                                             <div class="modal-body">
                                                 <div class="alert alert-secondary alert-dismissible fade show"
                                                     role="alert">
-                                                    <div class="file-upload-wrapper">
+                                                    <div class="file-upload-wrapper d-inline-flex">
                                                         <input type="file" class="file-upload"
                                                             name="uploadedFile[]" />
                                                         <button class="btn btn-danger btn-sm ms-2"
