@@ -47,8 +47,8 @@
 
                                 <!-- List dokumen -->
                         @if($dokumen_pengadaan->harga_anggaran <= 50000000)
-                                <p><b>KETIKA PENGADAAN DI BAWAH 50 JUTA</b></p>
                             @if($pengadaan->status == 'Dilaksanakan')
+                                <p><b>KETIKA PENGADAAN DI BAWAH 50 JUTA</b></p>
                                 <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -263,7 +263,6 @@
                                 </div>
                                 <br><br>
                             @elseif($pengadaan->status == 'Selesai')
-                                <p>{{ $pengadaan->status }}</p>
                                 <p>Setelah Selsai (saat ini status Selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -462,7 +461,8 @@
                                 <br><br>
                             @endif
                     @else
-                            <p><b>KETIKA PENGADAAN DI ATAS 50 JUTA</b></p>
+                            @if($pengadaan->status == 'Dilaksanakan')
+                                <p><b>KETIKA PENGADAAN DI ATAS 50 JUTA</b></p>
                                 <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -813,6 +813,7 @@
                                 </div>
                                 <br>
                                 <br>
+                            @elseif($pengadaan->status == 'Selesai')
                                 <p>Setelah Selesai (saat ini status selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -1077,6 +1078,7 @@
                                     <a href="#" class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#setujuModal">Selesai</a>
                                 </div>
+                            @endif
                     @endif
                                 <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
