@@ -62,7 +62,7 @@
                                         {{ $pengajuan->tanggal_pengadaan_formatted }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <button class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }} w-75" style="border: none">
+                                        <button class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }} w-75">
                                             {{ $pengajuan->status }}
                                         </button>
                                     </td>
@@ -126,15 +126,16 @@
                                     <td class="text-wrap">
                                         {{ $penolakan->pengadaan->nama_pengadaan }}
                                     </td>
-                                    <td class="text-center align-middle">
+                                    
+                                    <td class="text-left align-middle text-wrap">
                                         {{ $penolakan->alasan_penolakan }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <button
-                                        class="btn-sibau-dashboard btn btn-warning rounded-pill {{$penolakan->pengadaan->status_color}}">
+                                        class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold w-75 {{$penolakan->pengadaan->status_color}}">
                                             {{ $penolakan->pengadaan->status }}
                                         </button>
-                                    </td>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

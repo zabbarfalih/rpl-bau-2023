@@ -18,8 +18,8 @@
                         --}}
                         <div class="d-flex justify-content-end mb-3">
                             <a
-                                href="{{route('unit.pengajuan.add')}}"
-                                class="btn btn-primary me-2 btn-info rounded-pill bg-success text-light fw-bold"
+                                href="{{route('pengajuan.add')}}"
+                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold border-0"
                                 >+ Tambah Pengajuan</a
                             >
                         </div>
