@@ -22,7 +22,7 @@
                             <br>
 
                             <!-- General Form Elements -->
-                            <form method="POST" action="{{ route('pengajuan.kirim-form') }}" class="font-form fw-bold" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('unit.pengajuan.kirim-form') }}" class="font-form fw-bold" enctype="multipart/form-data">
                                 @csrf
                                 <!-- Nama Unit -->
                                 <div class="row mb-3">
@@ -64,7 +64,7 @@
 
                                 <!-- Unduh Template Dokumen KAK -->
                                 <div class="mb-1">
-                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
+                                    <a href="{{ route('unit.template.download', ['filename' => 'KAK']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
                                 </div>
 
                                 <!-- Upload Dokumen KAK -->
@@ -80,7 +80,7 @@
 
                                 <!-- Unduh Template Memo -->
                                 <div class="mb-1">
-                                    <a href="{{ route('template.download', ['filename' => 'Memo']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
+                                    <a href="{{ route('unit.template.download', ['filename' => 'Memo']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
                                 </div>
 
                                 <!-- Upload Memo -->
@@ -97,7 +97,7 @@
                                 <!-- Tombol Aksi -->
                                 <div class="row mb-3">
                                     <div class="text-end">
-                                        <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('pengajuan.index') }}'">Batal</button>
+                                        <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('unit.pengajuan.index') }}'">Batal</button>
                                         <button type="submit" class="btn btn-primary">Kirim</button>
                                     </div>
                                 </div>

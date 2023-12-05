@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
 {
@@ -120,72 +121,84 @@ class PengajuanController extends Controller
     }
 
     public function kirimForm(Request $request)
-{
-    $validatedData = Validator::make($request->all(), [
-        'role_id' => 'required|numeric',
-        'nama_pengadaan' => 'required|string',
-        'tanggal_pengadaan' => 'required|date',
-        'dokumen_kak' => 'required|mimes:docx',
-        'dokumen_memo' => 'mimes:docx',
-    ], [
-        'role_id.required' => 'Unit tidak boleh kosong (pilih unit)',
-        'role_id.numeric' => 'Pilih nama unit',
-        'nama_pengadaan.required' => 'Nama pengadaan tidak boleh kosong',
-        'tanggal_pengadaan.required' => 'Tanggal pengadaan tidak boleh kosong',
-        'dokumen_kak.required' => 'Dokumen KAK tidak boleh kosong',
-        'dokumen_kak.mimes' => 'Dokumen harus dalam format DOCX',
-        'dokumen_memo.mimes' => 'Dokumen harus dalam format DOCX',
-    ]);
+    {
+        $validatedData = Validator::make($request->all(), [
+            'role_id' => 'required|numeric',
+            'nama_pengadaan' => 'required|string',
+            'tanggal_pengadaan' => 'required|date',
+            'dokumen_kak' => 'required|mimes:docx',
+            'dokumen_memo' => 'mimes:docx',
+        ], [
+            'role_id.required' => 'Unit tidak boleh kosong (pilih unit)',
+            'role_id.numeric' => 'Pilih nama unit',
+            'nama_pengadaan.required' => 'Nama pengadaan tidak boleh kosong',
+            'tanggal_pengadaan.required' => 'Tanggal pengadaan tidak boleh kosong',
+            'dokumen_kak.required' => 'Dokumen KAK tidak boleh kosong',
+            'dokumen_kak.mimes' => 'Dokumen harus dalam format DOCX',
+            'dokumen_memo.mimes' => 'Dokumen harus dalam format DOCX',
+        ]);
 
-    if ($validatedData->fails()) {
-        return redirect()->back()->withErrors($validatedData)->withInput();
-    }
-
-    try {
-        $userId = Auth::id();
-        $validatedData = $validatedData->validated();
-
-        $pengajuan = new Pengadaan;
-        $pengajuan->user_id = $userId;
-        $pengajuan->nama_pengadaan = $validatedData['nama_pengadaan'];
-        $pengajuan->tanggal_pengadaan = $validatedData['tanggal_pengadaan'];
-        $pengajuan->status = "Diajukan";
-        $pengajuan->penyelenggara = 3;
-
-        if ($pengajuan->save()) {
-            Log::info('Pengadaan dengan ID: ' . $pengajuan->id . ' berhasil dibuat.');
-
-            $dokumen = new Dokumen;
-            $dokumen->user_id = $userId;
-            $dokumen->pengadaan_id = $pengajuan->id;
-            if ($dokumen->save()) {
-                Log::info('Dokumen dengan ID: ' . $dokumen->id . ' berhasil dibuat.');
-
-                $pathKak = $request->file('dokumen_kak')->store('public/dokumen');
-                $dokumenPengadaanKak = new DokumenPengadaan;
-                $dokumenPengadaanKak->dokumen_id = $dokumen->id;
-                $dokumenPengadaanKak->tipe_dokumen = 'kak';
-                $dokumenPengadaanKak->path_file = $pathKak;
-                $dokumenPengadaanKak->save();
-                Log::info('Dokumen Pengadaan KAK dengan ID: ' . $dokumenPengadaanKak->id . ' berhasil disimpan.');
-
-                // Menangani unggahan dokumen_memo
-                $pathMemo = $request->file('dokumen_memo')->store('public/dokumen');
-                $dokumenPengadaanMemo = new DokumenPengadaan;
-                $dokumenPengadaanMemo->dokumen_id = $dokumen->id;
-                $dokumenPengadaanMemo->tipe_dokumen = 'memo';
-                $dokumenPengadaanMemo->path_file = $pathMemo;
-                $dokumenPengadaanMemo->save();
-                Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
-
-                return redirect()->route('pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
-            }
+        if ($validatedData->fails()) {
+            return redirect()->back()->withErrors($validatedData)->withInput();
         }
-    } catch (\Exception $e) {
-        Log::error('Kesalahan saat menyimpan data: ' . $e->getMessage());
-        return back()->with('status.error', 'Terjadi kesalahan saat mengirim form: ' . $e->getMessage());
+
+        try {
+            $userId = Auth::id();
+            $validatedData = $validatedData->validated();
+
+            $pengajuan = new Pengadaan;
+            $pengajuan->user_id = $userId;
+            $pengajuan->nama_pengadaan = $validatedData['nama_pengadaan'];
+            $pengajuan->tanggal_pengadaan = $validatedData['tanggal_pengadaan'];
+            $pengajuan->status = "Diajukan";
+            $pengajuan->penyelenggara = 3;
+
+            if ($pengajuan->save()) {
+                Log::info('Pengadaan dengan ID: ' . $pengajuan->id . ' berhasil dibuat.');
+
+                $dokumen = new Dokumen;
+                $dokumen->user_id = $userId;
+                $dokumen->pengadaan_id = $pengajuan->id;
+                if ($dokumen->save()) {
+                    Log::info('Dokumen dengan ID: ' . $dokumen->id . ' berhasil dibuat.');
+
+                    $pathKak = $request->file('dokumen_kak')->store('public/dokumen');
+                    $dokumenPengadaanKak = new DokumenPengadaan;
+                    $dokumenPengadaanKak->dokumen_id = $dokumen->id;
+                    $dokumenPengadaanKak->tipe_dokumen = 'kak';
+                    $dokumenPengadaanKak->path_file = $pathKak;
+                    $dokumenPengadaanKak->save();
+                    Log::info('Dokumen Pengadaan KAK dengan ID: ' . $dokumenPengadaanKak->id . ' berhasil disimpan.');
+
+                    // Menangani unggahan dokumen_memo
+                    $pathMemo = $request->file('dokumen_memo')->store('public/dokumen');
+                    $dokumenPengadaanMemo = new DokumenPengadaan;
+                    $dokumenPengadaanMemo->dokumen_id = $dokumen->id;
+                    $dokumenPengadaanMemo->tipe_dokumen = 'memo';
+                    $dokumenPengadaanMemo->path_file = $pathMemo;
+                    $dokumenPengadaanMemo->save();
+                    Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
+
+                    return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
+                }
+            }
+        } catch (\Exception $e) {
+            Log::error('Kesalahan saat menyimpan data: ' . $e->getMessage());
+            return back()->with('status.error', 'Terjadi kesalahan saat mengirim form: ' . $e->getMessage());
+        }
     }
-}
+
+    public function downloadTemplate($filename)
+    {
+        $path = 'public/templates-dokumen/' . $filename . '.docx';
+        if (Storage::exists($path)) {
+            Log::info('Download File: ' . $filename . ' berhasil');
+            return Storage::download($path);
+        }
+
+        Log::error('Download File: ' . $filename . '.docx' . ' gagal');
+        abort(404, 'File not found');
+    }
 
 
     /**
