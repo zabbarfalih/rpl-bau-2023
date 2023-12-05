@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -54,7 +56,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'asset_url' => env('ASSET_URL'),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +97,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -125,6 +127,24 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance Mode Driver
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options determine the driver used to determine and
+    | manage Laravel's "maintenance mode" status. The "cache" driver will
+    | allow maintenance mode to be controlled across multiple machines.
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
+
+    'maintenance' => [
+        'driver' => 'file',
+        // 'store'  => 'redis',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -180,6 +200,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom Service Providers Start
+        // Custom Service Providers End
     ],
 
     /*
@@ -192,6 +214,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+
 
     'aliases' => [
 
@@ -238,5 +261,10 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
+
+//     'aliases' => Facade::defaultAliases()->merge([
+//         // 'ExampleClass' => App\Example\ExampleClass::class,
+//     ])->toArray(),
+
 
 ];

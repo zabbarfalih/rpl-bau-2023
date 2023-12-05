@@ -24,13 +24,14 @@ class KonfirmasiSpjController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         $spj = Spj::all();
         $spjTr = SpjTr::all();
         $spjPd = SpjPd::all();
 
         return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.index', [
+
             'menus' => $menus,
             'users' => $users,
             'spj' => $spj,
@@ -41,10 +42,10 @@ class KonfirmasiSpjController extends Controller
 
     public function detail()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detail', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users
         ]);
     }

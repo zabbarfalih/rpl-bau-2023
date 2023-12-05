@@ -1,4 +1,4 @@
-<x-dashboard.layouts.layouts :menus="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
     </x-slot>
 
@@ -18,8 +18,8 @@
                         --}}
                         <div class="d-flex justify-content-end mb-3">
                             <a
-                                href="{{route('pengajuan.add')}}"
-                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold"
+                                href="{{route('unit.pengajuan.add')}}"
+                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold border-0"
                                 >+ Tambah Pengajuan</a
                             >
                         </div>
@@ -52,33 +52,31 @@
                             </thead>
 
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($listPengajuan as $list)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
 
                                     <td class="text-wrap">
-                                        {{ 'Nama Pengadaan ' .
-                                        $loop->iteration }}
+                                        {{ $list->nama_pengadaan }}
                                     </td>
 
                                     <td class="text-center align-middle">
-                                        22 September 2024
+                                        {{$list->tanggal_pengadaan_formatted}}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <span
-                                            class="badge rounded-pill bg-warning text-dark"
-                                            >Menunggu Persetujuan</span
-                                        >
+                                        <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $list->status_color }}" style="border: none">
+                                            {{ $list->status }}
+                                        </button>
                                     </td>
                                     <td class="text-center">
-                                        <a href={{ route('pengajuan.details') }}>
+                                        <a href={{ route('unit.pengajuan.details', ['id' => $list->id]) }}>
                                             <button
-                                                type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white font-body-table"
+                                            type="button"
+                                            class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
                                             >
-                                                Details
+                                                Detail
                                             </button>
                                         </a>
                                     </td>

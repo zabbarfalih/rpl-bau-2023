@@ -19,10 +19,10 @@ class DetailPengajuanSkpController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.keuangan.skp.detail', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users
         ]);
     }

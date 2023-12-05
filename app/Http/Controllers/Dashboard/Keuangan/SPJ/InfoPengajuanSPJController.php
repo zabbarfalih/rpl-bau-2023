@@ -22,6 +22,7 @@ class InfoPengajuanSpjController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
 {
     $menus = Menu::with('submenus')->get();
     $users = User::all();
@@ -41,7 +42,6 @@ class InfoPengajuanSpjController extends Controller
         'spjPd' => $spjPd
     ]);
 }
-
 
     /**
      * Show the form for creating a new resource.

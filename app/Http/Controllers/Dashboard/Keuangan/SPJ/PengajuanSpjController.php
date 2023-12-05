@@ -18,11 +18,11 @@ class PengajuanSpjController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
     
         return view('dashboard.keuangan.spj.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
         ]);
     }
@@ -34,9 +34,9 @@ class PengajuanSpjController extends Controller
      */
     public function create()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         return view('dashboard.keuangan.spj.add', [
-            'menus' => $menus,
+            'menu' => $menu,
         ]);
     }
 

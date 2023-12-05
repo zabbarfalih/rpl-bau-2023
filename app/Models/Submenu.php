@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Menu;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Submenu extends Model
 {
@@ -12,12 +11,15 @@ class Submenu extends Model
 
     protected $table = 'submenu';
 
-    public $timestamps = false;
-
     protected $guarded = ['id'];
 
     public function menu()
     {
         return $this->belongsTo(Menu::class);
+    }
+
+    public function subsubmenu()
+    {
+        return $this->hasMany(Subsubmenu::class);
     }
 }

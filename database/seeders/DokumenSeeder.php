@@ -2,13 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Dokumen;
+use Illuminate\Database\Seeder;
 
 class DokumenSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
-       Dokumen::factory(100)->create();
+        Dokumen::factory(10)->create();
     }
 }

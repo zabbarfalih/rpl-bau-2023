@@ -15,7 +15,7 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
-        // Create a sample admin menus
+        // Create a sample admin menu
         Menu::insert([
             [
                 'name' => 'Dashboard',

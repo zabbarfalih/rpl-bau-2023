@@ -2,18 +2,55 @@
 
 namespace App\Http\Controllers\Dashboard\Pengadaan\PPK;
 
-use App\Models\Menu;
+use Carbon\Carbon;
 
+use App\Models\Menu;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Dokumen;
+use App\Models\Pengadaan;
+use App\Models\Penolakan;
 use Illuminate\Http\Request;
+use App\Models\StatusPengadaan;
+use App\Models\DokumenPengadaan;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UpdatingStatusPPKController extends Controller
 {
+    public function getColorStatus($status)
+    {
+        switch ($status) {
+            case "Diajukan":
+                return "bg-dark-light text-dark pe-none";
+                break;
+            case "Diterima":
+                return "bg-primary text-light pe-none";
+                break;
+            case "Ditolak":
+                return "bg-danger text-light pe-none";
+                break;
+            case "Revisi":
+                return "bg-warning text-dark pe-none";
+                break;
+            case "Diproses":
+                return "bg-info text-dark pe-none";
+                break;
+            case "Dilaksanakan":
+                return "bg-primary-light text-dark pe-none";
+                break;
+            case "Selesai":
+                return "bg-success text-light pe-none";
+                break;
+            case "Diserahkan":
+                return "bg-secondary text-light pe-none";
+                break;
+            default:
+                return "";
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,13 +58,47 @@ class UpdatingStatusPPKController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
-        $users = User::all();
-        $dokumen = Dokumen::all();
+        Carbon::setLocale('id');
+        $menu = Menu::with('submenu')->get();
+        $listPengajuan = Pengadaan::all();
+
+        foreach ($listPengajuan as $pengajuan) {
+            // Pastikan kolom tanggal pengadaan ada dan bukan null
+            if (!empty($pengajuan->tanggal_pengadaan)) {
+                // Parse tanggal dan ubah formatnya ke 'tanggal bulan(tulisan) tahun'
+                // contoh: '1 Januari 2023'
+                $pengajuan->tanggal_pengadaan_formatted = Carbon::createFromFormat('Y-m-d', $pengajuan->tanggal_pengadaan)
+                    ->translatedFormat('j F Y');
+            } else {
+                // Jika tanggal tidak ada atau null, tetapkan nilai default atau tampilkan pesan error
+                $pengajuan->tanggal_pengadaan_formatted = 'Tanggal tidak valid';
+            }
+
+            // Tidak perlu menetapkan kembali ke objek $pengajuan karena kita hanya menambahkan properti baru
+            $pengajuan->status_color = $this->getColorStatus($pengajuan->status);
+        }
+
+        $listPenolakan = Penolakan::all();
+        foreach ($listPenolakan as $penolakan) {
+            // Pastikan kolom tanggal pengadaan ada dan bukan null
+            if (!empty($penolakan->pengadaan->tanggal_pengadaan)) {
+                // Parse tanggal dan ubah formatnya ke 'tanggal bulan(tulisan) tahun'
+                // contoh: '1 Januari 2023'
+                $penolakan->pengadaan->tanggal_pengadaan_formatted = Carbon::createFromFormat('Y-m-d', $penolakan->pengadaan->tanggal_pengadaan)
+                    ->translatedFormat('j F Y');
+            } else {
+                // Jika tanggal tidak ada atau null, tetapkan nilai default atau tampilkan pesan error
+                $penolakan->pengadaan->tanggal_pengadaan_formatted = 'Tanggal tidak valid';
+            }
+
+            // Tidak perlu menetapkan kembali ke objek $pengajuan karena kita hanya menambahkan properti baru
+            $penolakan->pengadaan->status_color = $this->getColorStatus($penolakan->pengadaan->status);
+        }
+
         return view('dashboard.pengadaan.ppk.index', [
-            'menus' => $menus,
-            'users' => $users,
-            'dokumens' => $dokumen
+            'menu' => $menu,
+            'listPengajuan' => $listPengajuan,
+            'listPenolakan' => $listPenolakan,
         ]);
     }
 
@@ -36,16 +107,38 @@ class UpdatingStatusPPKController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details($id)
+    public function details($pengadaanId)
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $roles = Role::all();
 
-        $dokumen = Dokumen::find($id);
+        $pengadaan = Pengadaan::findOrFail($pengadaanId);
+        Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
+        // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
+
+        $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
+        Log::info('Dokumen data id : ' . $dokumenId);
+
+        $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
+        Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);
+
+
+        $allStatus = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
+        foreach ($allStatus as $status) {
+            $dokumenPengadaan = json_decode($status->dokumen_pengadaan);
+
+            // Sekarang Anda dapat mengakses data dalam dokumen_pengadaan
+            $dokumenId = $status->pengadaan_id;
+            $status = $dokumenPengadaan->status;
+            $kak = $dokumenPengadaan->changed_at;
+            // ...dan seterusnya
+            Log::info('Dokumen Pengadaan data status : ' . $status->status);
+        }
+
         return view('dashboard.pengadaan.ppk.details', [
-            'menus' => $menus,
+            'menu' => $menu,
             'roles' => $roles,
-            'dokumen' => $dokumen
+            // 'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
 
@@ -155,6 +248,5 @@ class UpdatingStatusPPKController extends Controller
             // Simpan nama file ke database
             Dokumen::create(['file_name' => $fileName]);
         }
-
     }
 }

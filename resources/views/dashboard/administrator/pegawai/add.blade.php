@@ -1,4 +1,4 @@
-<x-dashboard.layouts.layouts :menus="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/main.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
@@ -84,7 +84,7 @@
                       </form>
                       <div class="row mb-3">
                         <div class="text-end">
-                          <button type="button" class="btn btn-danger" onclick="window.location.href='{{route('pengajuan.index')}}'">Batal</button>
+                          <button type="button" class="btn btn-danger" onclick="window.location.href='{{route('admin.pegawai.index')}}'">Batal</button>
                           <button type="submit" class="btn btn-primary" onclick="window.location.href='pengajuan-unit.html'">Kirim</button>
                         </div>
                       </div>

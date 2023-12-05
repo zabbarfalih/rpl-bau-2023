@@ -1,4 +1,4 @@
-<x-dashboard.layouts.layouts :menus="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
     </x-slot>
 
@@ -46,37 +46,96 @@
                             </thead>
 
                             <tbody>
-                                @foreach($dokumens as $dokumen)
+                                @foreach($listPengajuan as $pengajuan)
                                 <tr>
                                     <td class="text-center fw-bold align-middle">
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="fw-bold align-middle text-wrap">
-                                        {{ $dokumen->user->name }}
+                                        {{ $pengajuan->user->name }}
                                     </td>
 
                                     <td class="text-wrap">
-                                        {{ $dokumen->nama_pengadaan }}
+                                        {{ $pengajuan->nama_pengadaan }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        {{ $dokumen->tanggal_pengajuan }}
+                                        {{ $pengajuan->tanggal_pengadaan_formatted }}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <span
-                                            class="badge rounded-pill bg-warning text-dark"
-                                            >{{ $dokumen->status }}</span
-                                        >
+                                        <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }}">
+                                            {{ $pengajuan->status }}
+                                        </button>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <a href={{ route('updatingstatusppk.details', ['id' => $dokumen->id]) }}>
+                                        <a href={{ route('updatingstatusppk.details', ['id' => $pengajuan->id]) }}>
                                             <button
                                                 type="button"
-                                                class="btn btn-info btn-sm rounded-pill fw-bold text-white"
+                                                class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
                                             >
                                                 Details
                                             </button>
                                         </a>
                                     </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center fw-bold fs-3">
+                            Daftar Penolakan Pengajuan
+                        </h3>
+                        <table
+                            class="table table-hover display responsive nowrap table-striped font-body-table"
+                            style="width: 100%"
+                            id="table-bau-penolakan"
+                        >
+                            <thead class="header-table">
+                                <tr>
+                                    <th scope="col" class="text-center align-middle">
+                                        No
+                                    </th>
+                                    <th scope="col" class="text-center align-middle">
+                                        Nama
+                                    </th>
+                                    <th scope="col" class="text-center align-middle">
+                                        Nama Paket Pengadaan
+                                    </th>
+                                    <th scope="col" class="text-center align-middle">
+                                        Alasan Penolakan
+                                    </th>
+                                    <th scope="col" class="text-center align-middle">
+                                        Status Penolakan
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach($listPenolakan as $penolakan)
+                                <tr>
+                                    <td class="text-center fw-bold align-middle">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td class="fw-bold align-middle text-wrap">
+                                        {{ $penolakan->pengadaan->user->name }}
+                                    </td>
+
+                                    <td class="text-wrap">
+                                        {{ $penolakan->pengadaan->nama_pengadaan }}
+                                    </td>
+                                    
+                                    <td class="text-left align-middle text-wrap">
+                                        {{ $penolakan->alasan_penolakan }}
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <button
+                                        class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{$penolakan->pengadaan->status_color}}">
+                                            {{ $penolakan->pengadaan->status }}
+                                        </button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

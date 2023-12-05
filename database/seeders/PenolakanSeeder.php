@@ -2,21 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Penolakan;
-use App\Models\Dokumen;
+use Illuminate\Database\Seeder;
 
 class PenolakanSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
-        // Get all Dokumen IDs
-        $dokumenIds = Dokumen::pluck('id')->toArray();
-
-        foreach ($dokumenIds as $dokumenId) {
-            Penolakan::factory()->create([
-                'dokumen_id' => $dokumenId,
-            ]);
-        }
+        Penolakan::factory(10)->create();
     }
 }
