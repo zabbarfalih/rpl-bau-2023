@@ -178,7 +178,7 @@ class PengajuanController extends Controller
                     $dokumenPengadaanMemo->save();
                     Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
 
-                    return redirect()->route('pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
+                    return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
                 }
             }
         } catch (\Exception $e) {

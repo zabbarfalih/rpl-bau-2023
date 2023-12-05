@@ -70,10 +70,10 @@ Route::middleware(['formatUserName'])->prefix('dashboard/unit')->name('unit.')->
     });
 });
 
-Route::middleware(['can:admin', 'formatUserName'])->group(function () {
+Route::middleware(['can:admin', 'formatUserName'])->prefix('/dashboard/administrator/pegawai')->name('admin.')->group(function () {
     // Administrator
-    Route::get('/dashboard/administrator/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
-    Route::get('/dashboard/administrator/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.add');
+    Route::get('/', [PegawaiController::class, 'index'])->name('pegawai.index');
+    Route::get('/tambah', [PegawaiController::class, 'create'])->name('pegawai.add');
 });
 
 // Pengadaan - PBJ
