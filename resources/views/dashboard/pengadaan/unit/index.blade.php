@@ -59,8 +59,7 @@
                                     </td>
 
                                     <td class="text-wrap">
-                                        {{ 'Nama Pengadaan ' .
-                                        $list->nama_pengadaan }}
+                                        {{ $list->nama_pengadaan }}
                                     </td>
 
                                     <td class="text-center align-middle">
@@ -77,7 +76,7 @@
                                             type="button"
                                             class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
                                             >
-                                                Details
+                                                Detail
                                             </button>
                                         </a>
                                     </td>
