@@ -16,12 +16,14 @@ class UserRoleSeeder extends Seeder
         $pbjRole = Role::where('name', 'PBJ')->first();
         $ppkRole = Role::where('name', 'PPK')->first();
         $unitRole = Role::where('name', 'Unit')->first();
+        $timKeuanganRole = Role::where('name', 'Tim Keuangan')->first();
 
-        if ($user && $adminRole && $pbjRole && $ppkRole && $unitRole) {
+        if ($user && $adminRole && $pbjRole && $ppkRole && $unitRole && $timKeuanganRole) {
             $user->roles()->syncWithoutDetaching($adminRole);
             $user->roles()->syncWithoutDetaching($pbjRole);
             $user->roles()->syncWithoutDetaching($ppkRole);
             $user->roles()->syncWithoutDetaching($unitRole);
+            $user->roles()->syncWithoutDetaching($timKeuanganRole);
         }
 
         // Mendapatkan ID peran untuk 'Unit'

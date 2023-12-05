@@ -72,5 +72,8 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'ppk' => \App\Http\Middleware\IsPPK::class,
         'pbj' => \App\Http\Middleware\IsPBJ::class,
+
+        //Role Keuangan Middleware
+        'tim keuangan' => \App\Http\Middleware\IsTimKeuangan::class,
     ];
 }

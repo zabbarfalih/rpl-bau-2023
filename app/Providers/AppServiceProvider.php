@@ -40,5 +40,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('ppk', function (User $user) {
             return $user->roles->firstWhere('name', 'PPK') !== null;
         });        
+
+        Gate::define('tim keuangan', function (User $user) {
+            return $user->roles->firstWhere('name', 'Tim Keuangan') !== null;
+        });        
     }
 }

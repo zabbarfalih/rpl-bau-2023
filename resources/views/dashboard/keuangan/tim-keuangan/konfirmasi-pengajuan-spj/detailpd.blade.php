@@ -95,11 +95,6 @@
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Rencana Output</div>
-                                <div class="col-lg-9 col-md-8">{{ $spj->rencana_output }}</div>
-                              </div>
-
-                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Komponen</div>
                                 <div class="col-lg-9 col-md-8">{{ $spj->komponen }}</div>
                               </div>
@@ -124,15 +119,6 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8">
                                   {{ $spj->jenis_spj }}
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="col-lg-3 col-md-4 label">
-                                  Periode
-                                </div>
-                                <div class="col-lg-9 col-md-8">
-                                  {{ $spj->periode }}
                                 </div>
                               </div>
 

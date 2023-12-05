@@ -88,11 +88,6 @@
                               </div>
 
                               <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Rencana Output</div>
-                                <div class="col-lg-9 col-md-8">{{ $spj->rencana_output }}</div>
-                              </div>
-
-                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Komponen</div>
                                 <div class="col-lg-9 col-md-8">{{ $spj->komponen }}</div>
                               </div>
@@ -118,15 +113,6 @@
                                 <div class="col-lg-9 col-md-8">
                                   {{ $spj->jenis_spj }}
                                   <p class="card-text mt-2 td-underline"><u><a href="{{ route('spjpdtemplatedownload') }}" >Download Template Excel di sini</a></u></p>
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <div class="col-lg-3 col-md-4 label">
-                                  Periode
-                                </div>
-                                <div class="col-lg-9 col-md-8">
-                                  {{ $spj->periode }}
                                 </div>
                               </div>
 

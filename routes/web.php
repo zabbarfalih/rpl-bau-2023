@@ -65,7 +65,7 @@ Route::middleware(['auth', 'formatUserName'])->group(function () {
     Route::resource('/dashboard/spj/pengajuan-spj', SpjController::class)->middleware('auth');
     Route::get('/dashboard/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
     Route::resource('/dashboard/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
-    Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', 'InfoPengajuanSpjController@show')->middleware('revalidate');
+    Route::get('/dashboard/spj/info-pengajuan-spj/{spj}', [InfoPengajuanSpjController::class, 'show'])->name('info-pengajuan-spj.show');
     Route::get('/spjtemplatedownload', [InfoPengajuanSpjController::class, 'spjtemplatedownload'])->name('spjtemplatedownload');
     Route::get('/dashboard/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
     Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
