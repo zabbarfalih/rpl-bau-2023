@@ -32,7 +32,7 @@ class DokumenPengadaanFactory extends Factory
             'dokumen_penawaran_pakta_formulir' => $this->faker->randomElement,
             'dokumen_surat_permintaan' => $this->faker->randomElement,
             'dokumen_pengadaan_langsung' => $this->faker->randomElement,
-            'pelaksana' => $this->faker->randomElement,
+            'dokumen_bast' => $this->faker->randomElement,
             'harga_anggaran' => $this->faker->randomFloat(2, 100000, 2000000000),
         ];
     }

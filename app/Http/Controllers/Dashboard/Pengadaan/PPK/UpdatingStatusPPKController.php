@@ -112,32 +112,34 @@ class UpdatingStatusPPKController extends Controller
         $menu = Menu::with('submenu')->get();
         $roles = Role::all();
 
+        //Mencari pengadaan yang tepat
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
         Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
-        // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
 
+        // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
         $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
         Log::info('Dokumen data id : ' . $dokumenId);
 
         $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
         Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);
 
+        //Cek Semua Status Dokumen
+        $statusDokumen = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
+        $statusesWithDates = $statusDokumen->mapWithKeys(function ($item) {
+            // Format the date with Indonesian month names
+            return [$item->status => Carbon::parse($item->changed_at)->translatedFormat('d') . '-' . Carbon::parse($item->changed_at)->translatedFormat('m') . '-' . Carbon::parse($item->changed_at)->translatedFormat('Y')];
+        });
+        Log::info('Dokumen Pengadaan data: ' . $statusesWithDates);
+        $checkStatuses = ['Diajukan', 'Diterima PPK', 'Ditolak', 'Direvisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan'];
 
-        $allStatus = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
-        foreach ($allStatus as $status) {
-            $dokumenPengadaan = json_decode($status->dokumen_pengadaan);
-
-            // Sekarang Anda dapat mengakses data dalam dokumen_pengadaan
-            $dokumenId = $status->pengadaan_id;
-            $status = $dokumenPengadaan->status;
-            $kak = $dokumenPengadaan->changed_at;
-            // ...dan seterusnya
-            Log::info('Dokumen Pengadaan data status : ' . $status->status);
-        }
 
         return view('dashboard.pengadaan.ppk.details', [
             'menu' => $menu,
             'roles' => $roles,
+            'statusesWithDates' => $statusesWithDates,
+            'checkStatuses' => $checkStatuses,
+            'dokumenPengadaans' => $dokumenPengadaans,
+            'pengadaan' => $pengadaan,
             // 'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
