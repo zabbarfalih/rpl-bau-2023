@@ -29,6 +29,8 @@
 
         <!-- Datatables CSS Start -->
         <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
         <!-- Datatables CSS End -->
 
         <!-- Datepicker CSS Start -->
@@ -47,11 +49,10 @@
 
     <!-- JS Start -->
         <!-- Datatables JS Start -->
-        <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
         <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
         <script defer src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
         <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-        <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.js"></script>
         <!-- Datatables JS Start -->
 
         <!-- JQuery 3.7.1 JS Start -->
