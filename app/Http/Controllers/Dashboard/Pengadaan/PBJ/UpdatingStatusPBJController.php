@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Dokumen;
 use App\Models\Pengadaan;
 use Illuminate\Http\Request;
+use App\Models\DokumenPengadaan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ class UpdatingStatusPBJController extends Controller
     {
         Carbon::setLocale('id');
         $menu = Menu::with('submenu')->get();
-        $listPengajuan = Pengadaan::all();
+        $listPengajuan = Pengadaan::where('penyelenggara', 3)->get();
 
         foreach ($listPengajuan as $pengajuan) {
             if (!empty($pengajuan->tanggal_pengadaan)) {
@@ -81,11 +82,15 @@ class UpdatingStatusPBJController extends Controller
         $menu = Menu::with('submenu')->get();
         $roles = Role::all();
         $dokumen = Dokumen::find($id);
+        $dokumen_pengadaan = DokumenPengadaan::find($id);
+        $pengadaan = Pengadaan::where('id', $dokumen->pengadaan_id)->first();
 
         return view('dashboard.pengadaan.pbj.details', [
             'menu' => $menu,
             'dokumen' => $dokumen,
             'roles' => $roles,
+            'dokumen_pengadaan' => $dokumen_pengadaan,
+            'pengadaan' => $pengadaan,
         ]);
     }
 
