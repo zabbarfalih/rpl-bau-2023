@@ -1,5 +1,12 @@
-<div class="alert alert-{{ $type ?? 'success' }} alert-dismissible fade show" role="alert">
-    <strong>{{ $title ?? 'Success' }}</strong>
-    {{ $slot }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-</div>
+<script>
+    Swal.fire({
+        icon: '{{ $type }}',
+        title: '{{ $title }}',
+        text: '{{ $text }}',
+        customClass: {
+            confirmButton: 'status-custom-confirm-button',
+            denyButton: 'status-custom-deny-button',
+            cancelButton: 'status-custom-cancel-button',
+        }
+    });
+</script>

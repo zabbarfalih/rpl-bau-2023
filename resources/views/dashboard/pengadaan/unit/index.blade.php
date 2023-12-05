@@ -18,7 +18,7 @@
                         --}}
                         <div class="d-flex justify-content-end mb-3">
                             <a
-                                href="{{route('pengajuan.add')}}"
+                                href="{{route('unit.pengajuan.add')}}"
                                 class="btn btn-primary me-2 btn-info rounded-pill bg-success text-light fw-bold"
                                 >+ Tambah Pengajuan</a
                             >
@@ -72,7 +72,7 @@
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        <a href={{ route('pengajuan.details', ['id' => $list->id]) }}>
+                                        <a href={{ route('unit.pengajuan.details', ['id' => $list->id]) }}>
                                             <button
                                             type="button"
                                             class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"

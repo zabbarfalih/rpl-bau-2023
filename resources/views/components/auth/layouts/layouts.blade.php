@@ -8,15 +8,20 @@
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <!-- CSS Start -->
         <!-- Bootstrap 5.3.2 CSS Start -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href={{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}>
         <!-- Bootstrap 5.3.2 CSS End -->
 
         <!-- Fontawesome 6.4.2 CSS Start -->
-        {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/all.min.css') }}"></link> --}}
+        <link rel="stylesheet" href={{ asset('assets/vendor/fontawesome/css/all.min.css') }}></link>
         <!-- Fontawesome 6.4.2 CSS End -->
 
+        <!-- Main CSS Start -->
+        <link rel="stylesheet" href={{ asset('assets/css/auth/login.css') }}>
+        {{ $css ?? '' }} <!-- Slot CSS -->
+        <!-- Main CSS End -->
+
         <!-- Bootstrap Icons v1.11.1 CSS Start -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-icons.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.min.css') }}">
         <!-- Bootstrap Icons v1.11.1 CSS End -->
 
         <!-- Vanilla CSS Start -->
@@ -32,20 +37,29 @@
     
     <!-- JavaScript Start -->
         <!-- Fontawesome 6.4.2 JS Start -->
-        {{-- <script type="module" src="{{ asset('assets/js/all.min.js') }}"></script> --}}
+        <script type="text/javascript" src="{{ asset('assets/js/all.min.js') }}"></script>
         <!-- Fontawesome 6.4.2 JS End -->
 
         <!-- JQuery 3.7.1 JS Start -->
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-        <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
         <!-- JQuery 3.7.1 JS End -->
 
         <!-- Bootstrap 5.3.2 JS Start -->
-        <script type="module" src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script type="text/javascript" src={{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
         <!-- Bootstrap 5.3.2 JS End -->
 
+        <!-- Sweetalert JS Start -->
+        <script type="text/javascript" src={{ asset('assets/vendor/sweetalert2/sweetalert2.all.min.js') }}></script>
+        <!-- Sweetalert JS End -->
+
+        @if(session('status.success'))
+            <x-elements.alert type="success" title="Berhasil" text="{{ session('status.success') }}"/>
+        @endif
+
+        @if(session('status.error'))
+            <x-elements.alert type="error" title="Gagal" text="{{ session('status.error') }}"/>
+        @endif
         <!-- Vanilla JS Start -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         {{ $js ?? '' }} <!-- Slot JS -->
         <!-- Vanilla JS End -->
     <!-- JavaScript End -->

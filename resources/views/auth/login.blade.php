@@ -22,21 +22,6 @@
                             <h5 id="title-login" class="card-title text-center pb-0 fs-4">Masuk</h5>
                             <p class="text-center small">Masukkan NIP dan Password Anda</p>
                         </div>
-
-                        <div id="alert-bau">
-                            @if (session('status'))
-                                <x-elements.alert type="success" title="Success">
-                                    {{ session('status') }}
-                                </x-elements.alert>
-                            @endif
-                            
-                            @if ($errors->any())
-                                <x-elements.alert type="danger" title="Error">
-                                    {{ $errors->first() }}
-                                </x-elements.alert>
-                            @endif
-                        </div>
-                        
     
                         <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">
                             @csrf
