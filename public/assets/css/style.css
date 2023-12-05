@@ -188,17 +188,24 @@ h6 {
     font-size: 12px !important;
     padding: 0.25rem 0.5rem !important;
     border: none !important;
+    width: 80px;
+}
+.btn-sibau-status-dashboard {
+    font-size: 12px !important;
+    padding: 0.25rem 0.5rem !important;
+    border: none !important;
+    width: 108px;
 }
 
 @media only screen and (max-width: 600px) {
     .btn-sibau-dashboard,
-    .font-body-table td,
+    .btn-sibau-status-dashboard .font-body-table td,
     .font-form,
     .header-table th {
         font-size: 10px !important;
     }
 
-    :root{
+    :root {
         font-size: 70%;
     }
 
