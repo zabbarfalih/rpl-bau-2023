@@ -2,14 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use App\Models\Pengadaan;
-use App\Models\Penolakan;
+use App\Models\DokumenPengadaan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PenolakanFactory extends Factory
+class StatusPengadaanFactory extends Factory
 {
-    protected $model = Penolakan::class;
     /**
      * Define the model's default state.
      *
@@ -19,9 +17,8 @@ class PenolakanFactory extends Factory
     {
         return [
             'pengadaan_id' => Pengadaan::inRandomOrder()->first()->id,
-            'user_id' => User::factory(),
-            'alasan_penolakan' => $this->faker->sentence,
-            'tanggal_penolakan' => $this->faker->date(),
+            'status' => $this->faker->randomElement(['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan']),
+            'changed_at' => $this->faker->dateTimeThisMonth()
         ];
     }
 }

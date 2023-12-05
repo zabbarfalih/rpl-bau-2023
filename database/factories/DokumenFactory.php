@@ -18,7 +18,7 @@ class DokumenFactory extends Factory
     public function definition()
     {
         return [
-            'pengadaan_id' => $this->faker->unique()->numberBetween(1, Pengadaan::count()),
+            'pengadaan_id' => Pengadaan::factory(),
         ];
     }
 }

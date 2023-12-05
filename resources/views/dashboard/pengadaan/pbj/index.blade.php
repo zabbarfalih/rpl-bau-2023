@@ -51,10 +51,10 @@
                                             {{ $pengajuan->tanggal_pengadaan_formatted }}
                                         </td>
                                         <td class="text-center align-middle">
-                                            <button class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }} w-75" style="border: none">
+                                            <button class="btn-sibau-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }} w-75">
                                                 {{ $pengajuan->status }}
                                             </button>
-                                        </td>
+                                        </td>
                                         <td class="text-center align-middle">
                                             <a href={{ route('updatingstatuspbj.details', ['id' => $pengajuan->id]) }}>
                                                 <button type="button"

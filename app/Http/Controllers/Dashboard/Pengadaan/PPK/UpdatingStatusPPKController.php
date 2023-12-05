@@ -113,15 +113,26 @@ class UpdatingStatusPPKController extends Controller
         $roles = Role::all();
 
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
-        Log::info('Pengadaan data : ' . $pengadaan->user_id);
+        Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
 
-        $dokumen = Dokumen::where('pengadaan_id', $pengadaan->id)->get('id');
-        Log::info('Pengadaan data : ' . $dokumen);
+        $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
+        Log::info('Dokumen data id : ' . $dokumenId);
 
-        foreach ($dokumen as $dok) {
-            $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dok->id)->get();
-            Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);
+        $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
+        Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);
+
+
+        $allStatus = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
+        foreach ($allStatus as $status) {
+            $dokumenPengadaan = json_decode($status->dokumen_pengadaan);
+
+            // Sekarang Anda dapat mengakses data dalam dokumen_pengadaan
+            $dokumenId = $status->pengadaan_id;
+            $status = $dokumenPengadaan->status;
+            $kak = $dokumenPengadaan->changed_at;
+            // ...dan seterusnya
+            Log::info('Dokumen Pengadaan data status : ' . $status->status);
         }
 
         return view('dashboard.pengadaan.ppk.details', [

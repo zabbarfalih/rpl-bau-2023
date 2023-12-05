@@ -23,7 +23,6 @@ class PengadaanFactory extends Factory
             'user_id' => User::inRandomOrder()->first()->id,
             'nama_pengadaan' => $this->faker->word,
             'tanggal_pengadaan' => $this->faker->date(),
-            'status' => $this->faker->randomElement(['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan']),
             'penyelenggara' => $this->faker->randomElement([$rolePPK, $rolePBJ]),
         ];
     }

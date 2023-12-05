@@ -46,6 +46,8 @@
                                 </div>
 
                                 <!-- List dokumen -->
+                        @if($dokumen_pengadaan->harga_anggaran <= 50000000)
+                            @if($pengadaan->status == 'Dilaksanakan')
                                 <p><b>KETIKA PENGADAAN DI BAWAH 50 JUTA</b></p>
                                 <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -260,6 +262,7 @@
                                     </div>
                                 </div>
                                 <br><br>
+                            @elseif($pengadaan->status == 'Selesai')
                                 <p>Setelah Selsai (saat ini status Selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -456,6 +459,9 @@
                                     </div>
                                 </div>
                                 <br><br>
+                            @endif
+                    @else
+                            @if($pengadaan->status == 'Dilaksanakan')
                                 <p><b>KETIKA PENGADAAN DI ATAS 50 JUTA</b></p>
                                 <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
                                 <table
@@ -807,6 +813,7 @@
                                 </div>
                                 <br>
                                 <br>
+                            @elseif($pengadaan->status == 'Selesai')
                                 <p>Setelah Selesai (saat ini status selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -1071,6 +1078,8 @@
                                     <a href="#" class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#setujuModal">Selesai</a>
                                 </div>
+                            @endif
+                    @endif
                                 <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -1123,319 +1132,7 @@
                                 </div>
                                 {{-- End Modal Upload File --}}
 
-                                {{-- tampilan unit --}}
-                                <div id="dokumen-unit">
-                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
-                                            width="16" height="16">
-                                            <use xlink:href="#info-fill" />
-                                        </svg>
-                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
-                                    </div>
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen KAK</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen Memo</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{-- tampilan pbj --}}
-                                <!-- Kalau diserahkan ke PBJ -->
-                                <div id="dokumen-ppk">
-                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
-                                            width="16" height="16">
-                                            <use xlink:href="#info-fill" />
-                                        </svg>
-                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
-                                    </div>
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen Undangan</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen SSUK SSKK</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen IKP</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen LDP dan Spesifikasi</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen Penawaran</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen Surat Permintaan</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">Dokumen Pengadaan Langsung</h4>
-                                    </div>
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="d-grid gap-2 mt-3">
-                                            <a href="" class="btn btn-primary" type="button">Download</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{-- tampilan pbj --}}
-                                <div id="dokumen-pbj">
-                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
-                                            width="16" height="16">
-                                            <use xlink:href="#info-fill" />
-                                        </svg>
-                                        <div>Untuk mengunduh format laporan, silakan tekan download template</div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">
-                                            Dokumen Identifikasi Kebutuhan
-                                        </h4>
-                                        <a href="#" class="btn-link btn-sm ms-2"
-                                            id="download-template">Download
-                                            Template</a>
-                                    </div>
-
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" class="file-upload" name="uploadedFile[]" />
-                                            <button class="btn btn-danger btn-sm ms-2"
-                                                style="display:none;">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">
-                                            Dokumen Perencanaan Pengadaan
-                                        </h4>
-                                        <a href="#" class="btn-link btn-sm ms-2"
-                                            id="download-template">Download
-                                            Template</a>
-                                    </div>
-
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" class="file-upload" name="uploadedFile[]" />
-                                            <button class="btn btn-danger btn-sm ms-2"
-                                                style="display:none;">Remove</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start">
-                                        <h4 class="alert-heading">
-                                            Dokumen HPS
-                                        </h4>
-                                        <a href="#" class="btn-link btn-sm ms-2"
-                                            id="download-template">Download
-                                            Template</a>
-                                    </div>
-
-                                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" class="file-upload" name="uploadedFile[]" />
-                                            <button class="btn btn-danger btn-sm ms-2"
-                                                style="display:none;">Remove</button>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- List group with Advanced Contents -->
-                                <!-- Ini kalau dikerjakan PPK langsung -->
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Undangan
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen SSUK SSKK
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen IKP
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen LDP dan Spesifikasi
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Penawaran
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Surat Permintaan
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Pengadaan Langsung
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-                                <!-- End List group Advanced Content -->
-
-                                <!-- Kalau diberikan ke PBJ -->
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen Nota Dinas
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-2">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
-
-                                <!-- Untuk yang diberikan ke PBJ, muncul kalau PBJ sudah klik Selesai -->
-                                <div class="d-flex align-items-start">
-                                    <h4 class="alert-heading">
-                                        Dokumen BAST
-                                    </h4>
-                                    <a href="#" class="btn-link btn-sm ms-2" id="download-template-3">Download
-                                        Template</a>
-                                </div>
-
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" class="file-upload" name="uploadedFile[]" />
-                                        <button class="btn btn-danger btn-sm ms-2"
-                                            style="display:none;">Remove</button>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>

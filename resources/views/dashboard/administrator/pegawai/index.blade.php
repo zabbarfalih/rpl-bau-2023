@@ -16,11 +16,11 @@
 
                         <div class="d-flex justify-content-end mb-3">
                             <a
-                                href={{ route('admin.pegawai.add') }}
-                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold"
+                                href={{ route('pegawai.add') }}
+                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold border-0"
                                 >+ Tambah Pegawai</a
                             >
-                        </div>
+                        </div>
 
                         <table
                             class="table table-hover display responsive nowrap table-striped font-body-table"
