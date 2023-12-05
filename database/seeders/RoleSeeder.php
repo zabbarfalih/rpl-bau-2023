@@ -28,6 +28,9 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'PPK',
             ],
+            [
+                'name' => 'Tim Keuangan',
+            ],
         ]);              
     }
 }
