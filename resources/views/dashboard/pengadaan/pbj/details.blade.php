@@ -32,18 +32,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Dokumen</h5>
-                                <div class="row mb-3">
-                                    <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
-                                    <div class="col-sm-10">
-                                        <select id="inputNamaUnit" class="form-select">
-                                            @foreach ($roles->where('id', '!=', 2) as $role)
-                                                <option>
-                                                    {{ $role->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
 
                                 <!-- List dokumen -->
                         @if($dokumen_pengadaan->harga_anggaran <= 50000000)
@@ -194,7 +182,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -221,7 +209,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Pengadaan Langsung">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -609,7 +597,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -636,7 +624,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen SSUK SSKK">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -663,7 +651,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen IKP">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -690,7 +678,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen LDP dan Spesifikasi">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -717,7 +705,7 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                     Upload
                                                 </button>
                                                 <button type="button"
@@ -1101,13 +1089,14 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 {{-- Modal untuk Upload File --}}
                                 <div class="modal fade" id="uploadFileModal" tabindex="-1"
                                     data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
                                             <div class="modal-header">
-                                                <h4 class="alert-heading">Dokumen [documents name]</h4>
+                                                <h4 class="alert-heading" id="modalTitle">Dokumen [documents name]</h4>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -1249,39 +1238,6 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Alasan Penolakan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                            <label for="floatingTextarea2">Alasan Penolakan</label>
-                        </div>
-
-                        <div class="col-12 mt-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck" />
-                                <label class="form-check-label" for="gridCheck">
-                                    Dengan revisi
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
-                        <a href="" type="button" class="btn btn-danger">Tolak</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -1305,5 +1261,19 @@
 
     <x-slot name="js_body">
         <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Mendengarkan event ketika modal dibuka
+                $('#uploadFileModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget); // Tombol yang memicu modal
+                    var documentName = button.data('document'); // Ekstrak info dari data-* attribute
+                    var modal = $(this);
+
+                    // Update judul modal
+                    modal.find('.modal-header #modalTitle').text('Upload ' + documentName);
+                });
+            });
+
+        </script>
     </x-slot>
 </x-dashboard.layouts.layouts>
