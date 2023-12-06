@@ -26,7 +26,70 @@
             <div class="row">
                 <!-- Left side columns -->
                 <div class="col-lg-8">
-                <p>Setelah UNIT mengajukan (saat ini status diajukan)</p>
+                @if ($pengadaan->status === 'Diajukan')
+                {{-- <p>Setelah UNIT mengajukan (saat ini status diajukan)</p> --}}
+                    <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                        style="width: 100%" {{-- id="table-bau" --}}>
+                        <thead class="header-table">
+                            <tr>
+                                <th scope="col" class="text-center align-middle">
+                                    No
+                                </th>
+
+                                <th scope="col" class="text-center align-middle text-wrap">
+                                    Nama Dokumen
+                                </th>
+
+                                <th scope="col" class="text-center align-middle">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="text-center fw-bold align-middle">
+                                    1
+                                </td>
+                                <td class="fw-bold align-middle text-wrap">
+                                    Dokumen KAK
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <button type="button"
+                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                        Download
+                                    </button>
+                                    <button type="button"
+                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center fw-bold align-middle">
+                                    2
+                                </td>
+                                <td class="fw-bold align-middle text-wrap">
+                                    Dokumen Memo
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <button type="button"
+                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                        Download
+                                    </button>
+                                    <button type="button"
+                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                @elseif ($pengadaan->status === 'Diterima PPK' || $pengadaan->status === 'Diproses' || $pengadaan->status === 'Dilaksanakan' || $pengadaan->status === 'Selesai')
+                {{-- <p>Saat status Disetujui, Diproses, Dikerjakan, Selesai</p> --}}
                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                     style="width: 100%" {{-- id="table-bau" --}}>
                     <thead class="header-table">
@@ -39,9 +102,6 @@
                                 Nama Dokumen
                             </th>
 
-                            <th scope="col" class="text-center align-middle text-wrap">
-                                Template
-                            </th>
                             <th scope="col" class="text-center align-middle">
                                 Action
                             </th>
@@ -57,79 +117,6 @@
                                 Dokumen KAK
                             </td>
 
-                            <td class="text-wrap">
-                                Template
-                            </td>
-                            <td class="text-center align-middle">
-                                <button type="button"
-                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                    Download
-                                </button>
-                                <button type="button"
-                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center fw-bold align-middle">
-                                2
-                            </td>
-                            <td class="fw-bold align-middle text-wrap">
-                                Dokumen Memo
-                            </td>
-
-                            <td class="text-wrap">
-                                Template
-                            </td>
-                            <td class="text-center align-middle">
-                                <button type="button"
-                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                    Download
-                                </button>
-                                <button type="button"
-                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br><br>
-                <p>Saat status Disetujui, Diproses, Dikerjakan, Selesai</p>
-                <table class="table table-hover display responsive nowrap table-striped font-body-table"
-                    style="width: 100%" {{-- id="table-bau" --}}>
-                    <thead class="header-table">
-                        <tr>
-                            <th scope="col" class="text-center align-middle">
-                                No
-                            </th>
-
-                            <th scope="col" class="text-center align-middle text-wrap">
-                                Nama Dokumen
-                            </th>
-
-                            <th scope="col" class="text-center align-middle text-wrap">
-                                Template
-                            </th>
-                            <th scope="col" class="text-center align-middle">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td class="text-center fw-bold align-middle">
-                                1
-                            </td>
-                            <td class="fw-bold align-middle text-wrap">
-                                Dokumen KAK
-                            </td>
-
-                            <td class="text-wrap">
-                                Template
-                            </td>
                             <td class="text-center align-middle">
                                 <button type="button"
                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -145,9 +132,6 @@
                                 Dokumen Memo
                             </td>
 
-                            <td class="text-wrap">
-                                Template
-                            </td>
                             <td class="text-center align-middle">
                                 <button type="button"
                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -157,8 +141,9 @@
                         </tr>
                     </tbody>
                 </table>
-                <br><br>
-                <p>Saat status diserahkan</p>
+
+                @elseif ($pengadaan->status === 'Diserahkan')
+                {{-- <p>Saat status diserahkan</p> --}}
                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                     style="width: 100%" {{-- id="table-bau" --}}>
                     <thead class="header-table">
@@ -171,9 +156,6 @@
                                 Nama Dokumen
                             </th>
 
-                            <th scope="col" class="text-center align-middle text-wrap">
-                                Template
-                            </th>
                             <th scope="col" class="text-center align-middle">
                                 Action
                             </th>
@@ -189,9 +171,6 @@
                                 Dokumen KAK
                             </td>
 
-                            <td class="text-wrap">
-                                Template
-                            </td>
                             <td class="text-center align-middle">
                                 <button type="button"
                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -207,9 +186,6 @@
                                 Dokumen Memo
                             </td>
 
-                            <td class="text-wrap">
-                                Template
-                            </td>
                             <td class="text-center align-middle">
                                 <button type="button"
                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -225,9 +201,6 @@
                                 Dokumen BAST
                             </td>
 
-                            <td class="text-wrap">
-                                Template
-                            </td>
                             <td class="text-center align-middle">
                                 </button>
                                 <button type="button"
@@ -238,6 +211,7 @@
                         </tr>
                     </tbody>
                 </table>
+                @endif
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
