@@ -129,8 +129,7 @@
                                         </thead>
 
                                         <tbody>
-                                            @php $no = 1; @endphp
-                                            @if ($statusesWithDates->has('Diterima PPK'))
+                                                @php $no = 1; @endphp
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
                                                         {{ $no++ }}
@@ -149,11 +148,11 @@
 
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                                Download
-                                                            </a>
+                                                        @if ($dokumenPengadaans &&   $dokumenPengadaans->dokumen_perencanaan_pengadaan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white align-middle text-center">
+                                                            Download
+                                                        </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -183,7 +182,6 @@
                                                         @endif
                                                     </td>
                                                 </tr>
-                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -253,13 +251,10 @@
                                                                 Upload
                                                             </button>
                                                         @else
-                                                            <button type="button"
-                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
-                                                                data-jenis="identifikasiKebutuhan"
-                                                                data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
-                                                                Edit
-                                                            </button>
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="identifikasiKebutuhan" data-nama-dokumen="Edit Dokumen Identifikasi Kebutuhan">
+                                                            Edit
+                                                        </button>
                                                         @endif
                                                     </td>
                                                     <td>
@@ -856,82 +851,70 @@
 
                             <div class="activity">
 
-                                @if ($statusesWithDates->has('Diajukan'))
-                                    <div class="activity-item d-flex">
-                                        <div class="activite-label">{{ $statusesWithDates->get('Diajukan') }}</div>
-                                        <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                                        <div class="activity-content">
-                                            Diajukan
-                                        </div>
+                                @if($statusesWithDates->has('Diajukan'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{$statusesWithDates->get('Diajukan')}}</div>
+                                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                                    <div class="activity-content">
+                                        Diajukan
                                     </div>
-                                    <!-- End activity item-->
-                                    @if ($statusesWithDates->has('Diterima PPK'))
-                                        <div class="activity-item d-flex">
-                                            <div class="activite-label">{{ $statusesWithDates->get('Diterima PPK') }}
-                                            </div>
-                                            <i
-                                                class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                                            <div class="activity-content">
-                                                Voluptatem blanditiis blanditiis
-                                                eveniet
-                                            </div>
-                                        </div>
-                                        <!-- End activity item-->
-                                        @if ($statusesWithDates->has('Diproses'))
-                                            <div class="activity-item d-flex">
-                                                <div class="activite-label">{{ $statusesWithDates->get('Diproses') }}
-                                                </div>
-                                                <i
-                                                    class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                                                <div class="activity-content">
-                                                    Voluptates corrupti molestias
-                                                    voluptatem
-                                                </div>
-                                            </div>
-                                            <!-- End activity item-->
-                                            @if ($statusesWithDates->has('Dilaksanakan'))
-                                                <div class="activity-item d-flex">
-                                                    <div class="activite-label">
-                                                        {{ $statusesWithDates->get('DIlaksanakan') }}</div>
-                                                    <i
-                                                        class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
-                                                    <div class="activity-content">
-                                                        Tempore autem saepe
-                                                        <a href="#" class="fw-bold text-dark">occaecati
-                                                            voluptatem</a>
-                                                        tempore
-                                                    </div>
-                                                </div>
-                                                <!-- End activity item-->
-                                                @if ($statusesWithDates->has('Selesai'))
-                                                    <div class="activity-item d-flex">
-                                                        <div class="activite-label">
-                                                            {{ $statusesWithDates->get('Selesai') }}</div>
-                                                        <i
-                                                            class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                                                        <div class="activity-content">
-                                                            Est sit eum reiciendis
-                                                            exercitationem
-                                                        </div>
-                                                    </div>
-                                                    <!-- End activity item-->
-                                                    @if ($statusesWithDates->has('Diserahkan'))
-                                                        <div class="activity-item d-flex">
-                                                            <div class="activite-label">
-                                                                {{ $statusesWithDates->get('Diserahkan') }}
-                                                            </div>
-                                                            <i
-                                                                class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                                                            <div class="activity-content">
-                                                                Dicta dolorem harum nulla eius. Ut
-                                                                quidem quidem sit quas
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                @endif
-                                            @endif
-                                        @endif
-                                    @endif
+                                </div>
+                                <!-- End activity item-->
+                                @if($statusesWithDates->has('Diterima PPK'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{$statusesWithDates->get('Diterima PPK')}}</div>
+                                    <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                                    <div class="activity-content">
+                                        Diterima PPK
+                                    </div>
+                                </div>
+                                <!-- End activity item-->
+                                @if($statusesWithDates->has('Diproses'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
+                                    <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
+                                    <div class="activity-content">
+                                        Diproses oleh {{$pengadaan->role->name}}
+                                    </div>
+                                </div>
+                                <!-- End activity item-->
+                                @if($statusesWithDates->has('Dilaksanakan'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{$statusesWithDates->get('DIlaksanakan')}}</div>
+                                    <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
+                                    <div class="activity-content">
+                                        Tempore autem saepe
+                                        <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
+                                        tempore
+                                    </div>
+                                </div>
+                                <!-- End activity item-->
+                                @if($statusesWithDates->has('Selesai'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{$statusesWithDates->get('Selesai')}}</div>
+                                    <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                                    <div class="activity-content">
+                                        Est sit eum reiciendis
+                                        exercitationem
+                                    </div>
+                                </div>
+                                <!-- End activity item-->
+                                @if($statusesWithDates->has('Diserahkan'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">
+                                        {{$statusesWithDates->get('Diserahkan')}}
+                                    </div>
+                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                    <div class="activity-content">
+                                        Dicta dolorem harum nulla eius. Ut
+                                        quidem quidem sit quas
+                                    </div>
+                                </div>
+                                @endif
+                                @endif
+                                @endif
+                                @endif
+                                @endif
                                 @endif
                                 <!-- End activity item-->
                             </div>
