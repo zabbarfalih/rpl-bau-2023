@@ -91,6 +91,7 @@ class UpdatingStatusPBJController extends Controller
             'roles' => $roles,
             'dokumen_pengadaan' => $dokumen_pengadaan,
             'pengadaan' => $pengadaan,
+            'dokumenPengadaanId' => $dokumen_pengadaan->id
         ]);
     }
 
@@ -113,21 +114,6 @@ class UpdatingStatusPBJController extends Controller
         $fileName = $dokumen->kak . time() . '.pdf';
 
         return response()->download($filePath, $fileName, $headers);
-    }
-
-    public function uploadFiles(Request $request)
-    {
-        $request->validate([
-            'uploadedFile.*' => 'required|mimes:pdf|max:2048', // Batas maksimum 2MB
-        ]);
-
-        foreach ($request->file('uploadedFile') as $file) {
-            $fileName = $file->getClientOriginalName();
-            $file->storeAs('public', $fileName);
-
-            // Simpan nama file ke database
-            Dokumen::create(['file_name' => $fileName]);
-        }
     }
     /**
      * Show the form for creating a new resource.
