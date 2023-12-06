@@ -117,7 +117,7 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
 Route::middleware(['formatUserName'])->prefix('dashboard/unit')->name('unit.')->group(function () {
     Route::controller(PengajuanController::class)->group(function () {
         Route::get('/pengajuan', 'index')->name('pengajuan.index');
-        Route::get('/pengajuan/{id}/details', 'details')->name('pengajuan.details');
+        Route::get('/pengajuan/detail/{id}', 'details')->name('pengajuan.details');
         Route::get('/pengajuan/tambah-pengajuan', 'create')->name('pengajuan.add');
         Route::post('/pengajuan/kirim-form', 'kirimForm')->name('pengajuan.kirim-form');
 
@@ -135,7 +135,7 @@ Route::middleware(['can:admin', 'formatUserName'])->prefix('/dashboard/administr
 Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
     // PBJ
     Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
-    Route::get('/dashboard/pbj/updating-status/details/{id}', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
+    Route::get('/dashboard/pbj/updating-status/detail/{id}', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
     Route::get('/dashboard/pbj/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPBJController::class, 'download'])->name('updatingstatuspbj.download');
     Route::get('/dashboard/pbj/updating-status/upload-files', [UpdatingStatusPBJController::class, 'uploadFiles'])->name('updatingstatuspbj.upload-files');
 });
@@ -143,7 +143,7 @@ Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
 Route::middleware(['can:ppk', 'formatUserName'])->prefix('dashboard')->group(function () {
     // PPK
     Route::get('/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
-    Route::get('/ppk/updating-status/details/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
+    Route::get('/ppk/updating-status/detail/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
     Route::get('/ppk/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPPKController::class, 'download'])->name('updatingstatusppk.download');
     Route::get('/ppk/updating-status/upload-files', [UpdatingStatusPPKController::class, 'uploadFiles'])->name('updatingstatusppk.upload-files');
     Route::post('/upload-dokumen', [DokumenController::class, 'uploadDokumen'])->name('upload.dokumen');

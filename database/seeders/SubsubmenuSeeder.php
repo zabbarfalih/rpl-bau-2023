@@ -50,18 +50,18 @@ class SubsubmenuSeeder extends Seeder
             ],
             [
                 'submenu_id' => $pengajuanUnitSubmenuId,
-                'name' => 'Detail Pengajuan',
-                'url' => Str::slug('Detail Pengajuan'),
+                'name' => 'Detail',
+                'url' => Str::slug('Detail'),
             ],
             [
                 'submenu_id' => $pengajuanPBJSubmenuId,
-                'name' => 'Detail Pengajuan',
-                'url' => Str::slug('Detail Pengajuan'),
+                'name' => 'Detail',
+                'url' => Str::slug('Detail'),
             ],
             [
                 'submenu_id' => $pengajuanPPKSubmenuId,
-                'name' => 'Detail Pengajuan',
-                'url' => Str::slug('Detail Pengajuan'),
+                'name' => 'Detail',
+                'url' => Str::slug('Detail'),
             ],
         ]);
            
