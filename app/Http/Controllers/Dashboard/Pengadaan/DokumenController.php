@@ -26,6 +26,7 @@ class DokumenController extends Controller {
         Log::info($request->input('dokumenId'));
         Log::info($request->input('jenisDokumen'));
 
+
         $files = $request->file('uploadedFile');
         if(is_array($files)) {
             foreach($files as $file) {

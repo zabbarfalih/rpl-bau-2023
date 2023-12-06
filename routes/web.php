@@ -137,7 +137,8 @@ Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
     Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
     Route::get('/dashboard/pbj/updating-status/detail/{id}', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
     Route::get('/dashboard/pbj/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPBJController::class, 'download'])->name('updatingstatuspbj.download');
-    Route::get('/dashboard/pbj/updating-status/upload-files', [UpdatingStatusPBJController::class, 'uploadFiles'])->name('updatingstatuspbj.upload-files');
+    Route::get('/download-template/{filename}', [DokumenCOntroller::class, 'downloadTemplate'])->name('template.download');
+    Route::post('/upload-dokumens', [UpdatingStatusPBJController::class, 'upload'])->name('upload-dokumens');
 });
 
 Route::middleware(['can:ppk', 'formatUserName'])->prefix('dashboard')->group(function () {
