@@ -1,8 +1,8 @@
-
 <x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/main.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/form-bau.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/detailppk.css') }}">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
                 <path
@@ -52,8 +52,8 @@
 
                                 {{-- Modal untuk Upload File --}}
 
-                                <div class="modal fade" id="uploadFileModal" tabindex="-1"
-                                    data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+                                <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static"
+                                    aria-labelledby="uploadModal" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
                                             <div class="modal-header">
@@ -61,10 +61,13 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <form id="uploadForm" method="post" enctype="multipart/form-data" action="{{ route('upload.dokumen') }}">
+                                            <form id="uploadForm" method="post" enctype="multipart/form-data"
+                                                action="{{ route('upload.dokumen') }}">
                                                 @csrf
-                                                <input type="hidden" name="jenisDokumen" id="jenisDokumen" value="">
-                                                <input type="hidden" name="dokumenId" id="dokumenId" value="{{$dokumenPengadaans->id}}">
+                                                <input type="hidden" name="jenisDokumen" id="jenisDokumen"
+                                                    value="">
+                                                <input type="hidden" name="dokumenId" id="dokumenId"
+                                                    value="{{ $dokumenPengadaans->id }}">
                                                 <div class="modal-body">
                                                     <div class="alert alert-secondary alert-dismissible fade show"
                                                         role="alert">
@@ -79,7 +82,8 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
                                                         data-bs-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-primary btn-sm ms-2">Upload</button>
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-sm ms-2">Upload</button>
                                                 </div>
                                             </form>
 
@@ -108,25 +112,25 @@
                                                     No
                                                 </th>
 
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Nama Dokumen
-                                                    </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Template
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                                @php $no = 1; @endphp
-                                                @if($statusesWithDates->has('Diterima PPK'))
+                                            @php $no = 1; @endphp
+                                            @if ($statusesWithDates->has('Diterima PPK'))
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
                                                         {{ $no++ }}
@@ -136,7 +140,8 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                         </a>
                                                     </td>
 
@@ -145,10 +150,10 @@
                                                     </td>
                                                     <td>
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -161,7 +166,8 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
 
                                                         </a>
                                                     </td>
@@ -170,14 +176,14 @@
                                                     </td>
                                                     <td>
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
-                                                @endif
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -202,25 +208,25 @@
                                                     No
                                                 </th>
 
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Nama Dokumen
-                                                    </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
 
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Template
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
                                             </tr>
                                         </thead>
 
-                                            <tbody>
-                                                @php $no = 1; @endphp
-                                                @if($statusesWithDates->has('Diterima PPK'))
+                                        <tbody>
+                                            @php $no = 1; @endphp
+                                            @if ($statusesWithDates->has('Diterima PPK'))
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
                                                         {{ $no++ }}
@@ -230,31 +236,38 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
 
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_identifikasi_kebutuhan))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="identifikasiKebutuhan" data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="identifikasiKebutuhan"
+                                                                data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="identifikasiKebutuhan" data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="identifikasiKebutuhan"
+                                                                data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_identifikasi_kebutuhan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_identifikasi_kebutuhan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_identifikasi_kebutuhan)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_identifikasi_kebutuhan) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -267,35 +280,42 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_perencanaan_pengadaan))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="perencanaanPengadaan" data-nama-dokumen="Dokumen Perencanaan Pengadaan">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="perencanaanPengadaan"
+                                                                data-nama-dokumen="Dokumen Perencanaan Pengadaan">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="perencanaanPengadaan" data-nama-dokumen="Dokumen Perencanaan Pengadaan">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="perencanaanPengadaan"
+                                                                data-nama-dokumen="Dokumen Perencanaan Pengadaan">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
-                                                @endif
-                                                @if($statusesWithDates->has('Diproses'))
+                                            @endif
+                                            @if ($statusesWithDates->has('Diproses'))
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
                                                         {{ $no++ }}
@@ -305,30 +325,35 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_hps))
-                                                        <button type="button"
-                                                        class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="hps" data-nama-dokumen="Dokumen HPS">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal" data-jenis="hps"
+                                                                data-nama-dokumen="Dokumen HPS">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="hps" data-nama-dokumen="Dokumen HPS">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="hps" data-nama-dokumen="Dokumen HPS">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_hps)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_hps) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_hps)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_hps) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -341,35 +366,42 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_nota_dinas))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="notaDInas" data-nama-dokumen="Dokumen Nota Dinas">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="notaDInas"
+                                                                data-nama-dokumen="Dokumen Nota Dinas">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="notaDInas" data-nama-dokumen="Dokumen Nota Dinas">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="notaDInas"
+                                                                data-nama-dokumen="Dokumen Nota Dinas">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_nota_dinas)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_nota_dinas) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_nota_dinas)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_nota_dinas) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
-                                                @endif
-                                                @if($statusesWithDates->has('Dilaksanakan') && $pengadaan->penyelenggara == 4)
+                                            @endif
+                                            @if ($statusesWithDates->has('Dilaksanakan') && $pengadaan->penyelenggara == 4)
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
                                                         {{ $no++ }}
@@ -379,30 +411,37 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_undangan))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="undangan" data-nama-dokumen="Dokumen Undangan">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="undangan"
+                                                                data-nama-dokumen="Dokumen Undangan">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="undangan" data-nama-dokumen="Dokumen Undangan">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="undangan"
+                                                                data-nama-dokumen="Dokumen Undangan">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_undangan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_undangan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_undangan)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_undangan) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -415,31 +454,37 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_ssuk_sskk))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="ssuk_sskk" data-nama-dokumen="Dokumen SSUK SSKK">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="ssuk_sskk"
+                                                                data-nama-dokumen="Dokumen SSUK SSKK">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="ssuk_sskk" data-nama-dokumen="Dokumen SSUK SSKK">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="ssuk_sskk"
+                                                                data-nama-dokumen="Dokumen SSUK SSKK">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&
-                                                        $dokumenPengadaans->dokumen_ssuk_sskk)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_ssuk_sskk) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_ssuk_sskk)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_ssuk_sskk) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -452,30 +497,35 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_ikp))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="ikp" data-nama-dokumen="Dokumen IKP">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal" data-jenis="ikp"
+                                                                data-nama-dokumen="Dokumen IKP">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="ikp" data-nama-dokumen="Dokumen IKP">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="ikp" data-nama-dokumen="Dokumen IKP">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_ikp)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_ikp) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_ikp)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_ikp) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -488,30 +538,37 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_ldp_dan_spesifikasi))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="ldpDanSpesifikasi" data-nama-dokumen="Dokumen LDP dan Spesifikasi">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="ldpDanSpesifikasi"
+                                                                data-nama-dokumen="Dokumen LDP dan Spesifikasi">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="ldpDanSpesifikasi" data-nama-dokumen="Dokumen LDP dan Spesifikasi">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="ldpDanSpesifikasi"
+                                                                data-nama-dokumen="Dokumen LDP dan Spesifikasi">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_ldp_dan_spesifikasi)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_ldp_dan_spesifikasi) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_ldp_dan_spesifikasi)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_ldp_dan_spesifikasi) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -524,30 +581,37 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_penawaran_pakta_formulir))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="penawaranPaktaFormulir" data-nama-dokumen="Dokumen Penawaran Pakta FOrmulir">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="penawaranPaktaFormulir"
+                                                                data-nama-dokumen="Dokumen Penawaran Pakta FOrmulir">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="penawaranPaktaFormulir" data-nama-dokumen="Dokumen Penawaran Pakta FOrmulir">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="penawaranPaktaFormulir"
+                                                                data-nama-dokumen="Dokumen Penawaran Pakta FOrmulir">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_penawaran_pakta_formulir)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_penawaran_pakta_formulir) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_penawaran_pakta_formulir)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_penawaran_pakta_formulir) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -560,30 +624,37 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_surat_permintaan))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="suratPermintaan" data-nama-dokumen="Dokumen Surat Permintaan">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="suratPermintaan"
+                                                                data-nama-dokumen="Dokumen Surat Permintaan">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="suratPermintaan" data-nama-dokumen="Dokumen Surat Permintaan">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="suratPermintaan"
+                                                                data-nama-dokumen="Dokumen Surat Permintaan">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_surat_permintaan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_surat_permintaan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_surat_permintaan)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_surat_permintaan) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -596,35 +667,42 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_pengadaan_langsung))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="pengadaanLangsung" data-nama-dokumen="Dokumen Pengadaan Langsung">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal"
+                                                                data-jenis="pengadaanLangsung"
+                                                                data-nama-dokumen="Dokumen Pengadaan Langsung">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="pengadaanLangsung" data-nama-dokumen="Dokumen Pengadaan Langsung">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="pengadaanLangsung"
+                                                                data-nama-dokumen="Dokumen Pengadaan Langsung">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_pengadaan_langsung)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_pengadaan_langsung) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_pengadaan_langsung)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_pengadaan_langsung) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
-                                                @endif
-                                                @if($statusesWithDates->has('Selesai'))
+                                            @endif
+                                            @if ($statusesWithDates->has('Selesai'))
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
                                                         {{ $no++ }}
@@ -633,45 +711,52 @@
                                                         Dokumen BAST
                                                     </td>
                                                     <td class="text-wrap">
-                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_bast))
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="bast" data-nama-dokumen="Dokumen BAST">
-                                                            Upload
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#uploadFileModal" data-jenis="bast"
+                                                                data-nama-dokumen="Dokumen BAST">
+                                                                Upload
+                                                            </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="bast" data-nama-dokumen="Dokumen BAST">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="bast" data-nama-dokumen="Dokumen BAST">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_bast)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_bast) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </a>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_bast)
+                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_bast) }}"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </td>
                                                 </tr>
-                                                @endif
+                                            @endif
                                         </tbody>
                                     </table>
 
                                     <div class="text-center">
-                                    @if(!$statusesWithDates->has('Ditolak'))
-                                        @if($statusesWithDates->has('Diproses') && (!($statusesWithDates->has('Dilaksanakan'))) )
-                                            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalKhusus">Selesai</a>
-                                        @else
-                                            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalL">Selesai</a>
+                                        @if (!$statusesWithDates->has('Ditolak'))
+                                            @if ($statusesWithDates->has('Diproses') && !$statusesWithDates->has('Dilaksanakan'))
+                                                <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                                    data-bs-target="#setujuModalKhusus">Selesai</a>
+                                            @else
+                                                <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                                    data-bs-target="#setujuModalL">Selesai</a>
+                                            @endif
                                         @endif
-                                    @endif
                                     </div>
 
 
@@ -681,7 +766,8 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
+                                                    <h5 class="modal-title modal-center fw-bolder"
+                                                        id="exampleModalLabel">
                                                         Konfirmasi</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -692,7 +778,8 @@
                                                 <div class="modal-footer">
                                                     <a href="#" type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Batal</a>
-                                                    <a href="" type="button" class="btn btn-success">Yakin</a>
+                                                    <a href="" type="button"
+                                                        class="btn btn-success">Yakin</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -704,7 +791,8 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Pelaksana
+                                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+                                                        Pelaksana
                                                         Pengadaan</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -768,72 +856,82 @@
 
                             <div class="activity">
 
-                                @if($statusesWithDates->has('Diajukan'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Diajukan')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                                    <div class="activity-content">
-                                        Diajukan
+                                @if ($statusesWithDates->has('Diajukan'))
+                                    <div class="activity-item d-flex">
+                                        <div class="activite-label">{{ $statusesWithDates->get('Diajukan') }}</div>
+                                        <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                                        <div class="activity-content">
+                                            Diajukan
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Diterima PPK'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Diterima PPK')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                                    <div class="activity-content">
-                                        Voluptatem blanditiis blanditiis
-                                        eveniet
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Diproses'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                                    <div class="activity-content">
-                                        Voluptates corrupti molestias
-                                        voluptatem
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Dilaksanakan'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('DIlaksanakan')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
-                                    <div class="activity-content">
-                                        Tempore autem saepe
-                                        <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
-                                        tempore
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Selesai'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Selesai')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                                    <div class="activity-content">
-                                        Est sit eum reiciendis
-                                        exercitationem
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Diserahkan'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">
-                                        {{$statusesWithDates->get('Diserahkan')}}
-                                    </div>
-                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                                    <div class="activity-content">
-                                        Dicta dolorem harum nulla eius. Ut
-                                        quidem quidem sit quas
-                                    </div>
-                                </div>
-                                @endif
-                                @endif
-                                @endif
-                                @endif
-                                @endif
+                                    <!-- End activity item-->
+                                    @if ($statusesWithDates->has('Diterima PPK'))
+                                        <div class="activity-item d-flex">
+                                            <div class="activite-label">{{ $statusesWithDates->get('Diterima PPK') }}
+                                            </div>
+                                            <i
+                                                class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                                            <div class="activity-content">
+                                                Voluptatem blanditiis blanditiis
+                                                eveniet
+                                            </div>
+                                        </div>
+                                        <!-- End activity item-->
+                                        @if ($statusesWithDates->has('Diproses'))
+                                            <div class="activity-item d-flex">
+                                                <div class="activite-label">{{ $statusesWithDates->get('Diproses') }}
+                                                </div>
+                                                <i
+                                                    class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
+                                                <div class="activity-content">
+                                                    Voluptates corrupti molestias
+                                                    voluptatem
+                                                </div>
+                                            </div>
+                                            <!-- End activity item-->
+                                            @if ($statusesWithDates->has('Dilaksanakan'))
+                                                <div class="activity-item d-flex">
+                                                    <div class="activite-label">
+                                                        {{ $statusesWithDates->get('DIlaksanakan') }}</div>
+                                                    <i
+                                                        class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
+                                                    <div class="activity-content">
+                                                        Tempore autem saepe
+                                                        <a href="#" class="fw-bold text-dark">occaecati
+                                                            voluptatem</a>
+                                                        tempore
+                                                    </div>
+                                                </div>
+                                                <!-- End activity item-->
+                                                @if ($statusesWithDates->has('Selesai'))
+                                                    <div class="activity-item d-flex">
+                                                        <div class="activite-label">
+                                                            {{ $statusesWithDates->get('Selesai') }}</div>
+                                                        <i
+                                                            class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                                                        <div class="activity-content">
+                                                            Est sit eum reiciendis
+                                                            exercitationem
+                                                        </div>
+                                                    </div>
+                                                    <!-- End activity item-->
+                                                    @if ($statusesWithDates->has('Diserahkan'))
+                                                        <div class="activity-item d-flex">
+                                                            <div class="activite-label">
+                                                                {{ $statusesWithDates->get('Diserahkan') }}
+                                                            </div>
+                                                            <i
+                                                                class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                                            <div class="activity-content">
+                                                                Dicta dolorem harum nulla eius. Ut
+                                                                quidem quidem sit quas
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        @endif
+                                    @endif
                                 @endif
                                 <!-- End activity item-->
                             </div>
@@ -842,21 +940,23 @@
                     <!-- End Recent Activity -->
                 </div>
                 <!-- End Right side columns -->
-                @if($statusesWithDates->has('Diajukan') && (!$statusesWithDates->has('Diterima PPK') && !$statusesWithDates->has('Ditolak')))
-                <div class="text-center">
-                    <a href="#" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#tolakModal">Tolak</a>
-                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#setujuModal">Setuju</a>
-                </div>
+                @if (
+                    $statusesWithDates->has('Diajukan') &&
+                        (!$statusesWithDates->has('Diterima PPK') && !$statusesWithDates->has('Ditolak')))
+                    <div class="text-center">
+                        <a href="#" class="btn btn-secondary btn-merah" data-bs-toggle="modal"
+                            data-bs-target="#tolakModal">Tolak</a>
+                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#setujuModal">Setuju</a>
+                    </div>
                 @endif
 
             </div>
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="tolakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -880,8 +980,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
-                        <a href="" type="button" class="btn btn-danger">Tolak</a>
+                        <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
+                        <a href="" type="button" class="btn btn-secondary btn-merah">Tolak</a>
                     </div>
                 </div>
             </div>
