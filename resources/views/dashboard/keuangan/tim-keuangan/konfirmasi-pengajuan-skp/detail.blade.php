@@ -151,7 +151,7 @@
                       <div class="finish">
                         <div class="download mt-2">
                           <a href="#"><button type="button" class="btn btn-success rounded-pill">Setujui</button></a>
-                          <a href="#"><button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModaltolakskp"</button>Tolak</button></a>
+                          <a href="#"><button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#basicModaltolakskp">Tolak</button></a>
                         </div>
                       </div>
                     </div>

@@ -18,7 +18,7 @@
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Total Pengajuan SPJ</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">10</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2"> {{ $spj->count() + $spjTr->count() + $spjPd->count()}}</p>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Selesai</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">4</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2"> {{ $spj->where('status', 'Selesai')->count() + $spjTr->where('status', 'Selesai')->count() + $spjPd->where('status', 'Selesai')->count()}}</p>
             </div>
           </div>
         </div>
@@ -43,12 +43,12 @@
           <div class="card">
             <div class="card-body pd-2">
               <div class="icon mt-2">
-                <span class="badge bg-secondary p-2 rounded-circle">
+                <span class="badge bg-warning p-2 rounded-circle">
                   <i class="bi bi-clipboard text-white size-16" style="font-size: 2rem; padding-top:1rem;"></i>
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Diproses</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">3</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2"> {{ $spj->whereNotIn('status', ['Selesai', 'Ditolak'])->count() + $spjTr->whereNotIn('status', ['Selesai', 'Ditolak'])->count() + $spjPd->whereNotIn('status', ['Selesai', 'Ditolak'])->count()}}</p>
             </div>
           </div>
         </div>
@@ -63,97 +63,109 @@
                 </span>                  
               </div>
               <h5 class="card-title mb-1 pt-2 mt-1">Pengajuan SPJ Ditolak</h5>
-              <p class="mb-2 mt-1 fw-bolder pd-2">3</p>
+              <p class="mb-2 mt-1 fw-bolder pd-2">{{ $spj->where('status', 'Ditolak')->count() + $spjTr->where('status', 'Ditolak')->count() +$spjPd->where('status', 'Ditolak')->count() }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
     
-    <section class="section konfirmasi-spj bg-white">
-        <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
-                <p>Berikut disajikan data-data SPJ yang diajukan.</p>
-      
-                <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
-                    <thead>
-                        {{-- <tr>
-                            <th class="text-center col-1">No</th>
-                            <th class="text-center col-3">Nama Kegiatan</th>
-                            <th class="text-center col-2">Tanggal Pengajuan</th>
-                            <th class="text-center col-2">Status</th>
-                            <th class="text-center col-2">Aksi</th>
-                            <th class="text-center col-2">Pengaju</th>
-                        </tr> --}}
-                        <tr>
-                          <th class="text-center col-1">No.</th>
-                          <th class="text-center col-3">Nama Kegiatan</th>
-                          <th class="text-center col-2">Tanggal Pengajuan</th>
-                          <th class="text-center col-2">Status</th>
-                          <th class="text-center col-2">Aksi</th>
-                          <th class="text-center col-2">Pengaju</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- @foreach ($users as $user)
-                        <tr>
-                            <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                            <td class="text-center align-middle">{{ $user->name }}</td>
-                            <td class="text-center align-middle">Nama Pengadaan {{ $loop->iteration }}</td>
-                            <td class="text-center align-middle">21-09-2021</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center gap-2">
-                                  <button class="btn btn-success" th:data-id="${mahasiswa.id}">
-                                    <a class="text-decoration-none text-light fw-semibold" href="
-                                      <i class="fa-solid fa-eye"></i>
-                                      <span>Lihat</span>
-                                    </a>
-                                  </button>
-                                </div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <span class="text-primary">Status</span>
-                            </td>
-                        </tr>
-                        @endforeach --}}
-                        <tr>
-                          <td scope="row">1</td>
-                          <td>Dies Natalis Polteknik Statistika STIS 65</td>
-                          <td>26-10-2023</td>
-                          <td><span class="badge bg-warning">Dalam Proses</span></td>
-                          <td>
-                              <a href="{{ route('konfirmasipengajuanspj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
-                          </td>
-                          <td>BAAK</td>
-                        </tr>
-                        <tr>
-                          <td scope="row">2</td>
-                          <td>PKKMB-PKBN Polteknik Statistika STIS 65</td>
-                          <td>28-10-2023</td>
-                          <td><span class="badge bg-success">Selesai</span></td>
-                          <td>
-                            <a href="{{ route('konfirmasipengajuanspj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
-                          </td>
-                          <td>BAU</td>
-                        </tr>
-                        <tr>
-                          <td scope="row">3</td>
-                          <td>Seminar Nasional Official Statistics 2022</td>
-                          <td>03-11-2023</td>
-                          <td><span class="badge bg-danger">Ditolak</span></td>
-                          <td>
-                            <a href="{{ route('konfirmasipengajuanspj.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
-                          </td>
-                          <td>PPPM</td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+    <section class="section info-spj bg-white">
+      <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
+              <p>Berikut disajikan data-data SPJ yang diajukan.</p>
+    
+              <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
+                  <thead>
+                      <tr>
+                        <th class="text-center col-1">No.</th>
+                        <th class="text-center col-3">Jenis SPJ</th>
+                        <th class="text-center col-2">Tanggal Pengajuan</th>
+                        <th class="text-center col-2">Status</th>
+                        <th class="text-center col-2">Aksi</th>
+                        <th class="text-center col-2">Pengaju</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @php
+                        $startNumber = 1;
+                    @endphp
+                    @foreach ($spj as $item)
+                    <tr>
+                      <td scope="row">{{ $startNumber++ }}</td>
+                      <td>{{ $item->jenis_spj }}</td>
+                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
+                      <td>
+                        <a href="{{ route('konfirmasi-spj.show', ['spj' => $item->id]) }}">
+                          <button type="button" class="btn btn-success">Lihat</button>
+                        </a>                   
+                      </td>
+                      <td>{{ $item->user->name }}</td>
+                    </tr>
+                    @endforeach
+                    
+                    @foreach ($spjTr as $item)
+                    <tr>
+                      <td scope="row">{{ $startNumber++ }}</td>
+                      <td>{{ $item->jenis_spj }}</td>
+                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
+                      <td>
+                        <a href="{{ route('konfirmasi-spjtr.show', ['spj' => $item->id]) }}">
+                          <button type="button" class="btn btn-success">Lihat</button>
+                        </a>                    
+                      </td>
+                      <td>{{ $item->user->name }}</td>
+                    </tr>
+                    @endforeach   
+
+                    @foreach ($spjPd as $item)
+                    <tr>
+                      <td scope="row">{{ $startNumber++ }}</td>
+                      <td>{{ $item->jenis_spj }}</td>
+                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>
+                        <span class="badge 
+                            @if($item->status == 'Selesai') bg-success 
+                            @elseif($item->status == 'Ditolak') bg-danger 
+                            @else bg-warning 
+                            @endif">
+                            {{ $item->status }}
+                        </span>
+                      </td>
+                      <td>
+                        <a href="{{ route('konfirmasi-spjpd.show', ['spj' => $item->id]) }}">
+                          <button type="button" class="btn btn-success">Lihat</button>
+                        </a>                  
+                      </td>
+                      <td>{{ $item->user->name }}</td>
+                    </tr>
+                    @endforeach                    
+                  </tbody>
+              </table>
             </div>
           </div>
-    </section>
+        </div>
+  </section>
 
     <x-slot name="js_body">
     </x-slot>
