@@ -129,59 +129,57 @@
                                         </thead>
 
                                         <tbody>
-                                                @php $no = 1; @endphp
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        {{ $no++ }}
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen KAK
-                                                    </td>
+                                            @php $no = 1; @endphp
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    {{ $no++ }}
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen KAK
+                                                </td>
 
-                                                    <td class="text-wrap">
-                                                        <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
-                                                        </a>
-                                                    </td>
+                                                <td class="text-wrap text-center align-middle">
+                                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                    </a>
+                                                </td>
 
-                                                    <td class="text-center align-middle">
+                                                <td class="text-center align-middle">
 
-                                                    </td>
-                                                    <td>
-                                                        @if ($dokumenPengadaans &&   $dokumenPengadaans->dokumen_perencanaan_pengadaan)
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
                                                         <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
                                                             class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white align-middle text-center">
                                                             Download
                                                         </a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        {{ $no++ }}
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Memo
-                                                    </td>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center fw-bold align-middle">
+                                                    {{ $no++ }}
+                                                </td>
+                                                <td class="fw-bold align-middle text-wrap">
+                                                    Dokumen Memo
+                                                </td>
 
-                                                    <td class="text-wrap">
-                                                        <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                <td class="text-wrap text-center align-middle">
+                                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
 
+                                                    </a>
+                                                </td>
+                                                <td class="text-center align-middle">
+
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
                                                         </a>
-                                                    </td>
-                                                    <td class="text-center align-middle">
-
-                                                    </td>
-                                                    <td>
-                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                            <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                                Download
-                                                            </a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
+                                                    @endif
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -233,7 +231,7 @@
                                                         Dokumen Identifikasi Kebutuhan
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -251,13 +249,16 @@
                                                                 Upload
                                                             </button>
                                                         @else
-                                                        <button type="button"
-                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="identifikasiKebutuhan" data-nama-dokumen="Edit Dokumen Identifikasi Kebutuhan">
-                                                            Edit
-                                                        </button>
+                                                            <button type="button"
+                                                                class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                                data-bs-toggle="modal" data-bs-target="#editFileModal"
+                                                                data-jenis="identifikasiKebutuhan"
+                                                                data-nama-dokumen="Edit Dokumen Identifikasi Kebutuhan">
+                                                                Edit
+                                                            </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_identifikasi_kebutuhan)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_identifikasi_kebutuhan) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -274,7 +275,7 @@
                                                         Dokumen Perencanaan Pengadaan
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -299,7 +300,7 @@
                                                                 Edit
                                                             </button>
                                                         @endif
-                                                    </td>
+                                                    </td class="text-center align-middle">
                                                     <td>
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
@@ -319,7 +320,7 @@
                                                         Dokumen HPS
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -343,7 +344,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_hps)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_hps) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -360,7 +361,7 @@
                                                         Dokumen Nota Dinas
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -386,7 +387,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_nota_dinas)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_nota_dinas) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -405,7 +406,7 @@
                                                         Dokumen Undangan
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -431,7 +432,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_undangan)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_undangan) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -474,7 +475,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_ssuk_sskk)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_ssuk_sskk) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -491,7 +492,7 @@
                                                         Dokumen IKP
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -515,7 +516,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_ikp)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_ikp) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -532,7 +533,7 @@
                                                         Dokumen LDP dan Spesifikasi
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -558,7 +559,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_ldp_dan_spesifikasi)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_ldp_dan_spesifikasi) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -575,7 +576,7 @@
                                                         Dokumen Penawaran
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -601,7 +602,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_penawaran_pakta_formulir)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_penawaran_pakta_formulir) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -618,7 +619,7 @@
                                                         Dokumen Surat Permintaan
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -644,7 +645,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_surat_permintaan)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_surat_permintaan) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -661,7 +662,7 @@
                                                         Dokumen Pengadaan Langsung
                                                     </td>
 
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -687,7 +688,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_pengadaan_langsung)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_pengadaan_langsung) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -705,7 +706,7 @@
                                                     <td class="fw-bold align-middle text-wrap">
                                                         Dokumen BAST
                                                     </td>
-                                                    <td class="text-wrap">
+                                                    <td class="text-wrap text-center align-middle">
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
@@ -729,7 +730,7 @@
                                                             </button>
                                                         @endif
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center align-middle">
                                                         @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_bast)
                                                             <a href="{{ Storage::url($dokumenPengadaans->dokumen_bast) }}"
                                                                 class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -851,70 +852,80 @@
 
                             <div class="activity">
 
-                                @if($statusesWithDates->has('Diajukan'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Diajukan')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                                    <div class="activity-content">
-                                        Diajukan
+                                @if ($statusesWithDates->has('Diajukan'))
+                                    <div class="activity-item d-flex">
+                                        <div class="activite-label">{{ $statusesWithDates->get('Diajukan') }}</div>
+                                        <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                                        <div class="activity-content">
+                                            Diajukan
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Diterima PPK'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Diterima PPK')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                                    <div class="activity-content">
-                                        Diterima PPK
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Diproses'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                                    <div class="activity-content">
-                                        Diproses oleh {{$pengadaan->role->name}}
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Dilaksanakan'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('DIlaksanakan')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
-                                    <div class="activity-content">
-                                        Tempore autem saepe
-                                        <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
-                                        tempore
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Selesai'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">{{$statusesWithDates->get('Selesai')}}</div>
-                                    <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                                    <div class="activity-content">
-                                        Est sit eum reiciendis
-                                        exercitationem
-                                    </div>
-                                </div>
-                                <!-- End activity item-->
-                                @if($statusesWithDates->has('Diserahkan'))
-                                <div class="activity-item d-flex">
-                                    <div class="activite-label">
-                                        {{$statusesWithDates->get('Diserahkan')}}
-                                    </div>
-                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                                    <div class="activity-content">
-                                        Dicta dolorem harum nulla eius. Ut
-                                        quidem quidem sit quas
-                                    </div>
-                                </div>
-                                @endif
-                                @endif
-                                @endif
-                                @endif
-                                @endif
+                                    <!-- End activity item-->
+                                    @if ($statusesWithDates->has('Diterima PPK'))
+                                        <div class="activity-item d-flex">
+                                            <div class="activite-label">{{ $statusesWithDates->get('Diterima PPK') }}
+                                            </div>
+                                            <i
+                                                class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                                            <div class="activity-content">
+                                                Diterima PPK
+                                            </div>
+                                        </div>
+                                        <!-- End activity item-->
+                                        @if ($statusesWithDates->has('Diproses'))
+                                            <div class="activity-item d-flex">
+                                                <div class="activite-label">{{ $statusesWithDates->get('Diproses') }}
+                                                </div>
+                                                <i
+                                                    class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
+                                                <div class="activity-content">
+                                                    Diproses oleh {{ $pengadaan->role->name }}
+                                                </div>
+                                            </div>
+                                            <!-- End activity item-->
+                                            @if ($statusesWithDates->has('Dilaksanakan'))
+                                                <div class="activity-item d-flex">
+                                                    <div class="activite-label">
+                                                        {{ $statusesWithDates->get('DIlaksanakan') }}</div>
+                                                    <i
+                                                        class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
+                                                    <div class="activity-content">
+                                                        Tempore autem saepe
+                                                        <a href="#" class="fw-bold text-dark">occaecati
+                                                            voluptatem</a>
+                                                        tempore
+                                                    </div>
+                                                </div>
+                                                <!-- End activity item-->
+                                                @if ($statusesWithDates->has('Selesai'))
+                                                    <div class="activity-item d-flex">
+                                                        <div class="activite-label">
+                                                            {{ $statusesWithDates->get('Selesai') }}</div>
+                                                        <i
+                                                            class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                                                        <div class="activity-content">
+                                                            Est sit eum reiciendis
+                                                            exercitationem
+                                                        </div>
+                                                    </div>
+                                                    <!-- End activity item-->
+                                                    @if ($statusesWithDates->has('Diserahkan'))
+                                                        <div class="activity-item d-flex">
+                                                            <div class="activite-label">
+                                                                {{ $statusesWithDates->get('Diserahkan') }}
+                                                            </div>
+                                                            <i
+                                                                class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                                            <div class="activity-content">
+                                                                Dicta dolorem harum nulla eius. Ut
+                                                                quidem quidem sit quas
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        @endif
+                                    @endif
                                 @endif
                                 <!-- End activity item-->
                             </div>
