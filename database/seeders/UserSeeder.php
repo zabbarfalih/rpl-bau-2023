@@ -12,7 +12,6 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        Create a sample admin user
         User::create([
             'name' => 'Muhammad Zabbar Falihin',
             'nip' => '222112225',
