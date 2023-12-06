@@ -29,7 +29,7 @@ class CreateDokumenPengadaansTable extends Migration
             $table->string('dokumen_penawaran_pakta_formulir');
             $table->string('dokumen_surat_permintaan');
             $table->string('dokumen_pengadaan_langsung');
-            $table->string('pelaksana');
+            $table->string('dokumen_bast');
             $table->double('harga_anggaran'); //untuk dibawah atau di atas 50 juta
             $table->timestamps();
         });

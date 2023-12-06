@@ -1,3 +1,4 @@
+
 <x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dashboard/main.css') }}">
@@ -22,7 +23,11 @@
 
     </x-slot>
 
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <section class="section dashboard">
         <div class="container">
             <div class="row">
@@ -46,6 +51,7 @@
                                 </div>
 
                                 {{-- Modal untuk Upload File --}}
+
                                 <div class="modal fade" id="uploadFileModal" tabindex="-1"
                                     data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -55,22 +61,28 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="alert alert-secondary alert-dismissible fade show"
-                                                    role="alert">
-                                                    <div class="file-upload-wrapper">
-                                                        <input type="file" class="file-upload"
-                                                            name="uploadedFile[]" />
-                                                        <button class="btn btn-danger btn-sm ms-2"
-                                                            style="display:none;">Remove</button>
+                                            <form id="uploadForm" method="post" enctype="multipart/form-data" action="{{ route('upload.dokumen') }}">
+                                                @csrf
+                                                <input type="hidden" name="jenisDokumen" id="jenisDokumen" value="">
+                                                <input type="hidden" name="dokumenId" id="dokumenId" value="{{$dokumenPengadaans->id}}">
+                                                <div class="modal-body">
+                                                    <div class="alert alert-secondary alert-dismissible fade show"
+                                                        role="alert">
+                                                        <div class="file-upload-wrapper d-inline-flex">
+                                                            <input type="file" class="file-upload"
+                                                                name="uploadedFile" />
+                                                            <button class="btn btn-danger btn-sm ms-2"
+                                                                style="display:none;">Remove</button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</button>
-                                                <a href="#" type="button" class="btn btn-primary">Upload</a>
-                                            </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary btn-sm ms-2">Upload</button>
+                                                </div>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -86,8 +98,9 @@
                                         </svg>
                                         <div>Untuk mengunduh format laporan, silakan tekan download</div>
                                     </div>
-                                    <p>Setelah UNIT mengajukan (saat ini status diajukan)</p>
-                                    <table class="table table-hover display responsive nowrap table-striped font-body-table"
+
+                                    <table
+                                        class="table table-hover display responsive nowrap table-striped font-body-table"
                                         style="width: 100%" {{-- id="table-bau" --}}>
                                         <thead class="header-table">
                                             <tr>
@@ -95,67 +108,578 @@
                                                     No
                                                 </th>
 
-                                                <th scope="col" class="text-center align-middle text-wrap">
-                                                    Nama Dokumen
-                                                </th>
+                                                    <th scope="col" class="text-center align-middle text-wrap">
+                                                        Nama Dokumen
+                                                    </th>
 
-                                                <th scope="col" class="text-center align-middle text-wrap">
-                                                    Template
-                                                </th>
-                                                <th scope="col" class="text-center align-middle">
-                                                    Action
-                                                </th>
+                                                    <th scope="col" class="text-center align-middle text-wrap">
+                                                        Template
+                                                    </th>
+                                                    <th scope="col" class="text-center align-middle">
+                                                        Action
+                                                    </th>
+                                                    <th scope="col" class="text-center align-middle">
+                                                        Action
+                                                    </th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td class="text-center fw-bold align-middle">
-                                                    1
-                                                </td>
-                                                <td class="fw-bold align-middle text-wrap">
-                                                    Dokumen KAK
-                                                </td>
+                                                @php $no = 1; @endphp
+                                                @if($statusesWithDates->has('Diterima PPK'))
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen KAK
+                                                    </td>
 
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center fw-bold align-middle">
-                                                    2
-                                                </td>
-                                                <td class="fw-bold align-middle text-wrap">
-                                                    Dokumen Memo
-                                                </td>
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                        </a>
+                                                    </td>
 
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Memo
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                @endif
                                         </tbody>
                                     </table>
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#setujuModal">Selesai</a>
+                                </div>
+
+
+                                {{-- tampilan ppk --}}
+
+                                <div id="dokumen-ppk">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                            width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
                                     </div>
-                                    <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <table
+                                        class="table table-hover display responsive nowrap table-striped font-body-table"
+                                        style="width: 100%" {{-- id="table-bau" --}}>
+                                        <thead class="header-table">
+                                            <tr>
+                                                <th scope="col" class="text-center align-middle">
+                                                    No
+                                                </th>
+
+                                                    <th scope="col" class="text-center align-middle text-wrap">
+                                                        Nama Dokumen
+                                                    </th>
+
+                                                    <th scope="col" class="text-center align-middle text-wrap">
+                                                        Template
+                                                    </th>
+                                                    <th scope="col" class="text-center align-middle">
+                                                        Action
+                                                    </th>
+                                                    <th scope="col" class="text-center align-middle">
+                                                        Action
+                                                    </th>
+                                            </tr>
+                                        </thead>
+
+                                            <tbody>
+                                                @php $no = 1; @endphp
+                                                @if($statusesWithDates->has('Diterima PPK'))
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Identifikasi Kebutuhan
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_identifikasi_kebutuhan))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="identifikasiKebutuhan" data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="identifikasiKebutuhan" data-nama-dokumen="Dokumen Identifikasi Kebutuhan">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_identifikasi_kebutuhan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_identifikasi_kebutuhan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Perencanaan Pengadaan
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_perencanaan_pengadaan))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="perencanaanPengadaan" data-nama-dokumen="Dokumen Perencanaan Pengadaan">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="perencanaanPengadaan" data-nama-dokumen="Dokumen Perencanaan Pengadaan">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                @if($statusesWithDates->has('Diproses'))
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen HPS
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_hps))
+                                                        <button type="button"
+                                                        class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="hps" data-nama-dokumen="Dokumen HPS">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="hps" data-nama-dokumen="Dokumen HPS">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_hps)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_hps) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Nota Dinas
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_nota_dinas))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="notaDInas" data-nama-dokumen="Dokumen Nota Dinas">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="notaDInas" data-nama-dokumen="Dokumen Nota Dinas">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_nota_dinas)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_nota_dinas) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                @if($statusesWithDates->has('Dilaksanakan') && $pengadaan->penyelenggara == 4)
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Undangan
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_undangan))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="undangan" data-nama-dokumen="Dokumen Undangan">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="undangan" data-nama-dokumen="Dokumen Undangan">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_undangan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_undangan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen SSUK SSKK
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_ssuk_sskk))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="ssuk_sskk" data-nama-dokumen="Dokumen SSUK SSKK">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="ssuk_sskk" data-nama-dokumen="Dokumen SSUK SSKK">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_ssuk_sskk)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_ssuk_sskk) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen IKP
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_ikp))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="ikp" data-nama-dokumen="Dokumen IKP">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="ikp" data-nama-dokumen="Dokumen IKP">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_ikp)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_ikp) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen LDP dan Spesifikasi
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_ldp_dan_spesifikasi))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="ldpDanSpesifikasi" data-nama-dokumen="Dokumen LDP dan Spesifikasi">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="ldpDanSpesifikasi" data-nama-dokumen="Dokumen LDP dan Spesifikasi">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_ldp_dan_spesifikasi)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_ldp_dan_spesifikasi) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Penawaran
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_penawaran_pakta_formulir))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="penawaranPaktaFormulir" data-nama-dokumen="Dokumen Penawaran Pakta FOrmulir">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="penawaranPaktaFormulir" data-nama-dokumen="Dokumen Penawaran Pakta FOrmulir">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_penawaran_pakta_formulir)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_penawaran_pakta_formulir) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Surat Permintaan
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_surat_permintaan))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="suratPermintaan" data-nama-dokumen="Dokumen Surat Permintaan">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="suratPermintaan" data-nama-dokumen="Dokumen Surat Permintaan">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_surat_permintaan)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_surat_permintaan) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Pengadaan Langsung
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_pengadaan_langsung))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="pengadaanLangsung" data-nama-dokumen="Dokumen Pengadaan Langsung">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="pengadaanLangsung" data-nama-dokumen="Dokumen Pengadaan Langsung">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_pengadaan_langsung)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_pengadaan_langsung) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                @if($statusesWithDates->has('Selesai'))
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen BAST
+                                                    </td>
+                                                    <td class="text-wrap">
+                                                        <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if ($dokumenPengadaans && is_null($dokumenPengadaans->dokumen_bast))
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-jenis="bast" data-nama-dokumen="Dokumen BAST">
+                                                            Upload
+                                                        </button>
+                                                        @else
+                                                        <button type="button"
+                                                            class="btn-upload btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white" data-bs-toggle="modal" data-bs-target="#editFileModal" data-jenis="bast" data-nama-dokumen="Dokumen BAST">
+                                                            Edit
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_bast)
+                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_bast) }}"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                            Download
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                        </tbody>
+                                    </table>
+
+                                    <div class="text-center">
+                                    @if(!$statusesWithDates->has('Ditolak'))
+                                        @if($statusesWithDates->has('Diproses') && (!($statusesWithDates->has('Dilaksanakan'))) )
+                                            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalKhusus">Selesai</a>
+                                        @else
+                                            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalL">Selesai</a>
+                                        @endif
+                                    @endif
+                                    </div>
+
+
+                                    <div class="modal fade" id="setujuModalL" aria-hidden="true"
+                                        data-bs-keyboard="false" data-bs-backdrop="static"
+                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header text-center">
+                                                <div class="modal-header">
                                                     <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
                                                         Konfirmasi</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -172,102 +696,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-
-                                {{-- tampilan ppk --}}
-
-                                <div id="dokumen-ppk">
-                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
-                                            width="16" height="16">
-                                            <use xlink:href="#info-fill" />
-                                        </svg>
-                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
-                                    </div>
-                                    <p>Setelah PPK menyetujui (saat ini status disetujui)</p>
-                                    <table class="table table-hover display responsive nowrap table-striped font-body-table"
-                                        style="width: 100%" {{-- id="table-bau" --}}>
-                                        <thead class="header-table">
-                                            <tr>
-                                                <th scope="col" class="text-center align-middle">
-                                                    No
-                                                </th>
-
-                                                <th scope="col" class="text-center align-middle text-wrap">
-                                                    Nama Dokumen
-                                                </th>
-
-                                                <th scope="col" class="text-center align-middle text-wrap">
-                                                    Template
-                                                </th>
-                                                <th scope="col" class="text-center align-middle">
-                                                    Action
-                                                </th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center fw-bold align-middle">
-                                                    3
-                                                </td>
-                                                <td class="fw-bold align-middle text-wrap">
-                                                    Dokumen Identifikasi Kebutuhan
-                                                </td>
-
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                        Upload
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                        Edit
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center fw-bold align-middle">
-                                                    4
-                                                </td>
-                                                <td class="fw-bold align-middle text-wrap">
-                                                    Dokumen Perencanaan Pengadaan
-                                                </td>
-
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                        Upload
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                        Edit
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#setujuModalKhusus">Selesai</a>
-                                    </div>
                                     <div class="modal fade" id="setujuModalKhusus" aria-hidden="true"
                                         data-bs-keyboard="false" data-bs-backdrop="static"
                                         aria-labelledby="setujuModalKhususLabel" tabindex="-1">
@@ -293,1212 +722,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="setujuModalKhusus2" aria-hidden="true"
-                                        data-bs-keyboard="false" data-bs-backdrop="static"
-                                        aria-labelledby="setujuModalKhususLabel2" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Konfirmasi
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body mb-3">
-                                                    Apakah anda yakin?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-target="#setujuModalKhusus"
-                                                        data-bs-toggle="modal">Kembali</a>
-                                                    <a href="" type="button" class="btn btn-success">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <p>Setelah diproses (saat ini status diproses)</p>
-                                    <table
-                                        class="table table-hover display responsive nowrap table-striped font-body-table"
-                                        style="width: 100%" {{-- id="table-bau" --}}>
-                                        <thead class="header-table">
-                                            <tr>
-                                                <th scope="col" class="text-center align-middle">
-                                                    No
-                                                </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Nama Dokumen
-                                                    </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Template
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        1
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen KAK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        2
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Memo
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        3
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Identifikasi Kebutuhan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        4
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Perencanaan Pengadaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        5
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen HPS
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        6
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Nota Dinas
-                                                    </td>
-
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                        Upload
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                        Edit
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#setujuModal">Selesai</a>
-                                    </div>
-                                    <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header text-center">
-                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="" type="button" class="btn btn-success">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
-                                    <table
-                                        class="table table-hover display responsive nowrap table-striped font-body-table"
-                                        style="width: 100%" {{-- id="table-bau" --}}>
-                                        <thead class="header-table">
-                                            <tr>
-                                                <th scope="col" class="text-center align-middle">
-                                                    No
-                                                </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Nama Dokumen
-                                                    </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Template
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        1
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen KAK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        2
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Memo
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        3
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Identifikasi Kebutuhan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        4
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Perencanaan Pengadaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        5
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen HPS
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        6
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Nota Dinas
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        7
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Undangan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        8
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen SSUK SSKK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        9
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen IKP
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        10
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen LDP dan Spesifikasi
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        11
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Penawaran
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        12
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Surat Permintaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                            Upload
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        13
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Pengadaan Langsung
-                                                    </td>
-
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                        Upload
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                        Edit
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#setujuModal">Selesai</a>
-                                    </div>
-                                    <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header text-center">
-                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="" type="button" class="btn btn-success">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <p>Setelah Selesai (saat ini status selesai)</p>
-                                    <table
-                                        class="table table-hover display responsive nowrap table-striped font-body-table"
-                                        style="width: 100%" {{-- id="table-bau" --}}>
-                                        <thead class="header-table">
-                                            <tr>
-                                                <th scope="col" class="text-center align-middle">
-                                                    No
-                                                </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Nama Dokumen
-                                                    </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Template
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        1
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen KAK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        2
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Memo
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        3
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Identifikasi Kebutuhan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        4
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Perencanaan Pengadaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        5
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen HPS
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        6
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Nota Dinas
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        7
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Undangan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        8
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen SSUK SSKK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        9
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen IKP
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        10
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen LDP dan Spesifikasi
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        11
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Penawaran
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        12
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Surat Permintaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        13
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Pengadaan Langsung
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        14
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen BAST
-                                                    </td>
-
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal">
-                                                        Upload
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                        Edit
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#setujuModal">Selesai</a>
-                                    </div>
-                                    <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header text-center">
-                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="" type="button" class="btn btn-success">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <p>Setelah Diserahkan (saat ini status diserahkan)</p>
-                                    <table
-                                        class="table table-hover display responsive nowrap table-striped font-body-table"
-                                        style="width: 100%" {{-- id="table-bau" --}}>
-                                        <thead class="header-table">
-                                            <tr>
-                                                <th scope="col" class="text-center align-middle">
-                                                    No
-                                                </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Nama Dokumen
-                                                    </th>
-
-                                                    <th scope="col" class="text-center align-middle text-wrap">
-                                                        Template
-                                                    </th>
-                                                    <th scope="col" class="text-center align-middle">
-                                                        Action
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        1
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen KAK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        2
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Memo
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        3
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Identifikasi Kebutuhan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        4
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Perencanaan Pengadaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        5
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen HPS
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        6
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Nota Dinas
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        7
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Undangan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        8
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen SSUK SSKK
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        9
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen IKP
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        10
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen LDP dan Spesifikasi
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        11
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Penawaran
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        12
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Surat Permintaan
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        13
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen Pengadaan Langsung
-                                                    </td>
-
-                                                    <td class="text-wrap">
-                                                        Template
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                            Download
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold align-middle">
-                                                        14
-                                                    </td>
-                                                    <td class="fw-bold align-middle text-wrap">
-                                                        Dokumen BAST
-                                                    </td>
-
-                                                <td class="text-wrap">
-                                                    Template
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
-                                                        Download
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#setujuModal">Selesai</a>
-                                    </div>
-                                    <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header text-center">
-                                                    <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="" type="button" class="btn btn-success">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- Modal untuk Upload File --}}
-                                    <div class="modal fade" id="uploadFileModal" tabindex="-1"
-                                        data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
-                                                <div class="modal-header">
-                                                    <h4 class="alert-heading">Dokumen [documents name]</h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="alert alert-secondary alert-dismissible fade show"
-                                                        role="alert">
-                                                        <div class="file-upload-wrapper d-inline-flex">
-                                                            <input type="file" class="file-upload"
-                                                                name="uploadedFile[]" />
-                                                            <button class="btn btn-danger btn-sm ms-2"
-                                                                style="display:none;">Remove</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</button>
-                                                    <a href="#" type="button" class="btn btn-primary">Upload</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                    {{-- End Modal Upload File --}}
-
-                                {{-- tampilan pbj --}}
-                                <!-- Kalau diserahkan ke PBJ -->
 
                                 {{-- tampilan pbj --}}
                                 <div id="dokumen-pbj">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -1510,7 +739,7 @@
                 <div class="col-lg-4">
                     <!-- Recent Activity -->
                     <div class="card">
-                        <div class="filter">
+                        {{-- <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                     class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -1528,27 +757,28 @@
                                     <a class="dropdown-item" href="#">This Year</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         <div class="card-body">
                             <h5 class="card-title">
-                                Recent Activity <span>| Today</span>
+                                Status Dokumen
+                                {{-- <span>| Today</span> --}}
                             </h5>
 
                             <div class="activity">
+
+                                @if($statusesWithDates->has('Diajukan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">32 min</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diajukan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                                     <div class="activity-content">
-                                        Quia quae rerum
-                                        <a href="#" class="fw-bold text-dark">explicabo officiis</a>
-                                        beatae
+                                        Diajukan
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diterima PPK'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">56 min</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diterima PPK')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
                                     <div class="activity-content">
                                         Voluptatem blanditiis blanditiis
@@ -1556,9 +786,9 @@
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diproses'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">2 hrs</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
                                     <div class="activity-content">
                                         Voluptates corrupti molestias
@@ -1566,9 +796,9 @@
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Dilaksanakan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">1 day</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('DIlaksanakan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                                     <div class="activity-content">
                                         Tempore autem saepe
@@ -1577,9 +807,9 @@
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Selesai'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">2 days</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Selesai')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
                                     <div class="activity-content">
                                         Est sit eum reiciendis
@@ -1587,10 +817,10 @@
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diserahkan'))
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">
-                                        4 weeks
+                                        {{$statusesWithDates->get('Diserahkan')}}
                                     </div>
                                     <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
                                     <div class="activity-content">
@@ -1598,6 +828,12 @@
                                         quidem quidem sit quas
                                     </div>
                                 </div>
+                                @endif
+                                @endif
+                                @endif
+                                @endif
+                                @endif
+                                @endif
                                 <!-- End activity item-->
                             </div>
                         </div>
@@ -1605,13 +841,14 @@
                     <!-- End Recent Activity -->
                 </div>
                 <!-- End Right side columns -->
-
+                @if($statusesWithDates->has('Diajukan') && (!$statusesWithDates->has('Diterima PPK') && !$statusesWithDates->has('Ditolak')))
                 <div class="text-center">
                     <a href="#" class="btn btn-danger" data-bs-toggle="modal"
                         data-bs-target="#tolakModal">Tolak</a>
                     <a href="#" class="btn btn-success" data-bs-toggle="modal"
                         data-bs-target="#setujuModal">Setuju</a>
                 </div>
+                @endif
 
             </div>
         </div>
@@ -1649,25 +886,6 @@
             </div>
         </div>
 
-        <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Apakah anda yakin ?
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
-                        <a href="" type="button" class="btn btn-success">Yakin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <x-slot name="js_body">
