@@ -120,16 +120,16 @@ class PengajuanController extends Controller {
             'role_id' => 'required|numeric',
             'nama_pengadaan' => 'required|string',
             'tanggal_pengadaan' => 'required|date',
-            'dokumen_kak' => 'required|mimes:docx',
-            'dokumen_memo' => 'mimes:docx',
+            'dokumen.0' => 'required|mimes:pdf',
+            'dokumen.1' => 'mimes:pdf',
         ], [
             'role_id.required' => 'Unit tidak boleh kosong (pilih unit)',
             'role_id.numeric' => 'Pilih nama unit',
             'nama_pengadaan.required' => 'Nama pengadaan tidak boleh kosong',
             'tanggal_pengadaan.required' => 'Tanggal pengadaan tidak boleh kosong',
-            'dokumen_kak.required' => 'Dokumen KAK tidak boleh kosong',
-            'dokumen_kak.mimes' => 'Dokumen harus dalam format DOCX',
-            'dokumen_memo.mimes' => 'Dokumen harus dalam format DOCX',
+            'dokumen.0.required' => 'Dokumen KAK tidak boleh kosong',
+            'dokumen.0.mimes' => 'Dokumen harus dalam format PDF',
+            'dokumen.1.mimes' => 'Dokumen harus dalam format PDF',
         ]);
 
         if($validatedData->fails()) {
@@ -137,7 +137,7 @@ class PengajuanController extends Controller {
         }
 
         try {
-            $userId = Auth::id();
+            $userId = auth()->user()->id;
             $validatedData = $validatedData->validated();
 
             $pengajuan = new Pengadaan;
@@ -150,31 +150,31 @@ class PengajuanController extends Controller {
             if($pengajuan->save()) {
                 Log::info('Pengadaan dengan ID: '.$pengajuan->id.' berhasil dibuat.');
 
-                $dokumen = new Dokumen;
-                $dokumen->user_id = $userId;
-                $dokumen->pengadaan_id = $pengajuan->id;
-                if($dokumen->save()) {
-                    Log::info('Dokumen dengan ID: '.$dokumen->id.' berhasil dibuat.');
-
-                    $pathKak = $request->file('dokumen_kak')->store('public/dokumen');
+                    $pathKak = $request->file('dokumen.0')->store('public/dokumen/pengadaan/kak');
+                    $dokumenkak = new Dokumen;
+                    $dokumenkak->pengadaan_id = $pengajuan->id;
+                    $dokumenkak->save();
                     $dokumenPengadaanKak = new DokumenPengadaan;
-                    $dokumenPengadaanKak->dokumen_id = $dokumen->id;
-                    $dokumenPengadaanKak->tipe_dokumen = 'kak';
-                    $dokumenPengadaanKak->path_file = $pathKak;
+                    $dokumenPengadaanKak->dokumen_id = $dokumenkak->id;
+                    $dokumenPengadaanKak->dokumen_kak = $pathKak;
                     $dokumenPengadaanKak->save();
                     Log::info('Dokumen Pengadaan KAK dengan ID: '.$dokumenPengadaanKak->id.' berhasil disimpan.');
 
-                    // Menangani unggahan dokumen_memo
-                    $pathMemo = $request->file('dokumen_memo')->store('public/dokumen');
-                    $dokumenPengadaanMemo = new DokumenPengadaan;
-                    $dokumenPengadaanMemo->dokumen_id = $dokumen->id;
-                    $dokumenPengadaanMemo->tipe_dokumen = 'memo';
-                    $dokumenPengadaanMemo->path_file = $pathMemo;
-                    $dokumenPengadaanMemo->save();
-                    Log::info('Dokumen Pengadaan Memo dengan ID: '.$dokumenPengadaanMemo->id.' berhasil disimpan.');
+                    if ($request->file('dokumen.1') == null) {
+                        Log::info('Dokumen Pengadaan Memo tidak ada.');
+                    } else {
+                        $dokumenmemo = new Dokumen;
+                        $dokumenmemo->pengadaan_id = $pengajuan->id;
+                        $dokumenmemo->save();
+                        $pathMemo = $request->file('dokumen.1')->store('public/dokumen/pengadaan/memo');
+                        $dokumenPengadaanMemo = new DokumenPengadaan;
+                        $dokumenPengadaanMemo->dokumen_id = $dokumenmemo->id;
+                        $dokumenPengadaanMemo->dokumen_memo = $pathMemo;
+                        $dokumenPengadaanMemo->save();
+                        Log::info('Dokumen Pengadaan Memo dengan ID: '.$dokumenPengadaanMemo->id.' berhasil disimpan.');
+                    }
 
                     return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
-                }
             }
         } catch (\Exception $e) {
             Log::error('Kesalahan saat menyimpan data: '.$e->getMessage());
