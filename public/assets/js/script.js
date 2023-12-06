@@ -73,3 +73,48 @@ document.querySelectorAll(".btn-upload").forEach((item) => {
             namaDokumen;
     });
 });
+
+function showRemoveButtonMemo() {
+    var fileInputMemo = document.getElementById('formFileMemo');
+    var removeButtonMemo = document.getElementById('removeButtonMemo');
+    var fileErrorMessageMemo = document.getElementById('fileErrorMessageMemo');
+
+    if (fileInputMemo.files.length > 0) {
+        removeButtonMemo.style.display = 'inline-block';
+        fileErrorMessageMemo.innerHTML = '';
+        fileInputMemo.setAttribute('disabled', true);
+    } else {
+        removeButtonMemo.style.display = 'none';
+        fileInputMemo.removeAttribute('disabled');
+    }
+}
+
+function removeFileMemo() {
+    var fileInputMemo = document.getElementById('formFileMemo');
+    var removeButtonMemo = document.getElementById('removeButtonMemo');
+
+    fileInputMemo.value = ''; // Clear the selected file
+    removeButtonMemo.style.display = 'none';
+    fileInputMemo.removeAttribute('disabled');
+}
+
+function showRemoveButton() {
+    var fileInput = document.getElementById('formFile');
+    var removeButton = document.getElementById('removeButton');
+    var fileErrorMessage = document.getElementById('fileErrorMessage');
+
+    if (fileInput.files.length > 0) {
+        removeButton.style.display = 'inline-block';
+        fileErrorMessage.innerHTML = '';
+    } else {
+        removeButton.style.display = 'none';
+    }
+}
+
+function removeFile() {
+    var fileInput = document.getElementById('formFile');
+    var removeButton = document.getElementById('removeButton');
+
+    fileInput.value = ''; // Clear the selected file
+    removeButton.style.display = 'none';
+}

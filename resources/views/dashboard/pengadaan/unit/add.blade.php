@@ -73,8 +73,13 @@
                                 <div class="row mb-3">
                                     <label for="inputNumber" class="col-sm-2 col-form-label">Upload Dokumen KAK</label>
                                     <div class="col-sm-10">
-                                        <input name="dokumen_kak" class="form-control font-form" type="file"
-                                            id="formFile" />
+                                        <div class="input-group">
+                                            <input name="dokumen_kak" class="form-control font-form" type="file"
+                                                id="formFile" onchange="showRemoveButton()" />
+                                            <button type="button" class="btn btn-danger" id="removeButton"
+                                                style="display:none;" onclick="removeFile()">Remove</button>
+                                        </div>
+                                        <div id="fileErrorMessage" class="text-danger"></div>
                                         @error('dokumen_kak')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -91,8 +96,13 @@
                                 <div class="row mb-3">
                                     <label for="inputNumber" class="col-sm-2 col-form-label">Upload Memo</label>
                                     <div class="col-sm-10">
-                                        <input name="dokumen_memo" class="form-control font-form" type="file"
-                                            id="formFile" />
+                                        <div class="input-group">
+                                            <input name="dokumen_memo" class="form-control font-form" type="file"
+                                                id="formFileMemo" onchange="showRemoveButtonMemo()" />
+                                            <button type="button" class="btn btn-danger" id="removeButtonMemo"
+                                                style="display:none;" onclick="removeFileMemo()">Remove</button>
+                                        </div>
+                                        <div id="fileErrorMessageMemo" class="text-danger"></div>
                                         @error('dokumen_memo')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -116,5 +126,6 @@
     </section>
 
     <x-slot name="js_body">
+        <script src="{{ asset('assets/js/script.js') }}"></script>
     </x-slot>
 </x-dashboard.layouts.layouts>
