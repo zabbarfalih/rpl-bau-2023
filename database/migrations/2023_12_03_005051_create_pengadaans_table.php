@@ -22,7 +22,7 @@ class CreatePengadaansTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('nama_pengadaan');
             $table->date('tanggal_pengadaan');
-            $table->foreignId('role_id')->constrained('roles')->nullable();
+            $table->foreignId('penyelenggara')->constrained('roles')->nullable();
             $table->timestamps();
         });
     }
