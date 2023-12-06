@@ -55,6 +55,7 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::resource('/spj/info-pengajuan-spj', InfoPengajuanSpjController::class)->middleware('auth');
     Route::get('/spj/info-pengajuan-spj/{spj}', [InfoPengajuanSpjController::class, 'show'])->name('info-pengajuan-spj.show');
     Route::get('/spjtemplatedownload', [InfoPengajuanSpjController::class, 'spjtemplatedownload'])->name('spjtemplatedownload');
+
     Route::get('/spj/info-pengajuan-spj/detail', [DetailPengajuanSpjController::class, 'index'])->name('spj.detail');
     Route::post('/importspjnew', [TabelSpjController::class,'spjimportexcel'])->name('importspjnew')->middleware('auth');
     Route::delete('/spj/info-pengajuan-spj/hapus-spj/{spj}', [SpjController::class, 'hapusSpj']);
@@ -66,16 +67,19 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::post('/spj/pengajuan-translok', [SpjTrController::class, 'store'])->name('spj-tr.store');
     Route::get('/spj/info-pengajuan-spjtr/{spj}', [InfoPengajuanSpjController::class, 'showtr'])->name('info-pengajuan-spjtr.show');
     Route::post('/importspjtrnew', [TabelSpjTrController::class,'spjimportexcel'])->name('importspjtrnew')->middleware('auth');
+
     Route::get('/spjtrtemplatedownload', [InfoPengajuanSpjController::class, 'spjtrtemplatedownload'])->name('spjtrtemplatedownload');
     Route::delete('/spj/info-pengajuan-spjtr/hapus-spj/{spj}', [SpjController::class, 'hapusSpjTr']);
     Route::delete('/spj/info-pengajuan-spjtr/hapus-unggahan/{spj}', [SpjController::class, 'hapusUnggahanTr']);
 
     // SPJ Perjalanan Dinas
+
     Route::resource('/spj/pengajuan-perjalanan-dinas', SpjPdController::class)->middleware('auth');
     Route::get('/spj/pengajuan-perjalanan-dinas', [SpjPdController::class, 'create'])->name('spj-pd.create');   
     Route::post('/spj/pengajuan-perjalanan-dinas', [SpjPdController::class, 'store'])->name('spj-pd.store');   
     Route::get('/spj/info-pengajuan-spjpd/{spj}', [InfoPengajuanSpjController::class, 'showpd'])->name('info-pengajuan-spjpd.show');
     Route::post('/importspjpdnew', [TabelSpjPdController::class,'spjimportexcel'])->name('importspjpdnew')->middleware('auth');
+
     Route::get('/spjpdtemplatedownload', [InfoPengajuanSpjController::class, 'spjpdtemplatedownload'])->name('spjpdtemplatedownload');
     Route::delete('/spj/info-pengajuan-spjpd/hapus-unggahan/{spj}', [SpjController::class, 'hapusUnggahanPd']);
     Route::delete('/spj/info-pengajuan-spjpd/hapus-spj/{spj}', [SpjController::class, 'hapusSpjPd']);
@@ -87,13 +91,16 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
 
     // Tim Keuangan
 
+
     Route::get('/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
     Route::get('/tim-keuangan/konfirmasi-spj/detail-spj', [KonfirmasiSPjController::class, 'detail'])->name('konfirmasipengajuanspj.detail');
     Route::get('/tim-keuangan/konfirmasi-spj/{spj}', [KonfirmasiSPjController::class,'show'])->middleware('auth')->name('konfirmasi-spj.show');
+
     Route::post('/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetuju']);
     Route::post('/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolak']);
     Route::post('/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpj']);
     Route::get('/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpj']);
+
 
     Route::get('/tim-keuangan/konfirmasi-spjtr/{spj}', [KonfirmasiSPjController::class,'showtr'])->middleware('auth')->name('konfirmasi-spjtr.show');
     Route::post('/tim-keuangan/konfirmasi-spjtr/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuTr']);
@@ -106,7 +113,6 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::post('/tim-keuangan/konfirmasi-spjpd/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakPd']);
     Route::post('/tim-keuangan/konfirmasi-spjpd/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjPd']);
     Route::get('/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjPd']);
-
 
 
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
@@ -122,8 +128,8 @@ Route::middleware(['formatUserName'])->prefix('dashboard/unit')->name('unit.')->
         Route::post('/pengajuan/kirim-form', 'kirimForm')->name('pengajuan.kirim-form');
 
         // Unit -> download template
-        Route::get('/download-template/{filename}', 'downloadTemplate')->name('template.download');
     });
+    Route::get('/download-template/{filename}', [DokumenCOntroller::class, 'downloadTemplate'])->name('template.download');
 });
 
 Route::middleware(['can:admin', 'formatUserName'])->prefix('/dashboard/administrator/pegawai')->name('admin.')->group(function () {
@@ -138,6 +144,7 @@ Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
     Route::get('/dashboard/pbj/updating-status/details/{id}', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
     Route::get('/dashboard/pbj/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPBJController::class, 'download'])->name('updatingstatuspbj.download');
     Route::post('/dashboard/pbj/updating-status/upload-files', [UpdatingStatusPBJController::class, 'uploadFiles'])->name('updatingstatuspbj.upload-files');
+    Route::get('/download-template/{filename}', [DokumenCOntroller::class, 'downloadTemplate'])->name('template.download');
 });
 
 Route::middleware(['can:ppk', 'formatUserName'])->prefix('dashboard')->group(function () {
@@ -147,6 +154,7 @@ Route::middleware(['can:ppk', 'formatUserName'])->prefix('dashboard')->group(fun
     Route::get('/dashboard/ppk/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPPKController::class, 'download'])->name('updatingstatusppk.download');
     Route::get('/dashboard/ppk/updating-status/upload-files', [UpdatingStatusPPKController::class, 'uploadFiles'])->name('updatingstatusppk.upload-files');
     Route::post('/upload-dokumen', [DokumenController::class, 'uploadDokumen'])->name('upload.dokumen');
+    Route::get('/download-template/{filename}', [DokumenCOntroller::class, 'downloadTemplate'])->name('template.download');
 });
 
 
