@@ -9,29 +9,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 
-class DokumenController extends Controller
-{
-    public function downloadTemplate($filename)
-    {
-        $path = 'public/templates-dokumen/' . $filename . '.docx';
-        if (Storage::exists($path)) {
-            Log::info('Download File: ' . $filename . ' berhasil');
+class DokumenController extends Controller {
+    public function downloadTemplate($filename) {
+        $path = 'public/templates-dokumen/'.$filename.'.docx';
+        if(Storage::exists($path)) {
+            Log::info('Download File: '.$filename.' berhasil');
             return Storage::download($path);
         }
 
-        Log::error('Download File: ' . $filename . '.docx' . ' gagal');
+        Log::error('Download File: '.$filename.'.docx'.' gagal');
         abort(404, 'File not found');
     }
 
-    public function uploadDokumen(Request $request)
-    {
+    public function uploadDokumen(Request $request) {
         Log::info('Memulai proses upload dokumen');
         Log::info($request->input('dokumenId'));
         Log::info($request->input('jenisDokumen'));
 
         $files = $request->file('uploadedFile');
-        if (is_array($files)) {
-            foreach ($files as $file) {
+        if(is_array($files)) {
+            foreach($files as $file) {
                 Log::info('File uploaded:', [
                     'originalName' => $file->getClientOriginalName(),
                     'size' => $file->getSize(),
@@ -58,8 +55,8 @@ class DokumenController extends Controller
 
             // Mendapatkan file dari request
             $files = $request->file('uploadedFile');
-            if (is_array($files)) {
-                foreach ($files as $file) {
+            if(is_array($files)) {
+                foreach($files as $file) {
                     // Proses setiap file
                     $this->processFile($file, $request);
                 }
@@ -72,21 +69,20 @@ class DokumenController extends Controller
             return redirect()->back()->with('success', 'File uploaded successfully!');
         } catch (\Exception $e) {
             // Log error
-            Log::error('Error dalam upload dokumen: ' . $e->getMessage());
+            Log::error('Error dalam upload dokumen: '.$e->getMessage());
             return response()->json(['message' => 'Terjadi kesalahan pada server'], 500);
         }
     }
 
-    private function processFile($file, $request)
-    {
+    private function processFile($file, $request) {
         $path = $file->store('public/dokumen');
-        Log::info('File berhasil disimpan, path: ' . $path);
+        Log::info('File berhasil disimpan, path: '.$path);
 
         $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $request->input('dokumenId'))->first();
         $jenis = $request->input('jenisDokumen');
-        Log::info('Jenis Dokumen: ' . $jenis);
+        Log::info('Jenis Dokumen: '.$jenis);
 
-        switch ($jenis) {
+        switch($jenis) {
             case 'memo':
                 $dokumenPengadaan->dokumen_memo = $path;
                 break;
@@ -126,7 +122,7 @@ class DokumenController extends Controller
             case 'pengadaanLangsung':
                 $dokumenPengadaan->dokumen_pengadaan_langsung = $path;
                 break;
-                // Tambahkan kasus lainnya sesuai kebutuhan
+            // Tambahkan kasus lainnya sesuai kebutuhan
             case 'bast';
                 $dokumenPengadaan->dokumen_bast = $path;
                 break;
