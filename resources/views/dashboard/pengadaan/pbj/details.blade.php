@@ -22,7 +22,6 @@
 
     </x-slot>
 
-
     <section class="section dashboard">
         <div class="container">
             <div class="row">
@@ -33,7 +32,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Dokumen</h5>
 
-                                <!-- List dokumen -->
+                        <!-- List dokumen -->
                         @if($dokumen_pengadaan->harga_anggaran <= 50000000)
                             @if($pengadaan->status == 'Dilaksanakan')
                                 <p><b>KETIKA PENGADAAN DI BAWAH 50 JUTA</b></p>
@@ -73,7 +72,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak">
                                                     Download
                                                 </button>
                                             </td>
@@ -91,7 +90,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
@@ -109,7 +108,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan">
                                                     Download
                                                 </button>
                                             </td>
@@ -127,7 +126,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -145,7 +144,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS">
                                                     Download
                                                 </button>
                                             </td>
@@ -163,7 +162,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
                                                     Download
                                                 </button>
                                             </td>
@@ -186,7 +185,7 @@
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -213,7 +212,7 @@
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -288,7 +287,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak">
                                                     Download
                                                 </button>
                                             </td>
@@ -306,7 +305,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
@@ -324,7 +323,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan">
                                                     Download
                                                 </button>
                                             </td>
@@ -342,7 +341,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -360,7 +359,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS">
                                                     Download
                                                 </button>
                                             </td>
@@ -378,7 +377,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
                                                     Download
                                                 </button>
                                             </td>
@@ -396,7 +395,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan">
                                                     Download
                                                 </button>
                                             </td>
@@ -414,7 +413,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung">
                                                     Download
                                                 </button>
                                             </td>
@@ -488,7 +487,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak">
                                                     Download
                                                 </button>
                                             </td>
@@ -506,7 +505,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
@@ -524,7 +523,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan">
                                                     Download
                                                 </button>
                                             </td>
@@ -542,7 +541,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -560,7 +559,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS">
                                                     Download
                                                 </button>
                                             </td>
@@ -578,7 +577,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
                                                     Download
                                                 </button>
                                             </td>
@@ -601,7 +600,7 @@
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -628,7 +627,7 @@
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -655,7 +654,7 @@
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -682,7 +681,7 @@
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -705,11 +704,11 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Penawaran">
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -732,11 +731,11 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Surat Permintaan">
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -759,11 +758,11 @@
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Pengadaan Langsung">
                                                     Upload
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -839,7 +838,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak">
                                                     Download
                                                 </button>
                                             </td>
@@ -857,7 +856,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
@@ -875,7 +874,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan">
                                                     Download
                                                 </button>
                                             </td>
@@ -893,7 +892,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -911,7 +910,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS">
                                                     Download
                                                 </button>
                                             </td>
@@ -929,7 +928,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
                                                     Download
                                                 </button>
                                             </td>
@@ -947,7 +946,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan">
                                                     Download
                                                 </button>
                                             </td>
@@ -965,7 +964,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK">
                                                     Download
                                                 </button>
                                             </td>
@@ -983,7 +982,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP">
                                                     Download
                                                 </button>
                                             </td>
@@ -1001,7 +1000,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi">
                                                     Download
                                                 </button>
                                             </td>
@@ -1019,7 +1018,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran">
                                                     Download
                                                 </button>
                                             </td>
@@ -1037,7 +1036,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -1055,7 +1054,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung">
                                                     Download
                                                 </button>
                                             </td>
@@ -1068,57 +1067,32 @@
                                 </div>
                             @endif
                     @endif
-                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center">
-                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                    Konfirmasi</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+
+                                {{-- Modal untuk Upload File --}}
+                                <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content" style="margin: 10px;">
+                                            <div class="modal-header">
+                                                <h4 class="alert-heading" id="modalTitle">Dokumen [documents name]</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin ?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</a>
-                                                <a href="" type="button" class="btn btn-success">Yakin</a>
-                                            </div>
+                                            <form action="{{ route('upload-dokumens') }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <input type="file" class="file-upload" name="uploadFile" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="hidden" name="documentName" id="documentName">
+                                                    <input type="hidden" name="dokumen_id" id="dokumen_id">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                                </div>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- Modal untuk Upload File --}}
-                                <div class="modal fade" id="uploadFileModal" tabindex="-1"
-                                    data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content" style="margin: 10px;"> <!-- Atur margin di sini -->
-                                            <div class="modal-header">
-                                                <h4 class="alert-heading" id="modalTitle">Dokumen [documents name]</h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="alert alert-secondary alert-dismissible fade show"
-                                                    role="alert">
-                                                    <div class="file-upload-wrapper d-inline-flex">
-                                                        <input type="file" class="file-upload"
-                                                            name="uploadedFile[]" />
-                                                        <button class="btn btn-danger btn-sm ms-2"
-                                                            style="display:none;">Remove</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</button>
-                                                <a href="#" type="button" class="btn btn-primary">Upload</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 {{-- End Modal Upload File --}}
 
                                 <!-- List group with Advanced Contents -->
@@ -1228,13 +1202,6 @@
                     <!-- End Recent Activity -->
                 </div>
                 <!-- End Right side columns -->
-
-                <div class="text-center">
-                    <a href="#" type="submit" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#tolakModal">Tolak</a>
-                    <a href="#" type="submit" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#setujuModal">Setuju</a>
-                </div>
             </div>
         </div>
 
@@ -1263,17 +1230,15 @@
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Mendengarkan event ketika modal dibuka
                 $('#uploadFileModal').on('show.bs.modal', function (event) {
-                    var button = $(event.relatedTarget); // Tombol yang memicu modal
-                    var documentName = button.data('document'); // Ekstrak info dari data-* attribute
-                    var modal = $(this);
+                    var button = $(event.relatedTarget);
+                    var documentName = button.data('document').replace(/\s/g, '_').toLowerCase();;
+                    var dokumenId = button.closest('tr').find('td').first().text();
 
-                    // Update judul modal
-                    modal.find('.modal-header #modalTitle').text('Upload ' + documentName);
+                    $(this).find('#documentName').val(documentName);
+                    $(this).find('#dokumen_id').val(dokumenId);
                 });
             });
-
         </script>
     </x-slot>
 </x-dashboard.layouts.layouts>
