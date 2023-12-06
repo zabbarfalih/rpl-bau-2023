@@ -7,7 +7,7 @@
     <x-slot name="js_head">
     </x-slot>
 
-    @if(session('error'))
+    @if (session('error'))
         <div class="alert alert-error">
             {{ session('error') }}
         </div>
@@ -22,7 +22,8 @@
                             <br>
 
                             <!-- General Form Elements -->
-                            <form method="POST" action="{{ route('unit.pengajuan.kirim-form') }}" class="font-form fw-bold" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('unit.pengajuan.kirim-form') }}"
+                                class="font-form fw-bold" enctype="multipart/form-data">
                                 @csrf
                                 <!-- Nama Unit -->
                                 <div class="row mb-3">
@@ -64,14 +65,16 @@
 
                                 <!-- Unduh Template Dokumen KAK -->
                                 <div class="mb-1">
-                                    <a href="{{ route('unit.template.download', ['filename' => 'KAK']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
+                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}"
+                                        class="btn-link btn-sm fw-normal"><small>Unduh Template Dokumen KAK</small></a>
                                 </div>
 
                                 <!-- Upload Dokumen KAK -->
                                 <div class="row mb-3">
                                     <label for="inputNumber" class="col-sm-2 col-form-label">Upload Dokumen KAK</label>
                                     <div class="col-sm-10">
-                                        <input name="dokumen_kak" class="form-control font-form" type="file" id="formFile" />
+                                        <input name="dokumen_kak" class="form-control font-form" type="file"
+                                            id="formFile" />
                                         @error('dokumen_kak')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -80,14 +83,16 @@
 
                                 <!-- Unduh Template Memo -->
                                 <div class="mb-1">
-                                    <a href="{{ route('unit.template.download', ['filename' => 'Memo']) }}" class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
+                                    <a href="{{ route('template.download', ['filename' => 'Memo']) }}"
+                                        class="btn-link btn-sm fw-normal"><small>Unduh Template Memo</small></a>
                                 </div>
 
                                 <!-- Upload Memo -->
                                 <div class="row mb-3">
                                     <label for="inputNumber" class="col-sm-2 col-form-label">Upload Memo</label>
                                     <div class="col-sm-10">
-                                        <input name="dokumen_memo" class="form-control font-form" type="file" id="formFile" />
+                                        <input name="dokumen_memo" class="form-control font-form" type="file"
+                                            id="formFile" />
                                         @error('dokumen_memo')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -97,7 +102,8 @@
                                 <!-- Tombol Aksi -->
                                 <div class="row mb-3">
                                     <div class="text-end">
-                                        <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('unit.pengajuan.index') }}'">Batal</button>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="window.location.href='{{ route('unit.pengajuan.index') }}'">Batal</button>
                                         <button type="submit" class="btn btn-primary">Kirim</button>
                                     </div>
                                 </div>
