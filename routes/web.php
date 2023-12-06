@@ -140,7 +140,7 @@ Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
     Route::get('/dashboard/pbj/updating-status/upload-files', [UpdatingStatusPBJController::class, 'uploadFiles'])->name('updatingstatuspbj.upload-files');
 });
 
-Route::middleware(['can:ppk', 'formatUserName'])->group(function () {
+Route::middleware(['can:ppk', 'formatUserName'])->prefix('dashboard')->group(function () {
     // PPK
     Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
     Route::get('/dashboard/ppk/updating-status/details/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
