@@ -84,7 +84,7 @@
                                             class="btn btn-info btn-sm rounded-pill"
                                             onclick="window.location.href='details-unit.html'"
                                         >
-                                            Details
+                                            Detail
                                         </button>
                                     </td>
                                     

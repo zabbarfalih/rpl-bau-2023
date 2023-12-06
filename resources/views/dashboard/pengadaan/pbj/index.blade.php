@@ -59,7 +59,7 @@
                                             <a href={{ route('updatingstatuspbj.details', ['id' => $pengajuan->id]) }}>
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white">
-                                                    Details
+                                                    Detail
                                                 </button>
                                             </a>
                                         </td>
