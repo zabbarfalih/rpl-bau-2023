@@ -129,7 +129,7 @@ Route::middleware(['formatUserName'])->prefix('dashboard/unit')->name('unit.')->
 Route::middleware(['can:admin', 'formatUserName'])->prefix('/dashboard/administrator/pegawai')->name('admin.')->group(function () {
     // Administrator
     Route::get('/', [PegawaiController::class, 'index'])->name('pegawai.index');
-    Route::get('/tambah', [PegawaiController::class, 'create'])->name('pegawai.add');
+    Route::get('/tambah-pegawai', [PegawaiController::class, 'create'])->name('pegawai.add');
 });
 
 Route::middleware(['can:pbj', 'formatUserName'])->group(function () {

@@ -17,10 +17,14 @@ class SubsubmenuSeeder extends Seeder
      */
     public function run()
     {
+        $adminMenuId = Menu::where('name', 'Administrator')->first()->id;
         $unitMenuId = Menu::where('name', 'Unit')->first()->id;
         $pbjMenuId = Menu::where('name', 'PBJ')->first()->id;
         $ppkMenuId = Menu::where('name', 'PPK')->first()->id;
 
+        $pegawaiAdminSubmenuId = Submenu::where('name', 'Pegawai')
+        ->where('menu_id', $adminMenuId)
+        ->first()->id;
         $pengajuanUnitSubmenuId = Submenu::where('name', 'Pengajuan')
         ->where('menu_id', $unitMenuId)
         ->first()->id;
@@ -34,6 +38,11 @@ class SubsubmenuSeeder extends Seeder
 
         
         Subsubmenu::insert([
+            [
+                'submenu_id' => $pegawaiAdminSubmenuId,
+                'name' => 'Tambah Pegawai',
+                'url' => Str::slug('Tambah Pegawai'),
+            ],
             [
                 'submenu_id' => $pengajuanUnitSubmenuId,
                 'name' => 'Tambah Pengajuan',
