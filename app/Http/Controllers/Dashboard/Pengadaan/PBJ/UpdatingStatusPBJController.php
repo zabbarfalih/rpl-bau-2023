@@ -125,6 +125,28 @@ class UpdatingStatusPBJController extends Controller
         //
     }
 
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'uploadFile' => 'required|file',
+            'documentName' => 'required',
+            'dokumen_id' => 'required|exists:dokumen_pengadaans,id',
+        ]);
+
+        $file = $request->file('uploadFile');
+        $filePath = $file->store('public/documents');
+
+        $dokumenPengadaan = DokumenPengadaan::where('id', $request->dokumen_id)->first();
+        if ($dokumenPengadaan) {
+            $dokumenPengadaan->{$request->documentName} = $filePath;
+            $dokumenPengadaan->save();
+            return back()->with('success', 'File uploaded successfully.');
+        } else {
+            return back()->with('error', 'Dokumen Pengadaan not found.');
+        }
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
