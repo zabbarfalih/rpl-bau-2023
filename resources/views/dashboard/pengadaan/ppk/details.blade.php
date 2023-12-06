@@ -434,7 +434,8 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($dokumenPengadaans &&$dokumenPengadaans->dokumen_ssuk_sskk)
+                                                        @if ($dokumenPengadaans &&
+                                                        $dokumenPengadaans->dokumen_ssuk_sskk)
                                                         <a href="{{ Storage::url($dokumenPengadaans->dokumen_ssuk_sskk) }}"
                                                             class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                             Download
