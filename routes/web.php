@@ -132,7 +132,7 @@ Route::middleware(['can:admin', 'formatUserName'])->prefix('/dashboard/administr
     Route::get('/tambah', [PegawaiController::class, 'create'])->name('pegawai.add');
 });
 
-Route::middleware(['pbj', 'formatUserName'])->group(function () {
+Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
     // PBJ
     Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
     Route::get('/dashboard/pbj/updating-status/details/{id}', [UpdatingStatusPBJController::class, 'details'])->name('updatingstatuspbj.details');
@@ -140,7 +140,7 @@ Route::middleware(['pbj', 'formatUserName'])->group(function () {
     Route::post('/dashboard/pbj/updating-status/upload-files', [UpdatingStatusPBJController::class, 'uploadFiles'])->name('updatingstatuspbj.upload-files');
 });
 
-Route::middleware(['ppk', 'formatUserName'])->group(function () {
+Route::middleware(['can:ppk', 'formatUserName'])->group(function () {
     // PPK
     Route::get('/dashboard/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
     Route::get('/dashboard/ppk/updating-status/details/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');

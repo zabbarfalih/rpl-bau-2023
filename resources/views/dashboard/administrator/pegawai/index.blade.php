@@ -18,9 +18,10 @@
                             <a
                                 href={{ route('admin.pegawai.add') }}
                                 class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold border-0"
-                                >+ Tambah Pegawai</a
-                            >
-                        </div>
+                                >
+                                + Tambah Pegawai
+                            </a>
+                        </div>
 
                         <table
                             class="table table-hover display responsive nowrap table-striped font-body-table"
