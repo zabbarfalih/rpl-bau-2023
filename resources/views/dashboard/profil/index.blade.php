@@ -19,8 +19,8 @@
                         class="rounded-circle"
                     />
                     {{-- <h2>Otong Surotong</h2> --}}
-                    <h2>{{ auth()->user()->name }}</h2>
-                    <h3>{{ auth()->user()->nip }}</h3>
+                    <h2 class="text-center">{{ auth()->user()->name }}</h2>
+                    <h3 class="text-center">{{ auth()->user()->nip }}</h3>
                     </div>
                 </div>
             </div>
