@@ -5,12 +5,11 @@
     <x-slot name="js_head">
     </x-slot>
 
-    {{-- <style>
-      #tahap2,
-      #tahap3 {
-        display: none;
+    <style>
+      .table-container {
+        overflow-x: auto;
       }
-    </style> --}}
+    </style>
 
     <section class="section dashboard">
         <div class="row">
@@ -114,7 +113,7 @@
                                   Tanggal Kegiatan
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->tanggal_kegiatan }}
+                                  {{ \Carbon\Carbon::parse($spj->tanggal_kegiatan)->isoFormat('D MMMM Y') }}
                                 </div>
                               </div>
 
@@ -174,7 +173,7 @@
                                   Tanggal Pencairan Dana
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->tanggal_transfer }}
+                                  {{ \Carbon\Carbon::parse($spj->tanggal_transfer)->isoFormat('D MMMM Y') }}
                                 </div>
                               </div>
                               @endif
@@ -250,7 +249,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                              <form method="post" action="{{ url('/setujui-spj/' . $spj->id) }}">
+                              <form method="post" action="{{ url('/dashboard/tim-keuangan/konfirmasi-spj/setujui-spj/' . $spj->id) }}">
                                 @csrf
                                 <input
                                 type="hidden"
@@ -289,7 +288,7 @@
                       @else
                           <p>Anda telah melakukan konfirmasi pencairan dana</p>
                       @endif
-                      <form method="post" action="{{ url('/transfer-spj/' . $spj->id) }}">
+                      <form method="post" action="{{ url('/dashboard/tim-keuangan/konfirmasi-spj/transfer-spj/' . $spj->id) }}">
                         @csrf
                         <input
                             type="hidden"
@@ -324,7 +323,7 @@
                       <p>Proses pengajuan SPJ telah selsai</p>
                       <div class="finish">
                         <div class="download">
-                          <a href="{{ url('/download-spj-pdf/' . $spj->id) }}" target="_blank"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
+                          <a href="{{ url('/dashboard/tim-keuangan/konfirmasi-spj/download-spj-pdf/' . $spj->id) }}" target="_blank"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
                         </div>
                       </div>
                     </div>
@@ -341,7 +340,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <form method="post" action="{{ url('/tolak-spj/' . $spj->id) }}">
+                        <form method="post" action="{{ url('/dashboard/tim-keuangan/konfirmasi-spj/tolak-spj/' . $spj->id) }}">
                           @csrf
                           <div class="col-sm-100">
                             <textarea name="keterangan" class="form-control" style="height: 100px" placeholder="Tulis pesan penolakan ..."></textarea>
@@ -377,40 +376,47 @@
             <div class="card-body">
               <!-- Table with stripped rows -->
               @if(!$tabelspj->isEmpty())
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">Nama Dosen</th>
-                    <th scope="col">Golongan</th>
-                    <th scope="col">Rate Honor</th>
-                    <th scope="col">SKS Wajib</th>
-                    <th scope="col">SKS Hadir</th>
-                    <th scope="col">SKS Dibayar</th>
-                    <th scope="col">Jumlah Bruto</th>
-                    <th scope="col">Pajak</th>
-                    <th scope="col">Jumlah Diterima</th>
-                    <th scope="col">Nomor Rekening</th>
-                    <th scope="col">Nama Rekening</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($tabelspj as $item)
+              <div class="table-container">
+                <table class="table datatable">
+                  <thead>
                     <tr>
-                      <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
-                      <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
-                      <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
-                      <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
-                      <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
-                      <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
-                      <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
-                      <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
-                      <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
-                      <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
-                      <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
+                      <th scope="col">No.</th>
+                      <th scope="col">Nama Dosen</th>
+                      <th scope="col">Golongan</th>
+                      <th scope="col">Rate Honor</th>
+                      <th scope="col">SKS Wajib</th>
+                      <th scope="col">SKS Hadir</th>
+                      <th scope="col">SKS Dibayar</th>
+                      <th scope="col">Jumlah Bruto</th>
+                      <th scope="col">Pajak</th>
+                      <th scope="col">Jumlah Diterima</th>
+                      <th scope="col">Nomor Rekening</th>
+                      <th scope="col">Nama Rekening</th>
                     </tr>
-                  @endforeach
-                </tbody>                
-              </table>
+                  </thead>
+                  <tbody>
+                    @php
+                      $counter = 1;
+                    @endphp
+                    @foreach ($tabelspj as $item)
+                      <tr>
+                        <td>{{ $counter++ }}.</td>
+                        <td>{{ isset($item->nama_dosen) ? $item->nama_dosen : '' }}</td>
+                        <td>{{ isset($item->golongan) ? $item->golongan : '' }}</td>
+                        <td>{{ isset($item->rate_honor) ? $item->rate_honor : '' }}</td>
+                        <td>{{ isset($item->sks_wajib) ? $item->sks_wajib : '' }}</td>
+                        <td>{{ isset($item->sks_hadir) ? $item->sks_hadir : '' }}</td>
+                        <td>{{ isset($item->sks_dibayar) ? $item->sks_dibayar : '' }}</td>
+                        <td>{{ isset($item->jumlah_bruto) ? $item->jumlah_bruto : '' }}</td>
+                        <td>{{ isset($item->pajak) ? $item->pajak : '' }}</td>
+                        <td>{{ isset($item->jumlah_diterima) ? $item->jumlah_diterima : '' }}</td>
+                        <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
+                        <td>{{ isset($item->nama_rekening) ? $item->nama_rekening : '' }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>                
+                </table>
+              </div>
             @else
             <div class="alert alert-danger col-lg-12 m-2 mt-3" role="alert">
               Pegawai Belum Mengunggah dokumen Excel.

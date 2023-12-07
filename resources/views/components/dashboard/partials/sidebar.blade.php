@@ -99,14 +99,14 @@
             @can('tim keuangan')
                 @if ($menu->name === 'Tim Keuangan')
                     <li class="nav-item">
-                        @if($menu->submenus->isNotEmpty())
+                        @if($menu->submenu->isNotEmpty())
                             <a class="nav-link {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $menu->url }}-nav" data-bs-toggle="collapse" href="#">
                                 <i class="{{ $menu->icon }}"></i>
                                 <span>{{ $menu->name }}</span>
                                 <i class="bi bi-chevron-down ms-auto"></i>
                             </a>
                             <ul id="{{ $menu->url }}-nav" class="nav-content collapse {{ Str::contains(request()->url(), "/dashboard/{$menu->url}") ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
-                                @foreach($menu->submenus as $submenu)
+                                @foreach($menu->submenu as $submenu)
                                     <li>
                                         <a href="/dashboard/{{ $menu->url }}/{{ $submenu->url }}" class="{{ request()->url() === url("/dashboard/{$menu->url}/{$submenu->url}") ? 'active' : '' }}">
                                             <i class="{{ $submenu->icon }}"></i>
