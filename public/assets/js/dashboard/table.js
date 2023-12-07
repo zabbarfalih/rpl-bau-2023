@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    var table = $("#table-bau").DataTable({
+    var tables = $(
+        "#table-bau, #table-bau-revisi, #table-bau-penolakan"
+    ).DataTable({
         scrollX: true,
         responsive: true,
         language: {
@@ -18,5 +20,7 @@ $(document).ready(function () {
         },
     });
 
-    new $.fn.dataTable.FixedHeader(table);
+    tables.each(function () {
+        new $.fn.dataTable.FixedHeader(this);
+    });
 });

@@ -16,7 +16,7 @@
                         <table
                             class="table table-hover display responsive nowrap table-striped font-body-table"
                             style="width: 100%"
-                            id="table-bau-penolakan"
+                            id="table-bau-revisi"
                         >
                             <thead class="header-table">
                                 <tr>
