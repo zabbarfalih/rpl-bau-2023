@@ -46,37 +46,41 @@
                             </thead>
 
                             <tbody>
+                                @php $displayCounter = 0; @endphp
                                 @foreach($listPengajuan as $pengajuan)
-                                <tr>
-                                    <td class="text-center fw-bold align-middle">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td class="fw-bold align-middle text-wrap">
-                                        {{ $pengajuan->user->name }}
-                                    </td>
+                                    @if($pengajuan->status !== 'Ditolak' && $pengajuan->status !== 'Revisi')
+                                    @php $displayCounter++; @endphp
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                {{ $displayCounter }}
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                {{ $pengajuan->user->name }}
+                                            </td>
 
-                                    <td class="text-wrap">
-                                        {{ $pengajuan->nama_pengadaan }}
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        {{ $pengajuan->tanggal_pengadaan_formatted }}
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }}">
-                                            {{ $pengajuan->status }}
-                                        </button>
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        <a href={{ route('updatingstatusppk.details', ['id' => $pengajuan->id]) }}>
-                                            <button
-                                                type="button"
-                                                class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
-                                            >
-                                                Detail
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
+                                            <td class="text-wrap">
+                                                {{ $pengajuan->nama_pengadaan }}
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                {{ $pengajuan->tanggal_pengadaan_formatted }}
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }}">
+                                                    {{ $pengajuan->status }}
+                                                </button>
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <a href={{ route('updatingstatusppk.details', ['id' => $pengajuan->id]) }}>
+                                                    <button
+                                                        type="button"
+                                                        class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
+                                                    >
+                                                        Detail
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

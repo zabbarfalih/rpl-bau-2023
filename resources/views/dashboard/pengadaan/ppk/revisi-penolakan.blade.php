@@ -39,11 +39,13 @@
                             </thead>
 
                             <tbody>
+                                @php $displayCounter1 = 0; @endphp
                                 @foreach($listPenolakan as $penolakan)
                                     @if($penolakan->pengadaan->status === 'Revisi')
+                                    @php $displayCounter1++; @endphp
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
-                                                {{ $loop->iteration }}
+                                                {{ $displayCounter1 }}
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 {{ $penolakan->pengadaan->user->name }}
@@ -101,11 +103,13 @@
                             </thead>
 
                             <tbody>
+                                @php $displayCounter2 = 0; @endphp
                                 @foreach($listPenolakan as $penolakan)
                                     @if($penolakan->pengadaan->status === 'Ditolak')
+                                    @php $displayCounter2++; @endphp
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
-                                                {{ $loop->iteration }}
+                                                {{ $displayCounter2 }}
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 {{ $penolakan->pengadaan->user->name }}
