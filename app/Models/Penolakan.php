@@ -11,7 +11,6 @@ class Penolakan extends Model
 
     protected $fillable = [
         'pengadaan_id',
-        'user_id',
         'alasan_penolakan',
         'tanggal_penolakan',
     ];
@@ -19,10 +18,5 @@ class Penolakan extends Model
     public function pengadaan()
     {
         return $this->belongsTo(Pengadaan::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

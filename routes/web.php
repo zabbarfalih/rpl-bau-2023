@@ -4,15 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
 
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
+use App\Http\Controllers\Dashboard\Pengadaan\DokumenController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjPdController;
+
+
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjTrController;
-
-
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
-use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjTrController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjPdController;
+use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjTrController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\PengajuanController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\PengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
@@ -24,9 +25,10 @@ use App\Http\Controllers\Dashboard\Keuangan\SKP\DetailPengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\DetailPengajuanSpjController;
 use App\Http\Controllers\Dashboard\Pengadaan\PBJ\UpdatingStatusPBJController;
 use App\Http\Controllers\Dashboard\Pengadaan\PPK\UpdatingStatusPPKController;
+use App\Http\Controllers\Dashboard\Pengadaan\PPK\RevisiPenolakanPPKController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSkpController;
-use App\Http\Controllers\Dashboard\Pengadaan\DokumenController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSPjController;
+use App\Http\Controllers\Dashboard\Pengadaan\Unit\RevisiPenolakanUnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,7 +89,6 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::get('/skp/info-pengajuan-skp/detail', [DetailPengajuanSkpController::class, 'index'])->name('skp.detail');
 
     // Tim Keuangan
-
     Route::get('/tim-keuangan/konfirmasi-spj', [KonfirmasiSPjController::class, 'index'])->name('konfirmasipengajuanspj.index');
     Route::get('/tim-keuangan/konfirmasi-spj/detail-spj', [KonfirmasiSPjController::class, 'detail'])->name('konfirmasipengajuanspj.detail');
     Route::get('/tim-keuangan/konfirmasi-spj/{spj}', [KonfirmasiSPjController::class, 'show'])->middleware('auth')->name('konfirmasi-spj.show');
@@ -108,8 +109,6 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::post('/tim-keuangan/konfirmasi-spjpd/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjPd']);
     Route::get('/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjPd']);
 
-
-
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
     Route::get('/dashboard/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
 });
@@ -121,6 +120,7 @@ Route::middleware(['formatUserName'])->prefix('dashboard/unit')->name('unit.')->
         Route::get('/pengajuan/detail/{id}', 'details')->name('pengajuan.details');
         Route::get('/pengajuan/tambah-pengajuan', 'create')->name('pengajuan.add');
         Route::post('/pengajuan/kirim-form', 'kirimForm')->name('pengajuan.kirim-form');
+        Route::get('/revisi-penolakan', [RevisiPenolakanUnitController::class, 'index'])->name('revisi-penolakanunit.index');
 
         // Unit -> download template
     });
@@ -144,6 +144,7 @@ Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
 Route::middleware(['can:ppk', 'formatUserName'])->prefix('dashboard')->group(function () {
     // PPK
     Route::get('/ppk/updating-status', [UpdatingStatusPPKController::class, 'index'])->name('updatingstatusppk.index');
+    Route::get('/ppk/revisi-penolakan', [RevisiPenolakanPPKController::class, 'index'])->name('revisi-penolakanppk.index');
     Route::get('/ppk/updating-status/detail/{id}', [UpdatingStatusPPKController::class, 'details'])->name('updatingstatusppk.details');
     Route::get('/ppk/updating-status/download/{nama_dokumen}/{id}', [UpdatingStatusPPKController::class, 'download'])->name('updatingstatusppk.download');
     Route::get('/ppk/updating-status/upload-files', [UpdatingStatusPPKController::class, 'uploadFiles'])->name('updatingstatusppk.upload-files');

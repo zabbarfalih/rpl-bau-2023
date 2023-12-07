@@ -16,7 +16,6 @@ class CreatePenolakansTable extends Migration
         Schema::create('penolakans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pengadaan_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
             $table->text('alasan_penolakan');
             $table->date('tanggal_penolakan');
             $table->timestamps();

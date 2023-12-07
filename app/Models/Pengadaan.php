@@ -30,4 +30,9 @@ class Pengadaan extends Model
     {
         return $this->hasMany(StatusPengadaan::class);
     }
+
+    public function penolakan()
+    {
+        return $this->hasMany(Penolakan::class);
+    }
 }

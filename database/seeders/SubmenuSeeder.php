@@ -37,18 +37,28 @@ class SubmenuSeeder extends Seeder
                 'url' => Str::slug('Pengajuan'),
                 'icon' => 'bi bi-menu-button-wide-fill',
             ],
-
+            [
+                'menu_id' => $unitMenuId,
+                'name' => 'Revisi & Penolakan',
+                'url' => Str::slug('Revisi & Penolakan'),
+                'icon' => 'bi bi-menu-button-wide-fill',
+            ],
             [
                 'menu_id' => $pbjMenuId,
                 'name' => 'Updating Status',
                 'url' => Str::slug('Updating Status'),
                 'icon' => 'bi bi-menu-button-wide-fill',
             ],
-
             [
                 'menu_id' => $ppkMenuId,
                 'name' => 'Updating Status',
                 'url' => Str::slug('Updating Status'),
+                'icon' => 'bi bi-menu-button-wide-fill',
+            ],
+            [
+                'menu_id' => $ppkMenuId,
+                'name' => 'Revisi & Penolakan',
+                'url' => Str::slug('Revisi & Penolakan'),
                 'icon' => 'bi bi-menu-button-wide-fill',
             ],
             [
