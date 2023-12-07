@@ -26,7 +26,7 @@ class UpdatingStatusPPKController extends Controller
             case "Diajukan":
                 return "bg-dark-light text-dark pe-none";
                 break;
-            case "Diterima":
+            case "Diterima PPK":
                 return "bg-primary text-light pe-none";
                 break;
             case "Ditolak":
@@ -114,7 +114,7 @@ class UpdatingStatusPPKController extends Controller
 
         //Mencari pengadaan yang tepat
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
-        Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
+        Log::info('Pengadaan data ID: ' . $pengadaan->status);
 
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
         $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
@@ -126,11 +126,10 @@ class UpdatingStatusPPKController extends Controller
         //Cek Semua Status Dokumen
         $statusDokumen = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
         $statusesWithDates = $statusDokumen->mapWithKeys(function ($item) {
-            // Format the date with Indonesian month names
             return [$item->status => Carbon::parse($item->changed_at)->translatedFormat('d') . '-' . Carbon::parse($item->changed_at)->translatedFormat('m') . '-' . Carbon::parse($item->changed_at)->translatedFormat('Y')];
         });
         Log::info('Dokumen Pengadaan data: ' . $statusesWithDates);
-        $checkStatuses = ['Diajukan', 'Diterima PPK', 'Ditolak', 'Direvisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan'];
+        $checkStatuses = ['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan'];
 
 
         return view('dashboard.pengadaan.ppk.details', [
@@ -144,6 +143,81 @@ class UpdatingStatusPPKController extends Controller
         ]);
     }
 
+    public function updateStatus($pengadaanId, $penyelenggara)
+    {
+        $pengadaan = Pengadaan::findOrFail($pengadaanId);
+        Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
+        Log::info('Pengadaan data Status: ' . $pengadaan->status);
+        try {
+            switch ($pengadaan->status) {
+                case 'Diajukan':
+                    //bisa diterima ppk , ditolak ataupun direvisi
+                    $newStatus = 'Diterima PPK';
+                    break;
+                case 'Diterima PPK':
+                    $newStatus = 'Diproses';
+                    if ($penyelenggara == 3) {
+                        $pengadaan->penyelenggara = 3;
+                        $pengadaan->save();
+                        Log::info("Penyelenggara berhasil diubah ke PBJ");
+                    } elseif ($penyelenggara == 4) {
+                        $pengadaan->penyelenggara = 4;
+                        $pengadaan->save();
+                        Log::info("Penyelenggara berhasil diubah ke PPK");
+                    }
+                    break;
+                case 'Diproses':
+                    $newStatus = 'Dilaksanakan';
+                    break;
+                case 'Dilaksanakan':
+                    $newStatus = "Selesai";
+                    break;
+                case 'Selesai':
+                    $newStatus = "Diserahkan";
+                    break;
+                default:
+                    // Handle other cases or do nothing
+                    Log::info('New Status gagal');
+                    return abort(404);
+            }
+            Log::info('Status Baru : ' . $newStatus);
+            $statusPengadaan = new StatusPengadaan;
+            $statusPengadaan->pengadaan_id = $pengadaanId;
+            $statusPengadaan->status = $newStatus;
+            $statusPengadaan->changed_at = now();
+            $statusPengadaan->save();
+            Log::info('Status Pengadaan Berhasil Disimpan');
+            Log::info('Selesai');
+        } catch (\Exception $e) {
+            Log::info('Status Pengadaan gagal ');
+            return abort(404);
+        }
+    }
+
+    public function tolak(Request $request)
+    {
+        // Membuat penolakan baru
+        try {
+            $penolakan = new Penolakan();
+            $penolakan->pengadaan_id = $request->input('pengadaan_id');
+            $penolakan->alasan_penolakan = $request->input('alasan_penolakan');
+            $penolakan->tanggal_penolakan = now(); // Atau tanggal spesifik jika ada
+            $penolakan->save();
+            Log::info("Penolakan berhasil ditambah" . $penolakan->pengadaan_id);
+            // Menambahkan status pengadaan
+            $statusPengadaan = new StatusPengadaan();
+            $statusPengadaan->pengadaan_id = $request->input('pengadaan_id');
+            $statusPengadaan->status = $request->has('dengan_revisi') ? 'Revisi' : 'Ditolak';
+            $statusPengadaan->changed_at = now();
+            $statusPengadaan->save();
+            Log::info("Penolakan berhasil ditambah dengan ID : " . $statusPengadaan->pengadaan_id);
+        } catch (\Exception $e) {
+            Log::error("Error : " . $e);
+            abort(404);
+        }
+        // Redirect atau response lainnya
+        return redirect()->back();
+    }
     /**
      * Show the form for creating a new resource.
      *

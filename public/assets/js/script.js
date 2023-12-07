@@ -62,59 +62,130 @@ $(document).ready(function () {
     NamaUnit.val("PPK").trigger("change");
 });
 
-document.querySelectorAll(".btn-upload").forEach((item) => {
-    item.addEventListener("click", (event) => {
-        let jenis = event.target.getAttribute("data-jenis");
-        let namaDokumen = event.target.getAttribute("data-nama-dokumen");
-        document.getElementById("jenisDokumen").value = jenis;
-        document.querySelector("#uploadFileModal .alert-heading").textContent =
-            namaDokumen;
-        document.querySelector("#editFileModal .alert-heading").textContent =
-            namaDokumen;
+// document.querySelectorAll(".btn-upload").forEach((item) => {
+//     item.addEventListener("click", (event) => {
+//         let jenis = event.target.getAttribute("data-jenis");
+//         let namaDokumen = event.target.getAttribute("data-nama-dokumen");
+//         document.getElementById("jenisDokumen").value = jenis;
+//         document.querySelector("#uploadFileModal .alert-heading").textContent =
+//             namaDokumen;
+//         document.querySelector("#editFileModal .alert-heading").textContent =
+//             namaDokumen;
+//     });
+// });
+
+let isRequestSent = false;
+document
+    .getElementById("confirmButton")
+    .addEventListener("click", function (e) {
+        e.preventDefault();
+        if (!isRequestSent) {
+            isRequestSent = true;
+            var url = this.getAttribute("data-url");
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+            }).then((response) => {
+                if (response.ok) {
+                    location.reload();
+                }
+            });
+        }
     });
-});
+document
+    .getElementById("ppkConfirmButton")
+    .addEventListener("click", function (e) {
+        e.preventDefault();
+        if (!isRequestSent) {
+            isRequestSent = true;
+            var url = this.getAttribute("data-url");
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+            }).then((response) => {
+                if (response.ok) {
+                    location.reload();
+                }
+            });
+        }
+    });
+document
+    .getElementById("pbjConfirmButton")
+    .addEventListener("click", function (e) {
+        e.preventDefault();
+        if (!isRequestSent) {
+            isRequestSent = true;
+            var url = this.getAttribute("data-url");
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+            }).then((response) => {
+                if (response.ok) {
+                    location.reload();
+                }
+            });
+        }
+    });
 
 function showRemoveButtonMemo() {
-    var fileInputMemo = document.getElementById('formFileMemo');
-    var removeButtonMemo = document.getElementById('removeButtonMemo');
-    var fileErrorMessageMemo = document.getElementById('fileErrorMessageMemo');
+    var fileInputMemo = document.getElementById("formFileMemo");
+    var removeButtonMemo = document.getElementById("removeButtonMemo");
+    var fileErrorMessageMemo = document.getElementById("fileErrorMessageMemo");
 
     if (fileInputMemo.files.length > 0) {
-        removeButtonMemo.style.display = 'inline-block';
-        fileErrorMessageMemo.innerHTML = '';
-        fileInputMemo.setAttribute('disabled', true);
+        removeButtonMemo.style.display = "inline-block";
+        fileErrorMessageMemo.innerHTML = "";
+        fileInputMemo.setAttribute("disabled", true);
     } else {
-        removeButtonMemo.style.display = 'none';
-        fileInputMemo.removeAttribute('disabled');
+        removeButtonMemo.style.display = "none";
+        fileInputMemo.removeAttribute("disabled");
     }
 }
 
 function removeFileMemo() {
-    var fileInputMemo = document.getElementById('formFileMemo');
-    var removeButtonMemo = document.getElementById('removeButtonMemo');
+    var fileInputMemo = document.getElementById("formFileMemo");
+    var removeButtonMemo = document.getElementById("removeButtonMemo");
 
-    fileInputMemo.value = ''; // Clear the selected file
-    removeButtonMemo.style.display = 'none';
-    fileInputMemo.removeAttribute('disabled');
+    fileInputMemo.value = ""; // Clear the selected file
+    removeButtonMemo.style.display = "none";
+    fileInputMemo.removeAttribute("disabled");
 }
 
 function showRemoveButton() {
-    var fileInput = document.getElementById('formFile');
-    var removeButton = document.getElementById('removeButton');
-    var fileErrorMessage = document.getElementById('fileErrorMessage');
+    var fileInput = document.getElementById("formFile");
+    var removeButton = document.getElementById("removeButton");
+    var fileErrorMessage = document.getElementById("fileErrorMessage");
 
     if (fileInput.files.length > 0) {
-        removeButton.style.display = 'inline-block';
-        fileErrorMessage.innerHTML = '';
+        removeButton.style.display = "inline-block";
+        fileErrorMessage.innerHTML = "";
     } else {
-        removeButton.style.display = 'none';
+        removeButton.style.display = "none";
     }
 }
 
 function removeFile() {
-    var fileInput = document.getElementById('formFile');
-    var removeButton = document.getElementById('removeButton');
+    var fileInput = document.getElementById("formFile");
+    var removeButton = document.getElementById("removeButton");
 
-    fileInput.value = ''; // Clear the selected file
-    removeButton.style.display = 'none';
+    fileInput.value = ""; // Clear the selected file
+    removeButton.style.display = "none";
 }

@@ -11,6 +11,7 @@ use App\Models\Dokumen;
 use App\Models\Pengadaan;
 use Illuminate\Http\Request;
 use App\Models\DokumenPengadaan;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -127,27 +128,35 @@ class UpdatingStatusPBJController extends Controller
 
     public function upload(Request $request)
     {
-        $request->validate([
-            'uploadFile' => 'required|file|max:2048',
-            'documentName' => 'required|string',
-            'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
-    ]);
+        try {
+            $request->validate([
+                'uploadFile' => 'required|file|max:2048',
+                'documentName' => 'required|string',
+                'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
+            ]);
 
-        $file = $request->file('uploadFile');
-        $timestamp = now()->timestamp;
-        $fileName = $timestamp . '_' .$file->getClientOriginalName(); // Use the original filename for storage
+            $file = $request->file('uploadFile');
+            $timestamp = now()->timestamp;
+            $fileName = $timestamp . '_' . $file->getClientOriginalName(); // Use the original filename for storage
+            Log::info('Uploading file: ' . $fileName); // Log file name
 
-        $filePath = $file->storeAs('public/documents', $fileName);
+            $filePath = $file->storeAs('public/documents', $fileName);
 
-        $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $request->dokumen_id)->first();
-        if (!$dokumenPengadaan) {
-            return back()->with('error', 'Dokumen Pengadaan not found.');
+            $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $request->dokumen_id)->first();
+            if (!$dokumenPengadaan) {
+                Log::error('Dokumen Pengadaan not found for dokumen_id: ' . $request->dokumen_id);
+                return back()->with('error', 'Dokumen Pengadaan not found.');
+            }
+
+            $dokumenPengadaan->{$request->documentName} = $filePath;
+            $dokumenPengadaan->save();
+
+            Log::info('File uploaded successfully: ' . $filePath); // Log success message
+            return back()->with('success', 'File uploaded successfully.');
+        } catch (\Exception $e) {
+            Log::error('File upload error: ' . $e->getMessage()); // Log exception
+            return back()->with('error', 'File upload failed.');
         }
-
-        $dokumenPengadaan->{$request->documentName} = $filePath;
-        $dokumenPengadaan->save();
-
-        return back()->with('success', 'File uploaded successfully.');
     }
 
     public function edit(Request $request)
@@ -156,11 +165,11 @@ class UpdatingStatusPBJController extends Controller
             'uploadFile' => 'required|file|max:2048',
             'documentName' => 'required|string',
             'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
-    ]);
+        ]);
 
         $file = $request->file('uploadFile');
         $timestamp = now()->timestamp;
-        $fileName = $timestamp . '_' .$file->getClientOriginalName(); // Use the original filename for storage
+        $fileName = $timestamp . '_' . $file->getClientOriginalName(); // Use the original filename for storage
 
         $filePath = $file->storeAs('public/documents', $fileName);
 
@@ -245,5 +254,4 @@ class UpdatingStatusPBJController extends Controller
     {
         //
     }
-
 }
