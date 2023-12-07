@@ -128,23 +128,77 @@ class UpdatingStatusPBJController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'uploadFile' => 'required|file',
-            'documentName' => 'required',
-            'dokumen_id' => 'required|exists:dokumen_pengadaans,id',
-        ]);
+            'uploadFile' => 'required|file|max:2048',
+            'documentName' => 'required|string',
+            'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
+    ]);
 
         $file = $request->file('uploadFile');
-        $filePath = $file->store('public/documents');
+        $timestamp = now()->timestamp;
+        $fileName = $timestamp . '_' .$file->getClientOriginalName(); // Use the original filename for storage
 
-        $dokumenPengadaan = DokumenPengadaan::where('id', $request->dokumen_id)->first();
-        if ($dokumenPengadaan) {
-            $dokumenPengadaan->{$request->documentName} = $filePath;
-            $dokumenPengadaan->save();
-            return back()->with('success', 'File uploaded successfully.');
-        } else {
+        $filePath = $file->storeAs('public/documents', $fileName);
+
+        $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $request->dokumen_id)->first();
+        if (!$dokumenPengadaan) {
             return back()->with('error', 'Dokumen Pengadaan not found.');
         }
+
+        $dokumenPengadaan->{$request->documentName} = $filePath;
+        $dokumenPengadaan->save();
+
+        return back()->with('success', 'File uploaded successfully.');
     }
+
+    public function edit(Request $request)
+    {
+        $request->validate([
+            'uploadFile' => 'required|file|max:2048',
+            'documentName' => 'required|string',
+            'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
+    ]);
+
+        $file = $request->file('uploadFile');
+        $timestamp = now()->timestamp;
+        $fileName = $timestamp . '_' .$file->getClientOriginalName(); // Use the original filename for storage
+
+        $filePath = $file->storeAs('public/documents', $fileName);
+
+        $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $request->dokumen_id)->first();
+        if (!$dokumenPengadaan) {
+            return back()->with('error', 'Dokumen Pengadaan not found.');
+        }
+
+        $dokumenPengadaan->{$request->documentName} = $filePath;
+        $dokumenPengadaan->save();
+
+        return back()->with('success', 'File uploaded successfully.');
+    }
+
+    public function downloadFile($dokumenId, $documentName)
+    {
+        // Mencari dokumen pengadaan berdasarkan dokumen_id
+        $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
+
+        if (!$dokumenPengadaan) {
+            // Jika tidak ditemukan, kembalikan error atau lakukan penanganan kesalahan lainnya
+            return back()->with('error', 'Dokumen Pengadaan not found.');
+        }
+
+        // Mengambil path file dari properti yang dinamis berdasarkan documentName
+        $filePath = $dokumenPengadaan->$documentName;
+
+        if (!Storage::exists($filePath)) {
+            // Jika file tidak ditemukan di storage, kembalikan error
+            return back()->with('error', 'File not found.');
+        }
+
+        $fileName = basename($filePath); // Mendapatkan hanya nama file
+
+        // Mengembalikan file untuk di-download
+        return Storage::download($filePath, $fileName);
+    }
+
 
 
     /**
@@ -165,17 +219,6 @@ class UpdatingStatusPBJController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

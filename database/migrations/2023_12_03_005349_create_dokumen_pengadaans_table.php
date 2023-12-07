@@ -16,8 +16,8 @@ class CreateDokumenPengadaansTable extends Migration
         Schema::create('dokumen_pengadaans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('dokumen_id')->constrained()->onDelete('cascade');
-            $table->string('dokumen_kak')->nullable();
             $table->string('dokumen_memo')->nullable();
+            $table->string('dokumen_kak')->nullable();
             $table->string('dokumen_identifikasi_kebutuhan')->nullable();
             $table->string('dokumen_perencanaan_pengadaan')->nullable();
             $table->string('dokumen_hps')->nullable();
@@ -30,7 +30,7 @@ class CreateDokumenPengadaansTable extends Migration
             $table->string('dokumen_surat_permintaan')->nullable();
             $table->string('dokumen_pengadaan_langsung')->nullable();
             $table->string('dokumen_bast')->nullable();
-            $table->double('harga_anggaran')->nullable(); //untuk dibawah atau di atas 50 juta
+            $table->double('harga_anggaran')->nullable();
             $table->timestamps();
         });
     }
