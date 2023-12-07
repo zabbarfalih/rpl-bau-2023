@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Dokumen;
 use App\Models\Pengadaan;
 use Illuminate\Http\Request;
+use App\Models\StatusPengadaan;
 use App\Models\DokumenPengadaan;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -86,11 +87,18 @@ class UpdatingStatusPBJController extends Controller
         $dokumen_pengadaan = DokumenPengadaan::find($id);
         $pengadaan = Pengadaan::where('id', $dokumen->pengadaan_id)->first();
 
+        $statusDokumen = StatusPengadaan::where('pengadaan_id', $id)->get();
+        $statusesWithDates = $statusDokumen->mapWithKeys(function ($item) {
+            return [$item->status => Carbon::parse($item->changed_at)->translatedFormat('d') . '-' . Carbon::parse($item->changed_at)->translatedFormat('m') . '-' . Carbon::parse($item->changed_at)->translatedFormat('Y')];
+        });
+        $checkStatuses = ['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan'];
         return view('dashboard.pengadaan.pbj.details', [
             'menu' => $menu,
             'dokumen' => $dokumen,
             'roles' => $roles,
             'dokumen_pengadaan' => $dokumen_pengadaan,
+            'statusesWithDates' => $statusesWithDates,
+            'checkStatuses' => $checkStatuses,
             'pengadaan' => $pengadaan,
             'dokumenPengadaanId' => $dokumen_pengadaan->id
         ]);
@@ -115,15 +123,6 @@ class UpdatingStatusPBJController extends Controller
         $fileName = $dokumen->kak . time() . '.pdf';
 
         return response()->download($filePath, $fileName, $headers);
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     public function upload(Request $request)
@@ -208,7 +207,14 @@ class UpdatingStatusPBJController extends Controller
         return Storage::download($filePath, $fileName);
     }
 
+    public function updateStatus(Request $request) {
+        $pengadaanId = $request->input('pengadaan_id');
+        $pengadaan = Pengadaan::findOrFail($pengadaanId);
+        $pengadaan->status = 'Selesai';
+        $pengadaan->save();
 
+        return redirect()->back()->with('success', 'Status updated successfully');
+    }
 
     /**
      * Store a newly created resource in storage.

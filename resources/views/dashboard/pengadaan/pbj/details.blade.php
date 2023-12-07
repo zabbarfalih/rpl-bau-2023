@@ -238,30 +238,33 @@
                                     </tbody>
                                 </table>
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal">Selesai</a>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
                                 </div>
-                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center">
-                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                    Konfirmasi</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin ?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</a>
-                                                <a href="" type="button" class="btn btn-success">Yakin</a>
-                                            </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
+                                    aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah anda yakin ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
+                                            <form action="{{ route('updateStatus') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
+                                                <button type="submit" class="btn btn-success">Yakin</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
+                                </div>
+                                <!-- end Modal -->
                                 <br><br>
                             @elseif($pengadaan->status == 'Selesai')
                                 <p>Setelah Selsai (saat ini status Selesai)</p>
@@ -444,29 +447,35 @@
                                 </table>
                                 <div class="text-center">
                                     <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal">Selesai</a>
+                                        data-bs-target="#setujuModal1">Selesai</a>
                                 </div>
-                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center">
-                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                    Konfirmasi</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin ?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</a>
-                                                <a href="" type="button" class="btn btn-success">Yakin</a>
+                                <div class="modal fade" id="setujuModal1" aria-hidden="true"
+                                        data-bs-keyboard="false" data-bs-backdrop="static"
+                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title modal-center fw-bolder"
+                                                        id="exampleModalLabel">
+                                                        Konfirmasi</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#" type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Batal</a>
+                                                    <a href="#"  class="btn btn-success"
+                                                        id="confirmButton"
+                                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                                        data-id="{{ $pengadaan->id }}">Yakin</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                                 <br><br>
                             @endif
                     @else
@@ -831,30 +840,33 @@
                                     </tbody>
                                 </table>
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal">Selesai</a>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
                                 </div>
-                                <div class="modal fade" id="setujuModal" data-bs-backdrop="static" tabindex="-1"
-                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center">
-                                                <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">
-                                                    Konfirmasi</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin ?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</a>
-                                                <a href="" type="button" class="btn btn-success">Yakin</a>
-                                            </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
+                                    aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah anda yakin ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
+                                            <form action="{{ route('updateStatus') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
+                                                <button type="submit" class="btn btn-success">Yakin</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
+                                </div>
+
                                 <br>
                                 <br>
                             @elseif($pengadaan->status == 'Selesai')
@@ -1087,7 +1099,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Surat Permintaan
                                             </td>
-
                                             <td class="text-wrap">
                                                 Template
                                             </td>
@@ -1125,13 +1136,13 @@
                             @endif
                     @endif
 
-                                {{-- Modal untuk Upload File --}}
-                                <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content" style="margin: 10px;">
-                                            <div class="modal-header">
-                                                <h4 class="alert-heading" id="modalTitle">Upload <span id="documentPlaceholder">[document]</span></h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    {{-- Modal untuk Upload File --}}
+                    <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" style="margin: 10px;">
+                                <div class="modal-header">
+                                    <h4 class="alert-heading" id="modalTitle">Upload <span id="documentPlaceholder">[document]</span></h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <form action="{{ route('upload-dokumens') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
@@ -1145,15 +1156,11 @@
                                                     <button type="submit" class="btn btn-primary">Upload</button>
                                                 </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
-
                                 {{-- End Modal Upload File --}}
-
                                 <!-- List group with Advanced Contents -->
-
                             </div>
                         </div>
                     </div>
@@ -1164,94 +1171,92 @@
                 <div class="col-lg-4">
                     <!-- Recent Activity -->
                     <div class="card">
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                    class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="#">Today</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">This Month</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">This Year</a>
-                                </li>
-                            </ul>
-                        </div>
-
                         <div class="card-body">
                             <h5 class="card-title">
-                                Recent Activity <span>| Today</span>
+                                Status Pengadaan
                             </h5>
-
                             <div class="activity">
+                                @if($statusesWithDates->has('Diajukan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">32 min</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diajukan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                                     <div class="activity-content">
-                                        Quia quae rerum
-                                        <a href="#" class="fw-bold text-dark">explicabo officiis</a>
-                                        beatae
+                                        Diajukan
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diterima PPK'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">56 min</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diterima PPK')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
                                     <div class="activity-content">
-                                        Voluptatem blanditiis blanditiis
-                                        eveniet
+                                        Diterima PPK
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diproses'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">2 hrs</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
                                     <div class="activity-content">
-                                        Voluptates corrupti molestias
-                                        voluptatem
+                                        Diproses oleh <p class="fw-bold text-dark">{{$pengadaan->role->name}}</p>
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Dilaksanakan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">1 day</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Dilaksanakan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                                     <div class="activity-content">
-                                        Tempore autem saepe
-                                        <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
-                                        tempore
+                                        Dilaksanakan
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Selesai'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">2 days</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Selesai')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
                                     <div class="activity-content">
-                                        Est sit eum reiciendis
-                                        exercitationem
+                                        Selesai
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diserahkan'))
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">
-                                        4 weeks
+                                        {{$statusesWithDates->get('Diserahkan')}}
                                     </div>
                                     <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
                                     <div class="activity-content">
-                                        Dicta dolorem harum nulla eius. Ut
-                                        quidem quidem sit quas
+                                        Pengadaan telah diserahkan kepada Unit
                                     </div>
                                 </div>
+                                @endif
+                                @endif
+                                @endif
+                                @endif
+                                @elseif($statusesWithDates->has('Revisi'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">
+                                        {{$statusesWithDates->get('Revisi')}}
+                                    </div>
+                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                    <div class="activity-content">
+                                        Pengadaan ditolak dengan revisi
+                                    </div>
+                                </div>
+                                @elseif($statusesWithDates->has('Ditolak'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">
+                                        {{$statusesWithDates->get('Ditolak')}}
+                                    </div>
+                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                    <div class="activity-content">
+                                        Pengadaan ditolak tanpa revisi
+                                    </div>
+                                </div>
+                                @endif
+                                @endif
                                 <!-- End activity item-->
                             </div>
                         </div>
@@ -1259,26 +1264,6 @@
                     <!-- End Recent Activity -->
                 </div>
                 <!-- End Right side columns -->
-            </div>
-        </div>
-
-        <div class="modal fade" id="setujuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Apakah anda yakin ?
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">Batal</a>
-                        <a href="" type="button" class="btn btn-success">Yakin</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1294,6 +1279,13 @@
                     $(this).find('#documentName').val(documentName);
                     $(this).find('#documentPlaceholder').text(documentNames);
                 });
+            });
+        </script>
+        <script>
+            $('#setujuModalA').on('show.bs.modal', function (event) {
+                let button = $(event.relatedTarget);
+                let pengadaanId = button.data('pengadaan-id');
+                $('#pengadaanIdInput').val(pengadaanId);
             });
         </script>
     </x-slot>
