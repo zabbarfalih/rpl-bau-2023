@@ -24,6 +24,7 @@ class DokumenPengadaan extends Model
         'dokumen_penawaran_pakta_formulir',
         'dokumen_surat_permintaan',
         'dokumen_pengadaan_langsung',
+        'dokumen_serah_terima',
         'dokumen_bast',
         'harga_anggaran'
     ];
