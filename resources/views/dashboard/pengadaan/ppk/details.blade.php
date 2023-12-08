@@ -50,33 +50,6 @@
                                     </div>
                                 </div>
 
-                                {{-- Modal untuk Upload File --}}
-                                <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content" style="margin: 10px;">
-                                            <div class="modal-header">
-                                                <h4 class="alert-heading" id="modalTitle">Upload <span id="documentPlaceholder">[document]</span></h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="{{ route('upload-dokumens') }}" method="post" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="modal-body">
-                                                    <input type="file" class="file-upload" name="uploadFile" />
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="hidden" name="documentName" id="documentName">
-                                                    <input type="hidden" name="dokumen_id" id="dokumen_id" value="{{ $dokumenPengadaans->dokumen_id }}">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-primary">Upload</button>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{-- End Modal Upload File --}}
-
                                 {{-- tampilan unit --}}
                                 <div id="dokumen-unit">
                                     <div class="alert alert-primary d-flex align-items-center" role="alert">
@@ -86,7 +59,6 @@
                                         </svg>
                                         <div>Untuk mengunduh format laporan, silakan tekan download</div>
                                     </div>
-
                                     <table
                                         class="table table-hover display responsive nowrap table-striped font-body-table"
                                         style="width: 100%" {{-- id="table-bau" --}}>
@@ -95,11 +67,9 @@
                                                 <th scope="col" class="text-center align-middle">
                                                     No
                                                 </th>
-
                                                 <th scope="col" class="text-center align-middle text-wrap">
                                                     Nama Dokumen
                                                 </th>
-
                                                 <th scope="col" class="text-center align-middle text-wrap">
                                                     Template
                                                 </th>
@@ -111,62 +81,60 @@
                                                 </th>
                                             </tr>
                                         </thead>
-
                                         <tbody>
-                                            @php $no = 1; @endphp
-                                            <tr>
-                                                <td class="text-center fw-bold align-middle">
-                                                    {{ $no++ }}
-                                                </td>
-                                                <td class="fw-bold align-middle text-wrap">
-                                                    Dokumen KAK
-                                                </td>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        1
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen KAK
+                                                    </td>
 
-                                                <td class="text-wrap text-center align-middle">
-                                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
-                                                    </a>
-                                                </td>
+                                                    <td class="text-wrap text-center align-middle">
 
-                                                <td class="text-center align-middle">
-
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white align-middle text-center">
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_kak))
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen KAK"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_kak']) }}'">
                                                             Download
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                @if(!empty($dokumenPengadaans->dokumen_memo))
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Memo
+                                                    </td>
+
+                                                    <td class="text-wrap">
+                                                        <a
+                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            Template
                                                         </a>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center fw-bold align-middle">
-                                                    {{ $no++ }}
-                                                </td>
-                                                <td class="fw-bold align-middle text-wrap">
-                                                    Dokumen Memo
-                                                </td>
+                                                    </td>
+                                                    <td class="text-center align-middle">
 
-                                                <td class="text-wrap text-center align-middle">
-                                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}">
-
-                                                    </a>
-                                                </td>
-                                                <td class="text-center align-middle">
-
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    @if ($dokumenPengadaans && $dokumenPengadaans->dokumen_perencanaan_pengadaan)
-                                                        <a href="{{ Storage::url($dokumenPengadaans->dokumen_perencanaan_pengadaan) }}"
-                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_memo']) }}'">
                                                             Download
-                                                        </a>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                            </table>
+                                        </div>
 
 
                                 {{-- tampilan ppk --}}
@@ -215,7 +183,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-identifikasi-kebutuhan.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -255,7 +223,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-perencanaan-pengadaan.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -296,7 +264,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-hps.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -376,7 +344,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-undangan.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -415,7 +383,7 @@
 
                                                     <td class="text-wrap">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-ssuk-sskk.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -453,7 +421,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-ikp.pdf']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -491,7 +459,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-ldp-dan-spesifikasi.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -530,7 +498,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-penawaran-pakta-dan-formulir-isian-kualifikasi.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -568,7 +536,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-surat-permintaan.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -606,7 +574,7 @@
 
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-pengadaan-langsung.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -646,7 +614,7 @@
                                                     </td>
                                                     <td class="text-wrap text-center align-middle">
                                                         <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
+                                                            href="{{ route('template.download', ['filename' => 'dokumen-bast.docx']) }}">
                                                             Template
                                                         </a>
                                                     </td>
@@ -679,7 +647,7 @@
                                     </table>
 
                                     <div class="text-center">
-                                        @if (!in_array($pengadaan->status, ['Diajukan', 'Revisi', 'Ditolak']))
+                                        @if (!in_array($pengadaan->status, ['Diajukan', 'Revisi', 'Ditolak','Diserahkan']) && $pengadaan->penyelenggara == 3)
                                             @if ($pengadaan->status == 'Diterima PPK')
                                                 <a href="#" class="btn btn-success" data-bs-toggle="modal"
                                                     data-bs-target="#setujuModalKhusus">Selesai</a>
@@ -690,70 +658,212 @@
                                         @endif
                                     </div>
 
-
-                                    <div class="modal fade" id="setujuModalL" aria-hidden="true"
-                                        data-bs-keyboard="false" data-bs-backdrop="static"
-                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title modal-center fw-bolder"
-                                                        id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="#"  class="btn btn-success"
-                                                        id="confirmButton"
-                                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
-                                                        data-id="{{ $pengadaan->id }}">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal fade" id="setujuModalKhusus" aria-hidden="true"
-                                        data-bs-keyboard="false" data-bs-backdrop="static"
-                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
-                                                        Pelaksana
-                                                        Pengadaan</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body mb-3">
-                                                    Tentukan Pelaksana Pengadaan
-                                                </div>
-                                                <div class="modal-footer d-flex justify-content-center">
-
-                                                    <a class="btn btn-primary me-2"
-                                                        id="ppkConfirmButton"
-                                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => 4]) }}"
-                                                        data-id="{{ $pengadaan->id }}"
-                                                        >PPK</a>
-                                                    <a class="btn btn-primary"
-                                                        id="pbjConfirmButton"
-                                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => 3]) }}"
-                                                        data-id="{{ $pengadaan->id }}">PBJ</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
 
                                 {{-- tampilan pbj --}}
                                 <div id="dokumen-pbj">
+                                    @php $no = 1; @endphp
+                                    @if ($statusesWithDates->has('Dilaksanakan') && $pengadaan->penyelenggara == 3)
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                            width="16" height="16">
+                                            <use xlink:href="#info-fill" />
+                                        </svg>
+                                        <div>Untuk mengunduh format laporan, silakan tekan download</div>
+                                    </div>
+                                    <table
+                                        class="table table-hover display responsive nowrap table-striped font-body-table"
+                                        style="width: 100%" {{-- id="table-bau" --}}>
+                                        <thead class="header-table">
+                                            <tr>
+                                                <th scope="col" class="text-center align-middle">
+                                                    No
+                                                </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Nama Dokumen
+                                                </th>
+                                                <th scope="col" class="text-center align-middle text-wrap">
+                                                    Template
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                                <th scope="col" class="text-center align-middle">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
 
+                                        <tbody>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Undangan
+                                                    </td>
+
+                                                    <td class="text-wrap text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_undangan))
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_undangan']) }}'">
+                                                            Download
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen SSUK SSKK
+                                                    </td>
+
+                                                    <td class="text-wrap">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_ssuk_sskk))
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_ssuk_sskk']) }}'">
+                                                            Download
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen IKP
+                                                    </td>
+
+                                                    <td class="text-wrap text-center align-middle">
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_ikp))
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_ikp']) }}'">
+                                                            Download
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen LDP dan Spesifikasi
+                                                    </td>
+
+                                                    <td class="text-wrap text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_ldp_dan_spesifikasi))
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_ldp_dan_spesifikasi']) }}'">
+                                                            Download
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Penawaran
+                                                    </td>
+
+                                                    <td class="text-wrap text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_penawaran))
+                                                            <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran"
+                                                            onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_penawaran']) }}'">
+                                                            Download
+                                                        </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Surat Permintaan
+                                                    </td>
+
+                                                    <td class="text-wrap text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_surat_permintaan))
+                                                            <button type="button"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan"
+                                                                onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_surat_permintaan']) }}'">
+                                                                Download
+                                                            </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center fw-bold align-middle">
+                                                        {{ $no++ }}
+                                                    </td>
+                                                    <td class="fw-bold align-middle text-wrap">
+                                                        Dokumen Pengadaan Langsung
+                                                    </td>
+
+                                                    <td class="text-wrap text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if(!empty($dokumenPengadaans->dokumen_pengadaan_langsung))
+                                                            <button type="button"
+                                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
+                                                                onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
+                                                                Download
+                                                            </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -905,7 +1015,89 @@
                 </div>
             </div>
         </div>
+        {{-- Modal untuk Upload File --}}
+        <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="margin: 10px;">
+                    <div class="modal-header">
+                        <h4 class="alert-heading" id="modalTitle">Upload <span id="documentPlaceholder">[document]</span></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('upload-dokumens') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="file" class="file-upload" name="uploadFile" />
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="documentName" id="documentName">
+                            <input type="hidden" name="dokumen_id" id="dokumen_id" value="{{ $dokumenPengadaans->dokumen_id }}">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
 
+                </div>
+            </div>
+        </div>
+
+        {{-- Modal Tombol Selesai --}}
+        <div class="modal fade" id="setujuModalL" aria-hidden="true"
+            data-bs-keyboard="false" data-bs-backdrop="static"
+            aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title modal-center fw-bolder"
+                            id="exampleModalLabel">
+                            Konfirmasi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah anda yakin ?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Batal</a>
+                        <a href="#"  class="btn btn-success"
+                            id="confirmButton"
+                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                            data-id="{{ $pengadaan->id }}">Yakin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="setujuModalKhusus" aria-hidden="true"
+            data-bs-keyboard="false" data-bs-backdrop="static"
+            aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+                            Pelaksana
+                            Pengadaan</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mb-3">
+                        Tentukan Pelaksana Pengadaan
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+
+                        <a class="btn btn-primary me-2"
+                            id="ppkConfirmButton"
+                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => 4]) }}"
+                            data-id="{{ $pengadaan->id }}"
+                            >PPK</a>
+                        <a class="btn btn-primary"
+                            id="pbjConfirmButton"
+                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => 3]) }}"
+                            data-id="{{ $pengadaan->id }}">PBJ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </section>
 

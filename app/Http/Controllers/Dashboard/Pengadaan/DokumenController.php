@@ -22,7 +22,7 @@ class DokumenController extends Controller {
     }
 
     public function downloadDokumen($filename) {
-        $path = 'public/templates-dokumen/'.$filename.'.docx';
+        $path = 'public/templates-dokumen/'.$filename;
         if(Storage::exists($path)) {
             Log::info('Download File: '.$filename.' berhasil');
             return Storage::download($path);

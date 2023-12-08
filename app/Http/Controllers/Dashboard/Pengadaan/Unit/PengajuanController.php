@@ -10,16 +10,19 @@ use App\Models\User;
 use App\Models\Dokumen;
 use App\Models\Pengadaan;
 use Illuminate\Http\Request;
+use App\Models\StatusPengadaan;
 use App\Models\DokumenPengadaan;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
-class PengajuanController extends Controller {
-    public function getColorStatus($status) {
-        switch($status) {
+class PengajuanController extends Controller
+{
+    public function getColorStatus($status)
+    {
+        switch ($status) {
             case "Diajukan":
                 return "bg-dark-light text-dark pe-none";
                 break;
@@ -53,16 +56,17 @@ class PengajuanController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         Carbon::setLocale('id');
         $menu = Menu::with('submenu')->get();
         $userId = Auth::id();
         //$listPengajuan = Pengadaan::where('user_id', $userId)->get();
         $listPengajuan = Pengadaan::all();
 
-        foreach($listPengajuan as $pengajuan) {
+        foreach ($listPengajuan as $pengajuan) {
             // Pastikan kolom tanggal pengadaan ada dan bukan null
-            if(!empty($pengajuan->tanggal_pengadaan)) {
+            if (!empty($pengajuan->tanggal_pengadaan)) {
                 // Parse tanggal dan ubah formatnya ke 'tanggal bulan(tulisan) tahun'
                 // contoh: '1 Januari 2023'
                 $pengajuan->tanggal_pengadaan_formatted = Carbon::createFromFormat('Y-m-d', $pengajuan->tanggal_pengadaan)
@@ -87,7 +91,8 @@ class PengajuanController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function details($pengadaanId) {
+    public function details($pengadaanId)
+    {
         $menu = Menu::with('submenu')->get();
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
@@ -105,7 +110,8 @@ class PengajuanController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         $menu = Menu::with('submenu')->get();
         $roles = Role::all();
 
@@ -115,7 +121,8 @@ class PengajuanController extends Controller {
         ]);
     }
 
-    public function kirimForm(Request $request) {
+    public function kirimForm(Request $request)
+    {
         $validatedData = Validator::make($request->all(), [
             'role_id' => 'required|numeric',
             'nama_pengadaan' => 'required|string',
@@ -132,7 +139,7 @@ class PengajuanController extends Controller {
             'dokumen.1.mimes' => 'Dokumen harus dalam format PDF',
         ]);
 
-        if($validatedData->fails()) {
+        if ($validatedData->fails()) {
             return redirect()->back()->withErrors($validatedData)->withInput();
         }
 
@@ -144,41 +151,47 @@ class PengajuanController extends Controller {
             $pengajuan->user_id = $userId;
             $pengajuan->nama_pengadaan = $validatedData['nama_pengadaan'];
             $pengajuan->tanggal_pengadaan = $validatedData['tanggal_pengadaan'];
-            $pengajuan->status = "Diajukan";
             $pengajuan->penyelenggara = 3;
 
-            if($pengajuan->save()) {
-                Log::info('Pengadaan dengan ID: '.$pengajuan->id.' berhasil dibuat.');
+            if ($pengajuan->save()) {
+                Log::info('Pengadaan dengan ID: ' . $pengajuan->id . ' berhasil dibuat.');
+                //Penambahan Status
 
-                    $pathKak = $request->file('dokumen.0')->store('public/dokumen/pengadaan/kak');
-                    $dokumenkak = new Dokumen;
-                    $dokumenkak->pengadaan_id = $pengajuan->id;
-                    $dokumenkak->save();
-                    $dokumenPengadaanKak = new DokumenPengadaan;
-                    $dokumenPengadaanKak->dokumen_id = $dokumenkak->id;
-                    $dokumenPengadaanKak->dokumen_kak = $pathKak;
-                    $dokumenPengadaanKak->save();
-                    Log::info('Dokumen Pengadaan KAK dengan ID: '.$dokumenPengadaanKak->id.' berhasil disimpan.');
+                $statusPengadaan = new StatusPengadaan;
+                $statusPengadaan->pengadaan_id = $pengajuan->id;
+                $statusPengadaan->status = 'Diajukan';
+                $statusPengadaan->changed_at = now();
+                $statusPengadaan->save();
 
-                    if ($request->file('dokumen.1') == null) {
-                        Log::info('Dokumen Pengadaan Memo tidak ada.');
-                    } else {
-                        $dokumenmemo = new Dokumen;
-                        $dokumenmemo->pengadaan_id = $pengajuan->id;
-                        $dokumenmemo->save();
-                        $pathMemo = $request->file('dokumen.1')->store('public/dokumen/pengadaan/memo');
-                        $dokumenPengadaanMemo = new DokumenPengadaan;
-                        $dokumenPengadaanMemo->dokumen_id = $dokumenmemo->id;
-                        $dokumenPengadaanMemo->dokumen_memo = $pathMemo;
-                        $dokumenPengadaanMemo->save();
-                        Log::info('Dokumen Pengadaan Memo dengan ID: '.$dokumenPengadaanMemo->id.' berhasil disimpan.');
-                    }
+                $pathKak = $request->file('dokumen.0')->store('public/dokumen/pengadaan/kak');
+                $dokumenkak = new Dokumen;
+                $dokumenkak->pengadaan_id = $pengajuan->id;
+                $dokumenkak->save();
+                $dokumenPengadaanKak = new DokumenPengadaan;
+                $dokumenPengadaanKak->dokumen_id = $dokumenkak->id;
+                $dokumenPengadaanKak->dokumen_kak = $pathKak;
+                $dokumenPengadaanKak->save();
+                Log::info('Dokumen Pengadaan KAK dengan ID: ' . $dokumenPengadaanKak->id . ' berhasil disimpan.');
 
-                    return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
+                if ($request->file('dokumen.1') == null) {
+                    Log::info('Dokumen Pengadaan Memo tidak ada.');
+                } else {
+                    $dokumenmemo = new Dokumen;
+                    $dokumenmemo->pengadaan_id = $pengajuan->id;
+                    $dokumenmemo->save();
+                    $pathMemo = $request->file('dokumen.1')->store('public/dokumen/pengadaan/memo');
+                    $dokumenPengadaanMemo = new DokumenPengadaan;
+                    $dokumenPengadaanMemo->dokumen_id = $dokumenmemo->id;
+                    $dokumenPengadaanMemo->dokumen_memo = $pathMemo;
+                    $dokumenPengadaanMemo->save();
+                    Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
+                }
+
+                return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
             }
         } catch (\Exception $e) {
-            Log::error('Kesalahan saat menyimpan data: '.$e->getMessage());
-            return back()->with('status.error', 'Terjadi kesalahan saat mengirim form: '.$e->getMessage());
+            Log::error('Kesalahan saat menyimpan data: ' . $e->getMessage());
+            return back()->with('status.error', 'Terjadi kesalahan saat mengirim form: ' . $e->getMessage());
         }
     }
 
@@ -189,7 +202,8 @@ class PengajuanController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         //
     }
 
@@ -199,7 +213,8 @@ class PengajuanController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -209,7 +224,8 @@ class PengajuanController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         //
     }
 
@@ -220,7 +236,8 @@ class PengajuanController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         //
     }
 
@@ -230,7 +247,8 @@ class PengajuanController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         //
     }
 }
