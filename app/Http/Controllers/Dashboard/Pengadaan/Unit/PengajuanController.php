@@ -120,7 +120,39 @@ class PengajuanController extends Controller
             'roles' => $roles,
         ]);
     }
+    public function upload(Request $request)
+    {
+        try {
+            $request->validate([
+                'uploadFile' => 'required|file|max:2048',
+                'documentName' => 'required|string',
+                'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
+            ]);
 
+            $file = $request->file('uploadFile');
+            $timestamp = now()->timestamp;
+            $fileName = $timestamp . '_' . $file->getClientOriginalName(); // Use the original filename for storage
+            Log::info('Uploading file: ' . $fileName); // Log file name
+
+            $filePath = $file->storeAs('public/documents', $fileName);
+
+            $dokumenPengadaan = DokumenPengadaan::where('dokumen_id', $request->dokumen_id)->first();
+            if (!$dokumenPengadaan) {
+                Log::error('Dokumen Pengadaan not found for dokumen_id: ' . $request->dokumen_id);
+                return back()->with('error', 'Dokumen Pengadaan not found.');
+            }
+
+            $dokumenPengadaan->{$request->documentName} = $filePath;
+            $dokumenPengadaan->save();
+
+            Log::info('File uploaded successfully: ' . $filePath); // Log success message
+            return back()->with('success', 'File uploaded successfully.');
+        } catch (\Exception $e) {
+            Log::error('File upload error: ' . $e->getMessage()); // Log exception
+            return back()->with('error', 'File upload failed.');
+        }
+    }
+    
     public function kirimForm(Request $request)
     {
         $validatedData = Validator::make($request->all(), [

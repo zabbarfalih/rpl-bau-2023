@@ -115,10 +115,6 @@
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
-                                                            Template
-                                                        </a>
                                                     </td>
                                                     <td class="text-center align-middle">
 
