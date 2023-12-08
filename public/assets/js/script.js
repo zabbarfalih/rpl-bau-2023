@@ -59,7 +59,7 @@ $(document).ready(function () {
     });
 
     // Trigger change on load
-    NamaUnit.val("PPK").trigger("change");
+    NamaUnit.val("Unit").trigger("change");
 });
 
 // document.querySelectorAll(".btn-upload").forEach((item) => {

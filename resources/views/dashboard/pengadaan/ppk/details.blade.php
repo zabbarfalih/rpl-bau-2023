@@ -41,7 +41,7 @@
                                     <label for="inputNamaUnit" class="col-sm-2 col-form-label">Nama Unit</label>
                                     <div class="col-sm-10">
                                         <select id="inputNamaUnit" class="form-select">
-                                            @foreach ($roles->where('id', '!=', 2) as $role)
+                                            @foreach ($roles as $role)
                                                 <option>
                                                     {{ $role->name }}
                                                 </option>
@@ -182,10 +182,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-identifikasi-kebutuhan.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
 
                                                     <td class="text-center align-middle">
@@ -196,11 +198,13 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                            @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Identifikasi Kebutuhan">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -222,10 +226,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-perencanaan-pengadaan.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_perencanaan_pengadaan))
@@ -235,11 +241,13 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Perencanaan Pengadaan">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -263,10 +271,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-hps.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_hps))
@@ -276,11 +286,13 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen HPS">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -302,10 +314,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'KAK']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_nota_dinas))
@@ -315,11 +329,13 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Nota Dinas">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -343,10 +359,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-undangan.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_undangan))
@@ -356,11 +374,13 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -382,10 +402,12 @@
                                                     </td>
 
                                                     <td class="text-wrap">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-ssuk-sskk.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_ssuk_sskk))
@@ -395,10 +417,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -420,10 +444,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-ikp.pdf']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_ikp))
@@ -433,10 +459,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -458,10 +486,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-ldp-dan-spesifikasi.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_ldp_dan_spesifikasi))
@@ -471,11 +501,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
-
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -497,10 +528,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-penawaran-pakta-dan-formulir-isian-kualifikasi.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_penawaran))
@@ -510,10 +543,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -535,10 +570,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-surat-permintaan.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_surat_permintaan))
@@ -548,10 +585,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -573,10 +612,12 @@
                                                     </td>
 
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-pengadaan-langsung.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_pengadaan_langsung))
@@ -586,11 +627,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
-
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -613,10 +655,12 @@
                                                         Dokumen BAST
                                                     </td>
                                                     <td class="text-wrap text-center align-middle">
+                                                        @if(!$pengadaan->status === "Selesai")
                                                         <a
                                                             href="{{ route('template.download', ['filename' => 'dokumen-bast.docx']) }}">
                                                             Template
                                                         </a>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         @if(empty($dokumenPengadaans->dokumen_bast))
@@ -626,10 +670,12 @@
                                                                 Upload
                                                             </button>
                                                         @else
+                                                        @if(!$pengadaan->status === "Selesai")
                                                             <button type="button"
                                                                 class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                                 Edit
                                                             </button>
+                                                            @endif
                                                         @endif
                                                     </td>
                                                     <td class="text-center align-middle">
@@ -647,7 +693,7 @@
                                     </table>
 
                                     <div class="text-center">
-                                        @if (!in_array($pengadaan->status, ['Diajukan', 'Revisi', 'Ditolak','Diserahkan']) && $pengadaan->penyelenggara == 3)
+                                        @if (!in_array($pengadaan->status, ['Diajukan', 'Revisi', 'Ditolak', 'Diserahkan', 'Dilaksanakan']) || $pengadaan->penyelenggara != 3)
                                             @if ($pengadaan->status == 'Diterima PPK')
                                                 <a href="#" class="btn btn-success" data-bs-toggle="modal"
                                                     data-bs-target="#setujuModalKhusus">Selesai</a>
@@ -904,7 +950,7 @@
                                     <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
                                     <div class="activity-content">
-                                        Diproses oleh <p class="fw-bold text-dark">{{$pengadaan->role->name}}</p>
+                                        Diproses </p>
                                     </div>
                                 </div>
                                 <!-- End activity item-->
@@ -913,7 +959,7 @@
                                     <div class="activite-label">{{$statusesWithDates->get('Dilaksanakan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                                     <div class="activity-content">
-                                        Dilaksanakan
+                                        Dilaksanakan oleh <p class="fw-bold text-dark">{{$pengadaan->role->name}}
                                     </div>
                                 </div>
                                 <!-- End activity item-->

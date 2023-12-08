@@ -63,35 +63,26 @@ class UpdatingStatusPPKController extends Controller
         $listPengajuan = Pengadaan::all();
 
         foreach ($listPengajuan as $pengajuan) {
-            // Pastikan kolom tanggal pengadaan ada dan bukan null
+
             if (!empty($pengajuan->tanggal_pengadaan)) {
-                // Parse tanggal dan ubah formatnya ke 'tanggal bulan(tulisan) tahun'
-                // contoh: '1 Januari 2023'
                 $pengajuan->tanggal_pengadaan_formatted = Carbon::createFromFormat('Y-m-d', $pengajuan->tanggal_pengadaan)
                     ->translatedFormat('j F Y');
             } else {
-                // Jika tanggal tidak ada atau null, tetapkan nilai default atau tampilkan pesan error
                 $pengajuan->tanggal_pengadaan_formatted = 'Tanggal tidak valid';
             }
 
-            // Tidak perlu menetapkan kembali ke objek $pengajuan karena kita hanya menambahkan properti baru
             $pengajuan->status_color = $this->getColorStatus($pengajuan->status);
         }
 
         $listPenolakan = Penolakan::all();
         foreach ($listPenolakan as $penolakan) {
-            // Pastikan kolom tanggal pengadaan ada dan bukan null
+
             if (!empty($penolakan->pengadaan->tanggal_pengadaan)) {
-                // Parse tanggal dan ubah formatnya ke 'tanggal bulan(tulisan) tahun'
-                // contoh: '1 Januari 2023'
                 $penolakan->pengadaan->tanggal_pengadaan_formatted = Carbon::createFromFormat('Y-m-d', $penolakan->pengadaan->tanggal_pengadaan)
                     ->translatedFormat('j F Y');
             } else {
-                // Jika tanggal tidak ada atau null, tetapkan nilai default atau tampilkan pesan error
                 $penolakan->pengadaan->tanggal_pengadaan_formatted = 'Tanggal tidak valid';
             }
-
-            // Tidak perlu menetapkan kembali ke objek $pengajuan karena kita hanya menambahkan properti baru
             $penolakan->pengadaan->status_color = $this->getColorStatus($penolakan->pengadaan->status);
         }
 
@@ -110,25 +101,18 @@ class UpdatingStatusPPKController extends Controller
     public function details($pengadaanId)
     {
         $menu = Menu::with('submenu')->get();
-        $roles = Role::all();
+        $roles = Role::whereIn('name', ['Unit', 'PPK', 'PBJ'])->get();
 
-        //Mencari pengadaan yang tepat
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
-        Log::info('Pengadaan data ID: ' . $pengadaan->status);
-
-        // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
         $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
-        Log::info('Dokumen data id : ' . $dokumenId);
 
         $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
-        Log::info('Dokumen Pengadaan data : ' . $dokumenPengadaans);
 
         //Cek Semua Status Dokumen
         $statusDokumen = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
         $statusesWithDates = $statusDokumen->mapWithKeys(function ($item) {
             return [$item->status => Carbon::parse($item->changed_at)->translatedFormat('d') . '-' . Carbon::parse($item->changed_at)->translatedFormat('m') . '-' . Carbon::parse($item->changed_at)->translatedFormat('Y')];
         });
-        Log::info('Dokumen Pengadaan data: ' . $statusesWithDates);
         $checkStatuses = ['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan'];
 
 
@@ -146,12 +130,10 @@ class UpdatingStatusPPKController extends Controller
     public function updateStatus($pengadaanId, $penyelenggara)
     {
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
-        Log::info('Pengadaan data ID: ' . $pengadaan->user_id);
-        Log::info('Pengadaan data Status: ' . $pengadaan->status);
         try {
             switch ($pengadaan->status) {
                 case 'Diajukan':
-                    //bisa diterima ppk , ditolak ataupun direvisi
+
                     $newStatus = 'Diterima PPK';
                     break;
                 case 'Diterima PPK':
@@ -159,11 +141,9 @@ class UpdatingStatusPPKController extends Controller
                     if ($penyelenggara == 3) {
                         $pengadaan->penyelenggara = 3;
                         $pengadaan->save();
-                        Log::info("Penyelenggara berhasil diubah ke PBJ");
                     } elseif ($penyelenggara == 4) {
                         $pengadaan->penyelenggara = 4;
                         $pengadaan->save();
-                        Log::info("Penyelenggara berhasil diubah ke PPK");
                     }
                     break;
                 case 'Diproses':
@@ -177,19 +157,14 @@ class UpdatingStatusPPKController extends Controller
                     break;
                 default:
                     // Handle other cases or do nothing
-                    Log::info('New Status gagal');
                     return abort(404);
             }
-            Log::info('Status Baru : ' . $newStatus);
             $statusPengadaan = new StatusPengadaan;
             $statusPengadaan->pengadaan_id = $pengadaanId;
             $statusPengadaan->status = $newStatus;
             $statusPengadaan->changed_at = now();
             $statusPengadaan->save();
-            Log::info('Status Pengadaan Berhasil Disimpan');
-            Log::info('Selesai');
         } catch (\Exception $e) {
-            Log::info('Status Pengadaan gagal ');
             return abort(404);
         }
     }
@@ -203,16 +178,14 @@ class UpdatingStatusPPKController extends Controller
             $penolakan->alasan_penolakan = $request->input('alasan_penolakan');
             $penolakan->tanggal_penolakan = now(); // Atau tanggal spesifik jika ada
             $penolakan->save();
-            Log::info("Penolakan berhasil ditambah" . $penolakan->pengadaan_id);
-            // Menambahkan status pengadaan
+
             $statusPengadaan = new StatusPengadaan();
             $statusPengadaan->pengadaan_id = $request->input('pengadaan_id');
             $statusPengadaan->status = $request->has('dengan_revisi') ? 'Revisi' : 'Ditolak';
             $statusPengadaan->changed_at = now();
             $statusPengadaan->save();
-            Log::info("Penolakan berhasil ditambah dengan ID : " . $statusPengadaan->pengadaan_id);
         } catch (\Exception $e) {
-            Log::error("Error : " . $e);
+
             abort(404);
         }
         // Redirect atau response lainnya
