@@ -83,7 +83,7 @@ class RevisiPenolakanPPKController extends Controller
             'listPenolakan' => $listPenolakan,
         ]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
