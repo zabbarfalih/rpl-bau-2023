@@ -186,7 +186,7 @@
                                             Dokumen Undangan
                                         </td>
 
-                                        <td class="text-wrap">
+                                        <td class="text-wrap" style="text-align: center">
                                             <a href="{{ route('template.download', ['filename' => 'dokumen-undangan.docx']) }}">
                                                 Template
                                             </a>
@@ -219,7 +219,7 @@
                                             Dokumen Pengadaan Langsung
                                         </td>
 
-                                        <td class="text-wrap">
+                                        <td class="text-wrap" style="text-align: center">
                                             <a href="{{ route('template.download', ['filename' => 'dokumen-pengadaan-langsung.docx']) }}">
                                                 Template
                                             </a>
@@ -605,7 +605,7 @@
                                                 Dokumen Undangan
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-undangan.docx']) }}">
                                                     Template
                                                 </a>
@@ -639,7 +639,7 @@
                                                 Dokumen SSUK SSKK
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-ssuk-sskk.docx']) }}">
                                                     Template
                                                 </a>
@@ -672,7 +672,7 @@
                                                 Dokumen IKP
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-ikp.pdf']) }}">
                                                     Template
                                                 </a>
@@ -705,7 +705,7 @@
                                                 Dokumen LDP dan Spesifikasi
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-ldp-dan-spesifikasi.docx']) }}">
                                                     Template
                                                 </a>
@@ -738,7 +738,7 @@
                                                 Dokumen Penawaran
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-penawaran-pakta-dan-formulir-isian-kualifikasi.docx']) }}">
                                                     Template
                                                 </a>
@@ -771,7 +771,7 @@
                                                 Dokumen Surat Permintaan
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-surat-permintaan.docx']) }}">
                                                     Template
                                                 </a>
@@ -804,7 +804,7 @@
                                                 Dokumen Pengadaan Langsung
                                             </td>
 
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a href="{{ route('template.download', ['filename' => 'dokumen-pengadaan-langsung.docx']) }}">
                                                     Template
                                                 </a>
@@ -836,7 +836,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Serah Terima
                                             </td>
-                                            <td class="text-wrap">
+                                            <td class="text-wrap" style="text-align: center">
                                                 <a>Dibuat Vendor</a>
                                             </td>
                                             <td class="text-center align-middle">
