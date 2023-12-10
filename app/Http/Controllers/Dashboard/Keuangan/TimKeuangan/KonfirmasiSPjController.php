@@ -32,7 +32,7 @@ class KonfirmasiSpjController extends Controller
 
         return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.index', [
 
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
             'spj' => $spj,
             'spjTr' => $spjTr,
@@ -81,10 +81,10 @@ class KonfirmasiSpjController extends Controller
     {
         try {
             $spj = Spj::findOrFail((int)$id);
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detail', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj]);
         } catch (\Exception $e) {
@@ -96,10 +96,10 @@ class KonfirmasiSpjController extends Controller
     {
         try {
             $spj = SpjTr::findOrFail((int)$id);
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detailtr', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj]);
         } catch (\Exception $e) {
@@ -111,10 +111,10 @@ class KonfirmasiSpjController extends Controller
     {
         try {
             $spj = SpjPd::findOrFail((int)$id);
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $tabelspj = TabelSpjPd::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.tim-keuangan.konfirmasi-pengajuan-spj.detailpd', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj]);
         } catch (\Exception $e) {

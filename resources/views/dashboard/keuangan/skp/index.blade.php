@@ -55,31 +55,31 @@
                       @endforeach --}}
                       <tr>
                         <td scope="row">1</td>
-                        <td>Daftar Sekolah Anak</td>
+                        <td>Keperluan 1</td>
                         <td>26-10-2023</td>
                         <td><span class="badge bg-warning">Diproses</span></td>
                         <td>
-                          <a href="{{ route('skp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
+                          <a href="{{ route('skp.detail') }}"><button type="button" class="btn btn-primary">Lihat</button></a>
                         </td>
                         <td>Januari 2023</td>
                       </tr>
                       <tr>
                         <td scope="row">2</td>
-                        <td>Nyobain aja</td>
+                        <td>Keperluan 2</td>
                         <td>26-10-2023</td>
                         <td><span class="badge bg-success">Selesai</span></td>
                         <td>
-                          <a href="{{ route('skp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
+                          <a href="{{ route('skp.detail') }}"><button type="button" class="btn btn-primary">Lihat</button></a>
                         </td>
                         <td>Februari 2023</td>
                       </tr>
                       <tr>
                         <td scope="row">3</td>
-                        <td>Test test test</td>
+                        <td>Keperluan 3</td>
                         <td>26-10-2023</td>
                         <td><span class="badge bg-danger">Ditolak</span></td>
                         <td>
-                          <a href="{{ route('skp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
+                          <a href="{{ route('skp.detail') }}"><button type="button" class="btn btn-primary">Lihat</button></a>
                         </td>
                         <td>Maret 2023</td>
                       </tr>
