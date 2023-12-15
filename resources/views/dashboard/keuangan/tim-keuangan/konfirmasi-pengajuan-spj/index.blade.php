@@ -91,12 +91,13 @@
                   <tbody>
                     @php
                         $startNumber = 1;
+                        App::setLocale('id');
                     @endphp
                     @foreach ($spj as $item)
                     <tr>
                       <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->jenis_spj }}</td>
-                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y', 'Do MMMM YYYY') }}</td>
                       <td>
                         <span class="badge 
                             @if($item->status == 'Selesai') bg-success 
@@ -108,7 +109,7 @@
                       </td>
                       <td>
                         <a href="{{ route('konfirmasi-spj.show', ['spj' => $item->id]) }}">
-                          <button type="button" class="btn btn-success">Lihat</button>
+                          <button type="button" class="btn btn-primary">Lihat</button>
                         </a>                   
                       </td>
                       <td>{{ $item->user->name }}</td>
@@ -119,7 +120,7 @@
                     <tr>
                       <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->jenis_spj }}</td>
-                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y', 'Do MMMM YYYY') }}</td>
                       <td>
                         <span class="badge 
                             @if($item->status == 'Selesai') bg-success 
@@ -131,7 +132,7 @@
                       </td>
                       <td>
                         <a href="{{ route('konfirmasi-spjtr.show', ['spj' => $item->id]) }}">
-                          <button type="button" class="btn btn-success">Lihat</button>
+                          <button type="button" class="btn btn-primary">Lihat</button>
                         </a>                    
                       </td>
                       <td>{{ $item->user->name }}</td>
@@ -142,7 +143,7 @@
                     <tr>
                       <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->jenis_spj }}</td>
-                      <td>{{ $item->created_at->format('M j, Y') }}</td>
+                      <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y', 'Do MMMM YYYY') }}</td>
                       <td>
                         <span class="badge 
                             @if($item->status == 'Selesai') bg-success 
@@ -154,7 +155,7 @@
                       </td>
                       <td>
                         <a href="{{ route('konfirmasi-spjpd.show', ['spj' => $item->id]) }}">
-                          <button type="button" class="btn btn-success">Lihat</button>
+                          <button type="button" class="btn btn-primary">Lihat</button>
                         </a>                  
                       </td>
                       <td>{{ $item->user->name }}</td>

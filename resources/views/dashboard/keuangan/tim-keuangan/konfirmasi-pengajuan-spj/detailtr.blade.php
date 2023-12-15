@@ -1,16 +1,15 @@
-<x-dashboard.layouts.layouts :menus="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
     </x-slot>
 
     <x-slot name="js_head">
     </x-slot>
 
-    {{-- <style>
-      #tahap2,
-      #tahap3 {
-        display: none;
+    <style>
+      .table-container {
+        overflow-x: auto;
       }
-    </style> --}}
+    </style>
 
     <section class="section dashboard">
         <div class="row">
@@ -85,6 +84,11 @@
                               </div>
 
                               <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Daftar Transpor Lokal</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->judul }}</div>
+                              </div>
+
+                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nama Kegiatan</div>
                                 <div class="col-lg-9 col-md-8">{{ $spj->kegiatan }}</div>
                               </div>
@@ -114,7 +118,7 @@
                                   Tanggal Kegiatan
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->tanggal_kegiatan }}
+                                  {{ \Carbon\Carbon::parse($spj->tanggal_kegiatan)->isoFormat('D MMMM Y') }}
                                 </div>
                               </div>
 
@@ -175,7 +179,7 @@
                                   Tanggal Pencairan Dana
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->tanggal_transfer }}
+                                  {{ \Carbon\Carbon::parse($spj->tanggal_transfer)->isoFormat('D MMMM Y') }}
                                 </div>
                               </div>
                               @endif
@@ -378,9 +382,11 @@
             <div class="card-body">
               <!-- Table with stripped rows -->
               @if(!$tabelspj->isEmpty())
+              <div class="table-container">
                 <table class="table datatable">
                   <thead>
                     <tr>
+                      <th scope="col">No.</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Transport Per Hari</th>
                       <th scope="col">Jumlah Kegiatan</th>
@@ -390,8 +396,12 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @php
+                      $counter = 1;
+                    @endphp
                     @foreach ($tabelspj as $item)
                       <tr>
+                        <td>{{ $counter++ }}.</td>
                         <td>{{ isset($item->nama) ? $item->nama : '' }}</td>
                         <td>{{ isset($item->transpor_per_hari) ? $item->transpor_per_hari : '' }}</td>
                         <td>{{ isset($item->jumlah_kegiatan) ? $item->jumlah_kegiatan : '' }}</td>
@@ -402,9 +412,10 @@
                     @endforeach
                   </tbody>                
                 </table>
+              </div>
               @else
               <div class="alert alert-danger col-lg-12 m-2 mt-3" role="alert">
-                Anda Belum Mengunggah Dokumen Excel, Silakan Unggah Excel.
+                Pegawai Belum Mengunggah Dokumen Excel.
               </div>
               @endif
               <!-- End Table with stripped rows -->

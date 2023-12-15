@@ -385,19 +385,16 @@
                                         $ppk = $spjPdf->ppk;
                                         $nip = '';
                                         switch ($ppk) {
-                                            case 'Luci Wulansari, S.Si, MSE.':
-                                                $nip = '198504302009022006';
-                                                break;
-                                            case 'Ary Wahyuni, SST':
-                                                $nip = '198809142010122004';
-                                                break;
-                                            case 'Tria Merina, SST':
-                                                $nip = '198405022008012010';
-                                                break;
-                                            default:
-                                                $nip = '';
-                                                break;
-                                        }
+                                                case 'Luci Wulansari, S.Si, MSE.':
+                                                    $nip = '198504302009022006';
+                                                    break;
+                                                case 'Nurseto Wisnumurti, S.Si., M.Stat.':
+                                                    $nip = '197009261992111001';
+                                                    break;
+                                                default:
+                                                    $nip = '';
+                                                    break;
+                                            }
                                     @endphp
 
                                     <div class="bawah">

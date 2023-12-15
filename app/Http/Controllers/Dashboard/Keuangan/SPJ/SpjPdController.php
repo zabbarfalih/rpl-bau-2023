@@ -33,10 +33,10 @@ class SpjPdController extends Controller
     public function create()
     {
         //
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.keuangan.spj-pd.add', [
-            'menus' => $menus,
+            'menu' => $menu,
             'user' => $users
         ]);
     }
@@ -69,12 +69,12 @@ class SpjPdController extends Controller
     public function show(SpjPd $spj)
     {
         //
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         $tabelspj = TabelSpjPd::where('spj_id', $spj->id)->get();
 
         return view('dashboard.keuangan.spj.detail', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
             'spj' => $spj,
             'tabelspj' => $tabelspj

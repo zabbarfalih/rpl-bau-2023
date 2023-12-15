@@ -23,10 +23,10 @@ class SpjTrController extends Controller
     public function index()
     {
         //
-        // $menus = Menu::with('submenus')->get();
+        // $menu = Menu::with('submenu')->get();
         // $users = auth()->user();
         // return view('dashboard.keuangan.spj.index', [
-        //     'menus' => $menus,
+        //     'menu' => $menu,
         //     'users' => $users
         // ]);
     }
@@ -39,10 +39,10 @@ class SpjTrController extends Controller
     public function create()
     {
         //
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         return view('dashboard.keuangan.spj-tr.add', [
-            'menus' => $menus,
+            'menu' => $menu,
             'user' => $users
         ]);
     }
@@ -71,7 +71,7 @@ class SpjTrController extends Controller
      */
     public function show(SpjTr $spj)
 {
-    $menus = Menu::with('submenus')->get();
+    $menu = Menu::with('submenu')->get();
     $users = User::all();
     $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
 
@@ -79,7 +79,7 @@ class SpjTrController extends Controller
     dd($tabelspj);
 
     // return view('dashboard.keuangan.spj-tr.detail', [
-    //     'menus' => $menus,
+    //     'menu' => $menu,
     //     'users' => $users,
     //     'spj' => $spj,
     //     'tabelspj' => $tabelspj

@@ -24,7 +24,7 @@ class InfoPengajuanSpjController extends Controller
     public function index()
 
 {
-    $menus = Menu::with('submenus')->get();
+    $menu = Menu::with('submenu')->get();
     $users = User::all();
     
     $spj = Spj::where('user_id', Auth::id())->get();
@@ -35,7 +35,7 @@ class InfoPengajuanSpjController extends Controller
     // $allSpj = $spj->merge($spjTr)->merge($spjPd);
 
     return view('dashboard.keuangan.spj.index', [
-        'menus' => $menus,
+        'menu' => $menu,
         'users' => $users,
         'spj' => $spj,
         'spjTr' => $spjTr,
@@ -74,10 +74,10 @@ class InfoPengajuanSpjController extends Controller
     {
         try {
             $spj = Spj::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $tabelspj = TabelSpj::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.spj.detail', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj
             ]);
@@ -90,10 +90,10 @@ class InfoPengajuanSpjController extends Controller
     {
         try {
             $spj = SpjTr::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $tabelspj = TabelSpjTr::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.spj-tr.detail', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj
             ]);
@@ -106,10 +106,10 @@ class InfoPengajuanSpjController extends Controller
     {
         try {
             $spj = SpjPd::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $tabelspj = TabelSpjPd::where('spj_id', $spj->id)->get();
             return view('dashboard.keuangan.spj-pd.detail', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'spj' => $spj,
                 'tabelspj'=> $tabelspj
             ]);

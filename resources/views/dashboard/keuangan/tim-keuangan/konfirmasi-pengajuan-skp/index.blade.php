@@ -123,27 +123,27 @@
                           <td>26-10-2023</td>
                           <td><span class="badge bg-warning">Diproses</span></td>
                           <td>
-                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-primary">Lihat</button></a>
                           </td>
                           <td>Januari 2023</td>
                         </tr>
                         <tr>
                           <td scope="row">2</td>
-                          <td>Kojo Dodowi</td>
+                          <td>Joko Widodo</td>
                           <td>26-10-2023</td>
                           <td><span class="badge bg-success">Selesai</span></td>
                           <td>
-                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-primary">Lihat</button></a>
                           </td>
                           <td>Februari 2023</td>
                         </tr>
                         <tr>
                           <td scope="row">3</td>
-                          <td>Wido Kokojo</td>
+                          <td>Joko Widodo Kokojo</td>
                           <td>26-10-2023</td>
                           <td><span class="badge bg-danger">Ditolak</span></td>
                           <td>
-                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-success">Lihat</button></a>
+                            <a href="{{ route('konfirmasipengajuanskp.detail') }}"><button type="button" class="btn btn-primary">Lihat</button></a>
                           </td>
                           <td>Maret 2023</td>
                         </tr>

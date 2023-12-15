@@ -66,7 +66,7 @@
 
                                 <!-- Unduh Template Dokumen KAK -->
                                 <div class="mb-1">
-                                    <a href="{{ route('template.download', ['filename' => 'KAK']) }}"
+                                    <a href="{{ route('template.download', ['filename' => 'dokumen-kak.docx']) }}"
                                         class="btn-link btn-sm fw-bold text-decoration-none
                                         "><small>Unduh Template Dokumen KAK</small></a>
                                 </div>
@@ -89,7 +89,7 @@
 
                                 <!-- Unduh Template Memo -->
                                 <div class="mb-1">
-                                    <a href="{{ route('template.download', ['filename' => 'Memo']) }}"
+                                    <a href="{{ route('template.download', ['filename' => 'dokumen-kak.docx']) }}"
                                         class="btn-link btn-sm btn-link btn-sm fw-bold text-decoration-none"><small>Unduh Template Memo</small></a>
                                 </div>
 
