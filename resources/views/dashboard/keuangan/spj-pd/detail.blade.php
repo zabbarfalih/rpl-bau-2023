@@ -1,8 +1,15 @@
-<x-dashboard.layouts.layouts :menus="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
     </x-slot>
     <x-slot name="js_head">
     </x-slot>
+
+    <style>
+      .table-container {
+        overflow-x: auto;
+      }
+    </style>
+
     <section class="section dashboard">
         <div class="row">
           <!-- Left side columns -->
@@ -78,6 +85,11 @@
                               </div>
 
                               <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Perjalanan Dinas</div>
+                                <div class="col-lg-9 col-md-8">{{ $spj->judul }}</div>
+                              </div>
+
+                              <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nama Kegiatan</div>
                                 <div class="col-lg-9 col-md-8">{{ $spj->kegiatan }}</div>
                               </div>
@@ -102,7 +114,7 @@
                                   Tanggal Tugas
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->tanggal_tugas }}
+                                  {{ \Carbon\Carbon::parse($spj->tanggal_tugas)->isoFormat('D MMMM Y') }}
                                 </div>
                               </div>
 
@@ -154,7 +166,7 @@
                                   Tanggal Pencairan Dana
                                 </div>
                                 <div class="col-lg-9 col-md-8">
-                                  {{ $spj->tanggal_transfer }}
+                                  {{ \Carbon\Carbon::parse($spj->tanggal_transfer)->isoFormat('D MMMM Y') }}
                                 </div>
                               </div>
                               @endif
@@ -368,46 +380,53 @@
               <div class="card-body">
                 <!-- Table with stripped rows -->
                 @if(!$tabelspj->isEmpty())
-                <table class="table datatable">
-                  <thead>
-                    <tr>
-                      <th scope="col">Nama Pelaksana Perjalanan Dinas</th>
-                      <th scope="col">Golongan</th>
-                      <th scope="col">Asal Penugasan</th>
-                      <th scope="col">Daerah Tujuan Perjalanan Dinas</th>
-                      <th scope="col">Lama Perjalanan(O-H)</th>
-                      <th scope="col">Uang Harian(Rp)</th>
-                      <th scope="col">Transport(PP)(Rp)</th>
-                      <th scope="col">Bandara(PP)(Rp)</th>
-                      <th scope="col">Biaya Hotel(RP)</th>
-                      <th scope="col">Jumlah Biaya(RP)</th>
-                      <th scope="col">Uang Muka(Rp)</th>
-                      <th scope="col">Kekurangan(Rp)</th>
-                      <th scope="col">Nama Bank</th>
-                      <th scope="col">Nomor Rekening</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($tabelspj as $item)
+                <div class="table-container">
+                  <table class="table datatable">
+                    <thead>
                       <tr>
-                        <td>{{ isset($item->nama_pelaksanaan_perjalanan_dinas) ? $item->nama_pelaksanaan_perjalanan_dinas : '' }}</td>
-                        <td>{{ isset($item->gol) ? $item->gol : '' }}</td>
-                        <td>{{ isset($item->asal_penugasan) ? $item->asal_penugasan : '' }}</td>
-                        <td>{{ isset($item->daerah_tujuan_perjalanan_dinas) ? $item->daerah_tujuan_perjalanan_dinas : '' }}</td>
-                        <td>{{ isset($item->lama_perjalanan) ? $item->lama_perjalanan : '' }}</td>
-                        <td>{{ isset($item->uang_harian) ? $item->uang_harian : '' }}</td>
-                        <td>{{ isset($item->transport) ? $item->transport : '' }}</td>
-                        <td>{{ isset($item->bandara) ? $item->bandara : '' }}</td>
-                        <td>{{ isset($item->biaya_hotel) ? $item->biaya_hotel : '' }}</td>
-                        <td>{{ isset($item->jumlah_biaya) ? $item->jumlah_biaya : '' }}</td>
-                        <td>{{ isset($item->uang_muka) ? $item->uang_muka : '' }}</td>
-                        <td>{{ isset($item->kekurangan) ? $item->kekurangan : '' }}</td>
-                        <td>{{ isset($item->nama_bank) ? $item->nama_bank : '' }}</td>
-                        <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
+                        <th scope="col">No.</th>
+                        <th scope="col">Nama Pelaksana Perjalanan Dinas</th>
+                        <th scope="col">Golongan</th>
+                        <th scope="col">Asal Penugasan</th>
+                        <th scope="col">Daerah Tujuan Perjalanan Dinas</th>
+                        <th scope="col">Lama Perjalanan(O-H)</th>
+                        <th scope="col">Uang Harian(Rp)</th>
+                        <th scope="col">Transport(PP)(Rp)</th>
+                        <th scope="col">Bandara(PP)(Rp)</th>
+                        <th scope="col">Biaya Hotel(RP)</th>
+                        <th scope="col">Jumlah Biaya(RP)</th>
+                        <th scope="col">Uang Muka(Rp)</th>
+                        <th scope="col">Kekurangan(Rp)</th>
+                        <th scope="col">Nama Bank</th>
+                        <th scope="col">Nomor Rekening</th>
                       </tr>
-                    @endforeach
-                  </tbody>                
-                </table>
+                    </thead>
+                    <tbody>
+                      @php
+                      $counter = 1;
+                      @endphp
+                      @foreach ($tabelspj as $item)
+                        <tr>
+                          <td>{{ $counter++ }}.</td>
+                          <td>{{ isset($item->nama_pelaksanaan_perjalanan_dinas) ? $item->nama_pelaksanaan_perjalanan_dinas : '' }}</td>
+                          <td>{{ isset($item->gol) ? $item->gol : '' }}</td>
+                          <td>{{ isset($item->asal_penugasan) ? $item->asal_penugasan : '' }}</td>
+                          <td>{{ isset($item->daerah_tujuan_perjalanan_dinas) ? $item->daerah_tujuan_perjalanan_dinas : '' }}</td>
+                          <td>{{ isset($item->lama_perjalanan) ? $item->lama_perjalanan : '' }}</td>
+                          <td>{{ isset($item->uang_harian) ? $item->uang_harian : '' }}</td>
+                          <td>{{ isset($item->transport) ? $item->transport : '' }}</td>
+                          <td>{{ isset($item->bandara) ? $item->bandara : '' }}</td>
+                          <td>{{ isset($item->biaya_hotel) ? $item->biaya_hotel : '' }}</td>
+                          <td>{{ isset($item->jumlah_biaya) ? $item->jumlah_biaya : '' }}</td>
+                          <td>{{ isset($item->uang_muka) ? $item->uang_muka : '' }}</td>
+                          <td>{{ isset($item->kekurangan) ? $item->kekurangan : '' }}</td>
+                          <td>{{ isset($item->nama_bank) ? $item->nama_bank : '' }}</td>
+                          <td>{{ isset($item->nomor_rekening) ? $item->nomor_rekening : '' }}</td>
+                        </tr>
+                      @endforeach
+                    </tbody>                
+                  </table>
+                </div>
               @else
               <div class="alert alert-danger col-lg-12 m-2 mt-3" role="alert">
                 Anda Belum Mengunggah Dokumen Excel, Silakan Unggah Excel.

@@ -167,8 +167,7 @@
                                 <select class="form-select" name="ppk" required>
                                     <option selected>Pilih Penandatangan</option>
                                     <option value="Luci Wulansari, S.Si, MSE.">Luci Wulansari, S.Si, MSE.</option>
-                                    <option value="Ary Wahyuni, SST">Ary Wahyuni, SST</option>
-                                    <option value="Tria Merina, SST">Tria Merina, SST</option>
+                                    <option value="Nurseto Wisnumurti, S.Si., M.Stat.">Nurseto Wisnumurti, S.Si., M.Stat.</option>
                                 </select>
                                 </div>
                             </div>
