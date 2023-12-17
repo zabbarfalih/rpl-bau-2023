@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
             'name' => 'Muhammad Zabbar Falihin',
             'nip' => '222112225',
             'email' => 'admin1@example.com',
-            'email_verified_at' => now(),
             'phone_number' => '081234567890',
             'address' => 'Jln. Sensus 3',
+            'picture' => 'https://i.ibb.co/0jZzQYH/IMG-20201212-120751.jpg',
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ]);
@@ -27,9 +27,9 @@ class UserSeeder extends Seeder
             'name' => 'Gholidho Herda Prilasakly',
             'nip' => '222112074',
             'email' => 'admin2@example.com',
-            'email_verified_at' => now(),
             'phone_number' => '085785529623',
             'address' => 'Gg H Dawel',
+            'picture' => 'https://i.ibb.co/0jZzQYH/IMG-20201212-120751.jpg',
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ]);
