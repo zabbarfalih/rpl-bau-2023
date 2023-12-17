@@ -133,7 +133,6 @@ class UpdatingStatusPPKController extends Controller
         try {
             switch ($pengadaan->status) {
                 case 'Diajukan':
-
                     $newStatus = 'Diterima PPK';
                     break;
                 case 'Diterima PPK':
@@ -155,6 +154,18 @@ class UpdatingStatusPPKController extends Controller
                 case 'Selesai':
                     $newStatus = "Diserahkan";
                     break;
+                case 'Revisi':
+                    $newStatus = "Diajukan";
+                    $pengadaan->status = $newStatus;
+                    $pengadaan->save();
+
+                    // Mencatat status baru ke tabel status_pengadaan
+                    $statusPengadaan = new StatusPengadaan;
+                    $statusPengadaan->pengadaan_id = $pengadaanId;
+                    $statusPengadaan->status = $newStatus;
+                    $statusPengadaan->changed_at = now();
+                    $statusPengadaan->save();
+                    return redirect()->route('unit.pengajuan.index');
                 default:
                     // Handle other cases or do nothing
                     return abort(404);

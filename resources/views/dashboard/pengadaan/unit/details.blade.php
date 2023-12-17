@@ -66,7 +66,8 @@
                                                         Download
                                                     </button>
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen KAK">
                                                         Edit
                                                     </button>
                                                 </td>
@@ -86,7 +87,8 @@
                                                         Download
                                                     </button>
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Memo">
                                                         Edit
                                                     </button>
                                                 </td>
@@ -221,6 +223,40 @@
                             </div>
                         </div>
                     </div>
+                            <!-- Kirim Revisi -->
+                            @if ($pengadaan->status == 'Revisi')
+                            <div class="text-center">
+                                <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#setujuModalL">Serahkan Revisi</a>
+                            </div>
+                            @endif
+                            {{-- Modal Tombol Selesai --}}
+                            <div class="modal fade" id="setujuModalL" aria-hidden="true"
+                            data-bs-keyboard="false" data-bs-backdrop="static"
+                            aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title modal-center fw-bolder"
+                                            id="exampleModalLabel">
+                                            Konfirmasi</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Batal</a>
+                                        <a href="#"  class="btn btn-success"
+                                            id="confirmButton"
+                                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                            data-id="{{ $pengadaan->id }}">Yakin</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <!-- End Left side columns -->
                 <!-- Right side columns -->
@@ -308,6 +344,30 @@
                 <!-- End Right side columns -->
             </div>
 
+
+        </div>
+        {{-- Modal untuk Upload File --}}
+        <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="margin: 10px;">
+                    <div class="modal-header">
+                        <h4 class="alert-heading" id="modalTitle">Upload <span id="documentPlaceholder">[document]</span></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('upload-dokumens') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="file" class="file-upload" name="uploadFile" />
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="documentName" id="documentName">
+                            <input type="hidden" name="dokumen_id" id="dokumen_id" value="{{ $dokumenPengadaans->dokumen_id }}">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -315,5 +375,19 @@
 
     <x-slot name="js_body">
         <script src="{{ asset('assets/js/script.js') }}"></script>
+    </x-slot>
+    <x-slot name="js_body">
+        <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                $('#uploadFileModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget);
+                    var documentName = button.data('document').replace(/\s/g, '_').toLowerCase();
+                    var documentNames = button.data('document');
+                    $(this).find('#documentName').val(documentName);
+                    $(this).find('#documentPlaceholder').text(documentNames);
+                });
+            });
+        </script>
     </x-slot>
 </x-dashboard.layouts.layouts>
