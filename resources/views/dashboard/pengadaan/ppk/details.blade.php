@@ -108,17 +108,14 @@
                                                 @if(!empty($dokumenPengadaans->dokumen_memo))
                                                 <tr>
                                                     <td class="text-center fw-bold align-middle">
-                                                        {{ $no++ }}
+                                                        2
                                                     </td>
                                                     <td class="fw-bold align-middle text-wrap">
                                                         Dokumen Memo
                                                     </td>
 
                                                     <td class="text-wrap">
-                                                        <a
-                                                            href="{{ route('template.download', ['filename' => 'KAK']) }}">
-                                                            Template
-                                                        </a>
+
                                                     </td>
                                                     <td class="text-center align-middle">
 

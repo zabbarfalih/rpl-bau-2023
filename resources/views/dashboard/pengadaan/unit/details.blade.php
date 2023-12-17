@@ -39,17 +39,17 @@
                                                 <th scope="col" class="text-center align-middle">
                                                     No
                                                 </th>
-                
+
                                                 <th scope="col" class="text-center align-middle text-wrap">
                                                     Nama Dokumen
                                                 </th>
-                
+
                                                 <th scope="col" class="text-center align-middle">
                                                     Action
                                                 </th>
                                             </tr>
                                         </thead>
-                
+
                                         <tbody>
                                             <tr>
                                                 <td class="text-center fw-bold align-middle">
@@ -58,10 +58,11 @@
                                                 <td class="fw-bold align-middle text-wrap">
                                                     Dokumen KAK
                                                 </td>
-                
+
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white"
+                                                        onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_kak']) }}'">
                                                         Download
                                                     </button>
                                                     <button type="button"
@@ -77,10 +78,11 @@
                                                 <td class="fw-bold align-middle text-wrap">
                                                     Dokumen Memo
                                                 </td>
-                
+
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white"
+                                                        onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_memo']) }}'">
                                                         Download
                                                     </button>
                                                     <button type="button"
@@ -91,7 +93,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                    
+
                                 @elseif ($pengadaan->status === 'Diterima PPK' || $pengadaan->status === 'Diproses' || $pengadaan->status === 'Dilaksanakan' || $pengadaan->status === 'Selesai')
                                 {{-- <p>Saat status Disetujui, Diproses, Dikerjakan, Selesai</p> --}}
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -101,17 +103,17 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle">
                                                 Action
                                             </th>
                                         </tr>
                                     </thead>
-                
+
                                     <tbody>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -120,7 +122,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -135,7 +137,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -145,7 +147,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                
+
                                 @elseif ($pengadaan->status === 'Diserahkan')
                                 {{-- <p>Saat status diserahkan</p> --}}
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -155,17 +157,17 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle">
                                                 Action
                                             </th>
                                         </tr>
                                     </thead>
-                
+
                                     <tbody>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -174,7 +176,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -189,7 +191,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -204,7 +206,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen BAST
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 </button>
                                                 <button type="button"

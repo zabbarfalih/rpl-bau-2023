@@ -96,13 +96,15 @@ class PengajuanController extends Controller
     {
         $menu = Menu::with('submenu')->get();
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
+        $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
+        $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
         //$dokumenPengadaans = $pengadaan->dokumenPengadaans;
 
         return view('dashboard.pengadaan.unit.details', [
             'menu' => $menu,
             'pengadaan' => $pengadaan,
-            //'dokumenPengadaans' => $dokumenPengadaans,
+            'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
 
@@ -121,6 +123,7 @@ class PengajuanController extends Controller
             'roles' => $roles,
         ]);
     }
+
     public function upload(Request $request)
     {
         try {
@@ -155,78 +158,68 @@ class PengajuanController extends Controller
     }
 
     public function kirimForm(Request $request)
-    {
-        $validatedData = Validator::make($request->all(), [
-            'role_id' => 'required|numeric',
-            'nama_pengadaan' => 'required|string',
-            'tanggal_pengadaan' => 'required|date',
-            'dokumen.0' => 'required|mimes:pdf',
-            'dokumen.1' => 'mimes:pdf',
-        ], [
-            'role_id.required' => 'Unit tidak boleh kosong (pilih unit)',
-            'role_id.numeric' => 'Pilih nama unit',
-            'nama_pengadaan.required' => 'Nama pengadaan tidak boleh kosong',
-            'tanggal_pengadaan.required' => 'Tanggal pengadaan tidak boleh kosong',
-            'dokumen.0.required' => 'Dokumen KAK tidak boleh kosong',
-            'dokumen.0.mimes' => 'Dokumen harus dalam format PDF',
-            'dokumen.1.mimes' => 'Dokumen harus dalam format PDF',
-        ]);
+{
+    $validatedData = Validator::make($request->all(), [
+        'role_id' => 'required|numeric',
+        'nama_pengadaan' => 'required|string',
+        'tanggal_pengadaan' => 'required|date',
+        'dokumen_kak' => 'required|mimes:pdf',
+        'dokumen_memo' => 'nullable|mimes:pdf',
+    ], [
+        'role_id.required' => 'Unit tidak boleh kosong (pilih unit)',
+        'role_id.numeric' => 'Pilih nama unit',
+        'nama_pengadaan.required' => 'Nama pengadaan tidak boleh kosong',
+        'tanggal_pengadaan.required' => 'Tanggal pengadaan tidak boleh kosong',
+        'dokumen_kak.required' => 'Dokumen KAK tidak boleh kosong',
+        'dokumen_kak.mimes' => 'Dokumen harus dalam format PDF',
+        'dokumen_memo.mimes' => 'Dokumen harus dalam format PDF',
+    ]);
 
-        if ($validatedData->fails()) {
-            return redirect()->back()->withErrors($validatedData)->withInput();
-        }
-
+    if ($validatedData->fails()) {
+        return redirect()->back()->withErrors($validatedData)->withInput();
+    } else {
         try {
-            $userId = auth()->user()->id;
             $validatedData = $validatedData->validated();
-
             $pengajuan = new Pengadaan;
-            $pengajuan->user_id = $userId;
+            $pengajuan->user_id = auth()->user()->id;
             $pengajuan->nama_pengadaan = $validatedData['nama_pengadaan'];
             $pengajuan->tanggal_pengadaan = $validatedData['tanggal_pengadaan'];
-            $pengajuan->penyelenggara = 3;
+            $pengajuan->penyelenggara = 4;
 
-            if ($pengajuan->save()) {
-                Log::info('Pengadaan dengan ID: ' . $pengajuan->id . ' berhasil dibuat.');
-                //Penambahan Status
-
+            if($pengajuan->save()){
                 $statusPengadaan = new StatusPengadaan;
                 $statusPengadaan->pengadaan_id = $pengajuan->id;
                 $statusPengadaan->status = 'Diajukan';
                 $statusPengadaan->changed_at = now();
                 $statusPengadaan->save();
-
-                $pathKak = $request->file('dokumen.0')->store('public/dokumen/pengadaan/kak');
-                $dokumenkak = new Dokumen;
-                $dokumenkak->pengadaan_id = $pengajuan->id;
-                $dokumenkak->save();
-                $dokumenPengadaanKak = new DokumenPengadaan;
-                $dokumenPengadaanKak->dokumen_id = $dokumenkak->id;
-                $dokumenPengadaanKak->dokumen_kak = $pathKak;
-                $dokumenPengadaanKak->save();
-                Log::info('Dokumen Pengadaan KAK dengan ID: ' . $dokumenPengadaanKak->id . ' berhasil disimpan.');
-
-                if ($request->file('dokumen.1') == null) {
-                    Log::info('Dokumen Pengadaan Memo tidak ada.');
-                } else {
-                    $dokumenmemo = new Dokumen;
-                    $dokumenmemo->pengadaan_id = $pengajuan->id;
-                    $dokumenmemo->save();
-                    $pathMemo = $request->file('dokumen.1')->store('public/dokumen/pengadaan/memo');
-                    $dokumenPengadaanMemo = new DokumenPengadaan;
-                    $dokumenPengadaanMemo->dokumen_id = $dokumenmemo->id;
-                    $dokumenPengadaanMemo->dokumen_memo = $pathMemo;
-                    $dokumenPengadaanMemo->save();
-                    Log::info('Dokumen Pengadaan Memo dengan ID: ' . $dokumenPengadaanMemo->id . ' berhasil disimpan.');
-                }
-
-                return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
             }
+
+            $dokumen = new Dokumen;
+            $dokumen->pengadaan_id = $pengajuan->id;
+
+            // Selalu ada dokumen KAK
+            $pathKak = $request->file('dokumen_kak')->store('public/dokumen/pengadaan/kak');
+            $dokumenPengadaan = new DokumenPengadaan;
+            $dokumenPengadaan->dokumen_kak = $pathKak;
+
+            // Cek apakah ada dokumen memo
+            if ($request->hasFile('dokumen_memo')) {
+                $pathMemo = $request->file('dokumen_memo')->store('public/dokumen/pengadaan/memo');
+                $dokumenPengadaan->dokumen_memo = $pathMemo;
+            }
+
+            $dokumen->save();
+            $dokumenPengadaan->dokumen_id = $dokumen->id;
+            $dokumenPengadaan->save();
+
+        return redirect()->route('unit.pengajuan.index')->with('success', 'Pengajuan pengadaan berhasil disimpan.');
+
         } catch (\Exception $e) {
             Log::error('Kesalahan saat menyimpan data: ' . $e->getMessage());
             return back()->with('status.error', 'Terjadi kesalahan saat mengirim form: ' . $e->getMessage());
         }
     }
+}
 
 
     /**

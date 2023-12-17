@@ -73,10 +73,10 @@
 
                                 <!-- Upload Dokumen KAK -->
                                 <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">Upload Dokumen KAK (PDF)</label>
+                                    <label for="formFileKak" class="col-sm-2 col-form-label">Upload Dokumen KAK (PDF)</label>
                                     <div class="col-sm-10">
                                         <div class="input-group">
-                                            <input name="dokumen[]" class="form-control font-form" type="file" id="formFile" onchange="showRemoveButton()" multiple/>
+                                            <input name="dokumen_kak" class="form-control font-form" type="file" id="formFileKak" onchange="showRemoveButton()"/>
                                             <button type="button" class="btn btn-danger" id="removeButton"
                                                 style="display:none;" onclick="removeFile()">Remove</button>
                                         </div>
@@ -93,21 +93,22 @@
                                         class="btn-link btn-sm btn-link btn-sm fw-bold text-decoration-none"><small>Unduh Template Memo</small></a>
                                 </div>
 
-                                <!-- Upload Memo -->
+                                <!-- Upload Dokumen Memo -->
                                 <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">Upload Memo (PDF)</label>
+                                    <label for="formFileMemo" class="col-sm-2 col-form-label">Upload Dokumen Memo (PDF)</label>
                                     <div class="col-sm-10">
                                         <div class="input-group">
-                                            <input name="dokumen[]" class="form-control font-form" type="file" id="formFileMemo" onchange="showRemoveButtonMemo()"  multiple/>
-                                            <button type="button" class="btn btn-danger" id="removeButtonMemo"
-                                                style="display:none;" onclick="removeFileMemo()">Remove</button>
+                                            <input name="dokumen_memo" class="form-control font-form" type="file" id="formFileMemo" onchange="showRemoveButton()"/>
+                                            <button type="button" class="btn btn-danger" id="removeButton"
+                                                style="display:none;" onclick="removeFile()">Remove</button>
                                         </div>
-                                        <div id="fileErrorMessageMemo" class="text-danger"></div>
+                                        <div id="fileErrorMessage" class="text-danger"></div>
                                         @error('dokumen_memo')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
+
 
                                 <!-- Tombol Aksi -->
                                 <div class="row mb-3">
