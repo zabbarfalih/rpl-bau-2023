@@ -32,11 +32,16 @@
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Dokumen</h5>
 
-                        <!-- List dokumen -->
+                        <!-- List dokumen kurang dari 50 dan dilaksanakan-->
                         @if($dokumen_pengadaan->harga_anggaran <= 50000000)
                             @if($pengadaan->status == 'Dilaksanakan')
-                                <p><b>KETIKA PENGADAAN DI BAWAH 50 JUTA</b></p>
-                                <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                        width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh dokumen terlampir, silakan tekan download</div>
+                                </div>
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
                                     <thead class="header-table">
@@ -44,13 +49,8 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
-                                            </th>
-
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
                                             </th>
                                             <th scope="col" class="text-center align-middle">
                                                 Action
@@ -65,10 +65,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -85,10 +81,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -103,10 +95,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Identifikasi Kebutuhan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -123,10 +111,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Perencanaan Pengadaan
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
@@ -141,10 +125,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen HPS
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -161,10 +141,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Nota Dinas
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
@@ -173,99 +149,131 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                7
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Undangan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                            @if(empty($dokumen_pengadaan->dokumen_undangan))
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
-                                                    Upload
-                                                </button>
-                                            @else
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
-                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_undangan']) }}'">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            @endif
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center fw-bold align-middle">
-                                                8
-                                            </td>
-                                            <td class="fw-bold align-middle text-wrap">
-                                                Dokumen Pengadaan Langsung
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
-                                            <td class="text-center align-middle">
-                                            @if(empty($dokumen_pengadaan->dokumen_pengadaan_langsung))
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Pengadaan Langsung">
-                                                    Upload
-                                                </button>
-                                            @else
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
-                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
-                                                    Download
-                                                </button>
-                                                <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                    Edit
-                                                </button>
-                                            @endif
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                        width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh template, silakan tekan download template</div>
                                 </div>
+                                <table class="table table-hover display responsive nowrap table-striped font-body-table"
+                                style="width: 100%" {{-- id="table-bau" --}}>
+                                <thead class="header-table">
+                                    <tr>
+                                        <th scope="col" class="text-center align-middle">
+                                            No
+                                        </th>
+                                        <th scope="col" class="text-center align-middle text-wrap">
+                                            Nama Dokumen
+                                        </th>
+                                        <th scope="col" class="text-center align-middle text-wrap">
+                                            Template
+                                        </th>
+                                        <th scope="col" class="text-center align-middle">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
-                                    aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Apakah anda yakin ?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
-                                            <form action="{{ route('updateStatus') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
-                                                <button type="submit" class="btn btn-success">Yakin</button>
-                                            </form>
-                                        </div>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center fw-bold align-middle">
+                                            7
+                                        </td>
+                                        <td class="fw-bold align-middle text-wrap">
+                                            Dokumen Undangan
+                                        </td>
+
+                                        <td class="text-wrap" style="text-align: center">
+                                            <a href="{{ route('template.download', ['filename' => 'dokumen-undangan.docx']) }}">
+                                                Template
+                                            </a>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                        @if(empty($dokumen_pengadaan->dokumen_undangan))
+                                            <button type="button"
+                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
+                                                Upload
+                                            </button>
+                                        @else
+                                            <button type="button"
+                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
+                                                onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_undangan']) }}'">
+                                                Download
+                                            </button>
+                                            <button type="button"
+                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                Edit
+                                            </button>
+                                        @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center fw-bold align-middle">
+                                            8
+                                        </td>
+                                        <td class="fw-bold align-middle text-wrap">
+                                            Dokumen Pengadaan Langsung
+                                        </td>
+
+                                        <td class="text-wrap" style="text-align: center">
+                                            <a href="{{ route('template.download', ['filename' => 'dokumen-pengadaan-langsung.docx']) }}">
+                                                Template
+                                            </a>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                        @if(empty($dokumen_pengadaan->dokumen_pengadaan_langsung))
+                                            <button type="button"
+                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Pengadaan Langsung">
+                                                Upload
+                                            </button>
+                                        @else
+                                            <button type="button"
+                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
+                                                onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
+                                                Download
+                                            </button>
+                                            <button type="button"
+                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                Edit
+                                            </button>
+                                        @endif
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
+                                aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
+                                        <form action="{{ route('updateStatus') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
+                                            <button type="submit" class="btn btn-success">Yakin</button>
+                                        </form>
                                     </div>
                                 </div>
-                                </div>
-                                <!-- end Modal -->
-                                <br><br>
+                            </div>
+                            </div>
+                            <!-- end Modal -->
+                            <!-- List dokumen kurang dari 50 dan Selesai-->
                             @elseif($pengadaan->status == 'Selesai')
                                 <p>Setelah Selsai (saat ini status Selesai)</p>
                                 <table
@@ -276,13 +284,8 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
-                                            </th>
-
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
                                             </th>
                                             <th scope="col" class="text-center align-middle">
                                                 Action
@@ -297,10 +300,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -317,10 +316,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -335,10 +330,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Identifikasi Kebutuhan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -355,10 +346,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Perencanaan Pengadaan
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
@@ -373,10 +360,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen HPS
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -393,10 +376,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Nota Dinas
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
@@ -412,10 +391,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Undangan
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
@@ -430,10 +405,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Pengadaan Langsung
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -447,7 +418,7 @@
                                 </table>
                                 <div class="text-center">
                                     <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal1">Selesai</a>
+                                        data-bs-target="#setujuModal1">Serahkan</a>
                                 </div>
                                 <div class="modal fade" id="setujuModal1" aria-hidden="true"
                                         data-bs-keyboard="false" data-bs-backdrop="static"
@@ -475,13 +446,17 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                <br><br>
                             @endif
                     @else
+                            <!-- List dokumen lebih dari 50 dan dilaksanakan-->
                             @if($pengadaan->status == 'Dilaksanakan')
-                                <p><b>KETIKA PENGADAAN DI ATAS 50 JUTA</b></p>
-                                <p>Setelah dilaksanakan (saat ini status dilaksanakan)</p>
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                        width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh dokumen terlampir, silakan tekan download</div>
+                                </div>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -490,13 +465,8 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
-                                            </th>
-
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
                                             </th>
                                             <th scope="col" class="text-center align-middle">
                                                 Action
@@ -511,10 +481,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -531,10 +497,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -549,10 +511,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Identifikasi Kebutuhan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -569,10 +527,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Perencanaan Pengadaan
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
@@ -587,10 +541,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen HPS
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -607,10 +557,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Nota Dinas
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
@@ -619,6 +565,38 @@
                                                 </button>
                                             </td>
                                         </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- 7 13 -->
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
+                                        width="16" height="16">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+                                    <div>Untuk mengunduh template, silakan tekan download template</div>
+                                </div>
+                                <table
+                                    class="table table-hover display responsive nowrap table-striped font-body-table"
+                                    style="width: 100%" {{-- id="table-bau" --}}>
+                                    <thead class="header-table">
+                                        <tr>
+                                            <th scope="col" class="text-center align-middle">
+                                                No
+                                            </th>
+                                            <th scope="col" class="text-center align-middle text-wrap">
+                                                Nama Dokumen
+                                            </th>
+                                            <th scope="col" class="text-center align-middle text-wrap">
+                                                Template
+                                            </th>
+                                            <th scope="col" class="text-center align-middle">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
                                                 7
@@ -627,8 +605,10 @@
                                                 Dokumen Undangan
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-undangan.docx']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_undangan))
@@ -659,8 +639,10 @@
                                                 Dokumen SSUK SSKK
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-ssuk-sskk.docx']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_ssuk_sskk))
@@ -690,8 +672,10 @@
                                                 Dokumen IKP
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-ikp.pdf']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_ikp))
@@ -721,8 +705,10 @@
                                                 Dokumen LDP dan Spesifikasi
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-ldp-dan-spesifikasi.docx']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_ldp_dan_spesifikasi))
@@ -752,8 +738,10 @@
                                                 Dokumen Penawaran
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-penawaran-pakta-dan-formulir-isian-kualifikasi.docx']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_penawaran))
@@ -783,8 +771,10 @@
                                                 Dokumen Surat Permintaan
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-surat-permintaan.docx']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_surat_permintaan))
@@ -814,8 +804,10 @@
                                                 Dokumen Pengadaan Langsung
                                             </td>
 
-                                            <td class="text-wrap">
-                                                Template
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a href="{{ route('template.download', ['filename' => 'dokumen-pengadaan-langsung.docx']) }}">
+                                                    Template
+                                                </a>
                                             </td>
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_pengadaan_langsung))
@@ -828,6 +820,36 @@
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
+                                                    Download
+                                                </button>
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    Edit
+                                                </button>
+                                            @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center fw-bold align-middle">
+                                                14
+                                            </td>
+                                            <td class="fw-bold align-middle text-wrap">
+                                                Dokumen Serah Terima
+                                            </td>
+                                            <td class="text-wrap" style="text-align: center">
+                                                <a>Dibuat Vendor</a>
+                                            </td>
+                                            <td class="text-center align-middle">
+                                            @if(empty($dokumen_pengadaan->dokumen_serah_terima))
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Serah Terima">
+                                                    Upload
+                                                </button>
+                                            @else
+                                                <button type="button"
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Serah Terima"
+                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_serah_terima']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -866,9 +888,7 @@
                                     </div>
                                 </div>
                                 </div>
-
-                                <br>
-                                <br>
+                                <!-- List dokumen lebih dari 50 dan selesai-->
                             @elseif($pengadaan->status == 'Selesai')
                                 <p>Setelah Selesai (saat ini status selesai)</p>
                                 <table
@@ -879,20 +899,14 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
-                                            </th>
-
-                                            <th scope="col" class="text-center align-middle text-wrap">
-                                                Template
                                             </th>
                                             <th scope="col" class="text-center align-middle">
                                                 Action
                                             </th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -900,10 +914,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -919,10 +929,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
@@ -936,10 +942,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Identifikasi Kebutuhan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -955,10 +957,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Perencanaan Pengadaan
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
@@ -972,10 +970,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen HPS
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -991,10 +985,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Nota Dinas
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
@@ -1008,10 +998,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Undangan
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -1027,10 +1013,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen SSUK SSKK
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK">
@@ -1044,10 +1026,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen IKP
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -1063,10 +1041,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen LDP dan Spesifikasi
                                             </td>
-
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi">
@@ -1080,10 +1054,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Penawaran
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
@@ -1099,9 +1069,6 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Surat Permintaan
                                             </td>
-                                            <td class="text-wrap">
-                                                Template
-                                            </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan">
@@ -1115,10 +1082,6 @@
                                             </td>
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Pengadaan Langsung
-                                            </td>
-
-                                            <td class="text-wrap">
-                                                Template
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"

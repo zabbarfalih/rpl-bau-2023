@@ -29,6 +29,7 @@ class CreateDokumenPengadaansTable extends Migration
             $table->string('dokumen_penawaran_pakta_formulir')->nullable();
             $table->string('dokumen_surat_permintaan')->nullable();
             $table->string('dokumen_pengadaan_langsung')->nullable();
+            $table->string('dokumen_serah_terima')->nullable();
             $table->string('dokumen_bast')->nullable();
             $table->double('harga_anggaran')->nullable();
             $table->timestamps();

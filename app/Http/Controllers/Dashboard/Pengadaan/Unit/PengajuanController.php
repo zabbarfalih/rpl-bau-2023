@@ -152,7 +152,7 @@ class PengajuanController extends Controller
             return back()->with('error', 'File upload failed.');
         }
     }
-    
+
     public function kirimForm(Request $request)
     {
         $validatedData = Validator::make($request->all(), [
