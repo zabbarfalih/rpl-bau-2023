@@ -60,6 +60,7 @@ class RevisiPenolakanUnitController extends Controller
     {
         $menu = Menu::with('submenu')->get();
         
+        // Ambil semua data penolakan yang diajukan oleh user yang sedang login
         $listPenolakan = Penolakan::whereHas('pengadaan', function($query) {
             $query->where('user_id', auth()->id());
         })->get();

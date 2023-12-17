@@ -61,8 +61,9 @@ class PengajuanController extends Controller
         Carbon::setLocale('id');
         $menu = Menu::with('submenu')->get();
         $userId = Auth::id();
-        //$listPengajuan = Pengadaan::where('user_id', $userId)->get();
-        $listPengajuan = Pengadaan::all();
+        // Pengadaan yang diajukan oleh user yang sedang login
+        $listPengajuan = Pengadaan::where('user_id', $userId)->get();
+
 
         foreach ($listPengajuan as $pengajuan) {
             // Pastikan kolom tanggal pengadaan ada dan bukan null
