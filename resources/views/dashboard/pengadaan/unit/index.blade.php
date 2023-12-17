@@ -52,39 +52,35 @@
                             </thead>
 
                             <tbody>
-                                @php $displayCounter = 0; @endphp
-                                @foreach($listPengajuan as $pengajuan)
-                                    @if($pengajuan->status !== 'Ditolak' && $pengajuan->status !== 'Revisi')
-                                    @php $displayCounter++; @endphp
-                                    <tr>
-                                        <td class="text-center fw-bold align-middle">
-                                            {{ $displayCounter }}
-                                        </td>
+                                @foreach($listPengajuan as $list)
+                                <tr>
+                                    <td class="text-center fw-bold align-middle">
+                                        {{ $loop->iteration }}
+                                    </td>
 
-                                        <td class="text-wrap">
-                                            {{ $pengajuan->nama_pengadaan }}
-                                        </td>
+                                    <td class="text-wrap">
+                                        {{ $list->nama_pengadaan }}
+                                    </td>
 
-                                        <td class="text-center align-middle">
-                                            {{$pengajuan->tanggal_pengadaan_formatted}}
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $pengajuan->status_color }}" style="border: none">
-                                                {{ $pengajuan->status }}
+                                    <td class="text-center align-middle">
+                                        {{$list->tanggal_pengadaan_formatted}}
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $list->status_color }}" style="border: none">
+                                            {{ $list->status }}
+                                        </button>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href={{ route('unit.pengajuan.details', ['id' => $list->id]) }}>
+                                            <button
+                                            type="button"
+                                            class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
+                                            >
+                                                Detail
                                             </button>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href={{ route('unit.pengajuan.details', ['id' => $pengajuan->id]) }}>
-                                                <button
-                                                type="button"
-                                                class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
-                                                >
-                                                    Detail
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endif
+                                        </a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

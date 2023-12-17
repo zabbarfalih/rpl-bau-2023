@@ -30,7 +30,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title fw-bold">Laporan Dokumen</h5>
-                                @if ($pengadaan->status === 'Diajukan')
+                                @if ($pengadaan->status === 'Diajukan' || $pengadaan->status === 'Revisi')
                                 {{-- <p>Setelah UNIT mengajukan (saat ini status diajukan)</p> --}}
                                     <table class="table table-hover display responsive nowrap table-striped font-body-table"
                                         style="width: 100%" {{-- id="table-bau" --}}>
