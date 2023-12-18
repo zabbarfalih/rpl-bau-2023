@@ -97,23 +97,23 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::get('/skp/info-pengajuan-skp/detail', [DetailPengajuanSkpController::class, 'index'])->name('skp.detail');
 
     // Surat Tugas
-    Route::get('/dashboard/surat-tugas/info-pengajuan-surtug', [InfoPengajuanSuratTugasController::class, 'index'])->name('infopengajuansurtug.index');
-    Route::get('/dashboard/surat-tugas/info-pengajuan-surtug/detail/{id}', [DetailPengajuanSuratTugasController::class, 'show'])->name('detailpengajuansurtug.detail');
-    Route::get('/dashboard/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'create'])->name('infopengajuansurtug.create');
-    Route::post('/dashboard/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'submitForm'])->name('pengajuan-surat-tugas.submit');
+    Route::get('/surat-tugas/info-pengajuan-surtug', [InfoPengajuanSuratTugasController::class, 'index'])->name('infopengajuansurtug.index');
+    Route::get('/surat-tugas/info-pengajuan-surtug/detail/{id}', [DetailPengajuanSuratTugasController::class, 'show'])->name('detailpengajuansurtug.detail');
+    Route::get('/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'create'])->name('infopengajuansurtug.create');
+    Route::post('/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'submitForm'])->name('pengajuan-surat-tugas.submit');
 
     // Persetujuan Surat Tugas
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug', [PersetujuanSuratTugasController::class, 'index'])->name('persetujuansurtug.index');
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug/detail/{id}', [DetailPersetujuanSuratTugasController::class, 'show'])->name('detailpersetujuansurtug.detail');
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug/detail/setujui/{id}', [PersetujuanSuratTugasController::class, 'setujuiAction'])->name('setujuiAction');
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug/detail/tolak/{id}', [PersetujuanSuratTugasController::class, 'tolakAction'])->name('tolakAction');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug', [PersetujuanSuratTugasController::class, 'index'])->name('persetujuansurtug.index');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/{id}', [DetailPersetujuanSuratTugasController::class, 'show'])->name('detailpersetujuansurtug.detail');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/setujui/{id}', [PersetujuanSuratTugasController::class, 'setujuiAction'])->name('setujuiAction');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/tolak/{id}', [PersetujuanSuratTugasController::class, 'tolakAction'])->name('tolakAction');
 
     // Operator (Pengecekan Surat Tugas Luar)
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
-    Route::put('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
+    Route::put('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
 
     // Download Surat Tugas
     // Route::get('/download-surat-tugas-pdf', [PengecekanSuratTugasController::class, 'downloadpdf'])->name('surtug.download');
