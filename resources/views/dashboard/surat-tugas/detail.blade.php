@@ -1,10 +1,10 @@
-<x-dashboard.layouts.layouts :menu="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
         <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
     </x-slot>
-  
+
     <x-slot name="js_head">
         <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
@@ -13,7 +13,7 @@
         <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.js"></script>
         <script defer src="{{ asset('assets/js/dashboard/table.js') }}"></script>
     </x-slot>
-  
+
     <section class="section dashboard">
         <div class="row">
           <!-- Left side columns -->
@@ -37,7 +37,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="col-xl-8">
                       <div class="card">
                         <div class="card-body pt-3">
@@ -53,7 +53,7 @@
                               </button>
                             </li>
                           </ul>
-  
+
                           <div class="tab-content pt-2">
                             <div
                               class="tab-pane fade show active profile-overview"
@@ -64,38 +64,38 @@
                                     <div class="col-lg-3 col-md-4 label">Nama</div>
                                     <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->name }}</div>
                                 </div>
-  
+
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">NIP</div>
                                     <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->nip }}</div>
                                 </div>
-  
+
                                 <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Nama Kegiatan</div>
                                   <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->nama_kegiatan }}</div>
                                 </div>
-  
+
                                 <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Tanggal Kegiatan</div>
                                   <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->tanggal_perdin_mulai }} s.d {{ $detailSuratTugas->tanggal_perdin_selesai }}</div>
                                 </div>
-  
+
                                 <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Penandatangan</div>
                                   <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->jabatan_pejabat_ttd }}</div>
                                 </div>
-  
+
                                 <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Lokasi</div>
                                   <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->lokasi }}</div>
                                 </div>
-  
+
                                 <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Moda Transportasi</div>
                                   <div class="col-lg-9 col-md-8">{{ $detailSuratTugas->moda_transportasi }}</div>
                                 </div>
                             </div>
-  
+
                             <div
                               class="tab-pane fade profile-edit pt-3"
                               id="profile-edit"
@@ -114,14 +114,14 @@
             </div>
           </div>
           <!-- End Left side columns -->
-  
+
           <!-- Right side columns -->
           <div class="col-lg-4">
             <!-- Recent Activity -->
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Perkembangan Proses Pengajuan</h5>
-  
+
                     <div class="activity">
                         @if($detailSuratTugas->kode_track == 1)
                             <div class="activity-item d-flex">
@@ -151,7 +151,7 @@
                                 <div class="activity-content">Surat tugas berhasil diajukan</div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                 <div class="activite-label">Tahap 2</div>
                                 <i
@@ -162,7 +162,7 @@
                                 </div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                 <div class="activite-label">Tahap 3</div>
                                 <i
@@ -182,7 +182,7 @@
                                   <div class="activity-content">Surat tugas berhasil diajukan</div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 2</div>
                                   <i
@@ -193,7 +193,7 @@
                                   </div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 3</div>
                                   <i
@@ -204,7 +204,7 @@
                                   </div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 4</div>
                                   <i
@@ -225,7 +225,7 @@
                                   <div class="activity-content">Surat tugas berhasil diajukan</div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 2</div>
                                   <i
@@ -236,7 +236,7 @@
                                   </div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 3</div>
                                   <i
@@ -247,7 +247,7 @@
                                   </div>
                                 </div>
                                 <!-- End activity item-->
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 4</div>
                                   <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
@@ -255,7 +255,7 @@
                                     Surat tugas dalam proses penandatanganan
                                   </div>
                                 </div>
-  
+
                                 <div class="activity-item d-flex">
                                   <div class="activite-label">Tahap 5</div>
                                   <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
@@ -282,7 +282,7 @@
         </div>
         </div>
     </section>
-  
+
       <x-slot name="js_body">
     </x-slot>
   </x-dashboard.layouts.layouts>

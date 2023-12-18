@@ -19,11 +19,11 @@ class PengajuanSuratTugasController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
 
         return view('dashboard.surat-tugas.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
         ]);
     }
@@ -35,9 +35,9 @@ class PengajuanSuratTugasController extends Controller
      */
     public function create()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         return view('dashboard.surat-tugas.add', [
-            'menus' => $menus,
+            'menu' => $menu,
         ]);
     }
 

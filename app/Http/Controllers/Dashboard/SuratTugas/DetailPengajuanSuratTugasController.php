@@ -20,11 +20,11 @@ class DetailPengajuanSuratTugasController extends Controller
      */
     public function index()
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         $detailPengajuanSuratTugas = PengajuanSuratTugas::where('user_id', auth()->user()->id)->select('id')->get();
         return view('dashboard.surat-tugas.detail', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
             'detailPengajuanSuratTugas' => $detailPengajuanSuratTugas,
         ]);
@@ -64,11 +64,11 @@ class DetailPengajuanSuratTugasController extends Controller
 
         // Periksa apakah user yang sedang login memiliki hak akses ke surat tugas tersebut
         if (auth()->user()->id === $detailSuratTugas->user_id) {
-            $menus = Menu::with('submenus')->get();
+            $menu = Menu::with('submenu')->get();
             $users = User::all();
 
             return view('dashboard.surat-tugas.detail', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'users' => $users,
                 'detailSuratTugas' => $detailSuratTugas,
             ]);

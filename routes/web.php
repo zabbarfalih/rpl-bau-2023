@@ -58,7 +58,7 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     });
     Route::get('/download-template/{filename}', [DokumenController::class, 'downloadTemplate'])->name('template.download');
     Route::post('/upload-dokumen', [DokumenController::class, 'uploadDokumen'])->name('upload.dokumen');
-    
+
     // SPJ Honor Dosen
     Route::resource('/spj/pengajuan-spj', SpjController::class)->middleware('auth');
     Route::get('/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
@@ -97,23 +97,23 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::get('/skp/info-pengajuan-skp/detail', [DetailPengajuanSkpController::class, 'index'])->name('skp.detail');
 
     // Surat Tugas
-    Route::get('/dashboard/surat-tugas/info-pengajuan-surtug', [InfoPengajuanSuratTugasController::class, 'index'])->name('infopengajuansurtug.index');
-    Route::get('/dashboard/surat-tugas/info-pengajuan-surtug/detail/{id}', [DetailPengajuanSuratTugasController::class, 'show'])->name('detailpengajuansurtug.detail');
-    Route::get('/dashboard/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'create'])->name('infopengajuansurtug.create');
-    Route::post('/dashboard/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'submitForm'])->name('pengajuan-surat-tugas.submit');
+    Route::get('/surat-tugas/info-pengajuan-surtug', [InfoPengajuanSuratTugasController::class, 'index'])->name('infopengajuansurtug.index');
+    Route::get('/surat-tugas/info-pengajuan-surtug/detail/{id}', [DetailPengajuanSuratTugasController::class, 'show'])->name('detailpengajuansurtug.detail');
+    Route::get('/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'create'])->name('infopengajuansurtug.create');
+    Route::post('/surat-tugas/pengajuan-surtug', [PengajuanSuratTugasController::class, 'submitForm'])->name('pengajuan-surat-tugas.submit');
 
     // Persetujuan Surat Tugas
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug', [PersetujuanSuratTugasController::class, 'index'])->name('persetujuansurtug.index');
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug/detail/{id}', [DetailPersetujuanSuratTugasController::class, 'show'])->name('detailpersetujuansurtug.detail');
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug/detail/setujui/{id}', [PersetujuanSuratTugasController::class, 'setujuiAction'])->name('setujuiAction');
-    Route::get('/dashboard/persetujuan-surat-tugas/persetujuan-surtug/detail/tolak/{id}', [PersetujuanSuratTugasController::class, 'tolakAction'])->name('tolakAction');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug', [PersetujuanSuratTugasController::class, 'index'])->name('persetujuansurtug.index');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/{id}', [DetailPersetujuanSuratTugasController::class, 'show'])->name('detailpersetujuansurtug.detail');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/setujui/{id}', [PersetujuanSuratTugasController::class, 'setujuiAction'])->name('setujuiAction');
+    Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/tolak/{id}', [PersetujuanSuratTugasController::class, 'tolakAction'])->name('tolakAction');
 
     // Operator (Pengecekan Surat Tugas Luar)
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
-    Route::put('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
-    Route::get('/dashboard/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
+    Route::put('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
+    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
 
     // Download Surat Tugas
     // Route::get('/download-surat-tugas-pdf', [PengecekanSuratTugasController::class, 'downloadpdf'])->name('surtug.download');
@@ -129,19 +129,19 @@ Route::middleware(['can:tim keuangan', 'formatUserName'])->prefix('dashboard')->
     Route::post('/tim-keuangan/konfirmasi-spj/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolak']);
     Route::post('/tim-keuangan/konfirmasi-spj/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpj']);
     Route::get('/tim-keuangan/konfirmasi-spj/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpj']);
-    
+
     Route::get('/tim-keuangan/konfirmasi-spjtr/{spj}', [KonfirmasiSPjController::class, 'showtr'])->name('konfirmasi-spjtr.show');
     Route::post('/tim-keuangan/konfirmasi-spjtr/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuTr']);
     Route::post('/tim-keuangan/konfirmasi-spjtr/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakTr']);
     Route::post('/tim-keuangan/konfirmasi-spjtr/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjTr']);
     Route::get('/tim-keuangan/konfirmasi-spjtr/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjTr']);
-    
+
     Route::get('/tim-keuangan/konfirmasi-spjpd/{spj}', [KonfirmasiSPjController::class, 'showpd'])->name('konfirmasi-spjpd.show');
     Route::post('/tim-keuangan/konfirmasi-spjpd/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuPd']);
     Route::post('/tim-keuangan/konfirmasi-spjpd/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakPd']);
     Route::post('/tim-keuangan/konfirmasi-spjpd/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjPd']);
     Route::get('/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjPd']);
-    
+
     Route::get('/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
     Route::get('/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
 });

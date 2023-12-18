@@ -10,6 +10,7 @@ class PengajuanSuratTugas extends Model
 {
     use HasFactory;
 
+
     protected $table = 'pengajuan_surat_tugas';
     protected $dates = ['tanggal_ttd'];
     protected $date_start = ['tanggal_perdin_mulai'];

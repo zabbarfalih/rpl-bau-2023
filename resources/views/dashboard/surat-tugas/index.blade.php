@@ -1,4 +1,4 @@
-<x-dashboard.layouts.layouts :menu="$menus">
+<x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
         <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css" rel="stylesheet">
@@ -71,6 +71,6 @@
 
         </section>
     <x-slot name="js_body">
-      
+
     </x-slot>
 </x-dashboard.layouts.layouts>

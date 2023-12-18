@@ -19,13 +19,13 @@ class InfoPengajuanSuratTugasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SuratTugasChart $suratTugasChart) 
+    public function index(SuratTugasChart $suratTugasChart)
     {
-        $menus = Menu::with('submenus')->get();
+        $menu = Menu::with('submenu')->get();
         $users = User::all();
         $pengajuanSuratTugas = PengajuanSuratTugas::where('user_id', auth()->user()->id)->get();
         return view('dashboard.surat-tugas.index', [
-            'menus' => $menus,
+            'menu' => $menu,
             'users' => $users,
             'pengajuanSuratTugas' => $pengajuanSuratTugas,
             'suratTugasChart' => $suratTugasChart->build(),
