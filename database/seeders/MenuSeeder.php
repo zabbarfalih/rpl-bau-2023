@@ -76,7 +76,26 @@ class MenuSeeder extends Seeder
                 'on_sidebar' => true,
                 'url' => Str::slug('Tim Keuangan'),
                 'icon' => 'bi bi-person-check',
-            ]
-        ]);              
+            ],
+            [
+                'name' => 'Surat Tugas',
+                'on_sidebar' => true,
+                'url' => Str::slug('Surat Tugas'),
+                'icon' => 'bi bi-envelope-paper',
+            ],
+            [
+                'name' => 'Persetujuan Surat Tugas',
+                'on_sidebar' => true,
+                'url' => Str::slug('Persetujuan Surat Tugas'),
+                'icon' => 'bi bi-check-circle-fill',
+            ],
+            [
+                'name' => 'Operator',
+                'on_sidebar' => true,
+                'url' => Str::slug('Pengecekan Surat Tugas'),
+                'icon' => 'bi bi-person-workspace',
+            ],
+
+        ]);
     }
 }
