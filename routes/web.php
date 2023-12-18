@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Dashboard\Profil\ProfilController;
 
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
@@ -107,6 +108,15 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/{id}', [DetailPersetujuanSuratTugasController::class, 'show'])->name('detailpersetujuansurtug.detail');
     Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/setujui/{id}', [PersetujuanSuratTugasController::class, 'setujuiAction'])->name('setujuiAction');
     Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/tolak/{id}', [PersetujuanSuratTugasController::class, 'tolakAction'])->name('tolakAction');
+    Route::get('/storage/{path}', function ($path) {
+        $filePath = storage_path('app/uploads/' . $path);
+    
+        if (!Storage::exists('uploads/' . $path)) {
+            abort(404); // File tidak ditemukan, tampilkan halaman 404
+        }
+    
+        return response()->file($filePath);
+    })->where('path', '.*');
 
     // Operator (Pengecekan Surat Tugas Luar)
     Route::get('/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');

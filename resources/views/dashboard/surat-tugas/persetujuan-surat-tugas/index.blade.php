@@ -43,8 +43,8 @@
                             <a href="{{ route('detailpersetujuansurtug.detail', ['id' => $persetujuan->id]) }}">
                               <button type="button" class="btn btn-primary">Detail</button>
                             </a>
-                            <a href="{{ asset($persetujuan->file_path) }}" target="_blank">
-                              <button type="button" class="btn btn-success">Lampiran</button>
+                            <a href="{{ url('storage/' . str_replace('uploads/', '', $persetujuan->file_path)) }}" target="_blank">
+                                <button type="button" class="btn btn-success">Lampiran</button>
                             </a>
                           </td>
                         </tr>
@@ -55,6 +55,7 @@
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
+                
   
               </div>
             </div>
