@@ -65,11 +65,13 @@
                                                         onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_kak']) }}'">
                                                         Download
                                                     </button>
-                                                    <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen KAK">
-                                                        Edit
-                                                    </button>
+                                                    @if ($pengadaan->status == 'Diajukan' || $pengadaan->status == 'Revisi')
+                                                        <button type="button"
+                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen KAK">
+                                                            Edit
+                                                        </button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -86,11 +88,13 @@
                                                         onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_memo']) }}'">
                                                         Download
                                                     </button>
+                                                    @if ($pengadaan->status == 'Diajukan' || $pengadaan->status == 'Revisi')
                                                     <button type="button"
                                                         class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                         data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Memo">
                                                         Edit
                                                     </button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
