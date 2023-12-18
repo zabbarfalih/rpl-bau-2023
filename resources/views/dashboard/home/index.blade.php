@@ -22,25 +22,57 @@
                   <div class="col-lg-12">
                     <div class="row">
                       <!-- Gaji Bulanan -->
-                      <div class="col-xxl-6 col-md-6">
-                        <div class="card info-card sales-card">
-                          <div class="card-body">
-                            <h5 class="card-title">
-                              Tanggal Gajian<span> | countdown</span>
-                            </h5>
-  
-                            <div class="d-flex align-items-center">
-                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-calendar-week-fill"></i>
-                              </div>
-                              <div class="ps-3">
-                                <h6>15 Hari Lagi</h6><span>1 November 2023</span>
-                              </div>
+                    <div class="col-xxl-6 col-md-6">
+                      <div class="card info-card sales-card">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            Tanggal Gajian<span> | countdown</span>
+                          </h5>
+
+                          <!-- Tempatkan kode countdown di sini -->
+                          <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <i class="bi bi-calendar-week-fill"></i>
+                            </div>
+                            <div class="ps-3">
+                              <h6 id="countdown-hari"></h6><span id="countdown-waktu"></span>
                             </div>
                           </div>
+                          <!-- Akhir dari kode countdown -->
                         </div>
                       </div>
-                      <!-- End Gaji Bulanan -->
+                    </div>
+                    <!-- End Gaji Bulanan -->
+
+                    <!-- Tambahkan tag script di bagian bawah body atau di bagian head -->
+                    <!-- Tambahkan tag script di bagian bawah body atau di bagian head -->
+                    <script>
+                      // Fungsi untuk menghitung countdown gajian
+                      function hitungCountdown() {
+                        const tanggalSaatIni = new Date(); // Tanggal saat ini
+                        const bulanSaatIni = tanggalSaatIni.getMonth(); // Ambil bulan saat ini (mulai dari 0 untuk Januari)
+                        const tahunSaatIni = tanggalSaatIni.getFullYear(); // Ambil tahun saat ini
+
+                        // Tanggal gajian (1 di setiap bulan)
+                        const tanggalGajian = new Date(tahunSaatIni, bulanSaatIni, 1);
+
+                        // Jika tanggal saat ini lebih besar dari tanggal gajian, gaji berikutnya adalah bulan berikutnya
+                        if (tanggalSaatIni > tanggalGajian) {
+                          tanggalGajian.setMonth(bulanSaatIni + 1); // Tambah 1 bulan
+                        }
+
+                        // Hitung selisih hari antara tanggal saat ini dan tanggal gajian
+                        const selisihWaktu = tanggalGajian.getTime() - tanggalSaatIni.getTime(); // Dalam milidetik
+                        const hari = Math.floor(selisihWaktu / (1000 * 60 * 60 * 24)); // Konversi ke hari
+
+                        // Tampilkan hasil countdown
+                        document.getElementById('countdown-hari').innerText = hari + " Hari" + " Lagi Gajian Nih!";
+                      }
+
+                      // Panggil fungsi hitungCountdown saat halaman dimuat
+                      hitungCountdown();
+                    </script>
+
   
                       <!-- Pengajuan Surat Tugas -->
                       <div class="col-xxl-6 col-md-6">
@@ -108,105 +140,7 @@
                       <!-- Rekapan Penghasilan -->
                     </div>
   
-                    <div class="row">
-                      <!-- Reports -->
-                      <div class="col-12">
-                        <div class="card">
-                          <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"
-                              ><i class="bi bi-three-dots"></i
-                            ></a>
-                            <ul
-                              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                            >
-                              <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                              </li>
-  
-                              <li><a class="dropdown-item" href="#">Today</a></li>
-                              <li><a class="dropdown-item" href="#">This Month</a></li>
-                              <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                          </div>
-  
-                          <div class="card-body">
-                            <h5 class="card-title">Reports <span>/Today</span></h5>
-  
-                            <!-- Line Chart -->
-                            <div id="reportsChart"></div>
-  
-                            <script>
-                              document.addEventListener("DOMContentLoaded", () => {
-                                new ApexCharts(
-                                  document.querySelector("#reportsChart"),
-                                  {
-                                    series: [
-                                      {
-                                        name: "Sales",
-                                        data: [31, 40, 28, 51, 42, 82, 56],
-                                      },
-                                      {
-                                        name: "Revenue",
-                                        data: [11, 32, 45, 32, 34, 52, 41],
-                                      },
-                                      {
-                                        name: "Customers",
-                                        data: [15, 11, 32, 18, 9, 24, 11],
-                                      },
-                                    ],
-                                    chart: {
-                                      height: 350,
-                                      type: "area",
-                                      toolbar: {
-                                        show: false,
-                                      },
-                                    },
-                                    markers: {
-                                      size: 4,
-                                    },
-                                    colors: ["#4154f1", "#2eca6a", "#ff771d"],
-                                    fill: {
-                                      type: "gradient",
-                                      gradient: {
-                                        shadeIntensity: 1,
-                                        opacityFrom: 0.3,
-                                        opacityTo: 0.4,
-                                        stops: [0, 90, 100],
-                                      },
-                                    },
-                                    dataLabels: {
-                                      enabled: false,
-                                    },
-                                    stroke: {
-                                      curve: "smooth",
-                                      width: 2,
-                                    },
-                                    xaxis: {
-                                      type: "datetime",
-                                      categories: [
-                                        "2018-09-19T00:00:00.000Z",
-                                        "2018-09-19T01:30:00.000Z",
-                                        "2018-09-19T02:30:00.000Z",
-                                        "2018-09-19T03:30:00.000Z",
-                                        "2018-09-19T04:30:00.000Z",
-                                        "2018-09-19T05:30:00.000Z",
-                                        "2018-09-19T06:30:00.000Z",
-                                      ],
-                                    },
-                                    tooltip: {
-                                      x: {
-                                        format: "dd/MM/yy HH:mm",
-                                      },
-                                    },
-                                  }
-                                ).render();
-                              });
-                            </script>
-                            <!-- End Line Chart -->
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Reports -->
+                    
                     </div>
                   </div>
                   <!-- End Left side columns -->
