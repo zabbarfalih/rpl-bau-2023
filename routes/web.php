@@ -58,7 +58,7 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     });
     Route::get('/download-template/{filename}', [DokumenController::class, 'downloadTemplate'])->name('template.download');
     Route::post('/upload-dokumen', [DokumenController::class, 'uploadDokumen'])->name('upload.dokumen');
-    
+
     // SPJ Honor Dosen
     Route::resource('/spj/pengajuan-spj', SpjController::class)->middleware('auth');
     Route::get('/spj/pengajuan-spj', [SpjController::class, 'create'])->name('spj.create');
@@ -129,19 +129,19 @@ Route::middleware(['can:tim keuangan', 'formatUserName'])->prefix('dashboard')->
     Route::post('/tim-keuangan/konfirmasi-spj/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolak']);
     Route::post('/tim-keuangan/konfirmasi-spj/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpj']);
     Route::get('/tim-keuangan/konfirmasi-spj/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpj']);
-    
+
     Route::get('/tim-keuangan/konfirmasi-spjtr/{spj}', [KonfirmasiSPjController::class, 'showtr'])->name('konfirmasi-spjtr.show');
     Route::post('/tim-keuangan/konfirmasi-spjtr/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuTr']);
     Route::post('/tim-keuangan/konfirmasi-spjtr/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakTr']);
     Route::post('/tim-keuangan/konfirmasi-spjtr/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjTr']);
     Route::get('/tim-keuangan/konfirmasi-spjtr/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjTr']);
-    
+
     Route::get('/tim-keuangan/konfirmasi-spjpd/{spj}', [KonfirmasiSPjController::class, 'showpd'])->name('konfirmasi-spjpd.show');
     Route::post('/tim-keuangan/konfirmasi-spjpd/setujui-spj/{spj}', [DetailSpjController::class, 'changeStatusSetujuPd']);
     Route::post('/tim-keuangan/konfirmasi-spjpd/tolak-spj/{spj}', [DetailSpjController::class, 'changeStatusTolakPd']);
     Route::post('/tim-keuangan/konfirmasi-spjpd/transfer-spj/{spj}', [DetailSpjController::class, 'konfirmasiTransferSpjPd']);
     Route::get('/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/{spj}', [DetailSpjController::class, 'donwloadPdfSpjPd']);
-    
+
     Route::get('/tim-keuangan/konfirmasi-skp', [KonfirmasiSKpController::class, 'index'])->name('konfirmasipengajuanskp.index');
     Route::get('/tim-keuangan/konfirmasi-skp/detail-skp', [KonfirmasiSKpController::class, 'detail'])->name('konfirmasipengajuanskp.detail');
 });
