@@ -12,6 +12,7 @@
         <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
         <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.js"></script>
         <script defer src="{{ asset('assets/js/dashboard/table.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </x-slot>
 
     <section class="section dashboard">
@@ -103,8 +104,8 @@
                                   </div>
                               </div>
                             </div>
-                          
-                          <script>
+
+                            <script>
                               function updateStatus(action) {
                                   let id = {{ $detailPersetujuanSuratTugas->id }};
                                   let url = '';
@@ -119,16 +120,34 @@
                                       url: url,
                                       method: 'GET',
                                       success: function(response) {
-                                          // Handle response or redirect if needed
-                                          window.location.href = "{{ route('persetujuansurtug.index') }}"; // Gantilah 'nama_rute_index' dengan nama rute yang sesuai
+                                          // Tampilkan Sweet Alert setelah berhasil
+                                          let alertMessage = (action === 'setujui') ? 'Pengajuan Surat Tugas Telah Disetujui' : 'Pengajuan Surat Tugas Telah Ditolak';
+                          
+                                          Swal.fire({
+                                              title: 'Berhasil',
+                                              text: alertMessage,
+                                              icon: 'success',
+                                              confirmButtonColor: '#3085d6',
+                                              confirmButtonText: 'OK',
+                                          }).then((result) => {
+                                              // Redirect ke halaman 'persetujuansurtug.index' jika tombol OK ditekan
+                                              if (result.isConfirmed) {
+                                                  window.location.href = "{{ route('persetujuansurtug.index') }}";
+                                              }
+                                          });
                                       },
                                       error: function(error) {
+                                          // Tampilkan Sweet Alert jika terjadi kesalahan
+                                          Swal.fire({
+                                              title: 'Error',
+                                              text: 'Terjadi kesalahan',
+                                              icon: 'error',
+                                          });
                                           console.log(error);
                                       }
                                   });
                               }
                           </script>
-                                       
 
                             <div
                               class="tab-pane fade profile-edit pt-3"

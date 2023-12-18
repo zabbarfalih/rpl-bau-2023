@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SURAT PERJALANAN DINAS (SPD)</title>
     <style>
+      @page{
+        size: a4 portrait;
+      }
+      @font-face{
+        font-family: 'BookmanOldStyle';
+        src: url({{ storage_path("fonts/bookman-old-style.ttf") }}) format('truetype');
+        font-weight: 700;
+        font-style: normal;
+      }
+      .logo{
+        width: 100%;
+        position: fixed;
+        top: -50px;
+        left: 0px;
+        right: 0;
+        display: block;
+        background: #ffffff;
+        color: #fff;
+        font-size: 18px;
+        padding-top: 30px;
+        font-weight: bolder;
+        border-radius: 5px;
+        height: 50px;
+        text-align: center;
+        line-height: 35px;
+      }
       body {
-        font-family: "Bookman Old Style", Georgia, serif;
+        font-family: 'BookmanOldStyle', Times, serif;
         font-size: 12px;
         margin: 20px;
+        line-height: 1.3;
       }
-
       .lampiran tr {
         align-items: baseline; /* Penyejajaran sejajar pada baseline */
       }
@@ -65,15 +91,15 @@
 
       .footer {
         text-align: right;
-        margin: 20px 50px;
+        margin: 0px 50px;
       }
     </style>
   </head>
   <body>
-    {{-- <div class="logo">
-      <img src="{{ asset('img/LogoSTISBW.png') }}" alt="Logo Polstat STIS" width="300" height="150">
-    </div> --}}
     <div class="surat-tugas" style="border:none">
+      <div class="logo">
+        <img src="{{ public_path('assets/img/LogoSTISBW.png') }}" style="width: 80px; height:80px"  alt="Logo STIS">
+      </div>
       <h2>SURAT TUGAS</h2>
 
       <div class="content">
@@ -126,7 +152,7 @@
         </p>
         <p>
           Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}
+          Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d &nbsp;{{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}
         </p>
 
         <div class="footer">

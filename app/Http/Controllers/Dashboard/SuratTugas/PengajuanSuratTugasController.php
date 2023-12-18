@@ -83,7 +83,7 @@ class PengajuanSuratTugasController extends Controller
 
         $pengajuanSuratTugas->save();
 
-        return redirect()->route('infopengajuansurtug.index');
+        return back()->with('success', 'Surat tugas berhasil diajukan'); 
     }
 
 

@@ -21,7 +21,7 @@ class PersetujuanSuratTugasController  extends Controller
     {
         $menu = Menu::with('submenu')->get();
         $users = User::all();
-        $persetujuanSuratTugas = PengajuanSuratTugas::where('status_surtug', 0)->get();
+        $persetujuanSuratTugas = PengajuanSuratTugas::where('status_surtug', 0)->paginate(10);
         return view('dashboard.surat-tugas.persetujuan-surat-tugas.index', [ //semacam track lokasi folder file view (dalam hal ini adalah file view index)
             'menu' => $menu,
             'users' => $users,

@@ -24,7 +24,7 @@
                 <p>Surat Tugas yang diajukan pegawai<a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">
   
                 <!-- Table with stripped rows -->
-                <table class="table datatable">
+                <table class="table table table-hover display responsive nowrap table-striped font-body-table">
                   <thead>
                     <tr>
                       <th scope="col">No</th>
@@ -43,8 +43,8 @@
                             <a href="{{ route('detailpersetujuansurtug.detail', ['id' => $persetujuan->id]) }}">
                               <button type="button" class="btn btn-primary">Detail</button>
                             </a>
-                            <a href="{{ asset($persetujuan->file_path) }}" target="_blank">
-                              <button type="button" class="btn btn-success">Lampiran</button>
+                            <a href="{{ url('storage/' . str_replace('uploads/', '', $persetujuan->file_path)) }}" target="_blank">
+                                <button type="button" class="btn btn-success">Lampiran</button>
                             </a>
                           </td>
                         </tr>
@@ -55,7 +55,9 @@
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
-  
+                
+                {{ $persetujuanSuratTugas->links() }}
+
               </div>
             </div>
   

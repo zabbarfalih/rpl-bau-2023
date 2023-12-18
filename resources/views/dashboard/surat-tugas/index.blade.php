@@ -35,7 +35,7 @@
                   <p>Berikut disajikan data-data surat tugas yang diajukan.</p>
 
                   <!-- Table with stripped rows -->
-                  <table class="table datatable">
+                  <table class="table table-hover display responsive nowrap table-striped font-body-table">
                     <thead>
                       <tr>
                         <th scope="col">No.</th>
@@ -60,6 +60,9 @@
                     </tbody>
                   </table>
                   <!-- End Table with stripped rows -->
+
+                  {{ $pengajuanSuratTugas->links() }}
+
                 </div>
               </div>
             </div>
@@ -71,6 +74,6 @@
 
         </section>
     <x-slot name="js_body">
-
+      
     </x-slot>
 </x-dashboard.layouts.layouts>

@@ -29,7 +29,7 @@
                         </p>
 
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
+                        <table class="table table table-hover display responsive nowrap table-striped font-body-table">
                             <thead>
                                 <tr>
                                     <th scope="col">No.</th>
@@ -81,6 +81,9 @@
                             @endforeach
                             </tbody>
                         </table>
+
+                        {{ $pengecekanSuratTugas->links() }}
+
                     </div>
                 </div>
             </div>

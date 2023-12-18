@@ -16,7 +16,7 @@ class SuratTugasChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
     {
-        $suratTugas = PengajuanSuratTugas::get();
+        $suratTugas = PengajuanSuratTugas::where('user_id', auth()->user()->id)->get();
 
         $data = [
             $suratTugas->where('status_surtug', 0)->count(),
