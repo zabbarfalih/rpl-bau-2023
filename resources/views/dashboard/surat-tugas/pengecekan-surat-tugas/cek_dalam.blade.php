@@ -45,6 +45,8 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan NIP Anda"
+                            pattern="[0-9]+"
+                            title="NIP hanya boleh berisi angka"
                         />
                         </div>
                     </div>

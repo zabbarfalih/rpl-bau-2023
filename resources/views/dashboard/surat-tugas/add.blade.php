@@ -43,6 +43,11 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan NIP Anda"
+<<<<<<< HEAD
+=======
+                            pattern="[0-9]+"
+                            title="NIP hanya boleh berisi angka"
+>>>>>>> origin/faras
                             required
                         />
                         </div>

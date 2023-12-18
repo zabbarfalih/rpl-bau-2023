@@ -59,15 +59,19 @@
                                                 <div class="badge bg-danger text-wrap" style="width: 6rem;">Belum dilengkapi</div>
                                             @endif
                                         </td>
-                                        <td>
+
+                                         <!-- HTML untuk tombol Download -->
+                                         <td>
                                             @if($pengecekan->keterangan == 'Sudah dilengkapi')
-                                                <a href="{{ route('surtug.download', ['id' => $pengecekan->id]) }}" target="_blank">
-                                                    <button type="button" class="btn btn-primary" >Download</button>
+                                                <a href="{{ route('surtug.download', ['id' => $pengecekan->id]) }}" target="_blank" onclick="handleDownload()"> <!-- Menggunakan onclick untuk menambahkan handleDownload() -->
+                                                    <button type="button" class="btn btn-primary">Download</button>
                                                 </a>
                                             @else
                                                 <button type="button" class="btn btn-secondary" disabled>Download</button>
                                             @endif
                                         </td>
+
+                                        <!-- HTML untuk tombol Selesai -->
                                         <td>
                                             @if($pengecekan->kode_track == 4)
                                                 <a href="{{ route('pengecekansurtug.index', ['id' => $pengecekan->id]) }}">
@@ -77,6 +81,21 @@
                                                 <button type="button" class="btn btn-secondary" disabled>Selesai</button>
                                             @endif
                                         </td>
+
+                                        <!-- JavaScript untuk mengaktifkan tombol "Selesai" setelah tombol "Download" ditekan -->
+                                        <script>
+                                            function handleDownload() {
+                                                // Memperbarui halaman setelah 3 detik (contoh waktu yang bisa disesuaikan)
+                                                setTimeout(function() {
+                                                    // Mengubah status tombol "Selesai" menjadi aktif
+                                                    // document.getElementById('selesaiButton').removeAttribute('disabled');
+
+                                                    // Refresh halaman atau melakukan aksi lain jika diperlukan
+                                                    window.location.reload(); // Contoh: Refresh halaman
+                                                }, 1000); // Atur sesuai dengan kebutuhan waktu yang diperlukan untuk download
+                                            }
+                                        </script>
+
                                     </tr>
                             @endforeach
                             </tbody>

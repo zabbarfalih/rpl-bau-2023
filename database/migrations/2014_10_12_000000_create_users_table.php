@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('picture')->nullable();
             $table->string('password');
+            $table->string('role')->nullable();
+            $table->bigInteger('gaji');
             $table->rememberToken();
         });
     }
