@@ -11,6 +11,8 @@
                 <li class="nav-heading">Pengadaan</li>
             @elseif ($menu->name === 'SPJ')
                 <li class="nav-heading">Keuangan</li>
+            @elseif ($menu->name === 'Surat Tugas')
+                <li class="nav-heading">Surat Tugas</li>
             @endif
             @can('admin')
                 @if ($menu->name === 'Administrator')
