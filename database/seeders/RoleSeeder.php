@@ -31,6 +31,15 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'Tim Keuangan',
             ],
-        ]);              
+            [
+                'name' => 'Pegawai',
+            ],
+            [
+                'name' => 'Operator',
+            ],
+            [
+                'name' => 'Pimpinan',
+            ],
+        ]);
     }
 }

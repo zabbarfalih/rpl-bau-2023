@@ -31,7 +31,7 @@ class UserCSVSeeder extends Seeder
         fgetcsv($csvFile);
 
         // Iterate over each row of the file
-        while (($row = fgetcsv($csvFile)) !== FALSE) {
+        while (($row = fgetcsv($csvFile, 0, ';')) !== FALSE) {
             // Insert data into the database
             User::insert([
                 'id' => $row[0],
@@ -40,8 +40,10 @@ class UserCSVSeeder extends Seeder
                 'email' => $row[3],
                 'phone_number' => $row[4],
                 'address' => $row[5],
-                'picture' => $row[6],
-                'password' => bcrypt($row[7]),
+                'gaji' => $row[6],
+                'role' => $row[7],
+                'password' => bcrypt($row[8]),
+
             ]);
         }
 

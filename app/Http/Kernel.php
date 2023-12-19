@@ -66,5 +66,8 @@ class Kernel extends HttpKernel
 
         // Custom Middleware
         'formatUserName' => \App\Http\Middleware\FormatUserNameMiddleware::class,
+        'pegawai' => \App\Http\Middleware\IsPegawai::class,
+        'pimpinan' => \App\Http\Middleware\IsPimpinan::class,
+        'operator' => \App\Http\Middleware\IsOperator::class
     ];
 }

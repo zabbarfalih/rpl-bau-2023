@@ -21,6 +21,7 @@ class ProfileUpdateRequest extends FormRequest
             'picture' => ['nullable', 'image', 'max:1024'],
             'address' => ['nullable', 'string', 'max:255'],
             'phone_number' => ['nullable', 'string', 'max:13'],
+            'gaji' => ['nullable', 'numeric'],
         ];
     }
 }
