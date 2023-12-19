@@ -32,26 +32,16 @@ class Spj extends Model
 
     public function hitungTotal()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total = $tabelSpjs->sum('jumlah_diterima');
-        return $total + ($lastElement ? $lastElement->jumlah_diterima : 0);
+        return $this->tabel()->get()->fresh()->sum("jumlah_diterima");
     }
 
     public function hitungBruto()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total = $tabelSpjs->sum('jumlah_bruto');
-        return $total + ($lastElement ? $lastElement->jumlah_bruto : 0);
+        return $this->tabel()->get()->fresh()->sum("jumlah_bruto");
     }
 
     public function hitungPajak()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total = $tabelSpjs->sum('pajak');
-        return $total + ($lastElement ? $lastElement->pajak : 0);
+        return $this->tabel()->get()->fresh()->sum("pajak");
     }
-
 }

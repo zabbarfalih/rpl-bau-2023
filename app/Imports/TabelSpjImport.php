@@ -11,12 +11,14 @@ use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 class TabelSpjImport implements ToModel, WithStartRow, WithCalculatedFormulas
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
+
+        // Hentikan proses jika tidak ada data pada baris
         if (empty(array_filter($row))) {
             return null;
         }
@@ -41,14 +43,13 @@ class TabelSpjImport implements ToModel, WithStartRow, WithCalculatedFormulas
 
         // Hitung total dan isi atribut total pada model Spj
         $spj = Spj::find($spj_idFromForm);
-        $spj->total = $spj->hitungTotal();
-        $spj->total_bruto = $spj->hitungBruto();
-        $spj->total_pajak = $spj->hitungPajak();
+        $spj->total += $tabelSpj->jumlah_diterima;
+        $spj->total_bruto += $tabelSpj->jumlah_bruto;
+        $spj->total_pajak += $tabelSpj->pajak;
         $spj->save();
         // dd($spj->total);
 
         return $tabelSpj;
-
     }
 
     public function startRow(): int

@@ -32,57 +32,36 @@ class SpjPd extends Model
 
     public function totalUangHarian()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_uang_harian = $tabelSpjs->sum('uang_harian');
-        return $total_uang_harian + ($lastElement ? $lastElement->uang_harian : 0);
+        return $this->tabel()->get()->fresh()->sum("uang_harian");
     }
 
     public function totalTransport()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_transport = $tabelSpjs->sum('transport');
-        return $total_transport + ($lastElement ? $lastElement->transport : 0);
+        return $this->tabel()->get()->fresh()->sum("transport");
     }
 
     public function totalBandara()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_bandara = $tabelSpjs->sum('bandara');
-        return $total_bandara + ($lastElement ? $lastElement->bandara : 0);
+        return $this->tabel()->get()->fresh()->sum("bandara");
     }
 
     public function totalBiayaHotel()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_biaya_hotel = $tabelSpjs->sum('biaya_hotel');
-        return $total_biaya_hotel + ($lastElement ? $lastElement->biaya_hotel : 0);
+        return $this->tabel()->get()->fresh()->sum("biaya_hotel");
     }
 
     public function totalJumlah_Biaya()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_jumlah_biaya = $tabelSpjs->sum('jumlah_biaya');
-        return $total_jumlah_biaya + ($lastElement ? $lastElement->jumlah_biaya : 0);
+        return $this->tabel()->get()->fresh()->sum("jumlah_biaya");
     }
 
     public function totalUangMuka()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_uang_muka = $tabelSpjs->sum('uang_muka');
-        return $total_uang_muka + ($lastElement ? $lastElement->uang_muka : 0);
+        return $this->tabel()->get()->fresh()->sum("uang_muka");
     }
 
     public function totalKekurangan()
     {
-        $tabelSpjs = $this->tabel()->get();
-        $lastElement = $tabelSpjs->last();
-        $total_kekurangan = $tabelSpjs->sum('kekurangan');
-        return $total_kekurangan + ($lastElement ? $lastElement->kekurangan : 0);
+        return $this->tabel()->get()->fresh()->sum("kekurangan");
     }
 }
