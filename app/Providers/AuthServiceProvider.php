@@ -44,6 +44,18 @@ class AuthServiceProvider extends ServiceProvider
             return $user->roles->firstWhere('name', 'Tim Keuangan') !== null;
         });
 
+        Gate::define('pegawai', function (User $user) {
+            return $user->roles->firstWhere('name', 'Pegawai') !== null;
+        });
+
+        Gate::define('pimpinan', function (User $user) {
+            return $user->roles->firstWhere('name', 'Pimpinan') !== null;
+        });
+
+        Gate::define('operator', function (User $user) {
+            return $user->roles->firstWhere('name', 'Operator') !== null;
+        });
+
         StatusPengadaan::observe(StatusPengadaanObserver::class);
     }
 }

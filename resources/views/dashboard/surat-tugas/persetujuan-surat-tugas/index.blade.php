@@ -56,12 +56,8 @@
                 </table>
                 <!-- End Table with stripped rows -->
                 
-<<<<<<< HEAD
                 {{ $persetujuanSuratTugas->links() }}
 
-=======
-  
->>>>>>> origin/faras
               </div>
             </div>
   
