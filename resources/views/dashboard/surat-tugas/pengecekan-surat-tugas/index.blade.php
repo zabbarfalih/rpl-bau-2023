@@ -1,17 +1,10 @@
 <x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
-        <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
+
     </x-slot>
 
     <x-slot name="js_head">
-        <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-        <script defer src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
-        <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-        <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.js"></script>
-        <script defer src="{{ asset('assets/js/dashboard/table.js') }}"></script>
+
     </x-slot>
 
     <section class="section">
@@ -29,22 +22,22 @@
                         </p>
 
                         <!-- Table with stripped rows -->
-                        <table class="table table table-hover display responsive nowrap table-striped font-body-table">
-                            <thead>
+                        <table class="table table-hover display responsive nowrap table-striped font-body-table" style="width: 100%" id="table-bau">
+                            <thead class="header-table">
                                 <tr>
-                                    <th scope="col">No.</th>
-                                    <th scope="col">Nama Pengaju</th>
-                                    <th scope="col">Nama Kegiatan</th>
-                                    <th scope="col">Aksi</th>
-                                    <th scope="col">Keterangan</th>
-                                    <th scope="col">File</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col" class="text-center align-middle">No.</th>
+                                    <th scope="col" class="text-center align-middle">Nama Pengaju</th>
+                                    <th scope="col" class="text-center align-middle">Nama Kegiatan</th>
+                                    <th scope="col" class="text-center align-middle">Aksi</th>
+                                    <th scope="col" class="text-center align-middle">Keterangan</th>
+                                    <th scope="col" class="text-center align-middle">File</th>
+                                    <th scope="col" class="text-center align-middle">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($pengecekanSuratTugas as $pengecekan)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
                                         <td>{{ $pengecekan->name }}</td>
                                         <td>{{ $pengecekan->nama_kegiatan }}</td>
                                         <td>
@@ -100,9 +93,6 @@
                             @endforeach
                             </tbody>
                         </table>
-
-                        {{ $pengecekanSuratTugas->links() }}
-
                     </div>
                 </div>
             </div>

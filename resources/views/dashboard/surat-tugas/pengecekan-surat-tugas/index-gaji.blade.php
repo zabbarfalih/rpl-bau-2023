@@ -16,20 +16,20 @@
                 <h5 class="card-title">Daftar Gaji Pegawai</h5>
 
                 <!-- Table with stripped rows -->
-                <table class="table datatable">
-                  <thead>
+                <table class="table table-hover display responsive nowrap table-striped font-body-table" style="width: 100%" id="table-bau">
+                  <thead class="header-table">
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">NIP</th>
-                      <th scope="col">Gaji</th>
-                      <th scope="col">Keterangan</th>
+                      <th scope="col" class="text-center align-middle">No</th>
+                      <th scope="col" class="text-center align-middle">Nama</th>
+                      <th scope="col" class="text-center align-middle">NIP</th>
+                      <th scope="col" class="text-center align-middle">Gaji</th>
+                      <th scope="col" class="text-center align-middle">Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
                       @foreach($users as $user)
                         <tr>
-                          <th scope="row">{{ $loop->iteration }}</th>
+                          <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->nip }}</td>
                           <td>{{ $user->gaji }}</td>

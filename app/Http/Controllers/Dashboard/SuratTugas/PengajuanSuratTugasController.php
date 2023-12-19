@@ -60,7 +60,7 @@ class PengajuanSuratTugasController extends Controller
         ]);
 
         $file = $request->file('file_path');
-        $file_path = $file->storeAs('uploads', $file->getClientOriginalName());
+        $file_path = $file->storeAs('public', $file->getClientOriginalName());
 
         $pengajuanSuratTugas = new PengajuanSuratTugas([
             'user_id' => auth()->user()->id,

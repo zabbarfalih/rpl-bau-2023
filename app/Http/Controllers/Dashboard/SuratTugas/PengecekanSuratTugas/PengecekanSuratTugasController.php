@@ -27,7 +27,7 @@ class PengecekanSuratTugasController  extends Controller
     {
         $menu = Menu::with('submenu')->get();
         $users = User::all();
-        $pengecekanSuratTugas = PengajuanSuratTugas::where('status_surtug', 1)->whereIn('kode_track', [2, 3, 4])->paginate(10);
+        $pengecekanSuratTugas = PengajuanSuratTugas::where('status_surtug', 1)->whereIn('kode_track', [2, 3, 4])->get();
 
         return view('dashboard.surat-tugas.pengecekan-surat-tugas.index', [ //semacam track lokasi folder file view (dalam hal ini adalah file view index)
             'menu' => $menu,
@@ -131,13 +131,13 @@ class PengecekanSuratTugasController  extends Controller
         // Ambil detail surat tugas berdasarkan ID
         $detailPengecekanSuratTugas = PengajuanSuratTugas::findOrFail($id);
 
-        // Periksa apakah user yang sedang login memiliki hak akses ke surat tugas tersebut
-        if (auth()->user()->id === $detailPengecekanSuratTugas->user_id &&  $detailPengecekanSuratTugas->lampiran === 2) {
-            $menus = Menu::with('submenu')->get();
-            $users = User::all();
+        $menu = Menu::with('submenu')->get();
+        $users = User::all();
 
+        // Periksa nilai 'lampiran'
+        if ($detailPengecekanSuratTugas->lampiran === 2) {
             return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'users' => $users,
                 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas,
             ]);
@@ -152,13 +152,13 @@ class PengecekanSuratTugasController  extends Controller
         // Ambil detail surat tugas berdasarkan ID
         $detailPengecekanSuratTugasDalam = PengajuanSuratTugas::findOrFail($id);
 
-        // Periksa apakah user yang sedang login memiliki hak akses ke surat tugas tersebut
-        if (auth()->user()->id === $detailPengecekanSuratTugasDalam->user_id && in_array($detailPengecekanSuratTugasDalam->lampiran, [0, 1])) {
-            $menus = Menu::with('submenu')->get();
-            $users = User::all();
+        // Periksa nilai 'lampiran'
+        $menu = Menu::with('submenu')->get();
+        $users = User::all();
 
+        if (in_array($detailPengecekanSuratTugasDalam->lampiran, [0, 1])) {
             return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek_dalam', [
-                'menus' => $menus,
+                'menu' => $menu,
                 'users' => $users,
                 'detailPengecekanSuratTugasDalam' => $detailPengecekanSuratTugasDalam,
             ]);
@@ -173,19 +173,14 @@ class PengecekanSuratTugasController  extends Controller
         // Ambil detail dari database berdasarkan ID
         $detailPengecekanSuratTugas = PengajuanSuratTugas::findOrFail($id);
 
-        if (auth()->user()->id === $detailPengecekanSuratTugas->user_id ) {
-            $menus = Menu::with('submenu')->get();
-            $users = User::all();
+        $menu = Menu::with('submenu')->get();
+        $users = User::all();
 
-            // Periksa nilai 'lampiran'
-            if ($detailPengecekanSuratTugas->lampiran == 2) {
-                return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', ['menus' => $menus, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas], compact('detailPengecekanSuratTugas'));
-            } else {
-                return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek_dalam', ['menus' => $menus, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas] , compact('detailPengecekanSuratTugas'));
-            }
+        // Periksa nilai 'lampiran'
+        if ($detailPengecekanSuratTugas->lampiran == 2) {
+            return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', ['menu' => $menu, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas], compact('detailPengecekanSuratTugas'));
         } else {
-            // Handle unauthorized access
-            abort(403, 'Unauthorized access');
+            return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek_dalam', ['menu' => $menu, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas] , compact('detailPengecekanSuratTugas'));
         }
     }
 

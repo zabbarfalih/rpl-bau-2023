@@ -201,11 +201,7 @@
                     <div class="row mb-3">
                         <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Penandatanganan</label>
                         <div class="col-sm-10">
-<<<<<<< HEAD
                             <input name="tanggal_ttd" type="date" value="{{ $detailPengecekanSuratTugas->tanggal_ttd }}" class="form-control" id="tanggal_ttd" required/>
-=======
-                            <input name="tanggal_ttd" type="date" class="form-control" id="tanggal_ttd" required/>
->>>>>>> origin/faras
                         </div>
                     </div>
                     
@@ -293,7 +289,7 @@
                         <div class="col-sm-10">
                         <input
                             name=""
-                            value="3000000"
+                            value="{{ $detailPengecekanSuratTugas->user->gaji }}"
                             type="text"
                             class="form-control"
                             placeholder="Masukkan nama pejabat penandatangan (tanpa gelar)"

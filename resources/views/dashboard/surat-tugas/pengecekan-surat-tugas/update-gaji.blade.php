@@ -28,7 +28,7 @@
                             value="{{ $user->name }}"
                             type="text"
                             class="form-control"
-                            placeholder="Masukkan nama lengkap dan gelar Anda"
+                            placeholder="Masukkan nama lengkap dan gelar terbaru"
                             readonly
                         />
                         </div>
@@ -44,7 +44,7 @@
                             value=" {{ $user->nip }} "
                             type="text"
                             class="form-control"
-                            placeholder="Masukkan NIP Anda"
+                            placeholder="Masukkan NIP terbaru"
                             readonly
                         />
                         </div>
@@ -60,7 +60,7 @@
                             value=" {{ $user->gaji }} "
                             type="text"
                             class="form-control"
-                            placeholder="Masukkan Gaji Anda"
+                            placeholder="Masukkan Gaji terbaru"
                         />
                         </div>
                     </div>

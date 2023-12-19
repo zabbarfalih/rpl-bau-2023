@@ -62,21 +62,16 @@ class DetailPersetujuanSuratTugasController extends Controller
         // Ambil detail surat tugas berdasarkan ID
         $detailPersetujuanSuratTugas = PengajuanSuratTugas::findOrFail($id);
 
-        // Periksa apakah user yang sedang login memiliki hak akses ke surat tugas tersebut
-        if (auth()->user()->id === $detailPersetujuanSuratTugas->user_id) {
-            $menu = Menu::with('submenu')->get();
-            $users = User::all();
+        $menu = Menu::with('submenu')->get();
+        $users = User::all();
 
-            return view('dashboard.surat-tugas.persetujuan-surat-tugas.detail', [
-                'menu' => $menu,
-                'users' => $users,
-                'detailPersetujuanSuratTugas' => $detailPersetujuanSuratTugas,
-            ]);
-        } else {
-            // Handle unauthorized access
-            abort(403, 'Unauthorized access');
-        }
+        return view('dashboard.surat-tugas.persetujuan-surat-tugas.detail', [
+            'menu' => $menu,
+            'users' => $users,
+            'detailPersetujuanSuratTugas' => $detailPersetujuanSuratTugas,
+        ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

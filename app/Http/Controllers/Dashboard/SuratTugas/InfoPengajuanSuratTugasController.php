@@ -23,7 +23,7 @@ class InfoPengajuanSuratTugasController extends Controller
     {
         $menu = Menu::with('submenu')->get();
         $users = User::all();
-        $pengajuanSuratTugas = PengajuanSuratTugas::where('user_id', auth()->user()->id)->paginate(10);
+        $pengajuanSuratTugas = PengajuanSuratTugas::where('user_id', auth()->user()->id)->get();
         return view('dashboard.surat-tugas.index', [
             'menu' => $menu,
             'users' => $users,

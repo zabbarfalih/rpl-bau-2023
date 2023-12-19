@@ -103,6 +103,10 @@
         text-align: right;
         margin: 0px 50px;
       }
+
+      .half-space {
+        margin-right: 0.1em; /* Ganti dengan nilai yang sesuai untuk setengah spasi */
+      }
     </style>
   </head>
   <body>
@@ -155,30 +159,36 @@
         <p>Menugaskan:</p>
       </div>
 
-      <div class="lampiran" >
-        <p>
-          Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Daftar terlampir
-        </p>
-        <p>
-          Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}
-        </p>
-
-        <div class="footer" style="text-align: center; padding-left:350px">
-          <p>
-            Jakarta, {{ $data->tanggal_ttd->translatedFormat('d F Y') }}<br/>
-            {{ $data->nama_pejabat_ttd }}
-          </p>
-          <br /><br /><br />
-          <p>{{ $data->jabatan_pejabat_ttd }}</p>
-        </div>
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
+      <div class="lampiran">
+        <table>
+          <tbody>
+            <tr style="border: none">
+              <td style="border: none">Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              <td style="border: none">Daftar terlampir</td>
+            </tr>
+            <tr style="border: none">
+              <td style="border: none">Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              <td style="border: none">Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <div class="footer">
+        <p style="text-align: center; padding-left:350px">
+          Jakarta, {{ $data->tanggal_ttd->translatedFormat('d F Y') }} <br>
+          {{ $data->jabatan_pejabat_ttd }}
+        </p>
+        <br /><br /><br />
+        <p style="text-align: center; padding-left:350px">{{ $data->nama_pejabat_ttd }}</p>
+      </div>
+
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+
       <div class="content">
         <p>Lampiran Surat Tugas</p>
         <p>Nomor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $data->no_surtug }}</p>
@@ -252,7 +262,7 @@
             <td colspan="2">
               {{ $data->golongan }} <br />
               {{ $data->jabatan }} <br />
-              {{ $data->gaji }} <br />
+              {{ $data->user->gaji }} <br />
               -
             </td>
           </tr>
@@ -367,9 +377,9 @@
           <tr>
             <td colspan="4">
               II. Tiba di
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pada tanggal
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="half-space">Pada tanggal</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
             </td>
             <td colspan="2">
               Berangkat dari &nbsp;&nbsp;&nbsp;&nbsp;:  <br />
@@ -383,9 +393,9 @@
           <tr>
             <td colspan="4">
               III. Tiba di
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
               <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pada tanggal
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
             </td>
             <td colspan="2">
               Berangkat dari &nbsp;&nbsp;&nbsp;&nbsp;:  <br />

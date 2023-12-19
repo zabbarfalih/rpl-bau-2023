@@ -171,14 +171,18 @@
       </div>
 
       <div class="lampiran">
-        <p>
-          Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Daftar terlampir
-        </p>
-        <p>
-          Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}
-        </p>
+        <table>
+          <tbody>
+            <tr style="border: none">
+              <td style="border: none">Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              <td style="border: none">Daftar terlampir</td>
+            </tr>
+            <tr style="border: none">
+              <td style="border: none">Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              <td style="border: none">Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="footer">
@@ -189,11 +193,13 @@
         <br /><br /><br />
         <p style="text-align: center; padding-left:350px">{{ $data->nama_pejabat_ttd }}</p>
       </div>
+
         <br /><br /><br /><br />
         <br /><br /><br /><br />
         <br /><br /><br /><br />
         <br /><br /><br /><br />
         <br /><br /><br /><br />
+
       </div>
       <div class="content">
         <p>Lampiran Surat Tugas</p>
@@ -252,9 +258,9 @@
             <td>
               I.&nbsp;Berangkat dari&nbsp;: Jakarta <br />
               &nbsp;&nbsp;&nbsp;(Tempat kedudukan) <br />
-              &nbsp;&nbsp;&nbsp;Ke&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;&nbsp;Ke&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
               {{ $data->lokasi }} <br />
-              &nbsp;&nbsp;&nbsp;Pada tanggal&nbsp;: {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} <br/><br><br>
+              &nbsp;&nbsp;&nbsp;Pada tanggal&nbsp;&nbsp;&nbsp;&nbsp;: {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} <br/><br><br>
               <p style="text-align: center">{{  \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y')  }}<br/></p>
               <br />
               <br />
@@ -263,10 +269,9 @@
               <p style="text-align: center">{{ $data->nama_pejabat_ttd }}</p>
             </td>
             <td>
-              Tiba
-              di&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              Tiba di&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
               {{ $data->lokasi }}<br />
-              Pada tanggal&nbsp;: {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}<br />
+              Pada tanggal&nbsp;&nbsp;: {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}<br />
               <br />
               <br />
               <br />

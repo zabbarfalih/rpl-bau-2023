@@ -30,10 +30,24 @@ class SuratTugasChart
             'Ditolak',
         ];
 
-        return $this->chart->donutChart()
+        // Mengonfigurasi dan membangun grafik donut
+        $donutChart = $this->chart->donutChart()
             ->setTitle('')
-            ->setSubtitle('')
-            ->addData($data)
-            ->setLabels($label);
+            ->setSubtitle('');
+
+        // Cek apakah ada data surat tugas
+        if ($suratTugas->isEmpty()) {
+            // Jika tidak ada data, tampilkan pesan alternatif
+            $donutChart->addData([1]) // Menambahkan nilai fiktif agar donut tetap terlihat
+                ->setColors(['#F0F8FF'])
+                ->setSubtitle('Belum ada riwayat pengajuan surat tugas')
+                ->setLabels(['']);
+        } else {
+            // Jika ada data, tambahkan data dan label sebagaimana biasa
+            $donutChart->addData($data)
+                ->setLabels($label);
+        }
+
+        return $donutChart;
     }
 }

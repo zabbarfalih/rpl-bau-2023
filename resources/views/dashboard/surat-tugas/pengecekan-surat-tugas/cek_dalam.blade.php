@@ -303,7 +303,7 @@
                         <div class="col-sm-10">
                         <input
                             name=""
-                            value="3000000"
+                            value="{{ $detailPengecekanSuratTugas->user->gaji }}"
                             type="text"
                             class="form-control"
                             placeholder="Masukkan nama pejabat penandatangan (tanpa gelar)"

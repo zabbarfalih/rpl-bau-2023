@@ -66,10 +66,10 @@
         text-align: left;
       }
 
-      .footer {
+      /* .footer {
         text-align: center;
         margin-top: 20px;
-      }
+      } */
 
       /* Surtug */
       .surat-tugas {
@@ -91,7 +91,7 @@
 
       .footer {
         text-align: right;
-        margin: 0px 50px;
+        margin: 20px 50px;
       }
     </style>
   </head>
@@ -146,14 +146,18 @@
       </div>
 
       <div class="lampiran">
-        <p>
-          Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Daftar terlampir
-        </p>
-        <p>
-          Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-          Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}
-        </p>
+        <table>
+          <tbody>
+            <tr style="border: none">
+              <td style="border: none">Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              <td style="border: none">Daftar terlampir</td>
+            </tr>
+            <tr style="border: none">
+              <td style="border: none">Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+              <td style="border: none">Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}</td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="footer">
           <p style="text-align: center; padding-left:350px">
@@ -163,12 +167,14 @@
           <br /><br /><br />
           <p style="text-align: center; padding-left:350px">{{ $data->nama_pejabat_ttd }}</p>
         </div>
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
-        <br /><br /><br /><br />
       </div>
+
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+      <br /><br /><br /><br />
+
       <div class="content">
         <p>Lampiran Surat Tugas</p>
         <p>Nomor: {{ $data->no_surtug }}</p>
