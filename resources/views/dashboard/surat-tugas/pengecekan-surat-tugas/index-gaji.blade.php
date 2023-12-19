@@ -5,6 +5,7 @@
     </x-slot>
 
     <x-slot name="js_head">
+      
     </x-slot>
 
     <section class="section">

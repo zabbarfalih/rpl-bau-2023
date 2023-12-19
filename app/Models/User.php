@@ -30,6 +30,10 @@ class User extends Authenticatable
         'gaji',
         'phone_number',
         'role',
+        'is_kepala_unit',
+        'is_tim_keuangan',
+        'is_unit',
+        'is_operator',
     ];
 
     /**
