@@ -17,12 +17,12 @@
     <section class="section">
         <div class="row">
           <div class="col-lg-12">
-  
+
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Surat Tugas</h5>
                 <p>Surat Tugas yang diajukan pegawai<a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">
-  
+
                 <!-- Table with stripped rows -->
                 <table class="table table table-hover display responsive nowrap table-striped font-body-table">
                   <thead>
@@ -30,7 +30,7 @@
                       <th scope="col">No</th>
                       <th scope="col">Pemohon</th>
                       <th scope="col">Nama Kegiatan</th>
-                      <th scope="col">Keterangan</th>                    
+                      <th scope="col">Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -51,7 +51,7 @@
                       @endforeach
 
                     </tr>
-  
+
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
@@ -60,12 +60,12 @@
 
               </div>
             </div>
-  
+
           </div>
         </div>
-      </section>
+    </section>
 
     <x-slot name="js_body">
-        
+
     </x-slot>
 </x-dashboard.layouts.layouts>

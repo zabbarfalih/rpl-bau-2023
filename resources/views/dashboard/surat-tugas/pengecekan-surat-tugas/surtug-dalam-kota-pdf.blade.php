@@ -99,12 +99,25 @@
       .content {
         margin-top: 0px;
         text-align: center;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
 
       .footer {
         text-align: right;
         margin: 20px 50px;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
+
+        .lampiran {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .centered-text {
+            text-align: center;
+        }
     </style>
   </head>
   <body>
@@ -166,15 +179,16 @@
           Untuk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
           Melakukan perjalanan dinas dalam rangka {{ $data->nama_kegiatan }} di {{ $data->lokasi }} Pada tanggal {{ \Carbon\Carbon::parse($data->tanggal_perdin_mulai)->translatedFormat('d F Y') }} s.d {{ \Carbon\Carbon::parse($data->tanggal_perdin_selesai)->translatedFormat('d F Y') }}
         </p>
+      </div>
 
-        <div class="footer">
-          <p style="text-align: center; padding-left:350px">
-            Jakarta, {{ $data->tanggal_ttd->translatedFormat('d F Y') }} <br>
-            {{ $data->jabatan_pejabat_ttd }}
-          </p>
-          <br /><br /><br />
-          <p style="text-align: center; padding-left:350px">{{ $data->nama_pejabat_ttd }}</p>
-        </div>
+      <div class="footer">
+        <p style="text-align: center; padding-left:350px">
+          Jakarta, {{ $data->tanggal_ttd->translatedFormat('d F Y') }} <br>
+          {{ $data->jabatan_pejabat_ttd }}
+        </p>
+        <br /><br /><br />
+        <p style="text-align: center; padding-left:350px">{{ $data->nama_pejabat_ttd }}</p>
+      </div>
         <br /><br /><br /><br />
         <br /><br /><br /><br />
         <br /><br /><br /><br />
@@ -212,7 +226,7 @@
     <br /><br /><br /><br />
     <br /><br /><br /><br />
     <br /><br /><br /><br />
-    
+
     <div class="surat-perjalanan">
       <!-- Tabel Nomor dan Lembar tanpa border -->
       <table class="table-no-border">
@@ -331,10 +345,12 @@
             Pelaksana Perjalanan Dinas dalam Kota
           </p>
 
-          <p> <br><br><br><br><br>
-            {{ $data->name }}<br /><hr>
-            {{ $data->nip }}<br />
-          </p>
+          <div class="centered-text">
+            <p><br><br><br><br><br>
+              {{ $data->name }}<br /><hr>
+              {{ $data->nip }}<br />
+            </p>
+          </div>
         </div>
       </div>
     </div>

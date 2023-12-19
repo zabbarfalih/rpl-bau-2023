@@ -40,6 +40,6 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'Pimpinan',
             ],
-        ]);              
+        ]);
     }
 }
