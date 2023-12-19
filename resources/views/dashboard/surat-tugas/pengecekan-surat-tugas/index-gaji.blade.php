@@ -34,7 +34,7 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->nip }}</td>
                           <td>{{ $user->gaji }}</td>
-                          <td>
+                          <td class="text-center align-middle">
                             <a href="{{ route('updategaji.edit', ['id' => $user->id]) }}">
                                 <button type="button" class="btn btn-primary">Edit Gaji</button>
                             </a>

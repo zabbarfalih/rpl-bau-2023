@@ -66,7 +66,7 @@
                         const hari = Math.floor(selisihWaktu / (1000 * 60 * 60 * 24)); // Konversi ke hari
 
                         // Tampilkan hasil countdown
-                        document.getElementById('countdown-hari').innerText = hari + " Hari" + " Lagi Gajian Nih!";
+                        document.getElementById('countdown-hari').innerText = hari + " Hari" + " lagi menuju tanggal gajian";
                       }
 
                       // Panggil fungsi hitungCountdown saat halaman dimuat

@@ -32,7 +32,7 @@
                           <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
                           <td>{{ $persetujuan->name }}</td>
                           <td>{{ $persetujuan->nama_kegiatan }}</td>
-                          <td>
+                          <td class="text-center align-middle">
                             <a href="{{ route('detailpersetujuansurtug.detail', ['id' => $persetujuan->id]) }}">
                               <button type="button" class="btn btn-primary">Detail</button>
                             </a>
