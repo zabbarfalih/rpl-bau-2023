@@ -136,6 +136,12 @@ class SubmenuSeeder extends Seeder
                 'url' => Str::slug('Pengecekan Surtug'),
                 'icon' => 'bi bi-info-square-fill',
             ],
+            [
+                'menu_id' => $operatorMenuId,
+                'name' => 'Update Gaji',
+                'url' => Str::slug('Update Gaji'),
+                'icon' => 'bi bi-cash-coin',
+            ],
         ]);
 
     }

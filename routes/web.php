@@ -35,7 +35,7 @@ use App\Http\Controllers\Dashboard\SuratTugas\DetailPengajuanSuratTugasControlle
 use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\PersetujuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\DetailPersetujuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\PengecekanSuratTugas\PengecekanSuratTugasController;
-
+use App\Http\Controllers\Dashboard\SuratTugas\PengecekanSuratTugas\UpdateGajiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,12 +108,18 @@ Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(functi
     Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/setujui/{id}', [PersetujuanSuratTugasController::class, 'setujuiAction'])->name('setujuiAction');
     Route::get('/persetujuan-surat-tugas/persetujuan-surtug/detail/tolak/{id}', [PersetujuanSuratTugasController::class, 'tolakAction'])->name('tolakAction');
 
-    // Operator (Pengecekan Surat Tugas Luar)
+    // Operator (Pengecekan Surat Tugas dan Update Gaji)
     Route::get('/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
     Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
     Route::put('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
     Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
     Route::get('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
+    Route::get('/pengecekan-surat-tugas/update-gaji', [UpdateGajiController::class, 'index'])->name('updategaji.index');
+    Route::get('/pengecekan-surat-tugas/update-gaji/edit/{id}', [UpdateGajiController::class, 'edit'])->name('updategaji.edit');
+    Route::get('/pengecekan-surat-tugas/update-gaji/form/{id}', [UpdateGajiController::class, 'form'])->name('updategaji.form');
+    Route::put('/pengecekan-surat-tugas/update-gaji/update/{id}', [UpdateGajiController::class, 'update'])->name('updategaji.update');
+
+
 
     // Download Surat Tugas
     // Route::get('/download-surat-tugas-pdf', [PengecekanSuratTugasController::class, 'downloadpdf'])->name('surtug.download');
