@@ -326,7 +326,7 @@
 
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" onclick="return validateForm()">
                             Update
                         </button>
                         </div>
@@ -357,6 +357,7 @@
         </div>
         </div>
     </section>
+
     <x-slot name="js_body">
         <script>
             const jabatanSelect = document.getElementById('jabatan_pejabat_ttd');
@@ -421,7 +422,33 @@
                         break;
                 }
             });
-        </script>
 
+            function focusOnFirstInvalidField() {
+                var elements = document.querySelectorAll('[required]');
+                for (var i = 0; i < elements.length; i++) {
+                    if (!elements[i].value) {
+                        elements[i].focus();
+                        return;
+                    }
+                }
+            }
+
+            function validateForm() {
+                var elements = document.querySelectorAll('[required]');
+                for (var i = 0; i < elements.length; i++) {
+                    if (!elements[i].value) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Terdapat field wajib yang belum diisi, harap cek kembali isian Anda',
+                        }).then(() => {
+                            focusOnFirstInvalidField();
+                        });
+                        return false;
+                    }
+                }
+                return true;
+            }
+        </script>
     </x-slot>
 </x-dashboard.layouts.layouts>
