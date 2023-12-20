@@ -59,6 +59,7 @@ public function update(ProfileUpdateRequest $request, $id)
 
     $user->save();
 
-    return redirect()->route('updategaji.index');
+    // return redirect()->route('updategaji.index');
+    return back()->with('success', 'Data gaji berhasil diperbarui');
 }
 }

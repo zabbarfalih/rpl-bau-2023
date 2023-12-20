@@ -321,6 +321,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan program"
+                            required
                         />
                         </div>
                     </div>
@@ -336,6 +337,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan kode kegiatan"
+                            required
                         />
                         </div>
                     </div>
@@ -351,6 +353,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan kode output"
+                            required
                         />
                         </div>
                     </div>
@@ -366,6 +369,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan kode komponen"
+                            required
                         />
                         </div>
                     </div>
@@ -381,6 +385,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Masukkan kode sub komponen"
+                            required
                         />
                         </div>
                     </div>
@@ -388,7 +393,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Pejabat Pembuat Komitmen</label>
                         <div class="col-sm-10">
-                            <select name="ppk" class="form-select" aria-label="Default select example">
+                            <select name="ppk" class="form-select" aria-label="Default select example" required>
                                 <option value="" selected>
                                 Pilih nama pejabat pembuat komitmen
                                 </option>
@@ -400,7 +405,7 @@
 
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                        <button id="updateButton" type="submit" class="btn btn-primary">
+                        <button id="updateButton" type="submit" class="btn btn-primary" onclick="return validateForm()">
                             Update
                         </button>
                         </div>
@@ -495,6 +500,33 @@
                         break;
                 }
             });
+
+            function focusOnFirstInvalidField() {
+                var elements = document.querySelectorAll('[required]');
+                for (var i = 0; i < elements.length; i++) {
+                    if (!elements[i].value) {
+                        elements[i].focus();
+                        return;
+                    }
+                }
+            }
+
+            function validateForm() {
+                var elements = document.querySelectorAll('[required]');
+                for (var i = 0; i < elements.length; i++) {
+                    if (!elements[i].value) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Terdapat field wajib yang belum diisi, harap cek kembali isian Anda',
+                        }).then(() => {
+                            focusOnFirstInvalidField();
+                        });
+                        return false;
+                    }
+                }
+                return true;
+            }
         </script>
 
     </x-slot>

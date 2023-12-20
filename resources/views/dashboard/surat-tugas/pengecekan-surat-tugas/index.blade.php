@@ -40,12 +40,12 @@
                                         <th scope="row" class="text-center align-middle">{{ $loop->iteration }}</th>
                                         <td>{{ $pengecekan->name }}</td>
                                         <td>{{ $pengecekan->nama_kegiatan }}</td>
-                                        <td>
+                                        <td class="text-center align-middle">
                                             <a href="{{ route('pengecekansurtug.cek', ['id' => $pengecekan->id]) }}">
                                                 <button type="button" class="btn btn-primary">Lengkapi Surat</button>
                                             </a>
                                         </td>
-                                        <td>
+                                        <td class="text-center align-middle">
                                             @if($pengecekan->keterangan == 'Sudah dilengkapi')
                                                 <div class="badge bg-success text-wrap" style="width: 6rem;">Sudah dilengkapi</div>
                                             @else
@@ -54,7 +54,7 @@
                                         </td>
 
                                          <!-- HTML untuk tombol Download -->
-                                         <td>
+                                         <td class="text-center align-middle">
                                             @if($pengecekan->keterangan == 'Sudah dilengkapi')
                                                 <a href="{{ route('surtug.download', ['id' => $pengecekan->id]) }}" target="_blank" onclick="handleDownload()"> <!-- Menggunakan onclick untuk menambahkan handleDownload() -->
                                                     <button type="button" class="btn btn-primary">Download</button>
@@ -65,7 +65,7 @@
                                         </td>
 
                                         <!-- HTML untuk tombol Selesai -->
-                                        <td>
+                                        <td class="text-center align-middle">
                                             @if($pengecekan->kode_track == 4)
                                                 <a href="{{ route('pengecekansurtug.index', ['id' => $pengecekan->id]) }}">
                                                     <button type="button" class="btn btn-success" onclick="updateStatus('selesai', {{ $pengecekan->id }})">Selesai</button>

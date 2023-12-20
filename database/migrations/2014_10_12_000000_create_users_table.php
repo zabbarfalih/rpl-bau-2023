@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('picture')->nullable();
             $table->string('password');
             $table->string('role')->nullable();
+            $table->integer('is_kepala_unit');
+            $table->integer('is_tim_keuangan');
+            $table->integer('is_unit');
+            $table->integer('is_operator');
             $table->rememberToken();
         });
     }

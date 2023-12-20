@@ -5,6 +5,7 @@
     </x-slot>
 
     <x-slot name="js_head">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </x-slot>
 
     <section class="section">
@@ -74,6 +75,26 @@
 
                 </form>
                 <!-- End General Form Elements -->
+
+                @if(Session::has('success'))
+                    <script>
+                        swal('Berhasil', '{{ Session::get('success') }}', 'success', {
+                            button: {
+                                text: "OK",
+                                value: true,
+                                visible: true,
+                                className: "btn-primary",
+                                closeModal: true
+                            },
+                        }).then((value) => {
+                            // Redirect ke halaman 'infopengajuansurtug.index' jika tombol OK ditekan
+                            if (value) {
+                                window.location.href = '{{ route('updategaji.index') }}';
+                            }
+                        });
+                    </script>
+                @endif
+
             </div>
             </div>
         </div>

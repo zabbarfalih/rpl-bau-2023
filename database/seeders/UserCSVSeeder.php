@@ -43,7 +43,10 @@ class UserCSVSeeder extends Seeder
                 'gaji' => $row[6],
                 'role' => $row[7],
                 'password' => bcrypt($row[8]),
-
+                'is_kepala_unit' => $row[9],
+                'is_tim_keuangan' => $row[10],
+                'is_unit' => $row[11],
+                'is_operator' => $row[12],
             ]);
         }
 
