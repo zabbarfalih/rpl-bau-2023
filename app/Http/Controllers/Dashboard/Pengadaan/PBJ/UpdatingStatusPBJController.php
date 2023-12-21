@@ -128,12 +128,18 @@ class UpdatingStatusPBJController extends Controller
     public function upload(Request $request)
     {
         try {
+
+            $customMessages = [
+                'uploadFile.required' => 'File tidak boleh kosong.',
+                'uploadFile.mimes' => 'File harus dalam format PDF.', // Custom message for PDF validation
+                'uploadFile.max' => 'Maksimal ukuran file 10MB.', // Custom message for max file size
+            ];
             $request->validate([
-                'uploadFile' => 'required|file|max:2048',
+                'uploadFile' => 'required|file|mimes:pdf|max:10480',
                 'documentName' => 'required|string',
                 'dokumen_id' => 'required|exists:dokumen_pengadaans,dokumen_id',
-            ]);
-            
+            ],  $customMessages);
+
             $file = $request->file('uploadFile');
             $timestamp = now()->timestamp;
             $fileName = $timestamp . '_' . $file->getClientOriginalName(); // Use the original filename for storage
@@ -154,7 +160,7 @@ class UpdatingStatusPBJController extends Controller
             return back()->with('success', 'File uploaded successfully.');
         } catch (\Exception $e) {
             Log::error('File upload error: ' . $e->getMessage()); // Log exception
-            return back()->with('error', 'File upload failed.');
+            return back()->withInput()->withErrors($e->validator);
         }
     }
 

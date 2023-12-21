@@ -52,7 +52,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Dokumen</h5>
-
                         <!-- List dokumen kurang dari 50 dan dilaksanakan-->
                         @if($dokumen_pengadaan->harga_anggaran <= 50000000)
                             @if($pengadaan->status == 'Dilaksanakan')
@@ -102,6 +101,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -109,6 +109,11 @@
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -179,6 +184,15 @@
                                     </svg>
                                     <div>Untuk mengunduh template, silakan tekan download template</div>
                                 </div>
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                                 style="width: 100%" {{-- id="table-bau" --}}>
                                 <thead class="header-table">
@@ -341,6 +355,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -348,6 +363,11 @@
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -441,31 +461,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <a href="#"  class="btn btn-success"
-                                    id="confirmButton"
-                                    data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
-                                    data-id="{{ $pengadaan->id }}">Yakin</a>
-                                </div>
-                                    <div class="modal fade" id="setujuModal1" aria-hidden="true"
-                                        data-bs-keyboard="false" data-bs-backdrop="static"
-                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title modal-center fw-bolder"
-                                                        id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                             @endif
                     @else
                             <!-- List dokumen lebih dari 50 dan dilaksanakan-->
@@ -517,6 +512,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -524,6 +520,11 @@
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -596,6 +597,16 @@
                                     </svg>
                                     <div>Untuk mengunduh template, silakan tekan download template</div>
                                 </div>
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -943,6 +954,7 @@
                                                 </button>
                                             </td>
                                         </tr>
+
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
                                                 2
@@ -950,13 +962,20 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
+
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
                                                 3
