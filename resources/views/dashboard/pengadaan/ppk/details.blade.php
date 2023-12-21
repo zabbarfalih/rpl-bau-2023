@@ -644,13 +644,15 @@
                                     </table>
 
                                     <div class="text-center">
-                                        @if (!in_array($pengadaan->status, ['Diajukan', 'Revisi', 'Ditolak','Diserahkan']) && $pengadaan->penyelenggara == 3)
+                                        @if (!in_array($pengadaan->status, ['Diajukan', 'Revisi', 'Ditolak','Diserahkan']))
                                             @if ($pengadaan->status == 'Diterima PPK')
                                                 <a href="#" class="btn btn-success" data-bs-toggle="modal"
                                                     data-bs-target="#setujuModalKhusus">Selesai</a>
                                             @else
+                                                @if($pengadaan->status !== "Dilaksanakan" && $pengadaan->penyelenggara === 3  )
                                                 <a href="#" class="btn btn-success" data-bs-toggle="modal"
                                                     data-bs-target="#setujuModalL">Selesai</a>
+                                                @endif
                                             @endif
                                         @endif
                                     </div>
@@ -660,7 +662,7 @@
                                 {{-- tampilan pbj --}}
                                 <div id="dokumen-pbj">
                                     @php $no = 1; @endphp
-                                    @if ($statusesWithDates->has('Dilaksanakan') && $pengadaan->penyelenggara == 3)
+                                    @if ($statusesWithDates->has('Dilaksanakan') && $pengadaan->penyelenggara === 3)
                                     <div class="alert alert-primary d-flex align-items-center" role="alert">
                                         <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"
                                             width="16" height="16">
