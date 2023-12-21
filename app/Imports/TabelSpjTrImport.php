@@ -36,9 +36,9 @@ class TabelSpjTrImport implements ToModel, WithStartRow, WithCalculatedFormulas
 
         // Hitung total dan isi atribut total pada model Spj
         $spj = SpjTr::find($spj_idFromForm);
-        $spj->total_transpor_per_hari = $spj->hitungTransporPerHari();
-        $spj->total_jumlah_kegiatan = $spj->hitungJumlahKegiatan();
-        $spj->total_jumlah_yang_dibayarkan = $spj->hitungJumlahYangDibayarkan();
+        $spj->total_transpor_per_hari += $tabelSpj->transpor_per_hari;
+        $spj->total_jumlah_kegiatan += $tabelSpj->jumlah_kegiatan;
+        $spj->total_jumlah_yang_dibayarkan += $tabelSpj->jumlah_yang_dibayarkan;
         $spj->save();
         // dd($spj->total);
 

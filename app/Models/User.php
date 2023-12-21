@@ -27,7 +27,13 @@ class User extends Authenticatable
         'email',
         'password',
         'address',
+        'gaji',
         'phone_number',
+        'role',
+        'is_kepala_unit',
+        'is_tim_keuangan',
+        'is_unit',
+        'is_operator',
     ];
 
     /**
@@ -78,5 +84,10 @@ class User extends Authenticatable
     public function pengadaans()
     {
         return $this->hasMany(Pengadaan::class);
+    }
+
+    public function pengajuanSurTug()
+    {
+        return $this->hasMany(PengajuanSuratTugas::class);
     }
 }

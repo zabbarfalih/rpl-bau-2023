@@ -10,45 +10,49 @@ class UserRoleSeeder extends Seeder
 {
     public function run()
     {
-        // Menetapkan peran 'Admin' untuk pengguna tertentu
-        $user = User::where('email', 'admin1@example.com')->first();
-        $adminRole = Role::where('name', 'Admin')->first();
-        $pbjRole = Role::where('name', 'PBJ')->first();
-        $ppkRole = Role::where('name', 'PPK')->first();
-        $unitRole = Role::where('name', 'Unit')->first();
-        $timKeuanganRole = Role::where('name', 'Tim Keuangan')->first();
+        try {
+            // Get all distinct roles from the users table
+            $roles = User::distinct()->pluck('role')->filter();
 
-        if ($user && $adminRole && $pbjRole && $ppkRole && $unitRole && $timKeuanganRole) {
-            $user->roles()->syncWithoutDetaching($adminRole);
-            $user->roles()->syncWithoutDetaching($pbjRole);
-            $user->roles()->syncWithoutDetaching($ppkRole);
-            $user->roles()->syncWithoutDetaching($unitRole);
-            $user->roles()->syncWithoutDetaching($timKeuanganRole);
-        }
+            foreach ($roles as $roleName) {
+                // Find or create the role
+                $role = Role::firstOrCreate(['name' => $roleName]);
 
-        // Mendapatkan ID peran untuk 'Unit'
-        $unitRoleId = Role::where('name', 'Unit')->pluck('id')->first();
+                // Assign the role to all users with the same role name
+                $usersWithRole = User::where('role', $roleName)->get();
 
-        // Mendapatkan semua ID peran selain 'Unit' dan 'Admin'
-        $roleIds = Role::where('name', '!=', 'Unit')
-            ->pluck('id')
-            ->toArray();
+                foreach ($usersWithRole as $user) {
+                    $user->roles()->syncWithoutDetaching($role->id);
 
-        // Mengambil seluruh pengguna kecuali pengguna dengan email 'admin@example.com'
-        $users = User::where('email', '!=', 'admin1@example.com')->get();
+                    // Check additional columns for extra roles
+                    if ($user->is_kepala_unit) {
+                        $this->assignAdditionalRole($user, 'Pimpinan');
+                    }
 
-        foreach ($users as $user) {
-            // Menetapkan peran 'Unit' ke setiap pengguna
-            $user->roles()->syncWithoutDetaching($unitRoleId);
+                    if ($user->is_tim_keuangan) {
+                        $this->assignAdditionalRole($user, 'Tim Keuangan');
+                    }
 
-            // Memilih satu peran lain secara acak hanya jika ID pengguna tidak dapat dibagi dengan 7
-            if ($user->id % 7 != 0) {
-                // Memilih satu peran lain secara acak
-                $randomRoleId = $roleIds[array_rand($roleIds)];
+                    if ($user->is_unit) {
+                        $this->assignAdditionalRole($user, 'Unit');
+                    }
 
-                // Menetapkan peran acak tersebut ke pengguna
-                $user->roles()->syncWithoutDetaching($randomRoleId);
+                    if ($user->is_operator) {
+                        $this->assignAdditionalRole($user, 'Operator');
+                    }
+                }
             }
+        } catch (ModelNotFoundException $e) {
+            $this->command->error('Model not found: ' . $e->getMessage());
         }
+    }
+
+    private function assignAdditionalRole($user, $roleName)
+    {
+        // Find or create the additional role
+        $additionalRole = Role::firstOrCreate(['name' => $roleName]);
+
+        // Assign the additional role to the user
+        $user->roles()->syncWithoutDetaching($additionalRole->id);
     }
 }

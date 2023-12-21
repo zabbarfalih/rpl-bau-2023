@@ -44,13 +44,13 @@ class TabelSpjPdImport implements ToModel, WithStartRow, WithCalculatedFormulas
 
         // Hitung total dan isi atribut total pada model Spj
         $spj = SpjPd::find($spj_idFromForm);
-        $spj->total_uang_harian = $spj->totalUangHarian();
-        $spj->total_transport = $spj->totalTransport();
-        $spj->total_bandara = $spj->totalBandara();
-        $spj->total_biaya_hotel = $spj->totalBiayaHotel();
-        $spj->total_jumlah_biaya = $spj->totalJumlah_Biaya();
-        $spj->total_uang_muka = $spj->totalUangMuka();
-        $spj->total_kekurangan = $spj->totalKekurangan();
+        $spj->total_uang_harian += $tabelSpj->uang_harian;
+        $spj->total_transport += $tabelSpj->transport;
+        $spj->total_bandara += $tabelSpj->bandara;
+        $spj->total_biaya_hotel += $tabelSpj->biaya_hotel;
+        $spj->total_jumlah_biaya += $tabelSpj->jumlah_biaya;
+        $spj->total_uang_muka += $tabelSpj->uang_muka;
+        $spj->total_kekurangan += $tabelSpj->kekurangan;
         $spj->save();
         // dd($spj->total);
 

@@ -7,31 +7,170 @@
     
     <section class="section dashboard">
       <div class="row">
-
+  
         <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
+        {{-- <div class="col-lg-8">
+          <div class="row"> --}}
+            {{-- <div class="pagetitle">
+                <nav>
+                  <h1>Selamat Datang Fulan</h1>
+                </nav>
+              </div> --}}
+            <section class="section dashboard">
+                <div class="row">
+                  <!-- Left side columns -->
+                  <div class="col-lg-12">
+                    <div class="row">
+                      <!-- Gaji Bulanan -->
+                    <div class="col-xxl-6 col-md-6">
+                      <div class="card info-card sales-card">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            Tanggal Gajian<span> | countdown</span>
+                          </h5>
 
+                          <!-- Tempatkan kode countdown di sini -->
+                          <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <i class="bi bi-calendar-week-fill"></i>
+                            </div>
+                            <div class="ps-3">
+                              <h6 id="countdown-hari"></h6><span id="countdown-waktu"></span>
+                            </div>
+                          </div>
+                          <!-- Akhir dari kode countdown -->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Gaji Bulanan -->
+
+                    <!-- Tambahkan tag script di bagian bawah body atau di bagian head -->
+                    <!-- Tambahkan tag script di bagian bawah body atau di bagian head -->
+                    <script>
+                      // Fungsi untuk menghitung countdown gajian
+                      function hitungCountdown() {
+                        const tanggalSaatIni = new Date(); // Tanggal saat ini
+                        const bulanSaatIni = tanggalSaatIni.getMonth(); // Ambil bulan saat ini (mulai dari 0 untuk Januari)
+                        const tahunSaatIni = tanggalSaatIni.getFullYear(); // Ambil tahun saat ini
+
+                        // Tanggal gajian (1 di setiap bulan)
+                        const tanggalGajian = new Date(tahunSaatIni, bulanSaatIni, 1);
+
+                        // Jika tanggal saat ini lebih besar dari tanggal gajian, gaji berikutnya adalah bulan berikutnya
+                        if (tanggalSaatIni > tanggalGajian) {
+                          tanggalGajian.setMonth(bulanSaatIni + 1); // Tambah 1 bulan
+                        }
+
+                        // Hitung selisih hari antara tanggal saat ini dan tanggal gajian
+                        const selisihWaktu = tanggalGajian.getTime() - tanggalSaatIni.getTime(); // Dalam milidetik
+                        const hari = Math.floor(selisihWaktu / (1000 * 60 * 60 * 24)); // Konversi ke hari
+
+                        // Tampilkan hasil countdown
+                        document.getElementById('countdown-hari').innerText = hari + " Hari" + " lagi menuju tanggal gajian";
+                      }
+
+                      // Panggil fungsi hitungCountdown saat halaman dimuat
+                      hitungCountdown();
+                    </script>
+
+  
+                      <!-- Pengajuan Surat Tugas -->
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body">
+                            <h5 class="card-title">
+                              Pengajuan Surat Tugas
+                            </h5>
+  
+                            <div class="d-flex align-items-center">
+                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-envelope-paper-fill"></i>
+                              </div>
+                              <div class="ps-3">
+                                <a href="{{ route('infopengajuansurtug.create') }}"><button type="button" class="btn btn-primary">Ajukan Surat Tugas</button></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Pengajuan Surat Tugas -->
+                    </div>
+  
+                    <div class="row">
+                      <!-- Pengajuan Surat Pertanggungjawaban -->
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body">
+                            <h5 class="card-title">
+                              Pengajuan Surat Pertanggungjawaban
+                            </h5>
+  
+                            <div class="d-flex align-items-center">
+                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-paperclip"></i>
+                              </div>
+                              <div class="ps-3">
+                                <a href="{{ route('spj.create') }}"><button type="button" class="btn btn-primary">Ajukan Surat Pertanggungjawaban</button></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Pengajuan Surat Pertanggungjawaban -->
+  
+                      <!-- Rekapan Penghasilan -->
+                      <div class="col-xxl-6 col-md-6">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                            <h5 class="card-title">
+                              Informasi Pengajuan Surat Tugas
+                            </h5>
+  
+                            <div class="d-flex align-items-center">
+                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-postcard-fill"></i>
+                              </div>
+                              <div class="ps-3">
+                                <a href="{{ route('infopengajuansurtug.index') }}"><button type="button" class="btn btn-primary">Lihat Informasi Pengajuan Surat Tugas</button></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Rekapan Penghasilan -->
+                    </div>
+  
+                    
+                    </div>
+                  </div>
+                  <!-- End Left side columns -->
+  
+                  <!-- Right side columns -->
+                  <!-- NANTI BISA MENAMBAHKAN KOLOM DENGAN LEBAR 4 DI SINI KALAU DIPERLUKAN -->
+                  <!-- End Right side columns -->
+                </div>
+              </section>
+  
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
+            {{-- <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
-
+  
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
+  
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+  
                 <div class="card-body">
                   <h5 class="card-title">Gaji Bulanan: <span>| (satu bulan sebelumnya)</span></h5>
-
+  
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
@@ -39,34 +178,34 @@
                     <div class="ps-3">
                       <h6>145</h6>
                       <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+  
                     </div>
                   </div>
                 </div>
-
+  
               </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
+            </div><!-- End Sales Card --> --}}
+  
+            {{-- <!-- Revenue Card -->
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card revenue-card">
-
+  
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
+  
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+  
                 <div class="card-body">
                   <h5 class="card-title">Pengajuan Surat Tugas <span>| </span></h5>
-
+  
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-currency-dollar"></i>
@@ -74,35 +213,35 @@
                     <div class="ps-3">
                       <h6>$3,264</h6>
                       <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+  
                     </div>
                   </div>
                 </div>
-
+  
               </div>
-            </div><!-- End Revenue Card -->
-
+            </div><!-- End Revenue Card --> --}}
+  
             <!-- Customers Card -->
             <!-- <div class="col-xxl-4 col-xl-12">
-
+  
               <div class="card info-card customers-card">
-
+  
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
+  
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+  
                 <div class="card-body">
                   <h5 class="card-title">Customers <span>| This Year</span></h5>
-
+  
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
@@ -110,38 +249,38 @@
                     <div class="ps-3">
                       <h6>1244</h6>
                       <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
+  
                     </div>
                   </div>
-
+  
                 </div>
               </div>
-
+  
             </div>End Customers Card -->
-
+  
             <!-- Reports -->
-            <div class="col-12">
+            {{-- <div class="col-12">
               <div class="card">
-
+  
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
+  
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+  
                 <div class="card-body">
                   <h5 class="card-title">Reports <span>/Today</span></h5>
-
+  
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
-
+  
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
@@ -195,32 +334,32 @@
                     });
                   </script>
                   <!-- End Line Chart -->
-
+  
                 </div>
-
+  
               </div>
             </div><!-- End Reports -->
-
+  
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
-
+  
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
+  
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+  
                 <div class="card-body">
                   <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
+  
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
@@ -269,32 +408,32 @@
                       </tr>
                     </tbody>
                   </table>
-
+  
                 </div>
-
+  
               </div>
             </div><!-- End Recent Sales -->
-
+  
             <!-- Top Selling -->
             <div class="col-12">
               <div class="card top-selling overflow-auto">
-
+  
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
+  
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
                 </div>
-
+  
                 <div class="card-body pb-0">
                   <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
+  
                   <table class="table table-borderless">
                     <thead>
                       <tr>
@@ -343,91 +482,16 @@
                       </tr>
                     </tbody>
                   </table>
-
+  
                 </div>
-
+  
               </div>
             </div><!-- End Top Selling -->
-
+  
           </div>
         </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-
-          <!-- Recent Activity -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
-            </div>
-          </div><!-- End Recent Activity -->
-
+  
+  
           <!-- Budget Report -->
           <div class="card">
             <div class="filter">
@@ -436,18 +500,18 @@
                 <li class="dropdown-header text-start">
                   <h6>Filter</h6>
                 </li>
-
+  
                 <li><a class="dropdown-item" href="#">Today</a></li>
                 <li><a class="dropdown-item" href="#">This Month</a></li>
                 <li><a class="dropdown-item" href="#">This Year</a></li>
               </ul>
             </div>
-
+  
             <div class="card-body pb-0">
               <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
+  
               <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
+  
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
@@ -498,30 +562,30 @@
                   });
                 });
               </script>
-
+  
             </div>
           </div><!-- End Budget Report -->
-
+  
           <!-- Website Traffic -->
-          <div class="card">
+          {{-- <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
                   <h6>Filter</h6>
                 </li>
-
+  
                 <li><a class="dropdown-item" href="#">Today</a></li>
                 <li><a class="dropdown-item" href="#">This Month</a></li>
                 <li><a class="dropdown-item" href="#">This Year</a></li>
               </ul>
             </div>
-
+  
             <div class="card-body pb-0">
               <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
+  
               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
+  
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   echarts.init(document.querySelector("#trafficChart")).setOption({
@@ -576,66 +640,67 @@
                   });
                 });
               </script>
-
+  
             </div>
-          </div><!-- End Website Traffic -->
-
+          </div><!-- End Website Traffic --> --}}
+  
           <!-- News & Updates Traffic -->
-          <div class="card">
+          {{-- <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
                   <h6>Filter</h6>
                 </li>
-
+  
                 <li><a class="dropdown-item" href="#">Today</a></li>
                 <li><a class="dropdown-item" href="#">This Month</a></li>
                 <li><a class="dropdown-item" href="#">This Year</a></li>
               </ul>
             </div>
-
+  
             <div class="card-body pb-0">
               <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
+  
               <div class="news">
                 <div class="post-item clearfix">
                   <img src="assets/img/news-1.jpg" alt="">
                   <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
                   <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
                 </div>
-
+  
                 <div class="post-item clearfix">
                   <img src="assets/img/news-2.jpg" alt="">
                   <h4><a href="#">Quidem autem et impedit</a></h4>
                   <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
                 </div>
-
+  
                 <div class="post-item clearfix">
                   <img src="assets/img/news-3.jpg" alt="">
                   <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
                   <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
                 </div>
-
+  
                 <div class="post-item clearfix">
                   <img src="assets/img/news-4.jpg" alt="">
                   <h4><a href="#">Laborum corporis quo dara net para</a></h4>
                   <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
                 </div>
-
+  
                 <div class="post-item clearfix">
                   <img src="assets/img/news-5.jpg" alt="">
                   <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
                   <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
                 </div>
-
+  
               </div><!-- End sidebar recent posts-->
-
+  
             </div>
-          </div><!-- End News & Updates -->
-
+          </div><!-- End News & Updates --> --}}
+  
+  {{--
         </div><!-- End Right side columns -->
-      </div>
+      </div> --}}
     </section>
 
     <x-slot name="js_body">
