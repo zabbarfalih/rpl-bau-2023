@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIBAU</title>
+    <title>SIAGA-U</title>
 
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <!-- CSS Start -->

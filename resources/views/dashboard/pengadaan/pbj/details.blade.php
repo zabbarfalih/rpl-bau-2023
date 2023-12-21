@@ -266,7 +266,10 @@
                                         <form action="{{ route('updateStatus') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
-                                            <button type="submit" class="btn btn-success">Yakin</button>
+                                            <a href="#"  class="btn btn-success"
+                                            id="confirmButton"
+                                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                            data-id="{{ $pengadaan->id }}">Selesai</a>
                                         </form>
                                     </div>
                                 </div>
@@ -275,7 +278,6 @@
                             <!-- end Modal -->
                             <!-- List dokumen kurang dari 50 dan Selesai-->
                             @elseif($pengadaan->status == 'Selesai')
-                                <p>Setelah Selsai (saat ini status Selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -416,10 +418,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal1">Serahkan</a>
-                                </div>
                                 <div class="modal fade" id="setujuModal1" aria-hidden="true"
                                         data-bs-keyboard="false" data-bs-backdrop="static"
                                         aria-labelledby="setujuModalKhususLabel" tabindex="-1">
@@ -435,14 +433,7 @@
                                                 <div class="modal-body">
                                                     Apakah anda yakin ?
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="#"  class="btn btn-success"
-                                                        id="confirmButton"
-                                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
-                                                        data-id="{{ $pengadaan->id }}">Yakin</a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -890,7 +881,6 @@
                                 </div>
                                 <!-- List dokumen lebih dari 50 dan selesai-->
                             @elseif($pengadaan->status == 'Selesai')
-                                <p>Setelah Selesai (saat ini status selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
