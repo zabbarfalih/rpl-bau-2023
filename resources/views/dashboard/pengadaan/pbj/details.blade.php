@@ -21,6 +21,27 @@
     <x-slot name="js_head">
 
     </x-slot>
+    @php
+        $requiredDocuments = [
+            'dokumen_undangan',
+            'dokumen_pengadaan_langsung',
+            'dokumen_ssuk_sskk',
+            'dokumen_ikp',
+            'dokumen_ldp_dan_spesifikasi',
+            'dokumen_penawaran_pakta_formulir',
+            'dokumen_surat_permintaan',
+            'dokumen_serah_terima'
+        ];
+
+        $allDocumentsAvailable = true;
+
+        foreach ($requiredDocuments as $document) {
+            if ($dokumen_pengadaan->$document == null) {
+                $allDocumentsAvailable = false;
+                break;
+            }
+        }
+    @endphp
 
     <section class="section dashboard">
         <div class="container">
@@ -246,9 +267,11 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            @if ($dokumen_pengadaan->dokumen_undangan != null && $dokumen_pengadaan->dokumen_pengadaan_langsung != null)
                             <div class="text-center">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
                             </div>
+                            @endif
                             <!-- Modal -->
                             <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
                                 aria-labelledby="setujuModalKhususLabel" tabindex="-1">
@@ -418,7 +441,13 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="modal fade" id="setujuModal1" aria-hidden="true"
+                                <div class="text-center">
+                                    <a href="#"  class="btn btn-success"
+                                    id="confirmButton"
+                                    data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                    data-id="{{ $pengadaan->id }}">Yakin</a>
+                                </div>
+                                    <div class="modal fade" id="setujuModal1" aria-hidden="true"
                                         data-bs-keyboard="false" data-bs-backdrop="static"
                                         aria-labelledby="setujuModalKhususLabel" tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -433,7 +462,7 @@
                                                 <div class="modal-body">
                                                     Apakah anda yakin ?
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -735,16 +764,16 @@
                                                 </a>
                                             </td>
                                             <td class="text-center align-middle">
-                                            @if(empty($dokumen_pengadaan->dokumen_penawaran))
+                                            @if(empty($dokumen_pengadaan->dokumen_penawaran_pakta_formulir))
                                                 <button type="button"
                                                     class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Penawaran">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Penawaran Pakta Formulir">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran"
-                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_penawaran']) }}'">
+                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran Pakta Formulir"
+                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_penawaran_pakta_formulir']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -852,33 +881,35 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
-                                </div>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
-                                    aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Apakah anda yakin ?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
-                                            <form action="{{ route('updateStatus') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
-                                                <button type="submit" class="btn btn-success">Yakin</button>
-                                            </form>
+                                @if ($allDocumentsAvailable)
+                                    <div class="text-center">
+                                        <a href="#"  class="btn btn-success"
+                                        id="confirmButton"
+                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                        data-id="{{ $pengadaan->id }}">Selesai</a>
+                                    </div>
+                                @endif
+                                    <div class="modal fade" id="setujuModal1" aria-hidden="true"
+                                        data-bs-keyboard="false" data-bs-backdrop="static"
+                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title modal-center fw-bolder"
+                                                        id="exampleModalLabel">
+                                                        Konfirmasi</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ?
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                </div>
+
                                 <!-- List dokumen lebih dari 50 dan selesai-->
                             @elseif($pengadaan->status == 'Selesai')
                                 <table
@@ -1082,10 +1113,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal">Selesai</a>
-                                </div>
                             @endif
                     @endif
 

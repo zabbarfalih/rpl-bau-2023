@@ -98,12 +98,20 @@ class PengajuanController extends Controller
         $pengadaan = Pengadaan::findOrFail($pengadaanId);
         $dokumenId = Dokumen::where('pengadaan_id', $pengadaan->id)->pluck('id')->first();
         $dokumenPengadaans = DokumenPengadaan::where('dokumen_id', $dokumenId)->first();
+
+        $statusDokumen = StatusPengadaan::where('pengadaan_id', $pengadaanId)->get();
+        $statusesWithDates = $statusDokumen->mapWithKeys(function ($item) {
+            return [$item->status => Carbon::parse($item->changed_at)->translatedFormat('d') . '-' . Carbon::parse($item->changed_at)->translatedFormat('m') . '-' . Carbon::parse($item->changed_at)->translatedFormat('Y')];
+        });
+        $checkStatuses = ['Diajukan', 'Diterima PPK', 'Ditolak', 'Revisi', 'Diproses', 'Dilaksanakan', 'Selesai', 'Diserahkan'];
         // Mengambil dokumen pengadaan terkait dengan pengadaan yang dipilih
         //$dokumenPengadaans = $pengadaan->dokumenPengadaans;
 
         return view('dashboard.pengadaan.unit.details', [
             'menu' => $menu,
             'pengadaan' => $pengadaan,
+            'statusesWithDates' => $statusesWithDates,
+            'checkStatuses' => $checkStatuses,
             'dokumenPengadaans' => $dokumenPengadaans,
         ]);
     }
