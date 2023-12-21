@@ -46,7 +46,7 @@
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Nama Paket Pengadaan</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="nama_pengadaan" class="form-control" />
+                                        <input type="text" name="nama_pengadaan" class="form-control" value="{{ old('nama_pengadaan') }}"/>
                                         @error('nama_pengadaan')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -57,7 +57,7 @@
                                 <div class="row mb-3">
                                     <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Pengadaan</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="tanggal_pengadaan" class="form-control font-form" />
+                                        <input type="date" name="tanggal_pengadaan" class="form-control font-form" value="{{ old('tanggal_pengadaan') }}"/>
                                         @error('tanggal_pengadaan')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
