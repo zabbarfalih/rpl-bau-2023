@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SubsubmenuSeeder::class);
         //$this->call(PengadaanSeeder::class);
         //$this->call(DokumenSeeder::class);
-        $this->call(DokumenPengadaanSeeder::class);
-        $this->call(StatusPengadaanSeeder::class);
-        $this->call(PenolakanSeeder::class);
+        //$this->call(DokumenPengadaanSeeder::class);
+        //$this->call(StatusPengadaanSeeder::class);
+        //$this->call(PenolakanSeeder::class);
     }
 }

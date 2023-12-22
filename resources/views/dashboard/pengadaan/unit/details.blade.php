@@ -39,17 +39,17 @@
                                                 <th scope="col" class="text-center align-middle">
                                                     No
                                                 </th>
-                
+
                                                 <th scope="col" class="text-center align-middle text-wrap">
                                                     Nama Dokumen
                                                 </th>
-                
+
                                                 <th scope="col" class="text-center align-middle">
                                                     Action
                                                 </th>
                                             </tr>
                                         </thead>
-                
+
                                         <tbody>
                                             <tr>
                                                 <td class="text-center fw-bold align-middle">
@@ -58,16 +58,22 @@
                                                 <td class="fw-bold align-middle text-wrap">
                                                     Dokumen KAK
                                                 </td>
-                
+
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
+
+                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white"
+                                                        onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_kak']) }}'">
                                                         Download
                                                     </button>
-                                                    <button type="button"
-                                                        class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
-                                                        Edit
-                                                    </button>
+                                                    @if ($pengadaan->status == 'Diajukan' || $pengadaan->status == 'Revisi')
+                                                        <button type="button"
+                                                            class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen KAK">
+                                                            Edit
+                                                        </button>
+                                                    @endif
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -77,21 +83,29 @@
                                                 <td class="fw-bold align-middle text-wrap">
                                                     Dokumen Memo
                                                 </td>
-                
+
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
+
+                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white"
+                                                        onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_memo']) }}'">
+
                                                         Download
                                                     </button>
+                                                    @if ($pengadaan->status == 'Diajukan' || $pengadaan->status == 'Revisi')
                                                     <button type="button"
-                                                        class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+
+                                                        class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                        data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Memo">
+
                                                         Edit
                                                     </button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                    
+
                                 @elseif ($pengadaan->status === 'Diterima PPK' || $pengadaan->status === 'Diproses' || $pengadaan->status === 'Dilaksanakan' || $pengadaan->status === 'Selesai')
                                 {{-- <p>Saat status Disetujui, Diproses, Dikerjakan, Selesai</p> --}}
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -101,17 +115,17 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle">
                                                 Action
                                             </th>
                                         </tr>
                                     </thead>
-                
+
                                     <tbody>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -120,7 +134,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -135,7 +149,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -145,7 +159,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                
+
                                 @elseif ($pengadaan->status === 'Diserahkan')
                                 {{-- <p>Saat status diserahkan</p> --}}
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
@@ -155,17 +169,17 @@
                                             <th scope="col" class="text-center align-middle">
                                                 No
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle text-wrap">
                                                 Nama Dokumen
                                             </th>
-                
+
                                             <th scope="col" class="text-center align-middle">
                                                 Action
                                             </th>
                                         </tr>
                                     </thead>
-                
+
                                     <tbody>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -174,7 +188,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen KAK
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -189,7 +203,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
@@ -204,7 +218,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen BAST
                                             </td>
-                
+
                                             <td class="text-center align-middle">
                                                 </button>
                                                 <button type="button"
@@ -219,93 +233,166 @@
                             </div>
                         </div>
                     </div>
+                            <!-- Kirim Revisi -->
+                            @if ($pengadaan->status == 'Revisi')
+                            <div class="text-center">
+                                <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#setujuModalL">Serahkan Revisi</a>
+                            </div>
+                            @endif
+                            {{-- Modal Tombol Selesai --}}
+                            <div class="modal fade" id="setujuModalL" aria-hidden="true"
+                            data-bs-keyboard="false" data-bs-backdrop="static"
+                            aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title modal-center fw-bolder"
+                                            id="exampleModalLabel">
+                                            Konfirmasi</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Batal</a>
+                                        <a href="#"  class="btn btn-success"
+                                            id="confirmButton"
+                                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                            data-id="{{ $pengadaan->id }}">Yakin</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <!-- End Left side columns -->
+
                 <!-- Right side columns -->
                 <div class="col-lg-4">
+                    <!-- Recent Activity -->
                     <div class="card">
-
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                    class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="#">Today</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">This Month</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">This Year</a>
-                                </li>
-                            </ul>
-                        </div>
-
                         <div class="card-body">
-                            <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
+                            <h5 class="card-title">
+                                Status Pengadaan
+                            </h5>
                             <div class="activity">
+                                @if($statusesWithDates->has('Diajukan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">32 min</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diajukan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                                     <div class="activity-content">
-                                        Quia quae rerum
-                                        <a href="#" class="fw-bold text-dark">explicabo officiis</a>
-                                        beatae
+                                        Diajukan
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diterima PPK'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">56 min</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diterima PPK')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                                    <div class="activity-content">Voluptatem blanditiis blanditiis eveniet</div>
+                                    <div class="activity-content">
+                                        Diterima PPK
+                                    </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diproses'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">2 hrs</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Diproses')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                                    <div class="activity-content">Voluptates corrupti molestias voluptatem</div>
+                                    <div class="activity-content">
+                                        Diproses oleh <p class="fw-bold text-dark">{{$pengadaan->role->name}}</p>
+                                    </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Dilaksanakan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">1 day</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Dilaksanakan')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                                     <div class="activity-content">
-                                        Tempore autem saepe
-                                        <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
-                                        tempore
+                                        Dilaksanakan
                                     </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Selesai'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">2 days</div>
+                                    <div class="activite-label">{{$statusesWithDates->get('Selesai')}}</div>
                                     <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                                    <div class="activity-content">Est sit eum reiciendis exercitationem</div>
+                                    <div class="activity-content">
+                                        Selesai
+                                    </div>
                                 </div>
                                 <!-- End activity item-->
-
+                                @if($statusesWithDates->has('Diserahkan'))
                                 <div class="activity-item d-flex">
-                                    <div class="activite-label">4 weeks</div>
+                                    <div class="activite-label">
+                                        {{$statusesWithDates->get('Diserahkan')}}
+                                    </div>
                                     <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                                    <div class="activity-content">Dicta dolorem harum nulla eius. Ut quidem quidem sit
-                                        quas</div>
+                                    <div class="activity-content">
+                                        Pengadaan telah diserahkan kepada Unit
+                                    </div>
                                 </div>
+                                @endif
+                                @endif
+                                @endif
+                                @endif
+                                @elseif($statusesWithDates->has('Revisi'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">
+                                        {{$statusesWithDates->get('Revisi')}}
+                                    </div>
+                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                    <div class="activity-content">
+                                        Pengadaan ditolak dengan revisi
+                                    </div>
+                                </div>
+                                @elseif($statusesWithDates->has('Ditolak'))
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">
+                                        {{$statusesWithDates->get('Ditolak')}}
+                                    </div>
+                                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                                    <div class="activity-content">
+                                        Pengadaan ditolak tanpa revisi
+                                    </div>
+                                </div>
+                                @endif
+                                @endif
                                 <!-- End activity item-->
                             </div>
                         </div>
                     </div>
+                    <!-- End Recent Activity -->
                 </div>
                 <!-- End Right side columns -->
             </div>
 
+
+        </div>
+        {{-- Modal untuk Upload File --}}
+        <div class="modal fade" id="uploadFileModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="uploadModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="margin: 10px;">
+                    <div class="modal-header">
+                        <h4 class="alert-heading" id="modalTitle">Upload <span id="documentPlaceholder">[document]</span></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('upload-dokumens') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <input type="file" class="file-upload" name="uploadFile" />
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="documentName" id="documentName">
+                            <input type="hidden" name="dokumen_id" id="dokumen_id" value="{{ $dokumenPengadaans->dokumen_id }}">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -313,5 +400,19 @@
 
     <x-slot name="js_body">
         <script src="{{ asset('assets/js/script.js') }}"></script>
+    </x-slot>
+    <x-slot name="js_body">
+        <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                $('#uploadFileModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget);
+                    var documentName = button.data('document').replace(/\s/g, '_').toLowerCase();
+                    var documentNames = button.data('document');
+                    $(this).find('#documentName').val(documentName);
+                    $(this).find('#documentPlaceholder').text(documentNames);
+                });
+            });
+        </script>
     </x-slot>
 </x-dashboard.layouts.layouts>

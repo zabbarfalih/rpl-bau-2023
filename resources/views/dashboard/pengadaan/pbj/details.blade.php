@@ -21,6 +21,27 @@
     <x-slot name="js_head">
 
     </x-slot>
+    @php
+        $requiredDocuments = [
+            'dokumen_undangan',
+            'dokumen_pengadaan_langsung',
+            'dokumen_ssuk_sskk',
+            'dokumen_ikp',
+            'dokumen_ldp_dan_spesifikasi',
+            'dokumen_penawaran_pakta_formulir',
+            'dokumen_surat_permintaan',
+            'dokumen_serah_terima'
+        ];
+
+        $allDocumentsAvailable = true;
+
+        foreach ($requiredDocuments as $document) {
+            if ($dokumen_pengadaan->$document == null) {
+                $allDocumentsAvailable = false;
+                break;
+            }
+        }
+    @endphp
 
     <section class="section dashboard">
         <div class="container">
@@ -31,7 +52,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Dokumen</h5>
-
                         <!-- List dokumen kurang dari 50 dan dilaksanakan-->
                         @if($dokumen_pengadaan->harga_anggaran <= 50000000)
                             @if($pengadaan->status == 'Dilaksanakan')
@@ -81,6 +101,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -88,6 +109,11 @@
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -158,6 +184,15 @@
                                     </svg>
                                     <div>Untuk mengunduh template, silakan tekan download template</div>
                                 </div>
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <table class="table table-hover display responsive nowrap table-striped font-body-table"
                                 style="width: 100%" {{-- id="table-bau" --}}>
                                 <thead class="header-table">
@@ -246,9 +281,11 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            @if ($dokumen_pengadaan->dokumen_undangan != null && $dokumen_pengadaan->dokumen_pengadaan_langsung != null)
                             <div class="text-center">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
                             </div>
+                            @endif
                             <!-- Modal -->
                             <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
                                 aria-labelledby="setujuModalKhususLabel" tabindex="-1">
@@ -266,7 +303,10 @@
                                         <form action="{{ route('updateStatus') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
-                                            <button type="submit" class="btn btn-success">Yakin</button>
+                                            <a href="#"  class="btn btn-success"
+                                            id="confirmButton"
+                                            data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                            data-id="{{ $pengadaan->id }}">Selesai</a>
                                         </form>
                                     </div>
                                 </div>
@@ -275,7 +315,6 @@
                             <!-- end Modal -->
                             <!-- List dokumen kurang dari 50 dan Selesai-->
                             @elseif($pengadaan->status == 'Selesai')
-                                <p>Setelah Selsai (saat ini status Selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -316,6 +355,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -323,6 +363,11 @@
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -416,36 +461,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal1">Serahkan</a>
-                                </div>
-                                <div class="modal fade" id="setujuModal1" aria-hidden="true"
-                                        data-bs-keyboard="false" data-bs-backdrop="static"
-                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title modal-center fw-bolder"
-                                                        id="exampleModalLabel">
-                                                        Konfirmasi</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="#" type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</a>
-                                                    <a href="#"  class="btn btn-success"
-                                                        id="confirmButton"
-                                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
-                                                        data-id="{{ $pengadaan->id }}">Yakin</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                             @endif
                     @else
                             <!-- List dokumen lebih dari 50 dan dilaksanakan-->
@@ -497,6 +512,7 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
@@ -504,6 +520,11 @@
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
@@ -576,6 +597,16 @@
                                     </svg>
                                     <div>Untuk mengunduh template, silakan tekan download template</div>
                                 </div>
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -744,16 +775,20 @@
                                                 </a>
                                             </td>
                                             <td class="text-center align-middle">
-                                            @if(empty($dokumen_pengadaan->dokumen_penawaran))
+                                            @if(empty($dokumen_pengadaan->dokumen_penawaran_pakta_formulir))
                                                 <button type="button"
+
                                                     class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Penawaran">
+                                                    data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Penawaran Pakta Formulir">
+
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran"
-                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_penawaran']) }}'">
+
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran Pakta Formulir"
+                                                    onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_penawaran_pakta_formulir']) }}'">
+
                                                     Download
                                                 </button>
                                                 <button type="button"
@@ -861,36 +896,37 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#setujuModalA" data-pengadaan-id={{ $pengadaan->id }}>Selesai</button>
-                                </div>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="setujuModalA" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static"
-                                    aria-labelledby="setujuModalKhususLabel" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title modal-center fw-bolder" id="exampleModalLabel">Konfirmasi</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Apakah anda yakin ?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="#" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</a>
-                                            <form action="{{ route('updateStatus') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="pengadaan_id" id="pengadaanIdInput">
-                                                <button type="submit" class="btn btn-success">Yakin</button>
-                                            </form>
+                                @if ($allDocumentsAvailable)
+                                    <div class="text-center">
+                                        <a href="#"  class="btn btn-success"
+                                        id="confirmButton"
+                                        data-url="{{ route('update-status', ['pengadaan' => $pengadaan->id, 'penyelenggara' => $pengadaan->penyelenggara]) }}"
+                                        data-id="{{ $pengadaan->id }}">Selesai</a>
+                                    </div>
+                                @endif
+                                    <div class="modal fade" id="setujuModal1" aria-hidden="true"
+                                        data-bs-keyboard="false" data-bs-backdrop="static"
+                                        aria-labelledby="setujuModalKhususLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title modal-center fw-bolder"
+                                                        id="exampleModalLabel">
+                                                        Konfirmasi</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ?
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                </div>
+
                                 <!-- List dokumen lebih dari 50 dan selesai-->
                             @elseif($pengadaan->status == 'Selesai')
-                                <p>Setelah Selesai (saat ini status selesai)</p>
                                 <table
                                     class="table table-hover display responsive nowrap table-striped font-body-table"
                                     style="width: 100%" {{-- id="table-bau" --}}>
@@ -922,6 +958,7 @@
                                                 </button>
                                             </td>
                                         </tr>
+
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
                                                 2
@@ -929,13 +966,20 @@
                                             <td class="fw-bold align-middle text-wrap">
                                                 Dokumen Memo
                                             </td>
+                                            @if ($dokumen_pengadaan->dokumen_memo != null)
                                             <td class="text-center align-middle">
                                                 <button type="button"
                                                     class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
+                                            @else
+                                            <td class="fw-bold align-middle text-wrap" style="text-align: center">
+                                                Tanpa Memo
+                                            </td>
+                                            @endif
                                         </tr>
+
                                         <tr>
                                             <td class="text-center fw-bold align-middle">
                                                 3
@@ -1092,10 +1136,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-center">
-                                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#setujuModal">Selesai</a>
-                                </div>
                             @endif
                     @endif
 
