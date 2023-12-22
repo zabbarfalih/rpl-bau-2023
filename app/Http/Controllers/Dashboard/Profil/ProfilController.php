@@ -38,16 +38,10 @@ class ProfilController extends Controller
         $user->fill($request->validated());
 
         if ($request->hasFile('picture')) {
-            if ($user->picture && Storage::disk('public')->exists($user->picture)) {
-                Storage::disk('public')->delete($user->picture);
-            }
-
-            $path = $request->file('picture')->store('profile_pictures', 'public');
-            $user->picture = $path;
-        }
-
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+            $filename = $request->file('picture')->hashName();
+            $request->file('picture')->storeAs('profile_pictures', $filename, 'public');
+            $user->picture = $filename;
+            $user->save();
         }
 
         $user->save();

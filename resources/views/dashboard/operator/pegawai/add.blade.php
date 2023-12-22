@@ -17,7 +17,7 @@
                       <br>
 
                       <!-- General Form Elements -->
-                      <form class="font-form fw-bold" action="{{ route('operator.pegawai.store') }}" method="post">
+                      <form class="font-form fw-bold" action="{{ route('operator.pegawai.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="row mb-3">

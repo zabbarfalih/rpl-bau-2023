@@ -74,11 +74,10 @@ class PegawaiController extends Controller
             'is_pbj' => 'nullable',
             'is_ppk' => 'nullable',
         ]);
-    
-        // Proses upload gambar
+
         if ($request->hasFile('picture')) {
-            $filename = time().'.'.$request->picture->getClientOriginalExtension();
-            $request->picture->move(public_path('images'), $filename);
+            $filename = $request->file('picture')->hashName();
+            $request->file('picture')->storeAs('profile_pictures', $filename, 'public');
             $validatedData['picture'] = $filename;
         }
 

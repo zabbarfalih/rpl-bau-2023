@@ -13,8 +13,8 @@
                     <div
                     class="card-body profile-card pt-4 d-flex flex-column align-items-center"
                     >
-                    @if($user->picture && file_exists(storage_path('app/public/'.$user->picture)))
-                        <img src="{{ asset('storage/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                    @if($user->picture)
+                        <img src="{{ asset('storage/profile_pictures/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
                     @else
                         <i class="bi bi-person-circle" style="font-size: 120px;"></i>
                     @endif
@@ -111,7 +111,7 @@
                         id="profile-edit"
                         >
                         <!-- Profile Edit Form -->
-                        <form method="POST" action="{{ route('profil.update') }}">
+                        <form method="POST" action="{{ route('profil.update') }} " enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             
@@ -123,17 +123,17 @@
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <div class="d-flex justify-content-center align-items-center" style="width: 120px; height: 120px; border-radius: 50%;">
-                                        @if($user->picture && file_exists(storage_path('app/public/'.$user->picture)))
-                                            <img src="{{ asset('storage/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                                        @if($user->picture)
+                                            <img src="{{ asset('storage/profile_pictures/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
                                         @else
                                             <i class="bi bi-person-circle" style="font-size: 120px;"></i>
                                         @endif
+                                    
                                     </div>
                                     <div class="pt-2">
                                         <input type="file" class="form-control mb-2" name="picture" id="profileImage" accept=".jpg, .jpeg, .png">
                                         <img id="previewImage" style="max-width: 120px; max-height: 120px; border-radius: 50%;" />
                                     </div>
-                                    
                                 </div>
                             </div>
 

@@ -168,8 +168,8 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            @if(auth()->user()->picture && file_exists(storage_path('app/public/'.auth()->user()->picture)))
-            <img src="{{ asset('storage/'.Auth::user()->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 36px; height: 36px;">
+            @if(auth()->user()->picture)
+            <img src="{{ asset('storage/profile_pictures/'.auth()->user()->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 36px; height: 36px;">
             @else
                 <i class="bi bi-person-circle" style="font-size: 36px;"></i>
             @endif
