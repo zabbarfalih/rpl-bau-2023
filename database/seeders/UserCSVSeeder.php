@@ -47,6 +47,9 @@ class UserCSVSeeder extends Seeder
                 'is_tim_keuangan' => $row[10],
                 'is_unit' => $row[11],
                 'is_operator' => $row[12],
+                'is_pbj' => $row[13],
+                'is_ppk' => $row[14],
+                'is_admin' => $row[15],
             ]);
         }
 

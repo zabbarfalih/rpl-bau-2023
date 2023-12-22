@@ -29,6 +29,9 @@ class UserFactory extends Factory
             'is_tim_keuangan' => true,
             'is_unit' => true,
             'is_operator' => true,
+            'is_pbj' => true,
+            'is_ppk' => true,
+            'is_admin' => true,
         ];
     }
 

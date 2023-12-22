@@ -34,9 +34,9 @@ class User extends Authenticatable
         'is_tim_keuangan',
         'is_unit',
         'is_operator',
-        // 'is_pbj',
-        // 'is_ppk',
-        // 'is_admin',
+        'is_pbj',
+        'is_ppk',
+        'is_admin',
         'picture',
     ];
 

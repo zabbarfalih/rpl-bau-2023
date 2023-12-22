@@ -12,17 +12,17 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // Path to the SQL file
-        $sqlFile = base_path('database/seeders/data/sql/users.sql');
+        // // Path to the SQL file
+        // $sqlFile = base_path('database/seeders/data/sql/users.sql');
 
-        // Check if the file exists
-        if (file_exists($sqlFile)) {
-            // Execute the SQL commands
-            DB::unprepared(file_get_contents($sqlFile));
-        } else {
-            // Log or handle the error appropriately
-            echo "SQL file not found: {$sqlFile}\n";
-        }
+        // // Check if the file exists
+        // if (file_exists($sqlFile)) {
+        //     // Execute the SQL commands
+        //     DB::unprepared(file_get_contents($sqlFile));
+        // } else {
+        //     // Log or handle the error appropriately
+        //     echo "SQL file not found: {$sqlFile}\n";
+        // }
 
         User::create([
             'name' => 'Muhammad Zabbar Falihin',
@@ -39,6 +39,9 @@ class UserSeeder extends Seeder
             'is_tim_keuangan' => true,
             'is_unit' => true,
             'is_operator' => true,
+            'is_pbj' => true,
+            'is_ppk' => true,
+            'is_admin' => true,
         ]);
 
         User::create([
@@ -56,9 +59,9 @@ class UserSeeder extends Seeder
             'is_tim_keuangan' => true,
             'is_unit' => true,
             'is_operator' => true,
-            // 'is_pbj' => true,
-            // 'is_ppk' => true,
-            // 'is_admin' => true,
+            'is_pbj' => true,
+            'is_ppk' => true,
+            'is_admin' => true,
         ]);
 
         User::factory(20)->create();

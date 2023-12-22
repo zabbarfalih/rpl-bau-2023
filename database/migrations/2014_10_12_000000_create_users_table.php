@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             $table->integer('is_tim_keuangan');
             $table->integer('is_unit');
             $table->integer('is_operator');
+            $table->integer('is_pbj');
+            $table->integer('is_ppk');
+            $table->integer('is_admin');
             $table->rememberToken();
         });
     }
