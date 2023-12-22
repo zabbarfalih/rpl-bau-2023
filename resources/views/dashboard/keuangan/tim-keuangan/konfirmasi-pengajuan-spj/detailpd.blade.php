@@ -158,7 +158,9 @@
                                   </p>
                                 </div>
                               </div>
+                              @endif
 
+                              @if ($spj->status === 'Selesai') 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
                                   Tanggal Pencairan Dana
@@ -168,7 +170,7 @@
                                 </div>
                               </div>
                               @endif
-
+                              
                               @if ($spj->status === 'Ditolak') 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label" style="color: rgb(184, 48, 48);">
@@ -314,7 +316,7 @@
                       <p>Proses pengajuan SPJ telah selsai</p>
                       <div class="finish">
                         <div class="download">
-                          <a href="{{ url('/dashboard/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/' . $spj->id) }}" target="_blank"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
+                          <a href="{{ url('/dashboard/tim-keuangan/konfirmasi-spjpd/download-spj-pdf/' . $spj->id) }}" target="_blank" onclick=" @if($spj->status !== 'Selesai') return false; @endif"><button type="button" class="btn btn-primary @if($spj->status !== 'Selesai') disabled @endif">Cetak</button></a>
                         </div>
                       </div>
                     </div>

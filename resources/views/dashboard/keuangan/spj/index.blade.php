@@ -23,15 +23,15 @@
               <h2 class="py-5 text-center">Surat Pertanggungjawaban</h2>
               <p>Berikut disajikan data-data SPJ yang diajukan.</p>
     
-              <table id="table-bau" class="table table-striped display responsive nowrap" style="width:100%">
-                  <thead>
+              <table id="table-bau" class="table table-hover display responsive nowrap table-striped font-body-table" style="width: 100%" id="table-bau">
+                  <thead class="header-table">
                       <tr>
-                        <th class="text-center col-1">No.</th>
-                        <th class="text-center col-3">Jenis Spj</th>
-                        <th class="text-center col-2">Tanggal Pengajuan</th>
-                        <th class="text-center col-2">Status</th>
-                        <th class="text-center col-2">Aksi</th>
-                        <th class="text-center col-2">Pengaju</th>
+                        <th class="text-center align-middle">No.</th>
+                        <th class="text-center align-middle">Jenis SPJ</th>
+                        <th class="text-center align-middle">Tanggal Pengajuan</th>
+                        <th class="text-center align-middle">Status</th>
+                        <th class="text-center align-middle">Aksi</th>
+                        <th class="text-center align-middle">Pengaju</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -44,7 +44,7 @@
                       <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->jenis_spj }}</td>
                       <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y', 'Do MMMM YYYY') }}</td>
-                      <td>
+                      <td class="text-center align-middle">
                         <span class="badge 
                             @if($item->status == 'Selesai') bg-success 
                             @elseif($item->status == 'Ditolak') bg-danger 
@@ -53,7 +53,7 @@
                             {{ $item->status }}
                         </span>
                       </td>
-                      <td>
+                      <td class="text-center align-middle">
                         <a href="{{ route('info-pengajuan-spj.show', $item->id) }}">
                            <button type="button" class="btn btn-primary">Lihat</button>
                          </a>                    
@@ -67,7 +67,7 @@
                       <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->jenis_spj }}</td>
                       <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y', 'Do MMMM YYYY') }}</td>
-                      <td>
+                      <td class="text-center align-middle">
                         <span class="badge 
                             @if($item->status == 'Selesai') bg-success 
                             @elseif($item->status == 'Ditolak') bg-danger 
@@ -76,7 +76,7 @@
                             {{ $item->status }}
                         </span>
                       </td>
-                      <td>
+                      <td class="text-center align-middle">
                         <a href="{{ route('info-pengajuan-spjtr.show', $item->id) }}">
                            <button type="button" class="btn btn-primary">Lihat</button>
                          </a>                    
@@ -90,7 +90,7 @@
                       <td scope="row">{{ $startNumber++ }}</td>
                       <td>{{ $item->jenis_spj }}</td>
                       <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y', 'Do MMMM YYYY') }}</td>
-                      <td>
+                      <td class="text-center align-middle">
                         <span class="badge 
                             @if($item->status == 'Selesai') bg-success 
                             @elseif($item->status == 'Ditolak') bg-danger 
@@ -99,7 +99,7 @@
                             {{ $item->status }}
                         </span>
                       </td>
-                      <td>
+                      <td class="text-center align-middle">
                         <a href="{{ route('info-pengajuan-spjpd.show', $item->id) }}">
                            <button type="button" class="btn btn-primary">Lihat</button>
                          </a>                    

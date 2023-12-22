@@ -169,7 +169,9 @@
                                   </p>
                                 </div>
                               </div>
+                              @endif
 
+                              @if ($spj->status === 'Selesai') 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">
                                   Tanggal Pencairan Dana
@@ -179,8 +181,7 @@
                                 </div>
                               </div>
                               @endif
-                
-
+                              
                               @if ($spj->status === 'Ditolak') 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label" style="color: rgb(184, 48, 48);">

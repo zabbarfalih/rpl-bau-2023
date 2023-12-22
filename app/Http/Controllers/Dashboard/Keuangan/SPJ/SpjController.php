@@ -60,6 +60,7 @@ class SpjController extends Controller
         //
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
+        $data['tanggal_transfer'] = $request->input('tanggal_transfer', null);
 
         $spj = Spj::create($data);
 
