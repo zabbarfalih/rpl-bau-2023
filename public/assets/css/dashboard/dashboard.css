@@ -6,7 +6,7 @@
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
-#main-dashboard-sibau {
+#main-dashboard-siagau {
     padding-top: 80px;
     padding-right: 30px;
     padding-bottom: 20px;
@@ -14,19 +14,19 @@
     transition: all 0.3s;
 }
 
-#footer-dashboard-sibau {
+#footer-dashboard-siagau {
     transition: all 0.3s;
     background: url("../../img/dashboard/bg-footer.png") center right 20%
         no-repeat;
 }
 
-#footer-dashboard-sibau span {
+#footer-dashboard-siagau span {
     font-size: 14px;
     color: var(--branding-secondary-color);
 }
 
 @media (max-width: 1199px) {
-    #main-dashboard-sibau {
+    #main-dashboard-siagau {
         padding-top: 80px;
         padding-right: 20px;
         padding-bottom: 20px;
@@ -491,8 +491,8 @@
 }
 
 @media (min-width: 1200px) {
-    #main-dashboard-sibau,
-    #footer-dashboard-sibau {
+    #main-dashboard-siagau,
+    #footer-dashboard-siagau {
         margin-left: 300px;
     }
 }
@@ -504,8 +504,8 @@
 }
 
 @media (min-width: 1200px) {
-    .toggle-sidebar #main-dashboard-sibau,
-    .toggle-sidebar #footer-dashboard-sibau {
+    .toggle-sidebar #main-dashboard-siagau,
+    .toggle-sidebar #footer-dashboard-siagau {
         margin-left: 0;
     }
 

@@ -167,7 +167,7 @@
             <div class="col-lg-8">
                 <div class="card overflow-auto">
                     <div class="card-body">
-                        <div class="card-title-card-sibau">
+                        <div class="card-title-card-siagau">
                             <h4><strong>Informasi Kehadiran</strong></h4>
                         </div>
                         {{-- Revisii --}}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIBAU | Dashboard</title>
+    <title>SIAGA-U | Dashboard</title>
 
     <link href={{ asset('assets/img/favicon.png') }} rel="icon">
     <!-- CSS Start -->
@@ -72,7 +72,7 @@
     <x-dashboard.partials.navbar />
     <x-dashboard.partials.sidebar :menu="$menu"/>
 
-    <main id="main-dashboard-sibau" class="min-vh-100">
+    <main id="main-dashboard-siagau" class="min-vh-100">
         <x-dashboard.partials.breadcrumb :menu="$menu" />
         {{ $slot }} <!-- Slot -->
     </main>

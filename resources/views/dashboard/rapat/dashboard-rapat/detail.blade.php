@@ -104,7 +104,7 @@
                         <div class="detail col-5">
                             <i class="fa-solid fa-1"></i>
                             <span>
-                                <div class="input-group form-disable-sibau">
+                                <div class="input-group form-disable-siagau">
                                     <input type="text" class="form-control" id="kodeSatu" value="{{ $rapat->kode_satu }}" readonly>
                                     <button class="btn btn-outline-secondary copy-btn" data-target="#kodeSatu">
                                         <i class="fa-solid fa-copy"></i>
@@ -116,7 +116,7 @@
                         <div class="detail col-5">
                             <i class="fa-solid fa-2"></i>
                             <span>
-                                <div class="input-group form-disable-sibau">
+                                <div class="input-group form-disable-siagau">
                                     <input type="text" class="form-control" id="kodeDua" value="{{ $rapat->kode_dua }}" readonly>
                                     <button class="btn btn-outline-secondary copy-btn" data-target="#kodeDua">
                                         <i class="fa-solid fa-copy"></i>

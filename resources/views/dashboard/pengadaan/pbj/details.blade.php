@@ -68,7 +68,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_kak']) }}'">
                                                     Download
                                                 </button>
@@ -83,7 +83,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_memo']) }}'">
                                                     Download
                                                 </button>
@@ -98,7 +98,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_identifikasi_kebutuhan']) }}'">
                                                     Download
                                                 </button>
@@ -113,7 +113,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_perencanaan_pengadaan']) }}'">
                                                     Download
                                                 </button>
@@ -128,7 +128,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_hps']) }}'">
                                                     Download
                                                 </button>
@@ -143,7 +143,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_nota_dinas']) }}'">
                                                     Download
                                                 </button>
@@ -194,18 +194,18 @@
                                         <td class="text-center align-middle">
                                         @if(empty($dokumen_pengadaan->dokumen_undangan))
                                             <button type="button"
-                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                 Upload
                                             </button>
                                         @else
                                             <button type="button"
-                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
+                                                class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
                                                 onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_undangan']) }}'">
                                                 Download
                                             </button>
                                             <button type="button"
-                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                 Edit
                                             </button>
                                         @endif
@@ -227,18 +227,18 @@
                                         <td class="text-center align-middle">
                                         @if(empty($dokumen_pengadaan->dokumen_pengadaan_langsung))
                                             <button type="button"
-                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                 data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Pengadaan Langsung">
                                                 Upload
                                             </button>
                                         @else
                                             <button type="button"
-                                                class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
+                                                class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
                                                 onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
                                                 Download
                                             </button>
                                             <button type="button"
-                                                class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                 Edit
                                             </button>
                                         @endif
@@ -303,7 +303,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_kak']) }}'">
                                                     Download
                                                 </button>
@@ -318,7 +318,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_memo']) }}'">
                                                     Download
                                                 </button>
@@ -333,7 +333,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_identifikasi_kebutuhan']) }}'">
                                                     Download
                                                 </button>
@@ -348,7 +348,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_perencanaan_pengadaan']) }}'">
                                                     Download
                                                 </button>
@@ -363,7 +363,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_hps']) }}'">
                                                     Download
                                                 </button>
@@ -378,7 +378,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_nota_dinas']) }}'">
                                                     Download
                                                 </button>
@@ -393,7 +393,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_undangan']) }}'">
                                                     Download
                                                 </button>
@@ -408,7 +408,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
                                                     Download
                                                 </button>
@@ -484,7 +484,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_kak']) }}'">
                                                     Download
                                                 </button>
@@ -499,7 +499,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_memo']) }}'">
                                                     Download
                                                 </button>
@@ -514,7 +514,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_identifikasi_kebutuhan']) }}'">
                                                     Download
                                                 </button>
@@ -529,7 +529,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_perencanaan_pengadaan']) }}'">
                                                     Download
                                                 </button>
@@ -544,7 +544,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_hps']) }}'">
                                                     Download
                                                 </button>
@@ -559,7 +559,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_nota_dinas']) }}'">
                                                     Download
                                                 </button>
@@ -613,18 +613,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_undangan))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_undangan']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Undangan">
                                                     Edit
                                                 </button>
@@ -647,18 +647,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_ssuk_sskk))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen SSUK SSKK">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_ssuk_sskk']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -680,18 +680,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_ikp))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen IKP">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_ikp']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -713,18 +713,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_ldp_dan_spesifikasi))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen LDP dan Spesifikasi">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_ldp_dan_spesifikasi']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -746,18 +746,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_penawaran))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Penawaran">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_penawaran']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -779,18 +779,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_surat_permintaan))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Surat Permintaan">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_surat_permintaan']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -812,18 +812,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_pengadaan_langsung))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Pengadaan Langsung">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_pengadaan_langsung']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -842,18 +842,18 @@
                                             <td class="text-center align-middle">
                                             @if(empty($dokumen_pengadaan->dokumen_serah_terima))
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                     data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Serah Terima">
                                                     Upload
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Serah Terima"
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Serah Terima"
                                                     onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumen->id, 'documentName' => 'dokumen_serah_terima']) }}'">
                                                     Download
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                     Edit
                                                 </button>
                                             @endif
@@ -917,7 +917,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Kak">
                                                     Download
                                                 </button>
                                             </td>
@@ -931,7 +931,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Memo">
                                                     Download
                                                 </button>
                                             </td>
@@ -945,7 +945,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Identifikasi Kebutuhan">
                                                     Download
                                                 </button>
                                             </td>
@@ -959,7 +959,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Perencanaan Pengadaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -973,7 +973,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen HPS">
                                                     Download
                                                 </button>
                                             </td>
@@ -987,7 +987,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Nota Dinas">
                                                     Download
                                                 </button>
                                             </td>
@@ -1001,7 +1001,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Undangan">
                                                     Download
                                                 </button>
                                             </td>
@@ -1015,7 +1015,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen SSUK SSKK">
                                                     Download
                                                 </button>
                                             </td>
@@ -1029,7 +1029,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen IKP">
                                                     Download
                                                 </button>
                                             </td>
@@ -1043,7 +1043,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen LDP dan Spesifikasi">
                                                     Download
                                                 </button>
                                             </td>
@@ -1057,7 +1057,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Penawaran">
                                                     Download
                                                 </button>
                                             </td>
@@ -1071,7 +1071,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Surat Permintaan">
                                                     Download
                                                 </button>
                                             </td>
@@ -1085,7 +1085,7 @@
                                             </td>
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white" data-document="Dokumen Pengadaan Langsung">
                                                     Download
                                                 </button>
                                             </td>

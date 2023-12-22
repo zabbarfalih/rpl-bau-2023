@@ -61,11 +61,11 @@
                 
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                         Download
                                                     </button>
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                         Edit
                                                     </button>
                                                 </td>
@@ -80,11 +80,11 @@
                 
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                         Download
                                                     </button>
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white">
+                                                        class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white">
                                                         Edit
                                                     </button>
                                                 </td>
@@ -123,7 +123,7 @@
                 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -138,7 +138,7 @@
                 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -177,7 +177,7 @@
                 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -192,7 +192,7 @@
                 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -208,7 +208,7 @@
                                             <td class="text-center align-middle">
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
