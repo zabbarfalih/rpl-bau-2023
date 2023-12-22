@@ -31,8 +31,8 @@ id;name;nip;email;phone_number;address;gaji;role;password;is_kepala_unit;is_tim_
 89;Sugiarto, SST., S.Si, MM.;197807222000121000;197807222000121000;30;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
 79;Sukim, SST.,M.Si;197204241994031000;197204241994031000;31;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
 100;Winih Budiarti, SST,M.Stat;198109262004122000;198109262004122000;32;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
-37;Defi Preditama Ardhya Garini, A.P.Kb.N.;200009212019122000;200009212019122000;33;Jl Otista No.64C;4000000;Tim Keuangan;password;0;1;0;1;0;0;0
-29;Rini Silvi, SST, M.Stat;198803032010122000;198803032010122000;34;Jl Otista No.64C;4000000;Tim Keuangan;password;0;1;0;1;0;0;0
+37;Defi Preditama Ardhya Garini, A.P.Kb.N.;200009212019122000;200009212019122000;33;Jl Otista No.64C;4000000;Tim Keuangan;password;0;1;0;1;0;0;1
+29;Rini Silvi, SST, M.Stat;198803032010122000;198803032010122000;34;Jl Otista No.64C;4000000;Tim Keuangan;password;0;1;0;1;0;0;1
 24;Dyah Budiyanti, SST;197904272000122000;197904272000122000;35;Jl Otista No.64C;4000000;PBJ;password;0;0;0;0;1;0;0
 14;Silfi Fitriana, SST;198308042007012000;198308042007012000;36;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
 32;Cahyo Wibowo, SST;199407282017011000;199407282017011000;37;Jl Otista No.64C;4000000;PBJ;password;0;0;0;0;1;0;0
@@ -83,7 +83,7 @@ id;name;nip;email;phone_number;address;gaji;role;password;is_kepala_unit;is_tim_
 9;Dwy Bagus Cahyono, SST, M.T;198708262010121000;198708262010121000;82;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
 6;Sofyan Ayatulloh, SST;197208221994121000;197208221994121000;83;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
 28;Luci Wulansari, S.Si, M.S.E;198504302009022000;198504302009022000;84;Jl Otista No.64C;4000000;PPK;password;0;1;0;0;0;1;0
-25;Toza Sathia Utiayarsih, SST., M.Stat.;198102272004122000;198102272004122000;85;Jl Otista No.64C;4000000;Unit;password;1;0;0;1;0;0;0
+25;Toza Sathia Utiayarsih, SST., M.Stat.;198102272004122000;198102272004122000;85;Jl Otista No.64C;4000000;Unit;password;1;0;0;1;0;0;1
 18;Sri Widaryani, SE.,M.Si;196703221987032000;196703221987032000;86;Jl Otista No.64C;4000000;Unit;password;1;0;0;0;0;0;0
 60;Dr I Made Arcana, S.Si.;196805031991011000;196805031991011000;87;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0
 59;Dr. Eng. Lya Hulliyyatus Suadaa, SST., M.T.;198902072010122000;198902072010122000;88;Jl Otista No.64C;4000000;Pegawai;password;0;0;0;0;0;0;0

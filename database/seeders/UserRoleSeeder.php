@@ -38,17 +38,17 @@ class UserRoleSeeder extends Seeder
                         $this->assignAdditionalRole($user, 'Unit');
                     }
 
-                    // if ($user->is_pbj) {
-                    //     c
-                    // }
+                    if ($user->is_pbj) {
+                        $this->assignAdditionalRole($user, 'PBJ');
+                    }
 
-                    // if ($user->is_ppk) {
-                    //     $this->assignAdditionalRole($user, 'PPK');
-                    // }
+                    if ($user->is_ppk) {
+                        $this->assignAdditionalRole($user, 'PPK');
+                    }
 
-                    // if ($user->is_admin) {
-                    //     $this->assignAdditionalRole($user, 'Admin');
-                    // }
+                    if ($user->is_admin) {
+                        $this->assignAdditionalRole($user, 'Admin');
+                    }
 
                     if ($user->is_operator) {
                         $this->assignAdditionalRole($user, 'Operator');
