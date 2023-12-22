@@ -16,7 +16,7 @@
 
                         <div class="d-flex justify-content-end mb-3">
                             <a
-                                href={{ route('admin.pegawai.add') }}
+                                href={{ route('operator.pegawai.add') }}
                                 class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold border-0"
                                 >
                                 + Tambah Pegawai

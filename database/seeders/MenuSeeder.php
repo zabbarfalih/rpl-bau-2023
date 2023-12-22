@@ -36,10 +36,10 @@ class MenuSeeder extends Seeder
                 'icon' => 'bi bi-gear',
             ],
             [
-                'name' => 'Administrator',
+                'name' => 'Operator',
                 'on_sidebar' => true,
-                'url' => Str::slug('Administrator'),
-                'icon' => 'bi bi-person-gear',
+                'url' => Str::slug('Operator'),
+                'icon' => 'bi bi-person-workspace',
             ],
             [
                 'name' => 'Unit',
@@ -88,12 +88,6 @@ class MenuSeeder extends Seeder
                 'on_sidebar' => true,
                 'url' => Str::slug('Persetujuan Surat Tugas'),
                 'icon' => 'bi bi-check-circle-fill',
-            ],
-            [
-                'name' => 'Operator',
-                'on_sidebar' => true,
-                'url' => Str::slug('Pengecekan Surat Tugas'),
-                'icon' => 'bi bi-person-workspace',
             ],
 
         ]);

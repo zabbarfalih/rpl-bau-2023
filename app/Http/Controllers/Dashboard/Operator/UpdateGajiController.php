@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\SuratTugas\PengecekanSuratTugas;
+namespace App\Http\Controllers\Dashboard\Operator;
 
 use App\Models\Menu;
 
@@ -22,7 +22,7 @@ public function index()
 {
     $menu = Menu::with('submenu')->get();
     $users = User::all();
-        return view('dashboard.surat-tugas.pengecekan-surat-tugas.index-gaji', [
+        return view('dashboard.operator.pengecekan-surat-tugas.index-gaji', [
             'menu' => $menu,
             'users' => $users,
         ]);
@@ -32,7 +32,7 @@ public function edit($id)
 {
     $menu = Menu::with('submenu')->get();
     $user = User::find($id); // Ganti dengan model user yang sesuai
-    return view('dashboard.surat-tugas.pengecekan-surat-tugas.update-gaji', [
+    return view('dashboard.operator.pengecekan-surat-tugas.update-gaji', [
         'menu' => $menu,
         'user' => $user, // Ubah $users menjadi $user
     ]);
@@ -42,7 +42,7 @@ public function form($id)
 {
         $menu = Menu::with('submenu')->get();
         $user = User::find($id);
-        return view('dashboard.surat-tugas.pengecekan-surat-tugas.update-gaji', [
+        return view('dashboard.operator.pengecekan-surat-tugas.update-gaji', [
             'menu' => $menu,
             'user' => $user,
         ]);

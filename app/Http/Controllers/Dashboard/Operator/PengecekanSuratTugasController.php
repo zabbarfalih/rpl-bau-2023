@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\SuratTugas\PengecekanSuratTugas;
+namespace App\Http\Controllers\Dashboard\Operator;
 
 use App\Models\Menu;
 
@@ -29,7 +29,7 @@ class PengecekanSuratTugasController  extends Controller
         $users = User::all();
         $pengecekanSuratTugas = PengajuanSuratTugas::where('status_surtug', 1)->whereIn('kode_track', [2, 3, 4])->get();
 
-        return view('dashboard.surat-tugas.pengecekan-surat-tugas.index', [ //semacam track lokasi folder file view (dalam hal ini adalah file view index)
+        return view('dashboard.operator.pengecekan-surat-tugas.index', [ //semacam track lokasi folder file view (dalam hal ini adalah file view index)
             'menu' => $menu,
             'users' => $users,
             'pengecekanSuratTugas' => $pengecekanSuratTugas,
@@ -44,7 +44,7 @@ class PengecekanSuratTugasController  extends Controller
     public function create()
     {
         $menu = Menu::with('submenu')->get();
-        return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', [
+        return view('dashboard.operator.pengecekan-surat-tugas.cek', [
             'menu' => $menu,
         ]);
     }
@@ -54,7 +54,7 @@ class PengecekanSuratTugasController  extends Controller
         $menu = Menu::with('submenu')->get();
         $pengecekanSuratTugas = PengajuanSuratTugas::findOrFail($id);
 
-        return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', [
+        return view('dashboard.operator.pengecekan-surat-tugas.cek', [
             'menu' => $menu,
             'pengecekanSuratTugas' => $pengecekanSuratTugas,
         ]);
@@ -78,25 +78,25 @@ class PengecekanSuratTugasController  extends Controller
         $data->update(['kode_track' => 4]);
 
         if ($data->lampiran == 0) {
-            $pdf = PDF::loadView('dashboard.surat-tugas.pengecekan-surat-tugas.surtug-tanpa-lampiran-pdf', [
+            $pdf = PDF::loadView('dashboard.operator.pengecekan-surat-tugas.surtug-tanpa-lampiran-pdf', [
                 'data' => $data,
             ]);
             $pdf->setPaper('A4', 'portrait');
-            return $pdf->stream('dashboard.surat-tugas.pengecekan-surat-tugas.surtug-tanpa-lampiran-pdf');
+            return $pdf->stream('dashboard.operator.pengecekan-surat-tugas.surtug-tanpa-lampiran-pdf');
         }
         elseif ($data->lampiran == 1) {
-            $pdf = PDF::loadView('dashboard.surat-tugas.pengecekan-surat-tugas.surtug-dalam-kota-pdf', [
+            $pdf = PDF::loadView('dashboard.operator.pengecekan-surat-tugas.surtug-dalam-kota-pdf', [
                 'data' => $data,
             ]);
             $pdf->setPaper('A4', 'portrait');
-            return $pdf->stream('dashboard.surat-tugas.pengecekan-surat-tugas.surtug-dalam-kota-pdf');
+            return $pdf->stream('dashboard.operator.pengecekan-surat-tugas.surtug-dalam-kota-pdf');
         }
         else {
-            $pdf = PDF::loadView('dashboard.surat-tugas.pengecekan-surat-tugas.surtug-luar-kota-pdf', [
+            $pdf = PDF::loadView('dashboard.operator.pengecekan-surat-tugas.surtug-luar-kota-pdf', [
                 'data' => $data,
             ]);
             $pdf->setPaper('A4', 'portrait');
-            return $pdf->stream('dashboard.surat-tugas.pengecekan-surat-tugas.surtug-luar-kota-pdf');
+            return $pdf->stream('dashboard.operator.pengecekan-surat-tugas.surtug-luar-kota-pdf');
         } 
     }
 
@@ -136,7 +136,7 @@ class PengecekanSuratTugasController  extends Controller
 
         // Periksa nilai 'lampiran'
         if ($detailPengecekanSuratTugas->lampiran === 2) {
-            return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', [
+            return view('dashboard.operator.pengecekan-surat-tugas.cek', [
                 'menu' => $menu,
                 'users' => $users,
                 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas,
@@ -157,7 +157,7 @@ class PengecekanSuratTugasController  extends Controller
         $users = User::all();
 
         if (in_array($detailPengecekanSuratTugasDalam->lampiran, [0, 1])) {
-            return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek_dalam', [
+            return view('dashboard.operator.pengecekan-surat-tugas.cek_dalam', [
                 'menu' => $menu,
                 'users' => $users,
                 'detailPengecekanSuratTugasDalam' => $detailPengecekanSuratTugasDalam,
@@ -178,9 +178,9 @@ class PengecekanSuratTugasController  extends Controller
 
         // Periksa nilai 'lampiran'
         if ($detailPengecekanSuratTugas->lampiran == 2) {
-            return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek', ['menu' => $menu, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas], compact('detailPengecekanSuratTugas'));
+            return view('dashboard.operator.pengecekan-surat-tugas.cek', ['menu' => $menu, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas], compact('detailPengecekanSuratTugas'));
         } else {
-            return view('dashboard.surat-tugas.pengecekan-surat-tugas.cek_dalam', ['menu' => $menu, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas] , compact('detailPengecekanSuratTugas'));
+            return view('dashboard.operator.pengecekan-surat-tugas.cek_dalam', ['menu' => $menu, 'users' => $users, 'detailPengecekanSuratTugas' => $detailPengecekanSuratTugas] , compact('detailPengecekanSuratTugas'));
         }
     }
 

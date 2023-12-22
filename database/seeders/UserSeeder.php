@@ -41,7 +41,6 @@ class UserSeeder extends Seeder
             'is_operator' => true,
             'is_pbj' => true,
             'is_ppk' => true,
-            'is_admin' => true,
         ]);
 
         User::create([
@@ -61,9 +60,8 @@ class UserSeeder extends Seeder
             'is_operator' => true,
             'is_pbj' => true,
             'is_ppk' => true,
-            'is_admin' => true,
         ]);
 
-        User::factory(20)->create();
+        // User::factory(20)->create();
     }
 }

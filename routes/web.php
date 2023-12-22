@@ -11,7 +11,6 @@ use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjPdController;
 
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjTrController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\Administrator\PegawaiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjPdController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjTrController;
@@ -35,8 +34,10 @@ use App\Http\Controllers\Dashboard\SuratTugas\PengajuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\DetailPengajuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\PersetujuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\DetailPersetujuanSuratTugasController;
-use App\Http\Controllers\Dashboard\SuratTugas\PengecekanSuratTugas\PengecekanSuratTugasController;
-use App\Http\Controllers\Dashboard\SuratTugas\PengecekanSuratTugas\UpdateGajiController;
+
+use App\Http\Controllers\Dashboard\Operator\PegawaiController;
+use App\Http\Controllers\Dashboard\Operator\PengecekanSuratTugasController;
+use App\Http\Controllers\Dashboard\Operator\UpdateGajiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -146,12 +147,6 @@ Route::middleware(['formatUserName'])->prefix('dashboard/unit')->name('unit.')->
     });
 });
 
-Route::middleware(['can:admin', 'formatUserName'])->prefix('/dashboard/administrator/pegawai')->name('admin.')->group(function () {
-    // Administrator
-    Route::get('/', [PegawaiController::class, 'index'])->name('pegawai.index');
-    Route::get('/tambah-pegawai', [PegawaiController::class, 'create'])->name('pegawai.add');
-});
-
 Route::middleware(['can:pbj', 'formatUserName'])->group(function () {
     // PBJ
     Route::get('/dashboard/pbj/updating-status', [UpdatingStatusPBJController::class, 'index'])->name('updatingstatuspbj.index');
@@ -186,16 +181,22 @@ Route::middleware(['can:pimpinan', 'formatUserName'])->prefix('dashboard')->grou
 
 // Operator (Surat Tugas)
 Route::middleware(['can:operator', 'formatUserName'])->prefix('dashboard')->group(function () {
-    // Operator (Pengecekan Surat Tugas dan Update Gaji)
-    Route::get('/pengecekan-surat-tugas/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
-    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
-    Route::put('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
-    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
-    Route::get('/pengecekan-surat-tugas/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
-    Route::get('/pengecekan-surat-tugas/update-gaji', [UpdateGajiController::class, 'index'])->name('updategaji.index');
-    Route::get('/pengecekan-surat-tugas/update-gaji/edit/{id}', [UpdateGajiController::class, 'edit'])->name('updategaji.edit');
-    Route::get('/pengecekan-surat-tugas/update-gaji/form/{id}', [UpdateGajiController::class, 'form'])->name('updategaji.form');
-    Route::put('/pengecekan-surat-tugas/update-gaji/update/{id}', [UpdateGajiController::class, 'update'])->name('updategaji.update');
+    // Operator
+        // Pegawai
+    Route::get('/operator/pegawai', [PegawaiController::class, 'index'])->name('operator.pegawai.index');
+    Route::get('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'create'])->name('operator.pegawai.add');
+    Route::post('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'store'])->name('operator.pegawai.store');
+
+        // Pengecekan Surat Tugas dan Update Gaji
+    Route::get('/operator/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');
+    Route::get('/operator/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'editForm'])->name('pengecekansurtug.cek');
+    Route::put('/operator/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'updateForm'])->name('pengecekansurtug.update');
+    Route::get('/operator/pengecekan-surtug/cek/{id}', [PengecekanSuratTugasController::class, 'tampil'])->name('pengecekansurtug.cek');
+    Route::get('/operator/pengecekan-surtug/{id}', [PengecekanSuratTugasController::class, 'selesaiAction'])->name('surtug.selesai');
+    Route::get('/operator/update-gaji', [UpdateGajiController::class, 'index'])->name('updategaji.index');
+    Route::get('/operator/update-gaji/edit/{id}', [UpdateGajiController::class, 'edit'])->name('updategaji.edit');
+    Route::get('/operator/update-gaji/form/{id}', [UpdateGajiController::class, 'form'])->name('updategaji.form');
+    Route::put('/operator/update-gaji/update/{id}', [UpdateGajiController::class, 'update'])->name('updategaji.update');
 
     // Download Surat Tugas
     // Route::get('/download-surat-tugas-pdf', [PengecekanSuratTugasController::class, 'downloadpdf'])->name('surtug.download');

@@ -13,11 +13,11 @@
                     <div
                     class="card-body profile-card pt-4 d-flex flex-column align-items-center"
                     >
-                    <img
-                        src={{ asset('assets/img/profile-img.jpg') }}
-                        alt="Profile"
-                        class="rounded-circle"
-                    />
+                    @if($user->picture && file_exists(storage_path('app/public/'.$user->picture)))
+                        <img src="{{ asset('storage/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                    @else
+                        <i class="bi bi-person-circle" style="font-size: 120px;"></i>
+                    @endif
                     {{-- <h2>Otong Surotong</h2> --}}
                     <h2 class="text-center">{{ auth()->user()->name }}</h2>
                     <h3 class="text-center">{{ auth()->user()->nip }}</h3>
@@ -123,27 +123,17 @@
                                 >
                                 <div class="col-md-8 col-lg-9">
                                     <div class="d-flex justify-content-center align-items-center" style="width: 120px; height: 120px; border-radius: 50%;">
-                                        @if($user->picture && Storage::disk('public')->exists($user->picture))
+                                        @if($user->picture && file_exists(storage_path('app/public/'.$user->picture)))
                                             <img src="{{ asset('storage/'.$user->picture) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
                                         @else
                                             <i class="bi bi-person-circle" style="font-size: 120px;"></i>
                                         @endif
                                     </div>
-
                                     <div class="pt-2">
-                                    <a
-                                        href="#"
-                                        class="btn btn-primary btn-sm"
-                                        title="Upload new profile image"
-                                        ><i class="bi bi-upload"></i
-                                    ></a>
-                                    <a
-                                        href="#"
-                                        class="btn btn-danger btn-sm"
-                                        title="Remove my profile image"
-                                        ><i class="bi bi-trash"></i
-                                    ></a>
+                                        <input type="file" class="form-control mb-2" name="picture" id="profileImage" accept=".jpg, .jpeg, .png">
+                                        <img id="previewImage" style="max-width: 120px; max-height: 120px; border-radius: 50%;" />
                                     </div>
+                                    
                                 </div>
                             </div>
 
@@ -255,5 +245,15 @@
 
     <x-slot name="js_body">
         <script type="text/javascript" src="{{ asset('assets/js/dashboard/profile/change-password-profile.js') }}"></script>
+        <script>
+            document.getElementById('profileImage').onchange = function (event) {
+                var reader = new FileReader();
+                reader.onload = function(){
+                    var output = document.getElementById('previewImage');
+                    output.src = reader.result;
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            };
+        </script>
     </x-slot>
 </x-dashboard.layouts.layouts>

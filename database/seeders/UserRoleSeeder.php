@@ -46,10 +46,6 @@ class UserRoleSeeder extends Seeder
                         $this->assignAdditionalRole($user, 'PPK');
                     }
 
-                    if ($user->is_admin) {
-                        $this->assignAdditionalRole($user, 'Admin');
-                    }
-
                     if ($user->is_operator) {
                         $this->assignAdditionalRole($user, 'Operator');
                     }
@@ -62,7 +58,6 @@ class UserRoleSeeder extends Seeder
                         $this->assignAdditionalRole($user, 'Tim Keuangan');
                         $this->assignAdditionalRole($user, 'PBJ');
                         $this->assignAdditionalRole($user, 'PPK');
-                        $this->assignAdditionalRole($user, 'Admin');
                     }
 
                     if ($user->name == 'Gholidho Herda Prilasakly') {
@@ -73,7 +68,6 @@ class UserRoleSeeder extends Seeder
                         $this->assignAdditionalRole($user, 'Tim Keuangan');
                         $this->assignAdditionalRole($user, 'PBJ');
                         $this->assignAdditionalRole($user, 'PPK');
-                        $this->assignAdditionalRole($user, 'Admin');
                     }
                 }
             }

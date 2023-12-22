@@ -16,7 +16,7 @@ class SubmenuSeeder extends Seeder
      */
     public function run()
     {
-        $administratorMenuId = Menu::where('name', 'Administrator')->first()->id;
+        $operatorMenuId = Menu::where('name', 'Operator')->first()->id;
         $unitMenuId = Menu::where('name', 'Unit')->first()->id;
         $pbjMenuId = Menu::where('name', 'PBJ')->first()->id;
         $ppkMenuId = Menu::where('name', 'PPK')->first()->id;
@@ -25,14 +25,25 @@ class SubmenuSeeder extends Seeder
         $tkuMenuId = Menu::where('name', 'Tim Keuangan')->first()->id;
         $surtugMenuId = Menu::where('name', 'Surat Tugas')->first()->id;
         $persetujuanSurtugMenuId = Menu::where('name', 'Persetujuan Surat Tugas')->first()->id;
-        $operatorMenuId = Menu::where('name', 'Operator')->first()->id;
 
         Submenu::insert([
             [
-                'menu_id' => $administratorMenuId,
+                'menu_id' => $operatorMenuId,
                 'name' => 'Pegawai',
                 'url' => Str::slug('Pegawai'),
                 'icon' => 'bi bi-people-fill',
+            ],
+            [
+                'menu_id' => $operatorMenuId,
+                'name' => 'Pengecekan Surat Tugas',
+                'url' => Str::slug('Pengecekan Surtug'),
+                'icon' => 'bi bi-info-square-fill',
+            ],
+            [
+                'menu_id' => $operatorMenuId,
+                'name' => 'Update Gaji',
+                'url' => Str::slug('Update Gaji'),
+                'icon' => 'bi bi-cash-coin',
             ],
             [
                 'menu_id' => $unitMenuId,
@@ -129,18 +140,6 @@ class SubmenuSeeder extends Seeder
                 'name' => 'Persetujuan Surat Tugas',
                 'url' => Str::slug('Persetujuan Surtug'),
                 'icon' => 'bi bi-info-square-fill',
-            ],
-            [
-                'menu_id' => $operatorMenuId,
-                'name' => 'Pengecekan Surat Tugas',
-                'url' => Str::slug('Pengecekan Surtug'),
-                'icon' => 'bi bi-info-square-fill',
-            ],
-            [
-                'menu_id' => $operatorMenuId,
-                'name' => 'Update Gaji',
-                'url' => Str::slug('Update Gaji'),
-                'icon' => 'bi bi-cash-coin',
             ],
         ]);
 

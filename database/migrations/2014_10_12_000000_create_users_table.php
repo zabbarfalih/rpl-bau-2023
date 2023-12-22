@@ -24,13 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('picture')->nullable();
             $table->string('password');
             $table->string('role')->nullable();
-            $table->integer('is_kepala_unit');
-            $table->integer('is_tim_keuangan');
-            $table->integer('is_unit');
-            $table->integer('is_operator');
-            $table->integer('is_pbj');
-            $table->integer('is_ppk');
-            $table->integer('is_admin');
+            $table->integer('is_kepala_unit')->default(0);
+            $table->integer('is_tim_keuangan')->default(0);
+            $table->integer('is_unit')->default(0);
+            $table->integer('is_operator')->default(0);
+            $table->integer('is_pbj')->default(0);
+            $table->integer('is_ppk')->default(0);
             $table->rememberToken();
         });
     }

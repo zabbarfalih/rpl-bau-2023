@@ -28,10 +28,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('admin', function (User $user) {
-            return $user->roles->firstWhere('name', 'Admin') !== null;
-        });
-
         Gate::define('pbj', function (User $user) {
             return $user->roles->firstWhere('name', 'PBJ') !== null;
         });

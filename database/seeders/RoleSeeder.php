@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
                 'name' => 'Unit',
             ],
             [
-                'name' => 'Admin',
+                'name' => 'Operator',
             ],
             [
                 'name' => 'PBJ',
@@ -30,12 +30,6 @@ class RoleSeeder extends Seeder
             ],
             [
                 'name' => 'Tim Keuangan',
-            ],
-            [
-                'name' => 'Pegawai',
-            ],
-            [
-                'name' => 'Operator',
             ],
             [
                 'name' => 'Pimpinan',

@@ -17,13 +17,18 @@ class SubsubmenuSeeder extends Seeder
      */
     public function run()
     {
-        $adminMenuId = Menu::where('name', 'Administrator')->first()->id;
+        $operatorMenuId = Menu::where('name', 'Operator')->first()->id;
         $unitMenuId = Menu::where('name', 'Unit')->first()->id;
         $pbjMenuId = Menu::where('name', 'PBJ')->first()->id;
         $ppkMenuId = Menu::where('name', 'PPK')->first()->id;
+        $skpMenuId = Menu::where('name', 'SKP')->first()->id;
+        $tkuMenuId = Menu::where('name', 'Tim Keuangan')->first()->id;
 
-        $pegawaiAdminSubmenuId = Submenu::where('name', 'Pegawai')
-        ->where('menu_id', $adminMenuId)
+        $pegawaiOperatorSubmenuId = Submenu::where('name', 'Pegawai')
+        ->where('menu_id', $operatorMenuId)
+        ->first()->id;
+        $updateGajiOperatorSubmenuId = Submenu::where('name', 'Update Gaji')
+        ->where('menu_id', $operatorMenuId)
         ->first()->id;
         $pengajuanUnitSubmenuId = Submenu::where('name', 'Pengajuan')
         ->where('menu_id', $unitMenuId)
@@ -35,13 +40,24 @@ class SubsubmenuSeeder extends Seeder
         ->where('menu_id', $ppkMenuId)
         ->first()->id;
 
+        $infoPengajuanSKPSubmenuId = Submenu::where('name', 'Info Pengajuan SKP')
+        ->where('menu_id', $skpMenuId)
+        ->first()->id;
+        $konfirmasiSKPSubmenuId = Submenu::where('name', 'Konfirmasi SKP')
+        ->where('menu_id', $tkuMenuId)
+        ->first()->id;
 
         
         Subsubmenu::insert([
             [
-                'submenu_id' => $pegawaiAdminSubmenuId,
+                'submenu_id' => $pegawaiOperatorSubmenuId,
                 'name' => 'Tambah Pegawai',
                 'url' => Str::slug('Tambah Pegawai'),
+            ],
+            [
+                'submenu_id' => $updateGajiOperatorSubmenuId,
+                'name' => 'Edit',
+                'url' => Str::slug('Edit'),
             ],
             [
                 'submenu_id' => $pengajuanUnitSubmenuId,
@@ -63,6 +79,16 @@ class SubsubmenuSeeder extends Seeder
                 'name' => 'Detail',
                 'url' => Str::slug('Detail'),
             ],
+            [
+                'submenu_id' => $infoPengajuanSKPSubmenuId,
+                'name' => 'Detail',
+                'url' => Str::slug('Detail'),
+            ],
+            [
+                'submenu_id' => $konfirmasiSKPSubmenuId,
+                'name' => 'Detail SKP',
+                'url' => Str::slug('Detail SKP'),
+            ]
         ]);
            
     }
