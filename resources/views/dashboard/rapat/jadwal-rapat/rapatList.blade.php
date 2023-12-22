@@ -11,12 +11,12 @@
                 @endif
                 border-5">
                 <div class="card-body">
-                    <h5 class="card-title-card-sibau">{{ $record->rapat->nama_rapat }}</h5>
+                    <h5 class="card-title-card-siagau">{{ $record->rapat->nama_rapat }}</h5>
 
                     @php
                         $kehadiran = $record->persentase !== null ? $record->persentase : 0;
                     @endphp
-                    <div id="progress-presensi-rapat-sibau">
+                    <div id="progress-presensi-rapat-siagau">
                         <div class="progress-outer">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped"
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <ul id="detail-rapat-card-sibau" class="text-muted list-inline">
+                    <ul id="detail-rapat-card-siagau" class="text-muted list-inline">
                         <li class="list-inline-item">
                             <i class="bi bi-calendar"></i>
                             {{ $record->rapat->tanggal }}
@@ -78,7 +78,7 @@
 
                         </li>
                     </ul>
-                    <div id="button-action-rapat-card-sibau" class="mb-2">
+                    <div id="button-action-rapat-card-siagau" class="mb-2">
                         <a href="{{ route('jadwal-rapat.izin', ['id_rapat' => $record->rapat_id]) }}" class="badge btn btn-warning mr-2 text-dark" role="button">
                             <i class="fa-solid fa-circle-exclamation mr-2"></i> Izin
                         </a>

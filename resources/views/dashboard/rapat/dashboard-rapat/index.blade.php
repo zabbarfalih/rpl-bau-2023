@@ -92,8 +92,8 @@
 
                                     {{-- detail pelaksanaan rapat --}}
                                     <div class="card-body">
-                                        <h5 class="card-title-card-sibau">{{ $r->nama_rapat }}</h5>
-                                        <ul id="detail-rapat-card-sibau" class="text-muted list-inline">
+                                        <h5 class="card-title-card-siagau">{{ $r->nama_rapat }}</h5>
+                                        <ul id="detail-rapat-card-siagau" class="text-muted list-inline">
                                             <li class="list-inline-item">
                                                 <i class="bi bi-calendar"></i>
                                                 {{ $r->tanggal }}
@@ -140,7 +140,7 @@
                                     </div>
 
                                     {{-- tombol action bawah --}}
-                                    <div id="button-action-rapat-card-sibau" class="mb-2">
+                                    <div id="button-action-rapat-card-siagau" class="mb-2">
                                         <!-- Buttons and badges here -->
                                         @if ($r->notulensi)
                                             <a href="{{ route('dashboard-rapat.notula', $r->id) }}" class="badge bg-success mr-2">

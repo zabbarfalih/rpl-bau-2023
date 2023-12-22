@@ -20,7 +20,7 @@
                 <div class="card-title">
                     <h4> <strong> {{ $judul }} </strong> </h4>
                 </div>
-                <span class="desc-card-dashboard-sibau"> {{ $desc }} </span>
+                <span class="desc-card-dashboard-siagau"> {{ $desc }} </span>
             </div>
             @endif
 

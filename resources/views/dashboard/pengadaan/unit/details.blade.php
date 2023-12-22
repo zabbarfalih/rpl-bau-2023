@@ -61,17 +61,19 @@
 
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white"
+
+                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white"
                                                         onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_kak']) }}'">
                                                         Download
                                                     </button>
                                                     @if ($pengadaan->status == 'Diajukan' || $pengadaan->status == 'Revisi')
                                                         <button type="button"
-                                                            class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+                                                            class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                             data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen KAK">
                                                             Edit
                                                         </button>
                                                     @endif
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -84,14 +86,18 @@
 
                                                 <td class="text-center align-middle">
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white"
+
+                                                        class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white"
                                                         onclick="window.location.href='{{ route('downloadFile', ['dokumenId' => $dokumenPengadaans->dokumen_id, 'documentName' => 'dokumen_memo']) }}'">
+
                                                         Download
                                                     </button>
                                                     @if ($pengadaan->status == 'Diajukan' || $pengadaan->status == 'Revisi')
                                                     <button type="button"
-                                                        class="btn-sibau-dashboard btn btn-primary rounded-pill fw-bold text-white"
+
+                                                        class="btn-siagau-dashboard btn btn-primary rounded-pill fw-bold text-white"
                                                         data-bs-toggle="modal" data-bs-target="#uploadFileModal" data-document="Dokumen Memo">
+
                                                         Edit
                                                     </button>
                                                     @endif
@@ -131,7 +137,7 @@
 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -146,7 +152,7 @@
 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -185,7 +191,7 @@
 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -200,7 +206,7 @@
 
                                             <td class="text-center align-middle">
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>
@@ -216,7 +222,7 @@
                                             <td class="text-center align-middle">
                                                 </button>
                                                 <button type="button"
-                                                    class="btn-sibau-dashboard btn btn-success rounded-pill fw-bold text-white">
+                                                    class="btn-siagau-dashboard btn btn-success rounded-pill fw-bold text-white">
                                                     Download
                                                 </button>
                                             </td>

@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserRoleSeeder extends Seeder
 {
@@ -37,8 +38,42 @@ class UserRoleSeeder extends Seeder
                         $this->assignAdditionalRole($user, 'Unit');
                     }
 
+                    // if ($user->is_pbj) {
+                    //     c
+                    // }
+
+                    // if ($user->is_ppk) {
+                    //     $this->assignAdditionalRole($user, 'PPK');
+                    // }
+
+                    // if ($user->is_admin) {
+                    //     $this->assignAdditionalRole($user, 'Admin');
+                    // }
+
                     if ($user->is_operator) {
                         $this->assignAdditionalRole($user, 'Operator');
+                    }
+
+                    if ($user->name == 'Muhammad Zabbar Falihin') {
+                        $this->assignAdditionalRole($user, 'Pimpinan');
+                        $this->assignAdditionalRole($user, 'Tim Keuangan');
+                        $this->assignAdditionalRole($user, 'Unit');
+                        $this->assignAdditionalRole($user, 'Operator');
+                        $this->assignAdditionalRole($user, 'Tim Keuangan');
+                        $this->assignAdditionalRole($user, 'PBJ');
+                        $this->assignAdditionalRole($user, 'PPK');
+                        $this->assignAdditionalRole($user, 'Admin');
+                    }
+
+                    if ($user->name == 'Gholidho Herda Prilasakly') {
+                        $this->assignAdditionalRole($user, 'Pimpinan');
+                        $this->assignAdditionalRole($user, 'Tim Keuangan');
+                        $this->assignAdditionalRole($user, 'Unit');
+                        $this->assignAdditionalRole($user, 'Operator');
+                        $this->assignAdditionalRole($user, 'Tim Keuangan');
+                        $this->assignAdditionalRole($user, 'PBJ');
+                        $this->assignAdditionalRole($user, 'PPK');
+                        $this->assignAdditionalRole($user, 'Admin');
                     }
                 }
             }

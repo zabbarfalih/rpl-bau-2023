@@ -12,7 +12,7 @@
                   <div class="d-flex justify-content-center py-4">
                     <span class="logo d-flex align-items-center w-auto">
                       <img src="{{ asset('assets/img/logo.png') }}" alt="Logo Polstat STIS">
-                      <span class="d-lg-block">SIBAU</span>
+                      <span class="d-lg-block">SIAGA-U</span>
                     </span>
                   </div><!-- End Logo -->
                   <div class="card mb-3">

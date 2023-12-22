@@ -1,4 +1,4 @@
-<footer id="footer-dashboard-sibau">
+<footer id="footer-dashboard-siagau">
     <div class="footer-copyright text-center py-3 px-3 fw-bold">
         <span class="font-italic">Dibuat dengan Penuh Cinta <i class="bi bi-heart-fill"></i></span><br>
         <span class="">Copyright © 2023 Tim RPL BAU</span>

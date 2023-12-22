@@ -75,7 +75,7 @@
                                     <label for="inputNamaUnit" class="col-sm-2 col-form-label">
                                         Koordinator
                                     </label>
-                                    <div class="col-sm-10 form-disable-sibau">
+                                    <div class="col-sm-10 form-disable-siagau">
                                         <input type="text" class="form-control" id="koordinator"
                                                value="{{ $ketuaRapatNim->nama }}" readonly name="risetName">
                                     </div>
@@ -85,7 +85,7 @@
                                     <label for="inputNamaUnit" class="col-sm-2 col-form-label">
                                         Penyelenggara
                                     </label>
-                                    <div class="col-sm-10 form-disable-sibau">
+                                    <div class="col-sm-10 form-disable-siagau">
                                         <input type="text" class="form-control" id="inputNamaUnit"
                                                value="{{ $penyelenggara->nama_riset_bidang }}" readonly
                                                name="risetName">
@@ -94,7 +94,7 @@
 
                                 {{-- Menampilkan Informasi Tambahan berdasarkan Jabatan --}}
                                 @if(isset($additionalInfo['seksi']))
-                                    <div class="row mb-3 form-disable-sibau">
+                                    <div class="row mb-3 form-disable-siagau">
                                         <label class="col-sm-2 col-form-label">Nama Seksi</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control"
@@ -104,7 +104,7 @@
                                 @endif
 
                                 @if(isset($additionalInfo['subseksi']))
-                                    <div class="row mb-3 form-disable-sibau">
+                                    <div class="row mb-3 form-disable-siagau">
                                         <label class="col-sm-2 col-form-label">Nama Subseksi</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control"
@@ -137,7 +137,7 @@
                                     @endif
                                 </div>
 
-                                <div class="row mb-3 form-disable-sibau">
+                                <div class="row mb-3 form-disable-siagau">
                                     <label class="col-sm-2 col-form-label">Jabatan</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" value="{{ $labelJabatan }}" readonly>

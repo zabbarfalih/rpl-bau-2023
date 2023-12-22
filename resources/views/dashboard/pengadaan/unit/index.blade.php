@@ -66,7 +66,7 @@
                                         {{$list->tanggal_pengadaan_formatted}}
                                     </td>
                                     <td class="text-center align-middle">
-                                        <button class="btn-sibau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $list->status_color }}" style="border: none">
+                                        <button class="btn-siagau-status-dashboard btn btn-warning rounded-pill fw-bold {{ $list->status_color }}" style="border: none">
                                             {{ $list->status }}
                                         </button>
                                     </td>
@@ -74,7 +74,7 @@
                                         <a href={{ route('unit.pengajuan.details', ['id' => $list->id]) }}>
                                             <button
                                             type="button"
-                                            class="btn-sibau-dashboard btn btn-info rounded-pill fw-bold text-white"
+                                            class="btn-siagau-dashboard btn btn-info rounded-pill fw-bold text-white"
                                             >
                                                 Detail
                                             </button>

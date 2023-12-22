@@ -5,7 +5,7 @@
     <x-slot name="js_head">
     </x-slot>
 
-    <section class="section admin-sibau">
+    <section class="section admin-siagau">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">

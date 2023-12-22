@@ -72,7 +72,7 @@
     <x-dashboard.partials.navbar />
     <x-dashboard.partials.sidebar :menu="$menu"/>
 
-    <main id="main-dashboard-sibau" class="min-vh-100">
+    <main id="main-dashboard-siagau" class="min-vh-100">
         <x-dashboard.partials.breadcrumb :menu="$menu" />
         {{ $slot }} <!-- Slot -->
     </main>
